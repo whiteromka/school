@@ -2,34 +2,30 @@
 
 В папке с проектом выполнить команды:
 
-// Сгенерировать .env для докера
+// Сгенерировать .env для докера командой ниже
 printf "UID=%s\nGID=%s\n" "$(id -u)" "$(id -g)" > .env
+
+// Добавить в .env и в ./src/.env . Вместо ? вписать актуальные данные для подключения
+DB_CONNECTION=mysql
+DB_HOST=?
+DB_PORT=?
+DB_DATABASE=?
+DB_USERNAME=?
+DB_PASSWORD=?
 
 // Собираем окружение
 docker compose build --no-cache
 
 // Запускаем окружение
 docker compose up -d
-
-// Развертываем Laravel
-docker compose run --rm app composer create-project laravel/laravel .
-// Если спросит про SQLite ответить NO
-// Возможно после установки чуть подждать пока проиндекиректся проект
-
-// Заменить в /src/.env данными ниже
-DB_CONNECTION=mysql
-DB_HOST=db
-DB_PORT=3306
-DB_DATABASE=laravel
-DB_USERNAME=laraveluser
-DB_PASSWORD=laravelpass
+// подождать 20 сек
 
 // Провалиться в контейнер с Ларкой и накатить миграции, и выйти
 docker compose exec app bash
-php artisan migrate
+php artisan migrate // если будет ошибка подождать 20 сек и повторить
 
-// В контейнера с приложением устанавливаем бутстрап
-npm install bootstrap
+// В контейнере с приложением устанавливаем бутстрап
+npm install
 
 // Запуск режима разработки фронта: Vite с hot reload
 npm run dev

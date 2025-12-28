@@ -13,19 +13,23 @@ RUN apk add --no-cache \
     mysql-client \
     icu-dev \
     libxml2-dev \
+    build-base \
+    python3 \
+    nodejs  \
+    npm \
     && docker-php-ext-install pdo_mysql mbstring pcntl intl xml opcache
 
-# пользователь = rom (UID 1000)
+# Создаем пользователя appuser с указанным UID и GID
 RUN addgroup -g ${GID} appgroup \
     && adduser -D -G appgroup -u ${UID} appuser
 
+# Устанавливаем Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www/html
 
-# Laravel writable dirs
-#RUN mkdir -p storage bootstrap/cache \
-#    && chown -R appuser:appgroup storage bootstrap/cache
+# ВАЖНО: права
+RUN chown -R appuser:appgroup /var/www/html
 
 USER appuser
 

@@ -11,13 +11,8 @@ services:
       - "5173:5173"
     volumes:
       - ./src:/var/www/html
-      #- node_modules:/var/www/html/node_modules
     environment:
-      - DB_HOST=db
-      - DB_PORT=3306
-      - DB_DATABASE=laravel
-      - DB_USERNAME=laraveluser
-      - DB_PASSWORD=laravelpass
+      APP_ENV: local
     depends_on:
       - db
 
@@ -35,10 +30,10 @@ services:
     image: mysql:8.1
     command: --default-authentication-plugin=mysql_native_password
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: laravel
-      MYSQL_USER: laraveluser
-      MYSQL_PASSWORD: laravelpass
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
     ports:
       - "3306:3306"
     volumes:
@@ -46,4 +41,3 @@ services:
 
 volumes:
   db_data:
-  #node_modules:

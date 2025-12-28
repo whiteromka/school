@@ -1,0 +1,29 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #e2e2ea;
+    font-family: Arial, sans-serif;
+}
+
+.hex-div {
+    width: 300px;
+    height: 150px;
+    background: linear-gradient(135deg, #ff4d6d, #6b5bff);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    text-align: center;
+    clip-path: polygon(
+        40px 0,          /* верхний левый скошенный угол */
+        100% 0,          /* верхний правый */
+        100% calc(100% - 40px), /* нижний правый скошенный угол */
+        calc(100% - 40px) 100%,
+        0 100%,
+        0 40px
+    );
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
