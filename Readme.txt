@@ -55,7 +55,20 @@ npm run dev
 // Готово!
 =============
 
-Прочие команды:
+
+// Все последующие запуски так:
+docker compose up -d
+docker compose exec app bash
+npm run dev
+=============
+
+// Прочие команды:
+docker compose down
+docker compose build --no-cache
+docker compose up -d
+docker compose exec app php -v
+
+// Лара прочие команды:
 docker compose exec -it app bash // провалиться в контейнер с приложением
 docker compose exec app php artisan optimize:clear  // чистка кэша
 docker compose exec app php artisan key:generate // генерация ключа

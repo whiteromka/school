@@ -13,6 +13,7 @@ services:
       - ./:/var/www/html
     environment:
       APP_ENV: local
+      PHP_IDE_CONFIG: "serverName=laravel-docker"
     depends_on:
       - db
 
