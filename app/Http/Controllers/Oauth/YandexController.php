@@ -5,10 +5,16 @@ namespace App\Http\Controllers\Oauth;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
+use App\Models\OauthAccount;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Carbon;
 
 class YandexController extends Controller
 {
-    // route: http://localhost:8080/yandex/verification-code?code=some_code&cid=xxx
+    /**
+     * /yandex/verification-code
+     * route: http://localhost:8080/yandex/verification-code?code=some_code&cid=xxx
+     */
     public function verificationCode(Request $request)
     {
         $code = $request->get('code');
@@ -28,14 +34,44 @@ class YandexController extends Controller
         }
 
         $data = $response->json();
-        return $data; // временно для отладки
-//      $data =
-//         {
-//          "access_token": "aaa",
-//          "expires_in": 31536000, // $expiresAt = now()->addSeconds(31536000); // 1 год
-//          "refresh_token": "bbb",
-//          "token_type": "bearer"
-//        }
+        // $data =
+        // {
+        //     "access_token": "aaa",
+        //     "expires_in": 31536000,
+        //     $expiresAt = now()->addSeconds(31536000); // 1 год //
+        //     "refresh_token": "bbb",
+        //     "token_type": "bearer"
+        // }
 
+        // тут ошибка! тут нужно сначала запросить данные у яндекса по токену, потом сохранить user-а в таблицу то что яндекс отдаст, потом авторизовать пользователя.
+        // И только потом все остальное.
+        $user = Auth::user(); // текущий авторизованный пользователь
+        if (!$user) {
+            abort(401, 'User not authenticated');
+        }
+
+        // Рассчитываем дату истечения токена
+        $expiresAt = isset($data['expires_in'])
+            ? Carbon::now()->addSeconds($data['expires_in'])
+            : null;
+
+        // Сохраняем или обновляем запись
+        OauthAccount::updateOrCreate(
+            [
+                'provider'          => 'yandex',
+                'provider_user_id'  => $user->id, // или другой уникальный идентификатор из Yandex
+            ],
+            [
+                'user_id'       => $user->id,
+                'access_token'  => $data['access_token'],
+                'refresh_token' => $data['refresh_token'] ?? null,
+                'expires_at'    => $expiresAt,
+                'token_type'    => $data['token_type'] ?? null,
+                'scope'         => $data['scope'] ?? null,
+                'raw_response'  => collect($data)->except(['access_token', 'refresh_token', 'id_token'])->toArray(),
+            ]
+        );
+
+        return response()->json(['status' => 'ok']);
     }
 }

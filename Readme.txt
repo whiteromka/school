@@ -72,4 +72,8 @@ docker compose exec app php -v
 docker compose exec -it app bash // провалиться в контейнер с приложением
 docker compose exec app php artisan optimize:clear  // чистка кэша
 docker compose exec app php artisan key:generate // генерация ключа
-docker compose exec app php artisan migrate // миграции
+
+php artisan make:migration create_oauth_accounts_table // создать миграцию
+docker compose exec app php artisan migrate            // накатить миграции
+
+
