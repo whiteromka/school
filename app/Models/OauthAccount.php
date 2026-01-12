@@ -26,6 +26,8 @@ use Illuminate\Support\Carbon;
  */
 class OauthAccount extends Model
 {
+    const YANDEX = 'Yandex';
+
     protected $table = 'oauth_accounts';
 
     protected $fillable = [

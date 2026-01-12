@@ -3,24 +3,46 @@
 namespace App\Http\Controllers\Oauth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Http\Request;
 use App\Models\OauthAccount;
-use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use App\Services\OAuth\Yandex\YandexAuthService;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Str;
 
 class YandexController extends Controller
 {
     /**
      * /yandex/verification-code
-     * route: http://localhost:8080/yandex/verification-code?code=some_code&cid=xxx
      */
-    public function verificationCode(Request $request)
+    public function verificationCode(Request $request, YandexAuthService $yaAuthService): Redirector|RedirectResponse
     {
+        $code = $request->string('code')->toString();
+        if (!$code) {
+            abort(400, 'Code не найден');
+        }
+        $yaAuthService->authenticate($code);
+
+        return redirect('/');
+    }
+
+    /**
+     * Показать студентам как накидывал код, и потом оптимизировал
+     */
+    public function verificationCodeOld(Request $request)
+    {
+        // Получаем код из адресной строки
         $code = $request->get('code');
         if (!$code) {
             abort(400, 'Authorization code not found');
         }
+
+        // Отправляем код и данные приложения в яндекс для получения токенов
         $response = Http::asForm()->post('https://oauth.yandex.ru/token', [
             'grant_type'    => 'authorization_code',
             'code'          => $code,
@@ -33,45 +55,69 @@ class YandexController extends Controller
             abort(500, 'Yandex OAuth failed');
         }
 
-        $data = $response->json();
-        // $data =
-        // {
-        //     "access_token": "aaa",
-        //     "expires_in": 31536000,
-        //     $expiresAt = now()->addSeconds(31536000); // 1 год //
-        //     "refresh_token": "bbb",
-        //     "token_type": "bearer"
-        // }
+        $data = $response->json(); // Array // Тут токены
+// $data =
+//         {
+//             "access_token": "aaa",
+//             "expires_in": 31536000, // $expiresAt = now()->addSeconds(31536000); // 1 год //
+//             "refresh_token": "bbb",
+//             "token_type": "bearer"
+//         }
 
-        // тут ошибка! тут нужно сначала запросить данные у яндекса по токену, потом сохранить user-а в таблицу то что яндекс отдаст, потом авторизовать пользователя.
-        // И только потом все остальное.
+        $token = $data['access_token'];
+        // Отправляем access_token в яндекс, что бы получить информацию о пользователе.
+        $userResponse = Http::withHeaders([
+            'Authorization' => 'OAuth ' . $token,
+        ])->get('https://login.yandex.ru/info');
+
+        if ($userResponse->failed()) {
+            logger()->error('Yandex user info error', $userResponse->json());
+            abort(500, 'Failed to fetch Yandex user info');
+        }
+
+        $yandexUser = $userResponse->json();
+
+        // Сохраняем пол-ля в тбл users и данные в oauth_accounts
+        $email = strtolower($yandexUser['default_email'] ?? $yandexUser['emails'][0]);
+        if (!$email) {
+            logger()->error('Yandex user email error', $userResponse->json());
+            abort(500, 'Bad data user from Yandex');
+        }
+        $user = User::query()->firstOrCreate(
+            ['email' => $email],
+            [
+                'name'     => $yandexUser['first_name'],
+                'last_name'=> $yandexUser['last_name'] ?? null,
+                'password' => Hash::make(Str::random(10)),
+            ]
+        );
+
+        // Логиним его сразу
+        Auth::login($user);
+        $request->session()->regenerate();
+
         $user = Auth::user(); // текущий авторизованный пользователь
         if (!$user) {
             abort(401, 'User not authenticated');
         }
 
-        // Рассчитываем дату истечения токена
-        $expiresAt = isset($data['expires_in'])
-            ? Carbon::now()->addSeconds($data['expires_in'])
-            : null;
-
         // Сохраняем или обновляем запись
-        OauthAccount::updateOrCreate(
+        OauthAccount::query()->updateOrCreate(
             [
-                'provider'          => 'yandex',
-                'provider_user_id'  => $user->id, // или другой уникальный идентификатор из Yandex
+                'provider'          => OauthAccount::YANDEX,
+                'provider_user_id'  => $yandexUser['id'],
             ],
             [
                 'user_id'       => $user->id,
                 'access_token'  => $data['access_token'],
                 'refresh_token' => $data['refresh_token'] ?? null,
-                'expires_at'    => $expiresAt,
+                'expires_at'    => $data['expires_in'] ? Carbon::now()->addSeconds($data['expires_in']) : null,
                 'token_type'    => $data['token_type'] ?? null,
                 'scope'         => $data['scope'] ?? null,
-                'raw_response'  => collect($data)->except(['access_token', 'refresh_token', 'id_token'])->toArray(),
+                'raw_response'  => collect($data)->toArray()//->except(['access_token', 'refresh_token']),
             ]
         );
 
-        return response()->json(['status' => 'ok']);
+        return redirect('/');
     }
 }
