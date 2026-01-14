@@ -28,7 +28,7 @@ class YandexController extends Controller
         }
         $yaAuthService->authenticate($code);
 
-        return redirect('/');
+        return redirect('/')->with('success', 'Ура! Вы успешно зарегистрировались и вошли в систему');
     }
 
     /**

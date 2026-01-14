@@ -2,3 +2,8 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
 
 @import './myCss.css';
+
+@import './layout.css';
+@import './fonts.css';
+
+@import './old.css';
