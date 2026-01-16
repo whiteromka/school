@@ -16,6 +16,7 @@ use Illuminate\Support\Carbon;
  * @property string $access_token
  * @property string|null $refresh_token
  * @property Carbon|null $expires_at
+ * @property Carbon|null $refresh_token_expires_at
  * @property string|null $token_type
  * @property string|null $scope
  * @property array|null $raw_response
@@ -27,6 +28,7 @@ use Illuminate\Support\Carbon;
 class OauthAccount extends Model
 {
     const YANDEX = 'Yandex';
+    const GITHUB = 'Github';
 
     protected $table = 'oauth_accounts';
 

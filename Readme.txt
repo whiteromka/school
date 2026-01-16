@@ -60,6 +60,11 @@ npm run dev
 docker compose up -d
 docker compose exec app bash
 npm run dev
+-------------
+ php artisan config:clear
+ pkill -f vite
+ netstat -tulpn | grep 5173 // пусто
+ ss -lntp | grep 5173
 =============
 
 // Прочие команды:
@@ -75,5 +80,4 @@ docker compose exec app php artisan key:generate // генерация ключ�
 
 php artisan make:migration create_oauth_accounts_table // создать миграцию
 docker compose exec app php artisan migrate            // накатить миграции
-
-
+docker compose exec app php artisan migrate:rollback   // откатить миграции

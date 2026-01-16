@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Test\Gun;
+use App\Test\Hunter;
+use App\Test\Usr;
 use Illuminate\Http\Request;
 
 class TestController extends Controller
@@ -115,5 +118,81 @@ class TestController extends Controller
 
 
         return '';
+    }
+
+    public function test2()
+    {
+        // Кастомные функции и передача значения (по значению и по ссылке &)
+        function double(int $num): int { // ToDo показать с &
+            $num += $num;
+            return $num;
+        }
+        $number = 5;
+        $result = double($number);
+        //dd([$result, $number]);
+
+        function name(string &$name): string { // ToDo показать с &
+            $name = $name . ' is awesome';
+            return $name;
+        }
+        $name = 'Rom';
+        $result = name($name);
+        //dd([$result, $name]);
+
+
+        // Переберет все айтемы и что-то сделает, ни чего не возвращает
+        // Модификация(мутация) через ссылку
+        $numbers = [1, 2, 3, 4, 5];
+        foreach ($numbers as $number) { // ToDo показать с &
+            $number *= 2;
+        }
+        //dd($numbers);
+
+        // let numbers = [1, 2, 3, 4, 5];
+        // JS forEach что-то сделает с каждым элементом, но ни чего не вернет наружу
+        // numbers.forEach((number) => {number *= 2;});
+
+        $numbers = [1, 2, 3, 4, 5];
+        $doubled = array_map((fn($number) => $number * 2), $numbers);
+        //dd($doubled); // [2, 4, 6, 8, 10]
+
+        // JS map вернет новый массив на основе преобразований с исходным
+        // const numbers = [1, 2, 3, 4, 5];
+        // const doubled = numbers.map((number) => number * 2)
+
+
+        // Классы и объекты
+        //JS const o = {...}
+
+        $array = ['name' => 'John', 'age' => 30];
+        $n = $array['name'];
+        $obj = (object)$array; // можно привести ассоциативный массив к объекту
+        //dd($obj->name);
+
+        // Анонимный класс
+        $obj = new class() {
+            public $name = 'John';
+            public $age = 30;
+
+            public function greet() {
+                return "Hello, I'm $this->name";
+            }
+        };
+        $message = $obj->greet();
+        //dd($message);
+        $u = new Usr();
+        //$u->sayName();
+
+        // ====================
+        $hunter = new Hunter();
+        $gun = new Gun();
+
+        //$hunter->setGun($gun);
+        $hunter->shoot();
+        $g = $hunter->getGun();
+        dd($g);
+        die;
+
+
     }
 }

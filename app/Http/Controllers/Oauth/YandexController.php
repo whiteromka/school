@@ -18,7 +18,7 @@ use Illuminate\Support\Str;
 class YandexController extends Controller
 {
     /**
-     * /yandex/verification-code
+     * url: http://localhost:8080/yandex/verification-code
      */
     public function verificationCode(Request $request, YandexAuthService $yaAuthService): Redirector|RedirectResponse
     {

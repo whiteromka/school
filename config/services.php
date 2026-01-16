@@ -38,5 +38,12 @@ return [
     'yandex' => [
         'client_id' => env('YANDEX_CLIENT_ID'),
         'client_secret' => env('YANDEX_CLIENT_SECRET'),
-    ]
+    ],
+
+    'github' => [
+        'app_id' => env('GITHUB_APP_ID'),
+        'client_id' => env('GITHUB_CLIENT_ID'),
+        'client_secret' => env('GITHUB_CLIENT_SECRET'),
+        'redirect_uri' => env('GITHUB_REDIRECT_URI'),
+    ],
 ];

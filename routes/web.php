@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Oauth\GithubController;
 use App\Http\Controllers\Oauth\YandexController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
@@ -7,7 +8,10 @@ use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome', ['yandexClientId' => config('services.yandex.client_id')]);
+    return view('welcome', [
+        'yandexClientId' => config('services.yandex.client_id'),
+        'githubClientId' => config('services.github.client_id'),
+    ]);
 });
 
 Route::get('/user/index', [UserController::class, 'index'])->name('user.index');
@@ -27,6 +31,9 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware('auth');
 
+// OAuth Login services
 Route::get('/yandex/verification-code',  [YandexController::class, 'verificationCode'])->name('yandex.verificationCode');
+Route::get('/github/verification-code',  [GithubController::class, 'verificationCode'])->name('github.verificationCode');
 
 Route::get('/test/test',  [TestController::class, 'test'])->name('test.test');
+Route::get('/test/test2',  [TestController::class, 'test2'])->name('test.test2');

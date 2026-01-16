@@ -1,5 +1,9 @@
 @extends('layouts.main')
 @section('content')
+    <style>
+        * {color: white}
+    </style>
+
     <header class="w-full lg:max-w-4xl max-w-[335px] text-sm mb-6 not-has-[nav]:hidden">
         @if (Route::has('login'))
             <nav class="flex items-center justify-end gap-4">
@@ -35,6 +39,17 @@
     @endif
 
     <p>Войти через <a href="https://oauth.yandex.ru/authorize?response_type=code&client_id={{ $yandexClientId }}">Yandex</a> </p>
+
+    <?php
+    $redirectUri = 'http://localhost:8080/github/verification-code';
+    ?>
+{{--    <p>Войти через <a href="https://github.com/login/oauth/authorize?redirect_uri=http://localhost:8080/github/verification-code&scope=user:email&client_id={{ $githubClientId }}">Github</a> </p>--}}
+
+
+<?php // &allow_signup=true&prompt=consent?>
+    <a href="https://github.com/login/oauth/authorize?client_id={{ $githubClientId }}&redirect_uri={{ $redirectUri }}&scope=user:email">
+        Войти через Github
+    </a>
 
     @auth
     <p>{{ Auth::user()->name }}</p>
