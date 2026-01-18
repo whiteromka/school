@@ -24,7 +24,8 @@ class OAuthUserDTO
         if (empty($data['id'])) {
             throw new RuntimeException("$serviceName не смог вернуть id пользователя");
         }
-        if (empty($data['first_name']) || empty($data['name'])) {
+        $name = $data['first_name'] ?? $data['name'] ?? null;
+        if (!$name) {
             throw new RuntimeException("$serviceName не смог вернуть first_name пользователя");
         }
 

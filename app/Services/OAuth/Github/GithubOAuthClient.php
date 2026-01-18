@@ -5,8 +5,6 @@ namespace App\Services\OAuth\Github;
 use App\Services\OAuth\OAuthClientInterface;
 use App\Services\OAuth\OAuthTokensDTO;
 use App\Services\OAuth\OAuthUserDTO;
-use Exception;
-use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Facades\Http;
 
 class GithubOAuthClient implements OAuthClientInterface
@@ -16,38 +14,23 @@ class GithubOAuthClient implements OAuthClientInterface
      */
     public function exchangeCodeForToken(string $code): OAuthTokensDTO
     {
-        try {
-            $response = Http::asForm()
-                ->withHeaders(['Accept' => 'application/json'])
-                ->timeout(30)
-                ->retry(3, 1000)
-                ->post('https://github.com/login/oauth/access_token', [
-                    'code'          => $code,
-                    'redirect_uri'  => config('services.github.redirect_uri'),
-                    'client_id'     => config('services.github.client_id'),
-                    'client_secret' => config('services.github.client_secret'),
-                ]);
-
-            if ($response->failed()) {
-                logger()->error('Github OAuth ошибка сервиса', $response->json());
-                abort(500, 'Github OAuth ошибка сервиса');
-            }
-
-            return OAuthTokensDTO::fromArray($response->json());
-
-        } catch (ConnectionException $e) {
-            logger()->error('Github OAuth ошибка подключения', [
-                'message' => $e->getMessage(),
-                'code' => $e->getCode(),
+        $response = Http::asForm()
+            ->withHeaders(['Accept' => 'application/json'])
+            ->timeout(30)
+            ->retry(3, 1000)
+            ->post('https://github.com/login/oauth/access_token', [
+                'code'          => $code,
+                'redirect_uri'  => config('services.github.redirect_uri'),
+                'client_id'     => config('services.github.client_id'),
+                'client_secret' => config('services.github.client_secret'),
             ]);
-            abort(503, 'Временно невозможно подключиться к сервису авторизации. Пожалуйста, попробуйте позже.');
-        } catch (Exception $e) {
-            logger()->error('Github OAuth неожиданная ошибка', [
-                'message' => $e->getMessage(),
-                'code' => $e->getCode(),
-            ]);
-            abort(500, 'Произошла ошибка при авторизации');
+
+        if ($response->failed()) {
+            logger()->error('Github OAuth ошибка сервиса', $response->json());
+            abort(500, 'Github OAuth ошибка сервиса');
         }
+
+        return OAuthTokensDTO::fromArray($response->json(), 'Github OAuth');
     }
 
     public function fetchUser(string $accessToken): OAuthUserDTO

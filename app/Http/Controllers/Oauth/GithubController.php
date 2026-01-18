@@ -6,8 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\OAuth\VerificationCodeRequest;
 use App\Models\OauthAccount;
 use App\Models\User;
-use App\Services\OAuth\AuthService;
-use App\Services\OAuth\Github\GithubAuthService;
+use App\Services\OAuth\OAuthServiceInterface;
 use Exception;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\RedirectResponse;
@@ -21,13 +20,18 @@ use Illuminate\Support\Str;
 
 class GithubController extends Controller
 {
+    public function __construct(
+        private readonly OAuthServiceInterface $authService
+    ) {}
+
     /**
      * url: http://localhost:8080/github/verification-code
      */
-    public function verificationCode(VerificationCodeRequest $request, GithubAuthService $authService): Redirector|RedirectResponse
-    {
-        $authService->authenticate($request->getCode());
-        return redirect('/')->with('success', 'Вы успешно зарегистрировались и вошли в систему');
+    public function verificationCode(VerificationCodeRequest $request): Redirector|RedirectResponse {
+        $this->authService->authenticate($request->getCode());
+
+        return redirect('/')
+            ->with('success', 'Вы успешно зарегистрировались и вошли в систему');
     }
 
     /** ToDo для студентов

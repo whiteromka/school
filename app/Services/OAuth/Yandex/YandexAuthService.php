@@ -4,14 +4,16 @@ namespace App\Services\OAuth\Yandex;
 
 use App\Models\OauthAccount;
 use App\Models\User;
+use App\Services\OAuth\OAuthClientInterface;
+use App\Services\OAuth\OAuthServiceInterface;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
-class YandexAuthService
+class YandexAuthService implements OAuthServiceInterface
 {
     public function __construct(
-        private readonly YandexOAuthClientInterface $yaClient
+        private readonly OAuthClientInterface $yaClient
     ) {}
 
     public function authenticate(string $code): void

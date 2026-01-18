@@ -5,11 +5,12 @@ namespace App\Services\OAuth\Github;
 use App\Models\OauthAccount;
 use App\Models\User;
 use App\Services\OAuth\OAuthClientInterface;
+use App\Services\OAuth\OAuthServiceInterface;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
-class GithubAuthService
+class GithubAuthService implements OAuthServiceInterface
 {
     public function __construct(
         private readonly OAuthClientInterface $oauthClient

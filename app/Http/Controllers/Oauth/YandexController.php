@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Oauth;
 use App\Http\Controllers\Controller;
 use App\Models\OauthAccount;
 use App\Models\User;
-use App\Services\OAuth\Yandex\YandexAuthService;
+use App\Services\OAuth\OAuthServiceInterface;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
@@ -17,16 +17,20 @@ use Illuminate\Support\Str;
 
 class YandexController extends Controller
 {
+    public function __construct(
+        private readonly OAuthServiceInterface $authService
+    ) {}
+
     /**
      * url: http://localhost:8080/yandex/verification-code
      */
-    public function verificationCode(Request $request, YandexAuthService $yaAuthService): Redirector|RedirectResponse
+    public function verificationCode(Request $request): Redirector|RedirectResponse
     {
         $code = $request->string('code')->toString();
         if (!$code) {
             abort(400, 'Code не найден');
         }
-        $yaAuthService->authenticate($code);
+        $this->authService->authenticate($code);
 
         return redirect('/')->with('success', 'Ура! Вы успешно зарегистрировались и вошли в систему');
     }

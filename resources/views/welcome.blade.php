@@ -43,13 +43,12 @@
     <?php
     $redirectUri = 'http://localhost:8080/github/verification-code';
     ?>
-{{--    <p>Войти через <a href="https://github.com/login/oauth/authorize?redirect_uri=http://localhost:8080/github/verification-code&scope=user:email&client_id={{ $githubClientId }}">Github</a> </p>--}}
 
-
-<?php // &allow_signup=true&prompt=consent?>
-    <a href="https://github.com/login/oauth/authorize?client_id={{ $githubClientId }}&redirect_uri={{ $redirectUri }}&scope=user:email">
-        Войти через Github
-    </a>
+    <p>Войти через
+        <a href="https://github.com/login/oauth/authorize?client_id={{ $githubClientId }}&redirect_uri={{ $redirectUri }}&scope=user:email">
+            Github
+        </a>
+    </p>
 
     @auth
     <p>{{ Auth::user()->name }}</p>

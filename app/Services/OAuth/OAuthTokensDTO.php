@@ -18,7 +18,7 @@ class OAuthTokensDTO
     ) {}
 
     /**
-     * @param array $data
+     * @param array $data Токены и их время жизни
      * @param string $serviceName Например: "Яндекс OAuth" или "Google OAuth"
      * @return self
      */
@@ -27,24 +27,17 @@ class OAuthTokensDTO
         if (empty($data['access_token'])) {
             throw new RuntimeException($serviceName . ' сервис не смог вернуть access_token');
         }
-        if (empty($data['refresh_token'])) {
-            throw new RuntimeException($serviceName . ' сервис не смог вернуть refresh_token');
-        }
-        if (empty($data['expires_in'])) {
-            throw new RuntimeException($serviceName . ' сервис не смог вернуть expires_in');
-        }
-//        if (!is_numeric($data['expires_in'])) {
-//            throw new RuntimeException($serviceName . ' сервис вернул expires_in не как numeric');
-//        }
-//        if (!is_numeric($data['refresh_token_expires_in'])) {
-//            throw new RuntimeException($serviceName . ' сервис вернул refresh_token_expires_in не как numeric');
-//        }
+
+        $expiresIn = $data['expires_in'] ?? null;
+        $expiresAt = is_numeric($expiresIn) ? now()->addSeconds((int)$expiresIn) : null;
+        $refreshTokenExpiresIn = $data['refresh_token_expires_in'] ?? null;
+        $refreshTokenExpiresAt = is_numeric($refreshTokenExpiresIn) ? now()->addSeconds((int)$refreshTokenExpiresIn) : null;
 
         return new self(
             accessToken: $data['access_token'],
             refreshToken: $data['refresh_token'] ?? null,
-            expiresAt: $data['expires_in'] ? now()->addSeconds($data['expires_in']) : null,
-            refreshTokenExpiresAt: $data['refresh_token_expires_in'] ? now()->addSeconds($data['refresh_token_expires_in']): null,
+            expiresAt: $expiresAt,
+            refreshTokenExpiresAt: $refreshTokenExpiresAt,
             tokenType: $data['token_type'] ?? null,
             scope: $data['scope'] ?? null,
             raw: $data
