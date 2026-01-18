@@ -16,9 +16,9 @@
         <br>
         <div class="line"></div>
         <div class="row">
-            <?php for ($i = 1; $i <= 4; $i++): ?>
+            <?php for ($i = 1; $i <= 3; $i++): ?>
             {{-- Основная карточка начало --}}
-            <div class="col-sm-3">
+            <div class="col-sm-4">
                 <div class="item">
                     <div class="item-head">
                         <span class="orange">head</span>
@@ -29,7 +29,7 @@
                             <div class="container">
                                 <div class="row">
                                     <div class="col-7 cntr">
-                                        <h5 class="item-name">cell-0<?= $i?> </h5>
+                                        <p class="item-name">cell   <span>0.00<?= $i?> </span></p>
                                     </div>
                                     <div class="col-5 item-status d-flex flex-column align-items-end gap-1">
                                         <span>r/001-233</span>

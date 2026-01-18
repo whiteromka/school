@@ -1,11 +1,7 @@
 * {
-    /*color: #cacaca;*/
-    font-family: "Tektur", sans-serif;
     font-optical-sizing: auto;
-    /*font-weight: 100;*/
     font-style: normal;
-    font-variation-settings:
-        "wdth" 100;
+    font-variation-settings: "wdth" 100;
 }
 :root {
     --с-grey0: #cacaca;
@@ -25,7 +21,9 @@
 .line { border-bottom: 1px solid #c6c6c6}
 
 /*---- item ----*/
-.item {}
+.item > * {
+    font-family: 'Orbitron', monospace;
+}
 .item .item-head {
     /*font-weight: bold;*/
     font-size: 13px;
@@ -45,12 +43,11 @@
 /*---- item body-top ----*/
 .body-top { background: #0e2846;}
 .body-top .item-name {
-    font-family: "Tektur", sans-serif;
     font-size: 25px;
-    /*text-transform: uppercase;*/
-    font-weight: 400;
-    color: #f4cb7f;
-    text-shadow: 0 0 10px orange;
+    color: #42ff78;
+}
+.body-top .item-name span {
+    font-weight: bold;
 }
 .body-top .item-status span:nth-child(1) {
     font-weight: bold;
