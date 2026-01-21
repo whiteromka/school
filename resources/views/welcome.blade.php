@@ -52,7 +52,7 @@
     </p>
 
     <p>Войти через
-        <a href="{{ route('login.google') }}">
+        <a href="{{ route('google.login') }}">
             Google
         </a>
     </p>

@@ -36,9 +36,8 @@ Route::get('/dashboard', function () {
 Route::get('/yandex/verification-code',  [YandexController::class, 'verificationCode'])->name('yandex.verificationCode');
 Route::get('/github/verification-code',  [GithubController::class, 'verificationCode'])->name('github.verificationCode');
 
-Route::get('/login/google', [GoogleController::class, 'redirectToGoogle'])->name('login.google');
+Route::get('/google/login', [GoogleController::class, 'login'])->name('google.login');
 Route::get('/google/verification-code', [GoogleController::class, 'verificationCode']);
-
 
 Route::get('/test/test',  [TestController::class, 'test'])->name('test.test');
 Route::get('/test/test2',  [TestController::class, 'test2'])->name('test.test2');
