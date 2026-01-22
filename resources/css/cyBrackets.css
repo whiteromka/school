@@ -1,0 +1,41 @@
+.js-cy-brackets {
+    position: relative;
+    border:1px solid #323232;
+    background-color: rgba(10, 10, 10, 0.7);
+}
+
+/* Общие стили для всех угловых элементов */
+.cy-brackets-tl,
+.cy-brackets-tr,
+.cy-brackets-bl,
+.cy-brackets-br {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    z-index: 1;
+}
+
+.cy-brackets-tl {
+    top: 0;
+    left: 0;
+    border-top:1px solid red;
+    border-left:1px solid red;
+}
+.cy-brackets-tr {
+    top: 0;
+    right: 0;
+    border-top:1px solid red;
+    border-right:1px solid red;
+}
+.cy-brackets-bl {
+    bottom: 0;
+    left: 0;
+    border-bottom: 1px solid red;
+    border-left: 1px solid red;
+}
+.cy-brackets-br {
+    bottom: 0;
+    right: 0;
+    border-bottom: 1px solid red;
+    border-right: 1px solid red;
+}

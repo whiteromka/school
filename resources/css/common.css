@@ -1,0 +1,35 @@
+.bg-r {background: red;}
+.bg-pink {background: #bb2c46;}
+.br-r {border: 1px solid red;}
+
+.clr-pink {color: #bb2c46;}
+
+.mw-150 {min-width: 150px}
+.mw-200 {min-width: 200px}
+.mw-250 {min-width: 250px}
+.mw-350 {min-width: 350px}
+
+.w-150 {width: 150px}
+.w-200 {width: 200px}
+.w-250 {width: 250px}
+.w-300 {width: 300px}
+.w-350 {width: 350px}
+
+.p-lr-10 {padding-left: 10px; padding-right: 10px}
+.p-lr-20 {padding-left: 20px; padding-right: 20px}
+.p-lr-30 {padding-left: 30px; padding-right: 30px}
+
+.mb-2 {margin-bottom: 2px}
+.mb-4 {margin-bottom: 4px}
+.mb-6 {margin-bottom: 6px}
+
+.mt-10vh {margin-top: 10vh}
+.mt-20vh {margin-top: 20vh}
+.mt-30vh {margin-top: 30vh}
+.mt-40vh {margin-top: 40vh}
+
+.ta-c {text-align: center}
+.ta-l {text-align: left}
+.ta-r {text-align: right}
+
+.c-p {cursor: pointer}

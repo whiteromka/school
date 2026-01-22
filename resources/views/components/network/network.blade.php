@@ -1,5 +1,6 @@
 <style>
     #network {
+        position: relative;
         font-family: 'Orbitron', monospace;
         height: 600px;
         border-radius: 14px;
@@ -194,95 +195,95 @@
     }
 
     // Создаем панель управления
-    function createControlPanel() {
-        const container = document.getElementById('network').parentNode;
-
-        const controlPanel = document.createElement('div');
-        controlPanel.id = 'gravityControlPanel';
-        controlPanel.style.cssText = `
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background: rgba(2, 6, 23, 0.85);
-            padding: 20px;
-            border-radius: 12px;
-            color: white;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(69, 255, 244, 0.3);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-            min-width: 280px;
-        `;
-
-        controlPanel.innerHTML = `
-            <h3 style="margin-top: 0; margin-bottom: 15px; color: #45fff4; font-size: 18px; font-weight: 600;">
-               Грави тест
-            </h3>
-
-            <div style="margin-bottom: 20px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                    <span style="color: #f9f9f9; font-size: 14px;">Текущее значение:</span>
-                    <span id="gravityValue" style="color: #00ffb3; font-size: 24px; font-weight: bold; font-family: 'Orbitron', monospace;">
-                        ${currentGravity.toFixed(3)}
-                    </span>
-                </div>
-                <div style="background: rgba(255, 255, 255, 0.1); height: 4px; border-radius: 2px; margin: 10px 0;">
-                    <div id="gravityBar" style="background: linear-gradient(90deg, #fc0000, #45fff4); height: 100%; width: ${(currentGravity / 2) * 100}%; border-radius: 2px;"></div>
-                </div>
-                <div style="color: #94a3b8; font-size: 12px; text-align: right;">
-                    Шаг увеличения: ${gravityIncrement}
-                </div>
-            </div>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px;">
-                <button id="startBtn" style="padding: 12px; background: linear-gradient(135deg, #00ffb3, #00cc99);
-                    border: none; border-radius: 8px; color: #020617; font-weight: bold; cursor: pointer;
-                    font-size: 14px; transition: all 0.3s;">
-                    ▶ Старт
-                </button>
-                <button id="stopBtn" style="padding: 12px; background: linear-gradient(135deg, #fc0000, #cc0000);
-                    border: none; border-radius: 8px; color: white; font-weight: bold; cursor: pointer;
-                    font-size: 14px; transition: all 0.3s;" disabled>
-                    ⏸ Стоп
-                </button>
-            </div>
-
-            <div style="display: flex; gap: 10px;">
-                <button id="resetBtn" style="flex: 1; padding: 12px; background: rgba(69, 255, 244, 0.1);
-                    border: 1px solid rgba(69, 255, 244, 0.3); border-radius: 8px; color: #45fff4;
-                    font-weight: bold; cursor: pointer; font-size: 14px; transition: all 0.3s;">
-                    Сброс
-                </button>
-                <button id="infoBtn" style="width: 40px; padding: 12px; background: rgba(255, 255, 255, 0.1);
-                    border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 8px; color: white;
-                    cursor: pointer; font-size: 14px; transition: all 0.3s;">
-                    ℹ
-                </button>
-            </div>
-
-            <div id="infoPanel" style="margin-top: 15px; padding: 12px; background: rgba(0, 0, 0, 0.3);
-                border-radius: 6px; font-size: 12px; color: #94a3b8; display: none; border-left: 3px solid #45fff4;">
-                <strong>Эффекты centralGravity:</strong><br>
-                • < 0.1: Слабая гравитация, узлы свободны<br>
-                • 0.1-0.5: Умеренное притяжение<br>
-                • > 0.5: Сильное притяжение к центру
-            </div>
-        `;
-
-        container.appendChild(controlPanel);
-
-        // Добавляем обработчики кнопок
-        document.getElementById('startBtn').addEventListener('click', startGravityAnimation);
-        document.getElementById('stopBtn').addEventListener('click', stopGravityAnimation);
-        document.getElementById('resetBtn').addEventListener('click', resetGravity);
-        document.getElementById('infoBtn').addEventListener('click', function() {
-            const infoPanel = document.getElementById('infoPanel');
-            infoPanel.style.display = infoPanel.style.display === 'none' ? 'block' : 'none';
-        });
-
-        updateControlButtons();
-    }
+    // function createControlPanel() {
+    //     const container = document.getElementById('network').parentNode;
+    //
+    //     const controlPanel = document.createElement('div');
+    //     controlPanel.id = 'gravityControlPanel';
+    //     controlPanel.style.cssText = `
+    //         position: absolute;
+    //         top: 10px;
+    //         left: 10px;
+    //         background: rgba(2, 6, 23, 0.85);
+    //         padding: 20px;
+    //         border-radius: 12px;
+    //         color: white;
+    //         font-family: 'Segoe UI', Arial, sans-serif;
+    //         z-index: 1000;
+    //         backdrop-filter: blur(10px);
+    //         border: 1px solid rgba(69, 255, 244, 0.3);
+    //         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    //         min-width: 280px;
+    //     `;
+    //
+    //     controlPanel.innerHTML = `
+    //         <h3 style="margin-top: 0; margin-bottom: 15px; color: #45fff4; font-size: 18px; font-weight: 600;">
+    //            Грави тест
+    //         </h3>
+    //
+    //         <div style="margin-bottom: 20px;">
+    //             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+    //                 <span style="color: #f9f9f9; font-size: 14px;">Текущее значение:</span>
+    //                 <span id="gravityValue" style="color: #00ffb3; font-size: 24px; font-weight: bold; font-family: 'Orbitron', monospace;">
+    //                     ${currentGravity.toFixed(3)}
+    //                 </span>
+    //             </div>
+    //             <div style="background: rgba(255, 255, 255, 0.1); height: 4px; border-radius: 2px; margin: 10px 0;">
+    //                 <div id="gravityBar" style="background: linear-gradient(90deg, #fc0000, #45fff4); height: 100%; width: ${(currentGravity / 2) * 100}%; border-radius: 2px;"></div>
+    //             </div>
+    //             <div style="color: #94a3b8; font-size: 12px; text-align: right;">
+    //                 Шаг увеличения: ${gravityIncrement}
+    //             </div>
+    //         </div>
+    //
+    //         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px;">
+    //             <button id="startBtn" style="padding: 12px; background: linear-gradient(135deg, #00ffb3, #00cc99);
+    //                 border: none; border-radius: 8px; color: #020617; font-weight: bold; cursor: pointer;
+    //                 font-size: 14px; transition: all 0.3s;">
+    //                 ▶ Старт
+    //             </button>
+    //             <button id="stopBtn" style="padding: 12px; background: linear-gradient(135deg, #fc0000, #cc0000);
+    //                 border: none; border-radius: 8px; color: white; font-weight: bold; cursor: pointer;
+    //                 font-size: 14px; transition: all 0.3s;" disabled>
+    //                 ⏸ Стоп
+    //             </button>
+    //         </div>
+    //
+    //         <div style="display: flex; gap: 10px;">
+    //             <button id="resetBtn" style="flex: 1; padding: 12px; background: rgba(69, 255, 244, 0.1);
+    //                 border: 1px solid rgba(69, 255, 244, 0.3); border-radius: 8px; color: #45fff4;
+    //                 font-weight: bold; cursor: pointer; font-size: 14px; transition: all 0.3s;">
+    //                 Сброс
+    //             </button>
+    //             <button id="infoBtn" style="width: 40px; padding: 12px; background: rgba(255, 255, 255, 0.1);
+    //                 border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 8px; color: white;
+    //                 cursor: pointer; font-size: 14px; transition: all 0.3s;">
+    //                 ℹ
+    //             </button>
+    //         </div>
+    //
+    //         <div id="infoPanel" style="margin-top: 15px; padding: 12px; background: rgba(0, 0, 0, 0.3);
+    //             border-radius: 6px; font-size: 12px; color: #94a3b8; display: none; border-left: 3px solid #45fff4;">
+    //             <strong>Эффекты centralGravity:</strong><br>
+    //             • < 0.1: Слабая гравитация, узлы свободны<br>
+    //             • 0.1-0.5: Умеренное притяжение<br>
+    //             • > 0.5: Сильное притяжение к центру
+    //         </div>
+    //     `;
+    //
+    //     container.appendChild(controlPanel);
+    //
+    //     // Добавляем обработчики кнопок
+    //     document.getElementById('startBtn').addEventListener('click', startGravityAnimation);
+    //     document.getElementById('stopBtn').addEventListener('click', stopGravityAnimation);
+    //     document.getElementById('resetBtn').addEventListener('click', resetGravity);
+    //     document.getElementById('infoBtn').addEventListener('click', function() {
+    //         const infoPanel = document.getElementById('infoPanel');
+    //         infoPanel.style.display = infoPanel.style.display === 'none' ? 'block' : 'none';
+    //     });
+    //
+    //     updateControlButtons();
+    // }
 
     // Обновляем индикатор гравитации
     function updateGravityBar() {

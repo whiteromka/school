@@ -1,0 +1,103 @@
+/* Что бы заработало нужно добавить классы .js-cyber-text-animation .cy-btn */
+.cy-btn {
+    width: 300px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+    box-shadow:
+        0 0 10px rgba(0, 255, 255, 0.5),
+        inset 0 0 10px rgba(0, 255, 255, 0.2);
+    font-family: 'Courier New', monospace;
+    background-color: #000;
+    cursor: pointer;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Стиль для всех киберпанк кнопок */
+.js-cyber-text-animation {
+    /*position: relative;
+    padding: 18px 40px;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    background-color: #000;
+    color: #00ffff;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow:
+        0 0 10px rgba(0, 255, 255, 0.5),
+        inset 0 0 10px rgba(0, 255, 255, 0.2);
+    font-family: 'Courier New', monospace;
+    min-width: 300px;
+    text-align: center;*/
+}
+
+/* Эффект при наведении */
+.cy-btn :hover {
+    box-shadow:
+        0 0 20px rgba(0, 255, 255, 0.8),
+        inset 0 0 10px rgba(0, 255, 255, 0.2);
+}
+
+/* Анимация нажатия */
+.cy-btn :active {
+    transform: translateY(1px);
+    box-shadow:
+        0 0 10px rgba(0, 255, 255, 0.6),
+        inset 0 0 10px rgba(0, 255, 255, 0.2);
+}
+
+/* Анимация мигания */
+@keyframes flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        opacity: 1;
+    }
+    20%, 24%, 55% {
+        opacity: 0.5;
+    }
+}
+
+/*.cy-btn {*/
+/*    animation: flicker 3s infinite;*/
+/*}*/
+
+/* Стиль для символов внутри кнопок */
+.cy-char {
+    display: inline-block;
+    min-width: 10px;
+    text-align: center;
+    color: #00ffff !important;
+}
+
+/* Пример других стилей для демонстрации */
+.small {
+    font-size: 16px;
+    padding: 12px 30px;
+    min-width: 200px;
+}
+.large {
+    font-size: 24px;
+    padding: 22px 50px;
+    min-width: 400px;
+}
+.different-color {
+    color: #ff00ff !important;
+    box-shadow:
+        0 0 10px rgba(255, 0, 255, 0.5),
+        inset 0 0 10px rgba(255, 0, 255, 0.2);
+}
+.different-color:hover {
+    box-shadow:
+        0 0 20px rgba(255, 0, 255, 0.8),
+        inset 0 0 10px rgba(255, 0, 255, 0.2);
+}

@@ -13,7 +13,8 @@
     --gap-deg: 44deg;    /* угол недорисованного сегмента (15%) */
 }
 .mh-800 {min-height: 800px;}
-.bgd {background: #252933;}
+.mh-1200 {min-height: 1200px;}
+.bg {background: #171718;}
 
 .orange {color: orange}
 .red {color: red}
@@ -179,3 +180,19 @@
     background: #515151FF;
     border: 1px solid #515151;
 }
+
+.cy-block {
+    min-height: 200px;
+    border-top: 1px solid #e15d74;
+    border-right: 1px solid #e15d74;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    background: #bb2c46;
+    font-size: clamp(24px, 5vw, 65px);
+    color:black;
+}
+.loading span.percent {
+    font-size: 33px;
+}
+.percent {}

@@ -1,15 +1,11 @@
+
+/* =================== OLD ==================*/
 .site-header {
-    /*height: 52px;*/
-    /*background: blue;*/
     background:#000;
     border-bottom: 1px solid #1c3217;
     box-shadow: 0 10px 10px rgba(0,0,0,1);
 }
-
 .header-monitor {
-    /*font-size: 45px;*/
-    /*color: white;*/
-    /*text-transform: uppercase;*/
     display: flex;
     align-items: center;      /* вертикаль */
     justify-content: center;  /* горизонталь */

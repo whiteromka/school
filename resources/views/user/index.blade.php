@@ -5,13 +5,21 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid">
-
+    <div class="container">
         <div class="row">
-            <div class="col-7" style="border: 1px solid white">
-                <x-network></x-network>
+            <div class="col-4">
+                <a class="js-cyber-text-animation cy-btn">press to login</a>
             </div>
         </div>
+    </div>
+
+    <div class="container-fluid">
+
+{{--        <div class="row">--}}
+{{--            <div class="col-7" >--}}
+{{--                <x-network></x-network>--}}
+{{--            </div>--}}
+{{--        </div>--}}
 
         <br>
         <div class="line"></div>
@@ -53,56 +61,9 @@
                             <div class="brackets brackets-tr"></div>
                             <div class="brackets brackets-bl"></div>
                             <div class="brackets brackets-br"></div>
-{{--                            <h2>11 <span class="text-danger">x</span> </h2>--}}
-
 {{--                            <x-floppy />--}}
-
 {{--                            <x-test></x-test>--}}
-
 {{--                            <x-led></x-led>--}}
-
-                            <?php if ($i === 1) :?>
-{{--                            <div class="d-flex flex-column">--}}
-{{--                                <div id="matrix-wrapper" class="flex-grow-1" style="min-height: 360px">--}}
-{{--                                    <canvas id="matrix"></canvas>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <script>--}}
-{{--                                const wrapper = document.getElementById('matrix-wrapper');--}}
-{{--                                const canvas = document.getElementById('matrix');--}}
-{{--                                const ctx = canvas.getContext('2d');--}}
-{{--                                function resize() {--}}
-{{--                                    canvas.width = wrapper.clientWidth;--}}
-{{--                                    canvas.height = wrapper.clientHeight;--}}
-{{--                                    columns = Math.floor(canvas.width / fontSize);--}}
-{{--                                    drops = Array(columns).fill(1);--}}
-{{--                                }--}}
-{{--                                const letters = 'アァカサタナハマヤャラワン0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';--}}
-{{--                                const fontSize = 10;--}}
-{{--                                let columns = 0;--}}
-{{--                                let drops = [];--}}
-{{--                                resize();--}}
-{{--                                function draw() {--}}
-{{--                                    ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';--}}
-{{--                                    ctx.fillRect(0, 0, canvas.width, canvas.height);--}}
-{{--                                    ctx.fillStyle = '#0F0';--}}
-{{--                                    ctx.font = fontSize + 'px monospace';--}}
-{{--                                    for (let i = 0; i < drops.length; i++) {--}}
-{{--                                        const text = letters.charAt(Math.floor(Math.random() * letters.length));--}}
-{{--                                        const x = i * fontSize;--}}
-{{--                                        const y = drops[i] * fontSize;--}}
-{{--                                        ctx.fillText(text, x, y);--}}
-{{--                                        if (y > canvas.height && Math.random() > 0.9) {--}}
-{{--                                            drops[i] = 0;--}}
-{{--                                        }--}}
-{{--                                        drops[i]++;--}}
-{{--                                    }--}}
-{{--                                }--}}
-{{--                                setInterval(draw, 50);--}}
-{{--                            </script>--}}
-                            <?php endif;?>
-
-
                         </div> {{-- Основная карточка body-middle конец --}}
                         <div class="body-bottom">
                             footer

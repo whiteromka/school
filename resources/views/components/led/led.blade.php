@@ -1,10 +1,15 @@
 <canvas id="led"></canvas>
 <script>
-    let text = "HELLO FRIEND! :)"
+    let text = "HELLO FRIEND"
     const pixelSize = 2  // Размер одного пикселя на LED-панели
     const gap = 2  // Расстояние между пикселями
     const cols = 240
-    const rows = 19
+    const rows = 14
+
+    // Начальные координаты текста
+    let x = 30
+    let y = 0
+    let letterOffset = 11 // Расстояние между символами
 
     const canvas = document.getElementById("led")
     canvas.width = cols * (pixelSize + gap)  // Устанавливаем ширину canvas с учётом пикселей и gaps
@@ -27,10 +32,7 @@
     offCtx.font = "18px Consolas" // Шрифт для отрисовки текста
     offCtx.textBaseline = "top"  // Выравнивание текста по верхнему краю
 
-    // Начальные координаты текста
-    let x = 30
-    let y = 1
-    let letterOffset = 11 // Расстояние между символами
+
     // Проходим по каждому символу текста и рисуем его на offscreen canvas
     for (const ch of text) {
         offCtx.fillText(ch, x, y)
@@ -69,7 +71,7 @@
             }
 
             // выбираем цвет в hex
-            const baseHex = on ? "#00ff66" : "#0d2f1f"
+            const baseHex = on ? "#00ff64" : "#11432d"
 
             // переводим hex в RGB
             const baseColor = hexToRgb(baseHex)

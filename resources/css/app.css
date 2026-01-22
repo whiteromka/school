@@ -1,9 +1,10 @@
-/* Подключаем Bootstrap */
 @import "bootstrap/dist/css/bootstrap.min.css";
 
 @import './myCss.css';
-
 @import './layout.css';
 @import './fonts.css';
-
+@import './cyBtn.css';
+@import './bgCube.css';
+@import './cyBrackets.css';
+@import "./common.css";
 @import './old.css';
