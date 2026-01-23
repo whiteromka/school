@@ -5,8 +5,11 @@ namespace App\Test\SIMS;
 class Human
 {
     private string $name;
+
     private string $sex;
-    public bool $isHungry = true;
+
+    private bool $isHungry;
+
     private Furniture $furniture;
 
     public function setFurniture(Furniture $furniture): void
@@ -14,10 +17,11 @@ class Human
         $this->furniture = $furniture;
     }
 
-    public function __construct(string $name, string $sex, Furniture $furniture)
+    public function __construct(string $name, string $sex, bool $isHungry = true, Furniture $furniture)
     {
         $this->name = $name;
         $this->sex = $sex;
+        $this->isHungry = $isHungry;
         $this->furniture = $furniture;
     }
 
