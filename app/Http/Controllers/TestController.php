@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Test\Business\Office\OfficeWorker;
+use App\Test\Business\System;
+use App\Test\Business\Warehouse\WarehouseWorker;
 use App\Test\Gun;
 use App\Test\Hunter;
 use App\Test\RPG\FastHorse;
@@ -246,5 +249,15 @@ class TestController extends Controller
         $sink = new Sink("marble");
         $human->setFurniture($sink);
         $human->eat();
+    }
+
+    public function business()
+    {
+        $officeWorker = new OfficeWorker();
+        $worker = new WarehouseWorker();
+        $system = new System($officeWorker, $worker);
+        $system->run();
+
+        die;
     }
 }

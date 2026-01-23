@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Test\Business;
+namespace App\Test\Business\Warehouse;
 
 class Box
 {
