@@ -126,10 +126,23 @@ document.addEventListener('DOMContentLoaded', function() {
         const originalText = buttonState.originalText;
 
         // Посимвольное раскодирование с задержкой
-        chars.forEach((char, index) => {
-            setTimeout(() => {
-                char.textContent = originalText[index];
-            }, index * 100); // Небольшая задержка между символами для эффекта
+        const promises = chars.map((char, index) => {
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    char.textContent = originalText[index];
+                    resolve();
+                }, index * 100);
+            });
+        });
+
+        Promise.all(promises).then(() => {
+            const event = new CustomEvent('myCustomEvent', {
+                detail: {
+                    message: 'Привет от первого скрипта!',
+                    data: { id: 1, value: 'test' }
+                }
+            });
+            document.dispatchEvent(event);
         });
     }
 

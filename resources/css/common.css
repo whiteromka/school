@@ -1,6 +1,23 @@
 .bg-r {background: red;}
 .bg-pink {background: #bb2c46;}
+
 .br-r {border: 1px solid red;}
+.br-g {border: 1px solid green;}
+.br-b {border: 1px solid blue;}
+.br-o {border: 1px solid orange;}
+
+.box100 {
+    width: 100px;
+    height: 100px;
+}
+.box150 {
+    width: 150px;
+    height: 150px;
+}
+.box200 {
+    width: 200px;
+    height: 200px;
+}
 
 .clr-pink {color: #bb2c46;}
 

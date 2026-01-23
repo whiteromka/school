@@ -8,10 +8,11 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
+Route::get('/', function (Illuminate\Http\Request $request) {
     return view('welcome', [
         'yandexClientId' => config('services.yandex.client_id'),
         'githubClientId' => config('services.github.client_id'),
+        'clientIp' => $request->ip(),
     ]);
 });
 

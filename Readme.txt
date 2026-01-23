@@ -58,8 +58,7 @@ npm run dev
 
 // Все последующие запуски так:
 docker compose up -d
-docker compose exec app bash
-npm run dev
+docker compose exec app npm run dev
 -------------
  php artisan config:clear
  pkill -f vite

@@ -13,8 +13,9 @@
 <div class="grid-background" id="gridBackground"></div>
 
 {{--Основной контейнер для контента--}}
-<div class="container mt-30vh">
+<div class="container mt-10vh">
 
+    {{-- Вступительный контейнер    --}}
     <div class="container">
         <div class="row">
             {{-- Верхний процент загрузки --}}
@@ -28,7 +29,7 @@
         <br>
 
         <div class="row">
-            <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2  cy-block">
+            <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2 cy-block-main">
                 {{--  Мобильная версия--}}
                 <div class="d-block d-md-none text-center">
                     <span data-cy-timer="1000" class="font-orbitron mb-0 js-cyber-text-once">
@@ -74,6 +75,8 @@
         </div>
 
     </div>
+    {{-- Вступительный контейнер конец --}}
+
 
     <h1 class="font-orbitron ta-r">01 .01 .01 1 1 .1</h1>
     <p>Lorem ipsum dolor sit, amet consectetur, adipisicing elit. Placeat nemo ad fuga
@@ -85,6 +88,39 @@
     <span class="js-cyber-text-animation cy-btn_ cy-char  p-lr-20 w-300 br-r d-block ta-c">
         02 .02 02 .02 223 .02
     </span>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    {{-- Контейнер с перспективой начало --}}
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <div class="scene">
+                    <!-- 3D контейнер -->
+                    <div class="cube-container">
+                        <!-- Самый дальний куб (красный) -->
+                        <div class="cube far box200 br-r"></div>
+                        <!-- Средний куб (зеленый) -->
+                        <div class="cube middle box200 br-g"></div>
+                        <!-- Самый ближний куб (синий) -->
+                        <div class="cube near box200 br-b"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="scene">
+                    <div class="cube-container">
+                        <div class="cube far box200 br-r"></div>
+                        <div class="cube middle box200 br-g"></div>
+                        <div class="cube near box200 br-b"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 {{--<div class="container-fluid px-0 bg mh-1200">--}}
