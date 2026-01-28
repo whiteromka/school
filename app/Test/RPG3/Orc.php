@@ -10,6 +10,11 @@ class Orc
 
     public function setWeapon(Weapon $weapon): void
     {
+//        if (Weapon::MAX_WEIGHT > $weapon->getMass()) {
+//            $this->weapon = $weapon;
+//        } else {
+//            throw new \Exception("Max allowed weight is exceeded, allowed no more than " . Weapon::MAX_WEIGHT);
+//        }
         $this->weapon = $weapon;
     }
 

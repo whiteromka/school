@@ -4,6 +4,8 @@ namespace App\Test\RPG3;
 
 abstract class Weapon
 {
+    public const MAX_WEIGHT = 50;
+
     private int $damage;
 
     /**

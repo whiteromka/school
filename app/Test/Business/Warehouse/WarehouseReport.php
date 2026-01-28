@@ -3,7 +3,6 @@
 namespace App\Test\Business\Warehouse;
 
 use App\Test\Business\ReportInterface;
-use App\Test\Business\WorkerInterface;
 
 class WarehouseReport implements ReportInterface
 {
@@ -33,7 +32,8 @@ class WarehouseReport implements ReportInterface
             "boxesIds" => $boxesIds,
             "truckId" => $this->truckId,
             "data1" => "data1",
-            "data2" => "data2"
+            "data2" => "data2",
+            "year" => ReportInterface::YEAR
         ];
     }
 }
