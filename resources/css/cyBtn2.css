@@ -12,13 +12,40 @@
 </button>
 */
 @import url("https://fonts.googleapis.com/css?family=Barlow|Tomorrow:400,700&display=swap");
+.item-btn-wrapper {
+    margin-top: 10px;
+    display: flex;
+    justify-content: end;
+}
+.item-btn-strokes {
+    display: flex;
+}
+.item-btn-strokes > div {
+    background: var(--yellow-color);
+    width: 10px;
+    height: 100%;
+    margin-left: 4px;
+}
+.item-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-:root {
-    --yellow-color: #fcee09;
-    --red-color: #c01b44;
-    --black-color: #050a0e;
-    --blue-color: #00f0ff;
-    /*--white-color: #fafafa;*/
+    width: 170px;
+    height: 40px;
+    background: var(--yellow-color);
+    clip-path: polygon(100% 0, 100% 40%, 100% 100%, 10% 100%, 0% 63%, 0 0);
+    /*clip-path: polygon(100% 0, 100% 60%, 90% 100%, 10% 100%, 0% 60%, 0 0);*/
+
+    font-family: "Tektur", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    color: black;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 13px;
 }
 
 .btn {
@@ -47,7 +74,7 @@
     bottom: 2px;
     background-color: var(--yellow-color);
     clip-path: polygon(92% 0, 100% 25%, 100% 100%, 8% 100%, 0% 75%, 0 0);
-    color:black;
+    color: black;
 }
 
 .btn--secondary {

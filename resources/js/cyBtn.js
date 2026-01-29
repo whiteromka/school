@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', function() {
             chars[currentIndex].textContent = originalText[currentIndex];
             currentIndex++;
 
-        }, 30);
+        }, 50);
     }
 
     // Обработка ухода мыши с кнопки (только для анимированных)

@@ -1,13 +1,38 @@
-<canvas id="led"></canvas>
+<div class="container-fluid top-ark bg-pink"></div>
+<div class="container-fluid px-0 bg-pink">
+    <div class="row">
+        <br>
+    </div>
+    <div class="row">
+        <div class="col-md-4 d-flex flex-column p-l-50">
+            <p>Для студентов</p>
+            <p><a href="">222 2 2 22 </a></p>
+            <p><a href=""> 3 3 3  3333  3 3</a></p>
+        </div>
+        <div class="col-md-4 br-r_ d-f-c">
+            {{-- <canvas id="led"></canvas>--}}
+            <br>
+            <br>
+            <br>
+        </div>
+        <div class="col-md-4 br-r_">
+            <p>Для бизнеса:</p>
+            <p><a href="#">Разработка и автоматизация процессов</a></p>
+            <p><a href="#"> 3 3 3  3333  3 3</a></p>
+        </div>
+    </div>
+</div>
+
+
 <script>
     let text = "HELLO FRIEND"
     const pixelSize = 2  // Размер одного пикселя на LED-панели
-    const gap = 2  // Расстояние между пикселями
-    const cols = 240
+    const gap = 1  // Расстояние между пикселями
+    const cols = 160
     const rows = 14
 
     // Начальные координаты текста
-    let x = 30
+    let x = 10
     let y = 0
     let letterOffset = 11 // Расстояние между символами
 
@@ -69,9 +94,9 @@
                     parseInt(hex.substring(4, 6), 16)
                 ]
             }
-
             // выбираем цвет в hex
-            const baseHex = on ? "#00ff64" : "#11432d"
+            // const baseHex = on ? "#00ff64" : "#11432d"
+            const baseHex = on ? "#ff4747" : "#431111"
 
             // переводим hex в RGB
             const baseColor = hexToRgb(baseHex)

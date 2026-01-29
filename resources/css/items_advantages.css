@@ -1,0 +1,161 @@
+.cy-items-container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.cy-item{
+    min-height: 400px;
+    margin-top:10px
+}
+.cy-item-head {
+    display: flex;
+}
+.cy-item-head div {
+    background: rgba(255, 0, 0, 0.24);
+}
+
+.cy-item-head-left {
+    border: 1px solid red;
+    height: 48px !important;
+    width: 48px !important;
+    margin-right: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000000;
+    font-size: 16px;
+    /*text-shadow: 0px 0px 3px rgb(255, 220, 79);*/
+}
+.cy-item-head-left span {
+    font-family: "Tektur", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+}
+.cy-item-head-right {
+    height: 48px;
+    width: 82%;
+    border: 1px solid red;
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cy-item-head-right span {
+    font-family: "Orbitron", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 900;
+    font-style: normal;
+    text-transform: uppercase;
+    /*color: var(--yellow-color);*/
+    color: #ffffff;
+    /*text-shadow: 1px 1px 1px rgb(0, 0, 0);*/
+
+}
+
+.cy-item-body {
+    margin-top: 6px;
+    background: rgba(255, 0, 0, 0.24);
+    border: 1px solid red;
+    min-height: 360px;
+}
+
+.top-ark {
+    width: 85%;
+    margin-right: 0px;
+    margin-bottom: -1px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 30px;
+    clip-path: polygon(34px 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+.bottom-ark {
+    width:85%;
+    margin-left: 0px;
+    margin-top: -1px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 30px;
+    clip-path: polygon(0% 0%, 100% 0%, calc(100% - 34px) 100%, 0% 100%);
+}
+
+.streaks {
+    display: flex;
+    min-width: 160px;
+    align-items: center;
+    margin-left: 45px;
+    margin-right: 45px;
+    padding-left: 20px;
+}
+.streaks span {
+    margin-right: 8px;
+    margin-left: 8px;
+    font-size: 8px;
+    color: #000000;
+    color: #d18b8b;
+    font-family: "Orbitron", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    word-spacing: 0.5em;
+}
+.streak-left {
+    margin: 5px;
+    width: 8px;
+    height: 15px;
+    background: #181818;
+    transform: skew(-40deg);
+}
+.streak-right {
+    margin: 5px;
+    width: 8px;
+    height: 15px;
+    background: #181818;
+    transform: skew(40deg);
+}
+.streak-b {
+    background: #000000;
+}
+
+
+.pipki {
+    display: flex;
+    border: 1px solid red;
+}
+.pipka {
+    margin: 2px;
+    width: 10px;
+    height: 10px;
+    background: red;
+}
+
+/*=========  advantages  ========*/
+.advantage {
+    position: absolute;
+    top:0;
+    left:0;
+    padding: 10px;
+    display: flex;
+    /*flex-direction: column;*/
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #5b5b5b;
+    border-radius: 5px;
+    width: 100%;
+    height: 120px;
+    background: rgba(21, 21, 21, 0.9);
+    z-index: 999;
+}
+.advantage span {
+    color: #ffffff;
+    font-family: "Tektur", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+}
+
+

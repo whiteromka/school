@@ -212,6 +212,12 @@
 .cy-container {
 
 }
+.cy-block-y {
+    background: #fcee09;
+    border-top: 1px solid #fcee09;
+    border-right: 1px solid #fcee09;
+    color: black;
+}
 .cy-block-p {
     background: #5b0ed6;
     border-top: 1px solid #7436ff;
@@ -230,7 +236,7 @@
     border-right: 1px solid #e15d74;
     color: black;
 }
-.cy-block h2, .cy-block-t h2, .cy-block-p h2 {
+.cy-block h2, .cy-block-t h2, .cy-block-p h2, .cy-block-y h2 {
     text-align: center;
     font-family: "Orbitron", sans-serif;
     font-optical-sizing: auto;
@@ -245,111 +251,4 @@
     background: rgba(255, 0, 0, 0.1);
     border-right: 1px solid #e15d74;
     /*background: transparent;*/
-}
-
-
-
-/*======  perspective test ======*/
-/* Базовые стили для кубов */
-.box100 { width: 100px; height: 100px; }
-.box150 { width: 150px; height: 150px; }
-.box200 { width: 200px; height: 200px; }
-
-/* Границы */
-.br-r { border: 2px solid red; } .br-r-d { border: 1px dashed red; }
-.br-g { border: 2px solid green; }
-.br-b { border: 2px solid blue; }
-.br-t { border: 2px solid turquoise; }
-
-/* 3D СЦЕНА */
-.scene {
-    perspective: 800px; /* Сила перспективы */
-    perspective-origin: center center;
-    margin: 0 auto;
-    position: relative;
-}
-
-/* Контейнер для всех 3D элементов */
-.cube-container {
-    width: 200px;
-    height: 200px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform-style: preserve-3d;
-    transform: translate(-50%, -50%) rotateX(-10deg) rotateY(-20deg);
-    transition: transform 0.5s ease;
-}
-
-/* Общие стили для всех кубов */
-.cube {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform-style: preserve-3d;
-    background-color: rgba(255, 255, 255, 0.7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Позиционируем кубы в 3D пространстве */
-
-/* Красный куб - самый дальний */
-.far {
-    transform: translate(-50%, -50%) translateZ(-100px);
-    background: rgba(255, 0, 0, 0.1);
-}
-
-/* Зеленый куб - ближе */
-.middle {
-    transform: translate(-50%, -50%) translateZ(0px);
-    background: rgba(0, 255, 0, 0.1);
-}
-
-/* Синий куб - самый близкий */
-.near {
-    transform: translate(-50%, -50%) translateZ(100px);
-    background: rgba(0, 0, 255, 0.1);
-}
-
-/* Добавим подписи для наглядности */
-.cube::after {
-    position: absolute;
-    bottom: -25px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 12px;
-    font-weight: bold;
-}
-
-.far::after {
-    content: "Z: -100px";
-    color: red;
-}
-
-.middle::after {
-    content: "Z: 0px";
-    color: green;
-}
-
-.near::after {
-    content: "Z: 100px";
-    color: blue;
-}
-
-/* Интерактивность */
-.scene:hover .cube-container {
-    transform: translate(-50%, -50%) rotateX(-20deg) rotateY(20deg);
-}
-
-/* Анимация для демонстрации */
-@keyframes rotate3d {
-    0% { transform: translate(-50%, -50%) rotateX(-0deg) rotateY(0deg); }
-    100% { transform: translate(-50%, -50%) rotateX(-20deg) rotateY(360deg); }
-}
-
-/* Применяем анимацию к правой сцене */
-.scene:nth-child(2) .cube-container {
-    animation: rotate3d 10s infinite linear;
 }
