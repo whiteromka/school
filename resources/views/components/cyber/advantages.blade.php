@@ -14,26 +14,29 @@
         </div>
         <div class="row">
             <?php $advantages = [
-                ['name' => 'Вкусно', 'descr' => 'lorem ...'],
-                ['name' => 'Незабываемо', 'descr' => 'lorem ...'],
-                ['name' => 'Интересно', 'descr' => 'lorem ...'],
-                ['name' => 'Полезно', 'descr' => 'lorem ...'],
-                ['name' => 'Почти даром', 'descr' => 'lorem ...'],
-                ['name' => 'Но за $', 'descr' => 'lorem ...'],
+                ['name' => 'Групповые занятия', 'descr' => 'Теория + практика'],
+                ['name' => 'Востребованные технологии' , 'descr' => '...'],
+                ['name' => 'Востребованные технологии' , 'descr' => '...'],
+//                ['name' => 'JS', 'descr' => 'Самый популярный язык программирования в мире'],
+//                ['name' => 'PHP', 'descr' => '75% всего интернета в мире работает на PHP. Один из наиболее востребованных язык программирования в СНГ'],
+//                ['name' => 'GameDev', 'descr' => 'lorem ...'],
+//                ['name' => 'English', 'descr' => 'Язык который стоит изучать каждому IT специалисту'],
+//                ['name' => 'Почти даром', 'descr' => 'lorem ...'],
+//                ['name' => "Но за ₽", 'descr' => 'lorem ...'],
             ];?>
             @foreach($advantages as $advantage)
             <div class="col-md-2">
                 <div class="pos-r">
                     <div class="advantage">
                         <span> {{ $advantage['name'] }} </span>
-{{--                        <span> {{ $advantage['descr'] }} </span>--}}
                     </div>
+                    <p class="advantage-descr"> {{ $advantage['descr'] }} </p>
                 </div>
             </div>
             @endforeach
         </div>
         <div class="row">
-            <br> <br>
+            <br> <br> <br>
         </div>
     </div>
 </div>
