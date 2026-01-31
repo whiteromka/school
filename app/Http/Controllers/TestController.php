@@ -2,13 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\TelegramService;
 use App\Test\Gun;
 use App\Test\Hunter;
 use App\Test\Usr;
-use Illuminate\Http\Request;
 
 class TestController extends Controller
 {
+    // /test/tg
+    public function tg()
+    {
+        $telegramService = new TelegramService();
+        $telegramService->sendToCommonChat('(test) Это сообщение отправлено из php в Тг бота который опубликовал его в группе в которой он сам состоит.');
+        die;
+    }
+
     public function test()
     {
         $int = 1;

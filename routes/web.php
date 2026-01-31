@@ -4,6 +4,7 @@ use App\Http\Controllers\Oauth\GithubController;
 use App\Http\Controllers\Oauth\GoogleController;
 use App\Http\Controllers\Oauth\YandexController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\TgbotController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
@@ -42,3 +43,7 @@ Route::get('/google/verification-code', [GoogleController::class, 'verificationC
 
 Route::get('/test/test',  [TestController::class, 'test'])->name('test.test');
 Route::get('/test/test2',  [TestController::class, 'test2'])->name('test.test2');
+
+// Tg
+Route::get('/test/tg', [TestController::class, 'tg'])->name('test.tg');
+Route::post('/tgbot/events', [TgbotController::class, 'events']);

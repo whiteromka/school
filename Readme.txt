@@ -80,3 +80,29 @@ docker compose exec app php artisan key:generate // генерация ключ�
 php artisan make:migration create_oauth_accounts_table // создать миграцию
 docker compose exec app php artisan migrate            // накатить миграции
 docker compose exec app php artisan migrate:rollback   // откатить миграции
+
+
+
+============ для локального теста Телеграм ===========
+В wsl:
+ssh -R 80:localhost:8080 serveo.net // полученный адрес вставить в SetTelegramWebhook
+docker compose exec app bash      // открыть контейнер с приложением
+php artisan telegram:set-webhook  // установить GT webhook
+// php artisan optimize:clear     // не нужно
+php artisan tinker                // заходим в карманный laravel-php
+Http::get("https://api.telegram.org/bot" . env('TELEGRAM_BOT_TOKEN') . "/getWebhookInfo")->json(); // запрос к TG
+
+[
+    "ok" => true,
+    "result" => [
+      "url" => "https://4bc6b92b0954b9e9-85-172-168-90.serveousercontent.com/tgbot/events",
+      "has_custom_certificate" => false,
+      "pending_update_count" => 0,
+      "last_error_date" => 1769822556,
+      "last_error_message" => "Wrong response from the webhook: 419 status code 419",
+      "max_connections" => 40,
+      "ip_address" => "5.255.123.12",
+    ],
+]
+
+
