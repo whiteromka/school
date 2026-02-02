@@ -22,14 +22,14 @@
 {{--Основной контейнер для контента--}}
 <div class="container-fluid mt-10vh px-0">
 
-
-
     {{-- Вступительный контейнер    --}}
     <x-cyber.main-first></x-cyber.main-first>
     <br>
     <br>
     <br>
     <br>
+
+    <x-ico-tech></x-ico-tech>
 
     {{--  Контейнер преимущества  --}}
     <x-cyber.advantages></x-cyber.advantages>

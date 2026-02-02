@@ -36,7 +36,7 @@
             <div class="col-md-6 col-lg-4 col-xl-3">
                 <div class="pos-r">
                     <div class="advantage">
-                        <div class="js-cy-brackets" data-color="red">
+                        <div class="js-cy-brackets bg-opas-dark" data-color="red" data-width="2">
                             <span> {{ $advantage['name'] }} </span>
                         </div>
                     </div>
