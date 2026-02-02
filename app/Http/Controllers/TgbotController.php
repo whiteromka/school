@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\DTOs\TelegramUserDTO;
+use App\Http\Requests\TelegramWebhookRequest;
 use App\Services\TelegramService;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
 class TgbotController extends Controller
@@ -14,16 +15,20 @@ class TgbotController extends Controller
     ) {}
 
     /** url: http://localhost:8080/tgbot/events  */
-    public function events(Request $request): JsonResponse
+    public function events(TelegramWebhookRequest $request): JsonResponse
     {
-        $data = $request->all();
-        Log::info('Telegram webhook/events:', $data);
-        // ToDo: Обработка команды /start
-        // if (isset($data['message']['text']) && str_starts_with($data['message']['text'], '/start')) {
-        //    return $this->handleStartCommand($data);
-        // }
+        Log::info('Telegram webhook/events', $request->all());
 
-        $this->telegramService->sayHello($data);
+        $this->telegramService->handleMessage(
+            new TelegramUserDTO(
+                telegramId: $request->telegramId(),
+                telegram: $request->telegram(),
+                name: $request->name(),
+                lastName: $request->lastName(),
+            ),
+            $request->text()
+        );
+
         return response()->json(['ok' => true]);
     }
 }

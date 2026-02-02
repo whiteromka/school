@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\DTOs\TelegramUserDTO;
 use App\Services\TelegramService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -29,17 +29,18 @@ class TelegramAuthController extends Controller
         if (!$this->telegramService->checkHash($data)) {
             abort(403, 'Telegram auth failed');
         }
-        $attributes['telegram_id'] = $request->get('id', '');
-        $attributes['telegram'] = $request->get('username', '');
-        $attributes['name'] = $request->get('first_name', '');
-        $attributes['last_name'] = $request->get('last_name', '');
 
-        $user = $this->telegramService->createOrUpdateUser($attributes);
-        if ($user) {
-            Auth::login($user, true);
-            return redirect()->route('user.lk'); // Редирект в ЛК
-        }
-        return redirect()->route('home');
+        $user = $this->telegramService->createOrUpdateUser(
+            new TelegramUserDTO(
+                telegramId: $request->get('id', ''),
+                telegram: $request->get('username', ''),
+                name: $request->get('first_name', ''),
+                lastName: $request->get('last_name', '')
+            )
+        );
+
+        Auth::login($user, true);
+        return redirect()->route('user.lk');
     }
 
 }

@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\DTOs\TelegramUserDTO;
 use App\Models\User;
 use App\Repositories\UserRepository;
 use Exception;
@@ -20,27 +21,16 @@ class TelegramService
     /**
      * Приветственное сообщение для пользователя написавшего тг боту
      */
-    public function sayHello(array $data): void
+    public function handleMessage(TelegramUserDTO $dto, ?string $text): void
     {
-        $attributes['telegram_id'] = data_get($data, 'message.from.id', '');
-        $attributes['telegram'] = data_get($data, 'message.from.username', '');
-        $attributes['name'] = data_get($data, 'message.from.first_name', '');
-        $attributes['last_name'] = data_get($data, 'message.from.last_name', '');
-
-        // Проверяем, достаточно ли данных для идентификации пользователя
-        if (empty($attributes['telegram_id']) && empty($attributes['telegram'])) {
+        if (!$dto->telegramId) {
             return;
         }
 
-        // 1. Сохраняем или обновляем пользователя в БД
-        $this->createOrUpdateUser($attributes);
+        $this->createOrUpdateUser($dto);
+        $message = $this->buildWelcomeMessage($dto->getNameOrTelegram(), $dto->telegramId);
 
-        // 2. Формируем приветственное сообщение
-        $name = $attributes['telegram'] ? ('@' . $attributes['telegram']) : $attributes['name'];
-        $welcomeMessage = $this->buildWelcomeMessage($name,  $attributes['telegram_id']);
-
-        // 3. Отправляем сообщение пользователю
-        $this->sendTo($attributes['telegram_id'], $welcomeMessage);
+        $this->sendTo($dto->telegramId, $message);
     }
 
     /**
@@ -70,20 +60,21 @@ class TelegramService
     }
 
     /**
-     * @param array $attributes
+     * @param TelegramUserDTO $dto
      * @return User
      */
-    public function createOrUpdateUser(array $attributes): User
+    public function createOrUpdateUser(TelegramUserDTO $dto): User
     {
-        $user = $this->userRepository->where('telegram', $attributes['telegram']);
+        $user = $this->userRepository->where('telegram', $dto->telegram);
         if (!$user) {
-            $user = $this->userRepository->where('telegram_id', $attributes['telegram_id']);
+            $user = $this->userRepository->where('telegram_id', $dto->telegramId);
         }
         if ($user) {
-            $this->userRepository->updateOnlyEmpty($user, $attributes);
+            $this->userRepository->updateOnlyEmpty($user, $dto->toArray());
             return $user;
         }
 
+        $attributes = $dto->toArray();
         $attributes['email'] = $this->emailGeneratorService->generateRandomEmail();
         $attributes['password'] = $this->passwordGeneratorService->generateRandomPassword();
         $attributes['from_tgbot_unknown'] = 1;
