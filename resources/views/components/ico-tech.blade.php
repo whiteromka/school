@@ -1,5 +1,4 @@
 <style>
-
     .logos-container {
         width: 100%;
         overflow: hidden;
@@ -39,20 +38,17 @@
     .logo-item {
         padding: 0 20px;
         flex-shrink: 0;
+        min-width: 100px;
         max-width: 180px;
         height: 100px;
         margin: 0 20px;
         background-color: #2a2a2a;
-        border-radius: 8px;
-        border: 1px solid #333;
+        border-radius: 3px;
+        border: 1px solid #393939;
         display: flex;
         align-items: center;
         justify-content: center;
-        /*transition: transform 0.3s ease, box-shadow 0.3s ease;*/
-
-
     }
-
 
     .logo-icon {
         font-size: 2.5rem;

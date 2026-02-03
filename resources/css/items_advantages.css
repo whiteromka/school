@@ -155,20 +155,11 @@
 
 /*=========  advantages  ========*/
 .advantage {
-    /*position: absolute;*/
-    /*top:0;*/
-    /*left:0;*/
     padding: 10px;
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    height: 160px;
-
-    /*border-radius: 5px;*/
-    /*width: 100%;*/
-    /*height: 120px;*/
-    /*background: rgba(21, 21, 21, 0.9);*/
-    /*z-index: 999;*/
+    border: 1px dotted rgba(0, 0, 0, 0.11);
 }
 .advantage > div{
     width: 100%;

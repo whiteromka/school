@@ -12,7 +12,7 @@
 .bg-purple {background: var(--purple-color);}
 .bg-yellow {background: var(--yellow-color);}
 .bg-pink {background: #bb2c46;}
-.bg-opas-dark {background: rgba(0, 0, 0, 0.025);}
+.bg-opas-dark {background: rgba(0, 0, 0, 0.035);}
 
 .bg-test {background: var(--pink-color);}
 

@@ -1,0 +1,367 @@
+:root {
+    --primary-color: #7c3aed;
+    --primary-dark: #5b21b6;
+    --dark-bg: #0f0f15;
+    --darker-bg: #09090e;
+    --card-bg: #171723;
+    --card-border: #2a2a3a;
+    --text-color: #f0f0f5;
+    --text-muted: #a0a0b0;
+    --accent-color: #00d4aa;
+}
+
+.slider-wrapper {
+    width: 100%;
+    padding: 0 20px;
+}
+
+/* Стили для заголовка */
+.slider-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.slider-header h1 {
+    margin-bottom: 0.5rem;
+    /*background: linear-gradient(90deg, var(--primary-color), var(--accent-color));*/
+    /*-webkit-background-clip: text;*/
+    /*-webkit-text-fill-color: transparent;*/
+    color: #c93db0;
+    background-clip: text;
+    letter-spacing: -0.5px;
+    font-family: "Tektur", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    text-transform: uppercase;
+    font-size: 4rem;
+}
+
+.slider-header p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+    color: #f844d8;
+}
+
+.slider-header::after {
+    content: '';
+    position: absolute;
+    bottom: -1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    border-radius: 3px;
+}
+
+/* Контейнер слайдера */
+.slider-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    background: linear-gradient(145deg, #12121a, #0a0a10);
+    padding: 2rem 0;
+    margin-bottom: 1.5rem;
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Кастомные стили для Swiper */
+.swiper {
+    width: 100%;
+    height: 350px;
+    padding: 10px 0 50px !important;
+}
+
+.swiper-wrapper {
+    transition-timing-function: linear !important;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 320px;
+    opacity: 0.4;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.swiper-slide-active {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.swiper-slide:hover {
+    opacity: 0.8;
+}
+
+/* Карточки */
+.qa-card {
+    width: 100%;
+    height: 100%;
+    padding: 0 15px;
+}
+
+.qa-card-inner {
+    background: linear-gradient(145deg, var(--card-bg), #141420);
+    border-radius: 14px;
+    padding: 2rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--card-border);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.qa-card-inner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.swiper-slide-active .qa-card-inner::before {
+    opacity: 1;
+}
+
+.swiper-slide-active .qa-card-inner {
+    /*transform: translateY(-8px);*/
+    box-shadow: 0 15px 35px rgba(124, 58, 237, 0.2);
+    border-color: rgba(124, 58, 237, 0.3);
+}
+
+/* Разные ширины карточек */
+.swiper-slide.col-2 {
+    width: 16.666% !important;
+}
+
+.swiper-slide.col-4 {
+    width: 33.333% !important;
+}
+
+.swiper-slide.col-6 {
+    width: 50% !important;
+}
+
+/* Вопрос */
+.question {
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    line-height: 1.5;
+}
+
+.question-icon {
+    margin-right: 12px;
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+/* Ответ */
+.answer {
+    color: var(--text-muted);
+    line-height: 1.7;
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-right: 10px;
+    font-size: 0.98rem;
+}
+
+.answer::-webkit-scrollbar {
+    width: 5px;
+}
+
+.answer::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--primary-color), var(--accent-color));
+    border-radius: 10px;
+}
+
+/* Номер карточки */
+.card-number {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 2rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    opacity: 0.7;
+    font-weight: 300;
+}
+
+/* Прогресс-бар Swiper */
+.swiper-pagination-progressbar {
+    background: rgba(255, 255, 255, 0.08);
+    height: 4px !important;
+    top: auto !important;
+    bottom: 10px !important;
+    width: 100% !important;
+    max-width: 500px;
+    left: 50% !important;
+    transform: translateX(-50%);
+    border-radius: 2px;
+    /*border: 2px solid rgba(255, 0, 195, 0.8);*/
+    /*border-left: 22px solid rgba(255, 0, 195, 0.8);*/
+    /*border-right: 22px solid rgba(255, 0, 195, 0.8);*/
+}
+
+.swiper-pagination-progressbar-fill {
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color)) !important;
+    border-radius: 2px;
+}
+
+/* Подсказка при наведении */
+.hover-hint {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-top: 2rem;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.swiper:hover ~ .hover-hint {
+    opacity: 0.4;
+}
+
+/* Навигация Swiper */
+.swiper-button-next,
+.swiper-button-prev {
+    color: var(--primary-color) !important;
+    background: rgba(124, 58, 237, 0.1);
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 50%;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    font-size: 1.2rem !important;
+    font-weight: bold;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background: rgba(124, 58, 237, 0.2);
+    transform: scale(1.1);
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+    .swiper-slide.col-2 {
+        width: 20% !important;
+    }
+
+    .swiper-slide.col-4 {
+        width: 40% !important;
+    }
+
+    .swiper-slide.col-6 {
+        width: 60% !important;
+    }
+}
+
+@media (max-width: 992px) {
+    .slider-header h1 {
+        font-size: 2.3rem;
+    }
+
+    .swiper {
+        height: 320px;
+    }
+
+    .swiper-slide {
+        height: 300px;
+    }
+
+    .question {
+        font-size: 1.15rem;
+    }
+
+    .swiper-slide.col-2,
+    .swiper-slide.col-4,
+    .swiper-slide.col-6 {
+        width: 70% !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .slider-header h1 {
+        font-size: 2rem;
+    }
+
+    .slider-header p {
+        font-size: 1rem;
+    }
+
+    .swiper {
+        height: 300px;
+    }
+
+    .swiper-slide {
+        height: 280px;
+    }
+
+    .qa-card-inner {
+        padding: 1.5rem;
+    }
+
+    .question {
+        font-size: 1.1rem;
+    }
+
+    .swiper-slide.col-2,
+    .swiper-slide.col-4,
+    .swiper-slide.col-6 {
+        width: 80% !important;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        display: none !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .swiper-slide.col-2,
+    .swiper-slide.col-4,
+    .swiper-slide.col-6 {
+        width: 90% !important;
+    }
+}
+
+/* Анимация появления */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.slider-header, .slider-container {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.slider-container {
+    animation-delay: 0.2s;
+    opacity: 0;
+}

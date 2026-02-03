@@ -38,7 +38,8 @@
     <br>
     <br>
 
-    <x-cyber.faq></x-cyber.faq>
+    {{--  FAQ на основе col из бутстрапа  --}}
+    <x-cyber.faq-col></x-cyber.faq-col>
     <br>
     <br>
 

@@ -6,6 +6,11 @@ use App\Models\User;
 
 class UserRepository
 {
+    public function create(array $attributes): User
+    {
+        return User::query()->create($attributes);
+    }
+
     public function findOrCreateByEmail(string $email, array $attributes): User
     {
         return User::query()->firstOrCreate(
@@ -43,11 +48,6 @@ class UserRepository
     public function where(string $column, $value): ?User
     {
         return User::query()->where($column, $value)->first();
-    }
-
-    public function create(array $attributes): User
-    {
-        return User::query()->create($attributes);
     }
 
     public function updateOnlyEmpty(User $user, array $attributes): void

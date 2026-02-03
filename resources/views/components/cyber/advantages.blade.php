@@ -34,9 +34,11 @@
             ];?>
             @foreach($advantages as $advantage)
             <div class="col-md-6 col-lg-4 col-xl-3">
-                <div class="pos-r">
+                <div>
+                    <br>
+                    <br>
                     <div class="advantage">
-                        <div class="js-cy-brackets bg-opas-dark" data-color="red" data-width="2">
+                        <div class="js-cy-brackets bg-opas-dark_" data-color="blue" data-width="2" data-size="9">
                             <span> {{ $advantage['name'] }} </span>
                         </div>
                     </div>
