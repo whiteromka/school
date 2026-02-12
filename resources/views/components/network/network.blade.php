@@ -3,10 +3,12 @@
         position: relative;
         height: 400px;
     }
+    .network-wrapper:hover {
+        box-shadow: inset 0 0 30px 1px rgba(25, 234, 223, 0.13);
+        transition: box-shadow 0s ease;
+    }
     #network {
         height: 100%;
-        box-shadow: inset 0 0 30px 0px rgba(69, 255, 224, 0.39); /* широкая внутренняя тень бирюзового цвета */
-        /*border-radius: 10px; !* по желанию, для плавных краев *!*/
     }
     .zoom-controls {
         position: absolute;
@@ -24,7 +26,7 @@
         height: clamp(32px, 8vw, 40px);
         background: rgba(0,0,0,.7);
         color: white;
-        border: 2px solid #45fff4;
+        border: 1px solid #45fff4;
         border-radius: 3px;
         cursor: pointer;
     }
@@ -47,7 +49,6 @@
 
 <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
 <script>
-    // Весь ваш существующий код остается без изменений
     let size = 18;
     let colorBackground = "#fc0000";
     let colorBorder = "#45fff4";

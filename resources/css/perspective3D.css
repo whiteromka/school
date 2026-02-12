@@ -11,6 +11,10 @@
     margin: 0 auto;
     position: relative;
 }
+.scene:hover {
+    box-shadow: inset 0 0 30px 1px rgba(25, 234, 223, 0.13);
+    transition: box-shadow 0s ease;
+}
 
 /* Контейнер для всех 3D элементов */
 .cube-container {

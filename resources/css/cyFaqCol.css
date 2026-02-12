@@ -26,7 +26,7 @@
     /*background: linear-gradient(90deg, var(--primary-color), var(--accent-color));*/
     /*-webkit-background-clip: text;*/
     /*-webkit-text-fill-color: transparent;*/
-    color: #c93db0;
+    color: #fbfbfb;
     background-clip: text;
     letter-spacing: -0.5px;
     font-family: "Tektur", sans-serif;
@@ -35,7 +35,7 @@
     font-style: normal;
     font-variation-settings: "wdth" 100;
     text-transform: uppercase;
-    font-size: 6rem;
+    font-size: clamp(32px, 4vw, 52px);
 }
 
 .slider-header p {
@@ -131,7 +131,6 @@
 
 .qa-card-inner {
     background: linear-gradient(145deg, var(--card-bg), #141420);
-    border-radius: 14px;
     padding: 2rem;
     height: 100%;
     display: flex;
@@ -205,6 +204,7 @@
     overflow-y: auto;
     padding-right: 10px;
     font-size: 0.98rem;
+    color: #0bf5e1;
 }
 
 .answer::-webkit-scrollbar {
@@ -384,4 +384,57 @@
 .slider-container {
     animation-delay: 0.2s;
     opacity: 0;
+}
+
+
+/*========= variant 2  =======*/
+.swiper-slide-active {
+    border: 1px solid #1cfff2 !important;
+}
+.faq-service-card {
+    background: var(--bg-card);
+    border: 1px solid #6b6b6b;
+    padding: 20px 32px;
+    position: relative;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+.faq-service-index {
+    font-family: var(--font-heading);
+    font-size: 38px;
+    font-weight: 700;
+    color: #ff5e00;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+.faq-service-name {
+    font-family: var(--font-heading);
+    font-family: "Tektur", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    /*color: var(--text-primary);*/
+    color: #929292;
+    margin-bottom: 12px;
+}
+
+.faq-service-desc {
+    font-size: 15px;
+    /*color: var(--text-muted);*/
+    color: #f1f1f1;
+    line-height: 1.7;
+}
+
+.faq-service-tag {
+    position: absolute;
+    top: -8px;
+    right: 10px;
+    /*display: inline-block;*/
+    margin-top: 20px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent-cyan);
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    padding: 4px 10px;
 }

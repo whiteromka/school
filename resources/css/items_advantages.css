@@ -26,17 +26,18 @@
 
 .cy-item{
     min-height: 400px;
-    margin-top:10px
+    margin-top:6px
 }
 .cy-item-head {
     display: flex;
 }
 .cy-item-head div {
-    background: rgba(255, 0, 0, 0.24);
 }
 
 .cy-item-head-left {
-    border: 1px solid red;
+    /*border: 1px solid red;*/
+    background: rgba(0, 238, 226, 1);
+    /*border: 1px dotted #000000;*/
     height: 48px !important;
     width: 48px !important;
     margin-right: 2px;
@@ -55,9 +56,10 @@
     font-variation-settings: "wdth" 100;
 }
 .cy-item-head-right {
+    background: rgba(7, 7, 7, 0.54);
+    border: 1px dotted #000000;
     height: 48px;
     width: 82%;
-    border: 1px solid red;
     margin-left: auto;
     display: flex;
     justify-content: center;
@@ -76,9 +78,11 @@
 }
 
 .cy-item-body {
-    margin-top: 6px;
     background: rgba(255, 0, 0, 0.24);
     border: 1px solid red;
+    background: rgba(7, 7, 7, 0.54);
+    border: 1px dotted #000000;
+    margin-top: 6px;
     min-height: 360px;
 }
 
@@ -145,11 +149,12 @@
 .pipki {
     display: flex;
     border: 1px solid red;
+    border: 1px solid #2e2e2e;
 }
 .pipka {
-    margin: 2px;
-    width: 10px;
-    height: 10px;
+    margin: 1px;
+    width: 4px;
+    height: 4px;
     background: red;
 }
 

@@ -1,26 +1,27 @@
-<div class="container px-0">
-    <div class="row">
-        <div class="col-sm-12 col-md-7 col-lg-8">
-            <div class="br-t">
-                <x-network.network></x-network.network>
+<div class="container-fuid px-0">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-12 col-md-7 col-lg-8">
+                <div class="js-cy-brackets" data-color="orange" data-type="bracket" data-size="23" data-on-hover="green">
+                    <x-network.network></x-network.network>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-5 col-lg-4">
+                <div class="cy-container">
+                    <div class="cy-block cy-block-y">
+                        <div class="cy-block-pipka"></div>
+                        <h2>технологический стек</h2>
+                    </div>
+                    <div class="cy-block-body cy-block-body-y">
+                        <p>На карте представлены все технологии(и их взаимосвязи между собой) которые мы будем изучать в наших модулях.
+                        </p>
+                        <p>  <span>Связи между технологиями упрощены для визуально восприятия</span></p>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="col-sm-12 col-md-5 col-lg-4">
-            <div class="cy-container">
-                <div class="cy-block cy-block-y">
-                    <div class="cy-block-pipka"></div>
-                    <h2>12 3 111</h2>
-                </div>
-                <div class="cy-block-body cy-block-body-y">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquid
-                        animi debitis delectus, deserunt dicta dolor doloremque ea excepturi expedita
-                        facilis inventore laudantium minus, nesciunt non pariatur, quas qui saepe!
-                    </p>
-                    <br>
-                    <br>
-                </div>
-            </div>
-        </div>
     </div>
 </div>

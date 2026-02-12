@@ -3,17 +3,14 @@
         <div class="col-ms-12 col-lg-9">
             <div class="cy-container">
                 <div class="cy-block">
-                    <h2>12 3 3425 43t5 4</h2>
+                    <div class="cy-block-pipka"></div>
+                    <h2>НАЗВАНИЕ чегото </h2>
                 </div>
                 <div class="cy-block-body" style="height: 415px">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquid
-                        animi debitis delectus, deserunt dicta dolor doloremque ea excepturi expedita
-                        facilis inventore laudantium minus, nesciunt non pariatur, quas qui saepe!
-                    </p>
                     <br>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, asperiores consequuntur corporis
-                        fugit sit suscipit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, asperiores
-                        consequuntur corporis fugit sit suscipit.
+                    <p>Если вы хотите, чтобы тень исчезала тоже плавно при уходе курсора, добавьте transition прямо к
+                        элементу, как показано выше. Если нужны разные скорости для появления и исчезновения, можно
+                        сделать так:
                     </p>
                     <br>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium asperiores consequuntur

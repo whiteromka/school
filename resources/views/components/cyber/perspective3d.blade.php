@@ -1,9 +1,10 @@
 <div class="container">
     <div class="row">
         <div class="col-6">
-            <div class="scene br-b" style="height: 300px">
+
+            <div style="height: 400px" class="scene js-cy-brackets" data-color="orange" data-type="bracket" data-size="23" data-on-hover="green">
                 <div class="cube-container font-orbitron">
-                    <div class="cube far box200 br-grey">NETWORK</div>
+                    <div class="cube far box200 br-grey1">NETWORK</div>
                     <div class="cube middle box200 br-b1">BACK</div>
                     <div class="cube near box200 br-r1">FRONT</div>
                 </div>

@@ -222,7 +222,8 @@
     font-weight: 100;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    font-size: 22px;
+    font-size: 17px;
+    color: #35ded3;
 }
 
 .cy-container {
@@ -256,10 +257,11 @@
 }
 .cy-block {
     position: relative;
-    background: #bb2c46;
-    border-top: 1px solid #e15d74;
-    border-right: 1px solid #e15d74;
-    color: black;
+    /*background: #bb2c46;*/
+    background: rgba(202, 27, 53, 0.6);
+    border-top: 1px solid rgba(225, 93, 116, 0.46);
+    border-right: 1px solid rgba(225, 93, 116, 0.26);
+    color: white;
     clip-path: polygon(
         25px 0,        /* Начинаем с отступа слева */
         calc(100% - 25px) 0,  /* Верхний правый с отступом */
@@ -269,39 +271,38 @@
         0 0px         /* Левый верхний срез */
     );
 }
+.cy-block > h2{ font-family: "Tektur", sans-serif; }
 .cy-block-y {
-    background: #fcee09;
-    border-top: 1px solid #fcee09;
-    border-right: 1px solid #fcee09;
+    background: rgba(252, 238, 9, 0.58);
     color: black;
 }
 .cy-block-p {
-    background: #790ed6;
-    border-top: 1px solid #a24cfe;
-    border-right: 1px solid #a24cfe;
+    background: rgba(16, 187, 241, 0.61);
+    border-top: 1px solid rgba(76, 212, 254, 0.28);
+    border-right: 1px solid rgba(76, 212, 254, 0.28);
     color: black;
 }
 .cy-block-t {
-    background: #109185;
-    border-top: 1px solid #0fdbc7;
-    border-right: 1px solid #0fdbc7;
+    background: rgba(16, 145, 133, 0.6);
     color: black;
 }
 
 .cy-block h2, .cy-block-t h2, .cy-block-p h2, .cy-block-y h2 {
     text-align: center;
-    font-family: "Orbitron", sans-serif;
+    font-family: "Tektur", sans-serif;
     font-optical-sizing: auto;
-    font-weight: 600;
+    font-weight: 100;
     font-style: normal;
     word-spacing: 0.5em;
     padding: 4px 0px;
     margin-bottom: 0;
     font-size: 19px;
+    text-transform: uppercase;
 }
 
 .cy-block-body {
     padding: 15px;
+    margin-bottom: 8px;
     background:
         repeating-linear-gradient(
             0deg,
@@ -321,20 +322,17 @@
         25px 100%,              /* Левый нижний со срезом */
         0 calc(100% - 25px)     /* Левый нижний срез под 45° */
     );
-    box-shadow: inset 0 0 40px 10px rgba(225, 93, 116, 0.29);
-    border-right: 1px solid #e15d74;
+    box-shadow: inset 0 0 40px 10px rgba(225, 93, 116, 0.19);
 }
+.cy-block-body p {font-family: "Jura", sans-serif;}
 .cy-block-body-y {
-    box-shadow: inset 0 0 40px 10px rgba(225, 199, 93, 0.29);
-    border-right: 1px solid #e1d65d;
+    box-shadow: inset 0 0 40px 10px rgba(225, 199, 93, 0.19);
 }
 .cy-block-body-p {
-    box-shadow: inset 0 0 40px 10px rgba(128, 93, 225, 0.29);
-    border-right: 1px solid #945de1;
+    box-shadow: inset 0 0 40px 10px rgba(60, 169, 228, 0.19);
 }
 .cy-block-body-t {
-    box-shadow: inset 0 0 40px 10px rgba(93, 218, 225, 0.29);
-    border-right: 1px solid #5de1da;
+    box-shadow: inset 0 0 40px 10px rgba(93, 218, 225, 0.19);
 }
 
 .cy-block-body.alternative {
@@ -388,13 +386,25 @@
 
 
 /* ======= FOOTER ======= */
+.footer {
+    color: black;
+}
 
+.footer-block {
+    border: 1px solid #bababa;
+    border-top: 15px solid #eeeeee;
+    padding: 10px;
+    min-height: 145px;
+    font-family: "Tektur", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+}
 .footer-display {
     background: #981919;
-    height: 100px;
-    width: 300px;
     border: 2px solid red;
-    border-radius: 6px;
-    padding: 10px;
+    border-radius: 2px;
+    padding: 10px 15px;
     box-shadow: inset 4px 4px 5px rgba(0, 0, 0, 0.6);
 }
