@@ -20,12 +20,12 @@ document.addEventListener('DOMContentLoaded', function() {
         centeredSlides: true,
         grabCursor: true,
         loop: true,
-        speed: 800,
+        speed: 1800,
 
         // Автовоспроизведение с паузой при наведении
         autoplay: {
-            delay: 3000,
-            disableOnInteraction: false,
+            delay: 7000,
+            disableOnInteraction: true,
             pauseOnMouseEnter: true,
         },
 

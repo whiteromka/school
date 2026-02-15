@@ -3,12 +3,16 @@
     --red-color: #c01b44;
     --black-color: #050a0e;
     --blue-color: #00f0ff;
-    --purple-color: #9713bc;
+    --purple-color_: #9713bc;
+    --purple-color: rgba(85, 0, 107, 0.87);
     /*--white-color: #fafafa;*/
     --pink-color: #bb2c46;
 }
 
-.bg-r {background: red;}
+.bg-JS {background: #c70c3b;}
+.bg-PHP {background: #0091b5;}
+.bg-GAME {background: #0ad416;}
+.bg-DEFAULT {background: #6a6a6a;}
 .bg-purple {background: var(--purple-color);}
 .bg-yellow {background: var(--yellow-color);}
 .bg-pink {background: #bb2c46;}

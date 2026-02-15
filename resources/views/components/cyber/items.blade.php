@@ -18,21 +18,22 @@
     <div class="container cy-items-container">
         <div class="row">
             <?php $courses = [
-                ['name' => 'Front', 'label' => 'JS'],
-                ['name' => 'Back', 'label' => 'PHP'],
-                ['name' => 'Gamedev', 'label' => 'C#'],
-                ['name' => 'Foreign Lang', 'label' => 'En'],
+                ['name' => 'Front', 'label' => 'JS', 'css' => 'bg-JS', 'crew' => 14],
+                ['name' => 'Back', 'label' => 'PHP', 'css' => 'bg-PHP', 'crew' => 17],
+                ['name' => 'Gamedev', 'label' => 'C#', 'css' => 'bg-DEFAULT', 'crew' => 2],
+                ['name' => 'Foreign Lang', 'label' => 'En', 'css' => 'bg-DEFAULT', 'crew' => 25],
             ]?>
-            @foreach($courses as $course)
+
+            @foreach($courses as $k => $course)
                 <div class="col-12 col-sm-6 col-lg-3 mb-20">
                     <div class="pipki">
-                        <div class="pipka"></div>
-                        <div class="pipka"></div>
-                        <div class="pipka"></div>
+                        @for($i = 1; $i <= $course['crew']; $i++)
+                            <div class="pipka"></div>
+                        @endfor
                     </div>
                     <div class="cy-item js-cy-brackets" data-color="orange" data-width="2" data-size="10">
                         <div class="cy-item-head">
-                            <div class="cy-item-head-left">
+                            <div class="cy-item-head-left {{ $course['css'] }}">
                                 <span> {{ $course['label'] }}</span>
                             </div>
                             <div class="cy-item-head-right">
@@ -40,14 +41,33 @@
                             </div>
                         </div>
                         <div class="cy-item-body">
+                            @if($k !== 20)
+                                <div class="badge-cell">
+                                    <div class="status-badge">
+                                        <div class="status-badge__hex glow-cyan">
+                                            <span class="status-badge__status">ACTIVE</span>
+                                            <span class="status-badge__value">2.99</span>
+                                        </div>
+                                        <div class="badge-dots">
+                                            <div class="badge-dot badge-dot--cyan"></div>
+                                            <div class="badge-dot badge-dot--orange"></div>
+                                            <div class="badge-dot badge-dot--cyan"></div>
+                                            <div class="badge-dot badge-dot--orange"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @else
+                                <x-test.dino-game></x-test.dino-game>
+                            @endif
+                            <br>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad alias aliquid nobis quas quos!
+                                Maxime nemo!</p>
                         </div>
                     </div>
 
                     <div class="item-btn-wrapper">
                         <div class="item-btn js-cyber-text-animation">
-                            <span>Подробнее
-{{--                                    <span class="fa-solid fa-floppy-disk"></span> --}}
-                            </span>
+                            <span>Подробнее</span>
                         </div>
                         <div class="item-btn-strokes">
                             <div></div>

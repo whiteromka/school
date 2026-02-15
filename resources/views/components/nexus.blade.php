@@ -7,10 +7,10 @@
     <nav class="nexus-nav" role="navigation" aria-label="Main navigation">
         <div class="nav-logo">NEXUS</div>
         <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#about">Главная</a></li>
+            <li><a href="#services">Front</a></li>
+            <li><a href="#projects">Back</a></li>
+            <li><a href="#contact">Gamedev</a></li>
         </ul>
         <div class="nav-status">
             <span class="dot" aria-hidden="true"></span>
@@ -170,50 +170,50 @@
     </section>
 </div>
 
-<!-- ── PROJECTS ── -->
+{{-- ============ PROJECTS =========== --}}
 <div class="container px-0">
-<section class="section" id="projects">
-    <div class="section-header">
-        <div class="section-label">Projects</div>
-        <h2 class="section-title">Mission Log</h2>
-        <div class="section-divider" aria-hidden="true"></div>
-    </div>
+    <section class="section" id="projects">
+        <div class="section-header">
+            <div class="section-label">Projects</div>
+            <h2 class="section-title">Mission Log</h2>
+            <div class="section-divider" aria-hidden="true"></div>
+        </div>
 
-    <div class="projects-grid">
-        <div class="project-card">
-            <div class="project-year">2025 // Classified</div>
-            <div class="project-name">Project ZENITH</div>
-            <div class="project-tech">Rust / WebGPU / Neural Engine</div>
-            <p class="project-desc">
-                Real-time threat detection platform processing 2.4M events per second across a global sensor network. Autonomous response time under 50ms.
-            </p>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-year">2025 // Classified</div>
+                <div class="project-name">Project ZENITH</div>
+                <div class="project-tech">Rust / WebGPU / Neural Engine</div>
+                <p class="project-desc">
+                    Real-time threat detection platform processing 2.4M events per second across a global sensor network. Autonomous response time under 50ms.
+                </p>
+            </div>
+            <div class="project-card">
+                <div class="project-year">2024 // Deployed</div>
+                <div class="project-name">GRID PHANTOM</div>
+                <div class="project-tech">Go / Kubernetes / gRPC</div>
+                <p class="project-desc">
+                    Decentralized mesh communication network spanning 14 countries. Zero-knowledge proof authentication with quantum-resistant encryption.
+                </p>
+            </div>
+            <div class="project-card">
+                <div class="project-year">2024 // Active</div>
+                <div class="project-name">SYNTH CORTEX</div>
+                <div class="project-tech">Python / PyTorch / CUDA</div>
+                <p class="project-desc">
+                    Generative AI platform for synthetic data creation. Training pipeline for multimodal models with custom hardware acceleration.
+                </p>
+            </div>
+            <div class="project-card">
+                <div class="project-year">2023 // Archived</div>
+                <div class="project-name">ECHO LINK</div>
+                <div class="project-tech">TypeScript / WebRTC / WASM</div>
+                <p class="project-desc">
+                    Peer-to-peer collaboration system with end-to-end encrypted video, spatial audio, and shared virtual workspaces for distributed teams.
+                </p>
+            </div>
         </div>
-        <div class="project-card">
-            <div class="project-year">2024 // Deployed</div>
-            <div class="project-name">GRID PHANTOM</div>
-            <div class="project-tech">Go / Kubernetes / gRPC</div>
-            <p class="project-desc">
-                Decentralized mesh communication network spanning 14 countries. Zero-knowledge proof authentication with quantum-resistant encryption.
-            </p>
-        </div>
-        <div class="project-card">
-            <div class="project-year">2024 // Active</div>
-            <div class="project-name">SYNTH CORTEX</div>
-            <div class="project-tech">Python / PyTorch / CUDA</div>
-            <p class="project-desc">
-                Generative AI platform for synthetic data creation. Training pipeline for multimodal models with custom hardware acceleration.
-            </p>
-        </div>
-        <div class="project-card">
-            <div class="project-year">2023 // Archived</div>
-            <div class="project-name">ECHO LINK</div>
-            <div class="project-tech">TypeScript / WebRTC / WASM</div>
-            <p class="project-desc">
-                Peer-to-peer collaboration system with end-to-end encrypted video, spatial audio, and shared virtual workspaces for distributed teams.
-            </p>
-        </div>
-    </div>
-</section>
+    </section>
 </div>
 
 <!-- ── CONTACT ── -->

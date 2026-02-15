@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Helpers\IPFormatter;
 use App\Http\Controllers\Oauth\GithubController;
 use App\Http\Controllers\Oauth\YandexController;
+use App\Models\Vacancy;
 use App\Services\OAuth\Github\GithubAuthService;
 use App\Services\OAuth\Github\GithubOAuthClient;
 use App\Services\OAuth\OAuthClientInterface;
@@ -49,8 +50,20 @@ class AppServiceProvider extends ServiceProvider
 //            URL::forceScheme('https');
 //        }
 
+        $vacancies = Vacancy::query()
+            ->whereDate('created_at', '2026-02-14')
+            ->where(function($query) {
+                $query->whereNotNull('salary_to')
+                    ->orWhereNotNull('salary_from');
+            })
+            ->orderBy('created_at', 'DESC')
+            ->get();
+        $vacancies = $vacancies->all();
+
+
         $userIp = $_SERVER['REMOTE_ADDR'] ?? '127.01.0.1';
         $userIp = IPFormatter::format($userIp);
         View::share('userIp', $userIp);
+        View::share('vacancies', $vacancies);
     }
 }

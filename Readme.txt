@@ -78,7 +78,7 @@ docker compose exec app php artisan optimize:clear  // чистка кэша
 docker compose exec app php artisan key:generate // генерация ключа
 
 php artisan make:migration create_oauth_accounts_table // создать миграцию
-docker compose exec app php artisan migrate            // накатить миграции
+docker compose exec app php artisan migrate --step=1    // накатить 1 миграцию
 docker compose exec app php artisan migrate:rollback   // откатить миграции
 
 php artisan make:controller UserController --resource

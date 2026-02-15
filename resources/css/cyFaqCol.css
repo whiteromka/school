@@ -245,7 +245,7 @@
 }
 
 .swiper-pagination-progressbar-fill {
-    background: linear-gradient(90deg, var(--primary-color), var(--accent-color)) !important;
+    background: linear-gradient(90deg, #ff00ff, var(--accent-color)) !important;
     border-radius: 2px;
 }
 
@@ -391,6 +391,7 @@
 .swiper-slide-active {
     border: 1px solid #1cfff2 !important;
 }
+
 .faq-service-card {
     background: var(--bg-card);
     border: 1px solid #6b6b6b;
@@ -402,8 +403,12 @@
     font-family: var(--font-heading);
     font-size: 38px;
     font-weight: 700;
-    color: #ff5e00;
+    color: rgba(255, 255, 255, 0.17);
     transition: color 0.3s, text-shadow 0.3s;
+}
+.swiper-slide-active .faq-service-index {
+    color: #1cfff2;
+    text-shadow: 0 0 8px rgba(28, 255, 242, 0.57);
 }
 
 .faq-service-name {

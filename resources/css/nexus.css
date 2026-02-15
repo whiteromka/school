@@ -280,6 +280,9 @@ a:hover {
 }
 
 /* ── BUTTONS ── */
+.wrapper-nexus-btn {
+
+}
 .nexus-btn {
     font-family: var(--font-mono);
     font-size: 12px;
@@ -340,9 +343,9 @@ a:hover {
 }
 
 .section-title {
-    font-family: var(--font-heading);
+    font-family: "Tektur", sans-serif;
     font-size: clamp(32px, 4vw, 52px);
-    font-weight: 700;
+    font-weight: 100;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: var(--text-primary);
@@ -503,8 +506,8 @@ a:hover {
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 2px;
-    max-width: 1100px;
+    gap: 4px;
+    max-width: 1200px;
 }
 
 .project-card {
@@ -514,6 +517,7 @@ a:hover {
     position: relative;
     overflow: hidden;
     transition: border-color 0.3s;
+    margin-bottom: 8px;
 }
 
 .project-card::before {
@@ -530,6 +534,11 @@ a:hover {
 .project-card:hover {
     border-color: var(--accent-cyan);
 }
+.project-card .salary {
+    color: orange;
+    font-family: "Tektur", sans-serif;
+    font-weight: 600;
+}
 
 .project-card:hover::before {
     height: 100%;
@@ -544,8 +553,8 @@ a:hover {
 }
 
 .project-name {
-    font-family: var(--font-heading);
-    font-size: 26px;
+    font-family: "Jura", sans-serif;
+    font-size: 18px;
     font-weight: 700;
     text-transform: uppercase;
     color: var(--text-primary);
