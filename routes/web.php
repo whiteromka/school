@@ -15,9 +15,9 @@ use App\Http\Controllers\VacancyController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [SiteController::class, 'index'])->name('site.index');
-Route::get('/site/front', [SiteController::class, 'index'])->name('site.front');
-Route::get('/site/back', [SiteController::class, 'index'])->name('site.back');
-Route::get('/site/gamedev', [SiteController::class, 'index'])->name('site.gamedev');
+Route::get('/site/front', [SiteController::class, 'front'])->name('site.front');
+Route::get('/site/back', [SiteController::class, 'back'])->name('site.back');
+Route::get('/site/gamedev', [SiteController::class, 'gamedev'])->name('site.gamedev');
 
 Route::get('/user/index', [UserController::class, 'index'])->name('user.index');
 Route::get('/user/test', [UserController::class, 'test'])->name('user.test');

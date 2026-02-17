@@ -4,7 +4,7 @@
 /** @var string $userIp */
 ?>
 
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -19,16 +19,12 @@
 </head>
 <body>
 
-
 {{-- Фон из сетки квадратов --}}
 <div class="grid-background" id="gridBackground"></div>
 
-
 {{--Основной контейнер для контента--}}
 <div class="container-fluid mt-10vh px-0">
-
     <x-nexus.navigation></x-nexus.navigation>
-
     @yield('content')
 </div>
 

@@ -185,12 +185,12 @@ a:hover {
 
 /* ── HERO ── */
 .hero {
-    min-height: 100vh;
+    min-height: 90vh;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    padding: 120px 48px 80px;
+    padding: 20px 48px 80px;
     overflow: hidden;
 }
 

@@ -1,8 +1,5 @@
 @php
-    /** @var Collection $vacancies */
     /** @var string $userIp */
-
-    use Illuminate\Support\Collection;
 @endphp
 
 @extends('layouts.main')
