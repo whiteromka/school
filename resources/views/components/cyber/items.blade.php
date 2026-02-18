@@ -107,7 +107,6 @@
 <script>
     // Для создания звездного неба
     document.addEventListener('DOMContentLoaded', () => {
-        console.log('!!!');
         const canvas = document.getElementById('starfield');
         const ctx = canvas.getContext('2d');
         const container = canvas.parentElement;

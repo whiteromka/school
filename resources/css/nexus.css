@@ -9,7 +9,7 @@
     box-sizing: border-box;
 }
 
-/* ── CUSTOM PROPERTIES ── */
+/* ============ CUSTOM PROPERTIES =========== */
 :root {
     --bg-primary: #0a0a0f;
     --bg-secondary: #111118;
@@ -23,18 +23,11 @@
     --font-mono: 'Share Tech Mono', monospace;
 }
 
-/* ── SCANLINE OVERLAY ── */
+/* ============ SCANLINE OVERLAY ============= */
 body::after {
     content: '';
     position: fixed;
     inset: 0;
-    /*background: repeating-linear-gradient(*/
-    /*    0deg,*/
-    /*    transparent,*/
-    /*    transparent 2px,*/
-    /*    rgba(0, 0, 0, 0.08) 2px,*/
-    /*    rgba(0, 0, 0, 0.08) 4px*/
-    /*);*/
     pointer-events: none;
     z-index: 9999;
 }
@@ -59,7 +52,7 @@ a:hover {
     text-shadow: 0 0 8px var(--accent-cyan);
 }
 
-/* ── GLITCH KEYFRAMES ── */
+/* ============== GLITCH KEYFRAMES ============= */
 @keyframes glitch-1 {
     0%, 100% { clip-path: inset(0 0 96% 0); transform: translate(-2px, 0); }
     20% { clip-path: inset(30% 0 50% 0); transform: translate(2px, 0); }
@@ -100,7 +93,7 @@ a:hover {
     50% { opacity: 0; }
 }
 
-/* ── HEADER / NAVBAR ── */
+/* ============ HEADER / NAVBAR ============== */
 .nexus-nav {
     position: fixed;
     top: 0;
@@ -110,7 +103,7 @@ a:hover {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 48px;
+    padding: 5px 48px;
     background: rgba(10, 10, 15, 0.65);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border-color);
@@ -168,22 +161,59 @@ a:hover {
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 11px;
+    font-size: 12px;
     color: var(--text-muted);
     letter-spacing: 2px;
     text-transform: uppercase;
 }
+.nav-status .guest{
+    color: #ff0073;
+    text-shadow: 0 0 1px red;
+}
+.nav-status .user{
+    color: #13f3ff;
+}
+
+.nexus-dropdown {
+    padding: 8px 0;
+    min-width: 200px;
+    transform: translate(18px, 33px) !important;
+    z-index: 9999;
+    border-radius: 0 !important;
+    background: rgba(10, 10, 15, 0.05);
+    backdrop-filter: blur(10px) !important;;
+    border: 1px dotted #ff0073;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+.nexus-dropdown .dropdown-item {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 8px 16px;
+    text-align: end;
+}
+
+.nexus-dropdown .dropdown-item:hover {
+    background: transparent;
+    color: var(--accent-cyan);
+    text-shadow: 0 0 6px rgba(0, 240, 255, 0.35);
+}
+
 
 .nav-status .dot {
     width: 6px;
     height: 6px;
-    /*border-radius: 50%;*/
-    background: var(--accent-cyan);
-    box-shadow: 0 0 6px var(--accent-cyan);
+    background: #ff0066;
+    box-shadow: 0 0 6px #ff0066;
     animation: blink 2s infinite;
 }
 
-/* ── HERO ── */
+/* ============= HERO =============== */
 .hero {
     min-height: 90vh;
     display: flex;
@@ -279,7 +309,7 @@ a:hover {
     flex-wrap: wrap;
 }
 
-/* ── BUTTONS ── */
+/* ============== BUTTONS ============= */
 .wrapper-nexus-btn {
 
 }
@@ -316,7 +346,7 @@ a:hover {
     box-shadow: 0 0 20px rgba(255, 42, 109, 0.2);
 }
 
-/* ── SECTION COMMONS ── */
+/* ============ SECTION COMMONS ============= */
 .section {
     padding: 100px 48px;
     position: relative;
@@ -359,7 +389,7 @@ a:hover {
     box-shadow: 0 0 8px rgba(0, 240, 255, 0.3);
 }
 
-/* ── INFO GRID (About) ── */
+/* ============= INFO GRID (About) ============ */
 .info-grid {
     display: grid;
     grid-template-columns: 280px 1fr;
@@ -407,7 +437,7 @@ a:hover {
     color: var(--text-primary);
 }
 
-/* ── SERVICES CARDS ── */
+/* ============== SERVICES CARDS ============= */
 .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -469,7 +499,7 @@ a:hover {
     padding: 4px 10px;
 }
 
-/* ── STATS BAR ── */
+/* ============ STATS BAR ================= */
 .stats-bar {
     display: flex;
     justify-content: center;
@@ -502,7 +532,7 @@ a:hover {
     margin-top: 8px;
 }
 
-/* ── PROJECTS / WORKS ── */
+/* ============== PROJECTS / WORKS ============= */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -579,7 +609,7 @@ a:hover {
     line-height: 1.7;
 }
 
-/* ── CONTACT ── */
+/* ============= CONTACT ============ */
 .contact-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -668,7 +698,7 @@ a:hover {
     min-height: 120px;
 }
 
-/* ── FOOTER ── */
+/* ======= FOOTER  ========= */
 .footer {
     padding: 40px 48px;
     border-top: 1px solid var(--border-color);
@@ -738,16 +768,8 @@ a:hover {
 }
 
 
-/* ── RESPONSIVE ── */
+/* ============= RESPONSIVE ================ */
 @media (max-width: 900px) {
-    .nexus-nav {
-        padding: 16px 24px;
-    }
-
-    .nav-links {
-        display: none;
-    }
-
     .section {
         padding: 64px 24px;
     }

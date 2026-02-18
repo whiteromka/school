@@ -103,6 +103,14 @@
     color: var(--black-color);
 }
 
+.btn--secondary-head .btn__content {
+    background-color: #00fbff;
+    color: var(--black-color);
+}
+.btn--secondary-head .btn__glitch {
+    background-color: #00fbff;
+}
+
 .btn__label {
     font-size: .40rem;
     position: absolute;
