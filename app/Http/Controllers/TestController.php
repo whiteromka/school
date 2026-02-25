@@ -205,6 +205,10 @@ class TestController extends Controller
         $hunter = new Hunter();
         $gun = new Gun();
 
+        $huntersMaxHealth = Hunter::MAX_HEALTH;
+        $huntersMaxHealth1 = Hunter::maxHealth();
+        $allStatuses = Hunter::getStatuses();
+
         //$hunter->setGun($gun);
         $hunter->shoot();
         $g = $hunter->getGun();

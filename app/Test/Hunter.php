@@ -11,6 +11,25 @@ class Hunter
     public string $name;
     private int $age;
 
+    public const MAX_HEALTH = 1000;
+    public const STATUS_SLEEP = "sleep";
+    public const STATUS_EAT = "eat";
+    public const STATUS_COOK = "cook";
+
+    public static function getStatuses(): array
+    {
+        return [
+            self::STATUS_SLEEP,
+            self::STATUS_EAT,
+            self::STATUS_COOK
+        ];
+    }
+
+    public static function maxHealth(): int
+    {
+        return self::MAX_HEALTH;
+    }
+
     public function __construct(Gun $gun)
     {
         $this->gun = $gun;
@@ -25,7 +44,7 @@ class Hunter
     {
         $this->gun = $g;
     }
-    //check push
+
     public function shoot(): void
     {
         $this->gun->shoot();
