@@ -3,6 +3,9 @@
 {{--<div class="corner-decoration bottom-right" aria-hidden="true"></div>--}}
 
 {{-- =========== HERO ============--}}
+
+
+
 <div class="container-fluid px-0">
     <section class="hero" id="hero">
         <div class="hero-grid-bg" aria-hidden="true"></div>
@@ -199,67 +202,122 @@
 </div>
 
 <!-- ── CONTACT ── -->
-{{--<section class="section" id="contact">--}}
-{{--    <div class="section-header">--}}
-{{--        <div class="section-label">Contact</div>--}}
-{{--        <h2 class="section-title">Open Channel</h2>--}}
-{{--        <div class="section-divider" aria-hidden="true"></div>--}}
-{{--    </div>--}}
+<section class="section" id="contact">
+    <div class="section-header">
+        <div class="section-label">Contact</div>
+        <h2 class="section-title">Open Channel</h2>
+        <div class="section-divider" aria-hidden="true"></div>
+    </div>
 
-{{--    <div class="contact-grid">--}}
-{{--        <div class="contact-info-block">--}}
-{{--            <div class="contact-method">--}}
-{{--                <div class="contact-method-label">Encrypted Mail</div>--}}
-{{--                <div class="contact-method-value">--}}
-{{--                    <a href="mailto:ops@nexuscollective.io">ops@nexuscollective.io</a>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--            <div class="contact-method">--}}
-{{--                <div class="contact-method-label">Secure Line</div>--}}
-{{--                <div class="contact-method-value">+1 (212) 555-0147</div>--}}
-{{--            </div>--}}
-{{--            <div class="contact-method">--}}
-{{--                <div class="contact-method-label">Network</div>--}}
-{{--                <div class="contact-method-value">--}}
-{{--                    <a href="#">X/Twitter</a> &mdash;--}}
-{{--                    <a href="#">LinkedIn</a> &mdash;--}}
-{{--                    <a href="#">GitHub</a>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--            <div class="contact-method">--}}
-{{--                <div class="contact-method-label">Primary Node</div>--}}
-{{--                <div class="contact-method-value">New York City, NY</div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
+    <div class="contact-grid">
+        <div class="contact-info-block">
+            <div class="contact-method">
+                <div class="contact-method-label">Encrypted Mail</div>
+                <div class="contact-method-value">
+                    <a href="mailto:ops@nexuscollective.io">{{ config('services.contacts.rom.email') }}</a>
+                </div>
+            </div>
 
-{{--        <form class="contact-form" aria-label="Contact form">--}}
-{{--            <div class="form-group">--}}
-{{--                <label for="name">Identifier</label>--}}
-{{--                <input type="text" id="name" name="name" placeholder="Your name" autocomplete="name" />--}}
-{{--            </div>--}}
-{{--            <div class="form-group">--}}
-{{--                <label for="email">Comm Channel</label>--}}
-{{--                <input type="email" id="email" name="email" placeholder="your@email.com" autocomplete="email" />--}}
-{{--            </div>--}}
-{{--            <div class="form-group">--}}
-{{--                <label for="message">Transmission</label>--}}
-{{--                <textarea id="message" name="message" placeholder="Describe your mission..."></textarea>--}}
-{{--            </div>--}}
-{{--            <button class="btn" type="submit">Transmit Message</button>--}}
-{{--        </form>--}}
-{{--    </div>--}}
-{{--</section>--}}
+            <div class="contact-method">
+                <div class="contact-method-label">Secure Line</div>
+                <div class="contact-method-value">+1 (212) 555-0147</div>
+            </div>
+            <div class="contact-method">
+                <div class="contact-method-label">Network</div>
+                <div class="contact-method-value">
+                    <a href="#">X/Twitter</a> &mdash;
+                    <a href="#">LinkedIn</a> &mdash;
+                    <a href="#">GitHub</a>
+                </div>
+            </div>
+            <div class="contact-method">
+                <div class="contact-method-label">Primary Node</div>
+                <div class="contact-method-value">New York City, NY</div>
+            </div>
+        </div>
 
-<!-- ── FOOTER ── -->
-{{--<footer class="footer">--}}
-{{--    <div class="footer-left">--}}
-{{--        <span class="accent">NEXUS</span> COLLECTIVE &mdash; 2025--}}
-{{--    </div>--}}
-{{--    <ul class="footer-links">--}}
-{{--        <li><a href="#about">About</a></li>--}}
-{{--        <li><a href="#services">Services</a></li>--}}
-{{--        <li><a href="#projects">Projects</a></li>--}}
-{{--        <li><a href="#contact">Contact</a></li>--}}
-{{--    </ul>--}}
-{{--    <div class="footer-right">All Systems Nominal</div>--}}
-{{--</footer>--}}
+        <form class="contact-form" aria-label="Contact form">
+            <div class="form-group">
+                <label for="name">Identifier</label>
+                <input type="text" id="name" name="name" placeholder="Your name" autocomplete="name" />
+            </div>
+            <div class="form-group">
+                <label for="email">Comm Channel</label>
+                <input type="email" id="email" name="email" placeholder="your@email.com" autocomplete="email" />
+            </div>
+            <div class="form-group">
+                <label for="message">Transmission</label>
+                <textarea id="message" name="message" placeholder="Describe your mission..."></textarea>
+            </div>
+            <button class="btn" type="submit">Transmit Message</button>
+        </form>
+    </div>
+</section>
+
+{{--<!-- ── FOOTER ── -->--}}
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="footer-left">
+
+                    <div class="contact-info-block">
+                        <h4>Студентам</h4>
+                        <div class="contact-method">
+                            <div class="contact-method-label">Email</div>
+                            <div class="contact-method-value">
+                                <span> {{ config('services.contacts.rom.email') }} </span>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="contact-method-label">Secure Line</div>
+                            <div class="contact-method-value">+1 (212) 555-0147</div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="contact-method-label">Network</div>
+                            <div class="contact-method-value">
+                                <span>X/Twitter</span> &mdash;
+                                <span>LinkedIn</span> &mdash;
+                                <span>GitHub</span>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="contact-method-label">Primary Node</div>
+                            <div class="contact-method-value">New York City, NY</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="footer-links_ footer-left">
+                    <div class="contact-info-block">
+                        <h4>Бизнесу</h4>
+                        <div class="contact-method">
+                            <div class="contact-method-label">Encrypted Mail</div>
+                            <div class="contact-method-value">
+                                <a href="mailto:ops@nexuscollective.io">ops@nexuscollective.io</a>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="contact-method-label">Secure Line</div>
+                            <div class="contact-method-value">+1 (212) 555-0147</div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="contact-method-label">Network</div>
+                            <div class="contact-method-value">
+                                <span>X/Twitter</span> &mdash;
+                                <span>LinkedIn</span> &mdash;
+                                <span>GitHub</span>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="contact-method-label">Primary Node</div>
+                            <div class="contact-method-value">New York City, NY</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

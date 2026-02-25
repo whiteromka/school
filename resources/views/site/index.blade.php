@@ -16,6 +16,9 @@
 
 <x-ico-tech></x-ico-tech>
 
+<x-nexus.blocks></x-nexus.blocks>
+
+
 {{--  Контейнер преимущества  --}}
 <x-cyber.advantages></x-cyber.advantages>
 <br>

@@ -35,6 +35,14 @@ return [
         ],
     ],
 
+    'contacts' => [
+      'rom' => [
+        'email' => 'whiteromka@yandex.ru',
+        'telegram' => '@_roman_belov_1989',
+        'phone' => '8 915 910 4011'
+      ],
+    ],
+
     // OAuth services
     'yandex' => [
         'client_id' => env('YANDEX_CLIENT_ID'),

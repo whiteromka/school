@@ -394,8 +394,14 @@
 /* ======= FOOTER ======= */
 .footer {
     color: black;
+    background: rgba(0, 0, 0, 0.41);
+    backdrop-filter: blur(3px);
 }
-
+.footer h4 {
+    font-size: 18px;
+    padding-left: 20px;
+    font-family: "Tektur", sans-serif;
+}
 .footer-block {
     border: 1px solid #bababa;
     border-top: 15px solid #eeeeee;

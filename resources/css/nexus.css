@@ -649,11 +649,11 @@ a:hover {
     color: var(--text-primary);
 }
 
-.contact-method-value a {
+.contact-method-value span {
     color: var(--text-primary);
 }
 
-.contact-method-value a:hover {
+.contact-method:hover .contact-method-value span {
     color: var(--accent-cyan);
 }
 
@@ -727,14 +727,14 @@ a:hover {
     list-style: none;
 }
 
-.footer-links a {
-    font-size: 11px;
+.footer-links span {
+    /*font-size: 14px;*/
     letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--text-muted);
 }
 
-.footer-links a:hover {
+.footer-links span:hover {
     color: var(--accent-cyan);
 }
 

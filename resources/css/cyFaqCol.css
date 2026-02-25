@@ -293,10 +293,6 @@
         font-size: 2.3rem;
     }
 
-    .swiper {
-        height: 320px;
-    }
-
     .swiper-slide {
         height: 300px;
     }
@@ -402,19 +398,19 @@
 .faq-service-name {
     font-family: var(--font-heading);
     font-family: "Tektur", sans-serif;
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 2px;
     /*color: var(--text-primary);*/
-    color: #929292;
+    color: #cecece;
     margin-bottom: 12px;
 }
 
 .faq-service-desc {
     font-size: 15px;
     /*color: var(--text-muted);*/
-    color: #f1f1f1;
+    color: #8e8e8e;
     line-height: 1.7;
 }
 
