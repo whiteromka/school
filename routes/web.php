@@ -18,6 +18,9 @@ Route::get('/', [SiteController::class, 'index'])->name('site.index');
 Route::get('/site/front', [SiteController::class, 'front'])->name('site.front');
 Route::get('/site/back', [SiteController::class, 'back'])->name('site.back');
 Route::get('/site/gamedev', [SiteController::class, 'gamedev'])->name('site.gamedev');
+Route::get('/site/english', [SiteController::class, 'english'])->name('site.english');
+
+Route::get('/site/account', [SiteController::class, 'account'])->name('account');
 
 Route::get('/user/index', [UserController::class, 'index'])->name('user.index');
 Route::get('/user/test', [UserController::class, 'test'])->name('user.test');
@@ -30,7 +33,7 @@ Route::middleware('guest')->group(function () {
     Route::post('/register', [AuthController::class, 'register']);
 });
 
-Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth');
+Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

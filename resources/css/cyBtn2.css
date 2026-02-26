@@ -126,10 +126,11 @@
 }
 .btn-s:hover .btn__label {
     background-color: #1a1a1a;
+    color: whitesmoke;
 }
 
 .btn--secondary .btn__label {
-    background-color: var(--black-color);
+    background-color: var(--red-color);
     color: var(--black-color);
 }
 
@@ -154,7 +155,7 @@
 .btn:focus .btn__content::after {
     display: block;
     animation: glitch-animation 2s linear 0s infinite;
-    color: black;
+    color: white;
 }
 
 /* secret trick */

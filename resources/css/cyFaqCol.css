@@ -377,7 +377,6 @@
 
 .faq-service-card {
     background: var(--bg-card);
-    background: black;
     border: 1px solid #6b6b6b;
     padding: 20px 32px;
     position: relative;

@@ -60,9 +60,10 @@
 
 <div class="container">
 
-
 {{--    <h1 class="font-orbitron ta-r">01 .01 .01 1 1 .1</h1>--}}
-    <h1 class="cy-ip font-orbitron ta-r">{{ $userIp }} <span>RU</span> </h1>
+    <h1 class="cy-ip font-tektur ta-r">
+        {{ Auth::check() ? Auth::user()->getFullNameOrEmail() : $userIp }}
+    </h1>
     <br>
     <br>
     <br>

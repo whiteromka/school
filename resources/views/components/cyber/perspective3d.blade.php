@@ -1,7 +1,6 @@
 <div class="container">
     <div class="row">
-        <div class="col-6">
-
+        <div class="col-md-5">
             <div style="height: 370px" class="scene js-cy-brackets" data-color="orange" data-type="bracket" data-size="23" data-on-hover="green">
                 <div class="cube-container font-orbitron">
                     <div class="cube far box200 br-grey1">NETWORK</div>
@@ -11,7 +10,7 @@
             </div>
         </div>
 
-        <div class="col-6">
+        <div class="col-md-7">
             <div class="cy-container">
                 <div class="cy-block">
                     <div class="cy-block-pipka"></div>

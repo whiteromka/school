@@ -122,12 +122,22 @@
 <br>
 <br>
 
-<x-footer-dark></x-footer-dark>
-{{--    <x-footer></x-footer>--}}
+<x-cyber.x2></x-cyber.x2>
+<br>
 <br>
 <br>
 <br>
 
+
+<div class="container">
+    <section class="section_" id="about">
+        <div class="section-header">
+            <div class="section-label">finaly...</div>
+            <h2 class="section-title" >Тут конец...</h2>
+            <div class="section-divider" aria-hidden="true"></div>
+        </div>
+    </section>
+</div>
 
 {{-- Обычный двойной Контейнер --}}
 <x-cyber.simple-double></x-cyber.simple-double>
@@ -136,8 +146,10 @@
 <br>
 <br>
 
-
-<x-cyber.x2></x-cyber.x2>
+<x-footer-dark></x-footer-dark>
+<br>
+<br>
+<br>
 
 <x-nexus></x-nexus>
 @endsection

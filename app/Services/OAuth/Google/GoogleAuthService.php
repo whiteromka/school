@@ -40,7 +40,7 @@ class GoogleAuthService
         $attributes['expires_at'] = $expiresAt;
 
         $this->oauthAccountService->updateOrCreate(
-            OAuthProvider::GITHUB->value,
+            OAuthProvider::GOOGLE->value,
             $oauthUserDTO->id,
             $attributes
         );

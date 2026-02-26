@@ -24,7 +24,7 @@ use Illuminate\Support\Carbon;
  * @property string $username
  * @property Carbon|null $email_verified_at
  * @property string $password
- * @property int $password_verified
+ * @property null|int $password_verified
  * @property string|null $remember_token
  * @property Carbon $created_at
  * @property Carbon $updated_at
@@ -84,6 +84,17 @@ class User extends Authenticatable
     protected $attributes = [
         'additional_data' => '{}',
     ];
+
+    public function getFullNameOrEmail(): string
+    {
+        if ($this->name) {
+            if ($this->last_name) {
+                return $this->name . ' ' . $this->last_name;
+            }
+            return $this->name;
+        }
+        return $this->email;
+    }
 
     /**
      * Связь с OauthAccounts

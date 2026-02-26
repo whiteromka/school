@@ -23,10 +23,17 @@
 <div class="grid-background" id="gridBackground"></div>
 
 {{--Основной контейнер для контента--}}
-<div class="container-fluid mt-10vh px-0">
+<div class="container-fluid mt-10vh px-0 main-container">
+
     <x-nexus.navigation></x-nexus.navigation>
-    @yield('content')
+
+    <div class="main">
+        @yield('content')
+    </div>
+
+    <x-nexus.footer></x-nexus.footer>
 </div>
+
 
 @stack('scripts')
 </body>

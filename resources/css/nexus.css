@@ -164,6 +164,7 @@ a:hover {
     color: var(--text-muted);
     letter-spacing: 2px;
     text-transform: uppercase;
+    font-family: "Tektur", sans-serif;
 }
 .nav-status .guest{
     color: #ff0073;
@@ -644,13 +645,18 @@ a:hover {
 
 .contact-method-value {
     font-family: var(--font-heading);
-    font-size: 18px;
     font-weight: 500;
     color: var(--text-primary);
 }
 
 .contact-method-value span {
     color: var(--text-primary);
+    font-size: 14px;
+}
+.contact-method-value-ru a {
+    font-family: "Tektur", sans-serif;
+    font-weight: 100;
+    font-size: 12px;
 }
 
 .contact-method:hover .contact-method-value span {
