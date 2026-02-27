@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
+use App\Repositories\UserRepository;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -13,6 +14,11 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
+    public function __construct(
+        private readonly UserRepository $userRepository
+    )
+    {}
+
     public function showLogin(): Factory|View
     {
         return view('auth.login');
@@ -35,6 +41,7 @@ class AuthController extends Controller
         return redirect('/');
     }
 
+    /** GET /register */
     public function register(RegisterRequest $request): Redirector|RedirectResponse
     {
         $user = $this->userRepository->create($request->credentials());

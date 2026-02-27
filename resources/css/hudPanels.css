@@ -718,6 +718,8 @@
     display: flex;
     align-items: center;
     gap: 16px;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 .footer-status {
     display: flex;
