@@ -12,8 +12,10 @@
         <span> [][][]== ===</span>
     </div>
 </div>
+<div class="container-fluid bg-pink px-0" style="height: 5px">
+</div>
 
-<div class="container-fluid bg-pink px-0">
+<div class="container-fluid red-container bg-pink_ px-0">
     <x-cyber.matrix></x-cyber.matrix>
 
     <div class="container">
@@ -28,24 +30,25 @@
             @foreach($advantages as $advantage)
                 <div class="col-md-6 col-lg-6 col-xl-3">
                     <div>
-                        <br>
-                        <br>
-                        <div class="advantage">
-                            <div class="js-cy-brackets bg-opas-dark_" data-color="white" data-width="2" data-size="9">
-                                <span> {{ $advantage['name'] }} </span>
+
+                        <div class="custom-block mt-1">
+                            <div class="trapezoid-bottom"></div>
+                            <div class="php-custom-block-content ta-c" style="min-height: 190px">
+                                <p class="php-custom-block-head">{{ $advantage['name'] }}</p>
+                                <p class="php-custom-block-text">{!! $advantage['descr'] !!}</p>
                             </div>
+                            <div class="trapezoid-top"></div>
                         </div>
-                        <p class="advantage-descr p-lr-10"> {!! $advantage['descr'] !!}  </p>
                     </div>
                 </div>
             @endforeach
         </div>
-        <div class="row">
-            <br> <br> <br>
-        </div>
     </div>
 </div>
 
+<div class="container-fluid bg-pink px-0">
+    <br>
+</div>
 <div class="container-fluid bottom-ark bg-pink px-0">
     <div class="streaks">
         <span>== ===[][] == ==[] === [][][]</span>

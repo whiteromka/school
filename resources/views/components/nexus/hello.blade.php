@@ -4,7 +4,7 @@
 
         <div class="hero-content">
             <div class="hero-tag">
-                <span class="accent">&gt;</span> SYS.BOOT // COLLECTIVE INITIALIZED
+                <span class="accent">|</span> backend
             </div>
             <h1 class="hero-title" data-text="WE BUILD THE PHP">
                 WE BUILD THE <span class="highlight">PHP </span>

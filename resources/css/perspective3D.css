@@ -71,17 +71,14 @@
 }
 
 .far::after {
-    content: "Z: -100px";
     color: grey;
 }
 
 .middle::after {
-    content: "Z: 0px";
     color: #0095ff;
 }
 
 .near::after {
-    content: "Z: 100px";
     color: red;
 }
 

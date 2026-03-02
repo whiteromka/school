@@ -15,7 +15,10 @@
 .bg-DEFAULT {background: #6a6a6a;}
 .bg-purple {background: var(--purple-color);}
 .bg-yellow {background: var(--yellow-color);}
+
 .bg-pink {background: #bb2c46;}
+.bg-blue {background: #0be8f4;}
+
 .bg-light-grey {background: #e4e4e4;}
 .bg-opas-dark {background: rgba(0, 0, 0, 0.035);}
 
@@ -31,7 +34,7 @@
 .br-b { border: 2px solid #0b99ff; }  .br-b1 { border: 1px solid #0b99ff; }
 .br-t2 { border: 2px solid turquoise; }
 
-.fs-13, .fs-13 > li > button {font-size: 13px !important;}
+.fs-13, .fs-13 > li > button {font-size: 16px !important;}
 
 .pos-r {position: relative}
 .pos-a {position: absolute}

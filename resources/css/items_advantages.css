@@ -255,7 +255,8 @@
     width: 100%;
 }
 .advantage span {
-    font-size: 18px;
+    font-size: 14px;
+    text-transform: uppercase;
     display: block;
     color: #0d0d0d;
     font-family: "Tektur", sans-serif;
@@ -267,7 +268,7 @@
     text-align: center;
 }
 .advantage-descr {
-    font-family: "Arial", sans-serif;
+    font-family: "Share Tech Mono", monospace;
     font-optical-sizing: auto;
     font-weight: 200;
     font-style: normal;

@@ -1,3 +1,7 @@
+@php
+    use Illuminate\Support\Facades\Auth;
+@endphp
+
 <div class="container">
     <div class="row">
         {{-- Верхний процент загрузки --}}
@@ -47,35 +51,33 @@
             </div>
         </div>
         {{-- Главный процент загрузки --}}
-        <div class="col-sm-6 col-md-4 col-lg-3 col-xxl-2 ta-c loading font-orbitron-slim js-cy-brackets"
-             data-color="orange" data-type="bracket">
+        <div class="col-sm-6 col-md-4 col-lg-3 col-xxl-2 ta-c loading font-orbitron-slim">
+            <div class="js-cy-brackets"  data-color="red" data-type="bracket">
                 <span class="clr-pink percent">
-                    <span class="js-main-loading-percent">0</span>
-                    <span>.00</span>
+                <span class="js-main-loading-percent">0</span>
+                <span>.00</span>
                 </span>
+            </div>
         </div>
     </div>
 
 </div>
 
 <div class="container">
-
-{{--    <h1 class="font-orbitron ta-r">01 .01 .01 1 1 .1</h1>--}}
-    <h1 class="cy-ip font-tektur ta-r">
+    @php
+        $css = (Auth::check() && Auth::user()->getFullNameOrEmail()) ? 'font-tektur' : 'font-orbitron';
+    @endphp
+    <h1 class="cy-ip {{ $css }} ta-r">
         {{ Auth::check() ? Auth::user()->getFullNameOrEmail() : $userIp }}
     </h1>
-    <br>
-    <br>
-    <br>
+    <div style="height: 80px"></div>
     <p class="cy-text">"Живые" занятия и реальная настоящая поддержка менторов.
         Вы не просто смотрите записи — вы участвуете в интерактивных вебинарах,
         задаете вопросы в реальном времени и работаете вместе с группой под руководством опытных разработчиков.
         Теория + практика. Каждую тему разбираем от основ до техник которые повсеместно используются в боевых проектах.
         Закрепляем знания на практических задачах и мини-проектах.
     </p>
-    <br>
-    <br>
-    <br>
+    <div style="height: 80px"></div>
     <span class="js-cyber-text-animation cy-btn_ cy-char  p-lr-20 w-300 br-r d-block ta-c">
         02 .02 02 .02 223 .02
     </span>

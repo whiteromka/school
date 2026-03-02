@@ -24,11 +24,6 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
-    public function showRegister(): Factory|View
-    {
-        return view('auth.register');
-    }
-
     public function login(LoginRequest $request): RedirectResponse
     {
         if (!Auth::attempt($request->credentials())) {
@@ -42,6 +37,12 @@ class AuthController extends Controller
     }
 
     /** GET /register */
+    public function showRegister(): Factory|View
+    {
+        return view('auth.register');
+    }
+
+    /** POST /register */
     public function register(RegisterRequest $request): Redirector|RedirectResponse
     {
         $user = $this->userRepository->create($request->credentials());

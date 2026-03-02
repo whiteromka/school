@@ -215,7 +215,7 @@ a:hover {
 
 /* ============= HERO =============== */
 .hero {
-    min-height: 90vh;
+    min-height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -374,7 +374,7 @@ a:hover {
 
 .section-title {
     font-family: "Tektur", sans-serif;
-    font-size: clamp(32px, 4vw, 52px);
+    font-size: clamp(22px, 4vw, 52px);
     font-weight: 100;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -432,7 +432,7 @@ a:hover {
     margin-bottom: 20px;
     line-height: 1.8;
     font-family: "Share Tech Mono", monospace;
-    font-size: 18px;
+    font-size: 15px;
 }
 
 .info-body p .accent {
@@ -447,7 +447,7 @@ a:hover {
     max-width: 1100px;
 }
 
-.service-card {
+.service-card, .service-card-die  {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     padding: 40px 32px;
@@ -475,8 +475,8 @@ a:hover {
 }
 
 .service-name {
-    font-family: var(--font-heading);
-    font-size: 20px;
+    font-family: Tektur, sans-serif;
+    font-size: 16px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 2px;
