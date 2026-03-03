@@ -2,10 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Support\Carbon;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  * Class Module
@@ -18,10 +16,10 @@ use Illuminate\Support\Carbon;
  * @property string|null $description
  * @property string|null $description2
  * @property int $active             Активность (1 = активен, 0 = нет)
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  *
- * @property-read Collection|Technology[] $technologies
+ * @property-read \Illuminate\Database\Eloquent\Collection|Technology[] $technologies
  */
 class Module extends Model
 {
@@ -36,10 +34,11 @@ class Module extends Model
     ];
 
     /**
-     * Связь: один модуль имеет много технологий
+     * Связь: один модуль может иметь много технологий (Many-to-Many)
      */
-    public function technologies(): HasMany
+    public function technologies(): BelongsToMany
     {
-        return $this->hasMany(Technology::class);
+        return $this->belongsToMany(Technology::class, 'module_technology')
+            ->withTimestamps();
     }
 }
