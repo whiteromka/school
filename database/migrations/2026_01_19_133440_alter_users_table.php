@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('username')->nullable()->unique()->after('email')->comment('Нужен для входа через Telegram'); // индекс users_username_unique
-            $table->boolean('password_verified')->after('password');
+            $table->boolean('password_verified')->nullable()->after('password');
             $table->string('phone')->nullable()->unique()->after('email');
             $table->string('telegram')->nullable()->unique()->after('phone');
 

@@ -1,3 +1,4 @@
+@php use Illuminate\Support\Facades\Auth; @endphp
 <div class="container-fluid px-0">
     <nav class="nexus-nav" role="navigation" aria-label="Main navigation">
         <div class="nav-logo">NEXUS</div>
@@ -18,7 +19,7 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
             >
-                menu
+                {{ Auth::check() ? Auth::user()->getFullNameOrEmail() : 'menu' }}
             </a>
             <ul class="dropdown-menu dropdown-menu-end nexus-dropdown">
                 {{-- Эти будут показываться если устройство меньше чем md --}}

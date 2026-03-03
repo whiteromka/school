@@ -1,6 +1,6 @@
 <div class="container">
     <h2 class="h2-common">
-        Вопросы - ответы / <b style="color: orange">FAQ</b>
+        Вопросы - ответы / FAQ
     </h2>
 </div>
 

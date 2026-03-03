@@ -164,6 +164,7 @@ a:hover {
     color: var(--text-muted);
     letter-spacing: 2px;
     text-transform: uppercase;
+    font-family: "Tektur", sans-serif;
 }
 .nav-status .guest{
     color: #ff0073;
@@ -214,7 +215,7 @@ a:hover {
 
 /* ============= HERO =============== */
 .hero {
-    min-height: 90vh;
+    min-height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -373,7 +374,7 @@ a:hover {
 
 .section-title {
     font-family: "Tektur", sans-serif;
-    font-size: clamp(32px, 4vw, 52px);
+    font-size: clamp(22px, 4vw, 52px);
     font-weight: 100;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -431,7 +432,7 @@ a:hover {
     margin-bottom: 20px;
     line-height: 1.8;
     font-family: "Share Tech Mono", monospace;
-    font-size: 18px;
+    font-size: 15px;
 }
 
 .info-body p .accent {
@@ -446,7 +447,7 @@ a:hover {
     max-width: 1100px;
 }
 
-.service-card {
+.service-card, .service-card-die  {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     padding: 40px 32px;
@@ -463,6 +464,10 @@ a:hover {
     color: var(--accent-cyan);
     text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
 }
+.course-module {
+    margin-bottom: 2px;
+    min-height: 400px;
+}
 
 .service-index {
     font-family: var(--font-heading);
@@ -474,8 +479,8 @@ a:hover {
 }
 
 .service-name {
-    font-family: var(--font-heading);
-    font-size: 20px;
+    font-family: Tektur, sans-serif;
+    font-size: 16px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -644,13 +649,18 @@ a:hover {
 
 .contact-method-value {
     font-family: var(--font-heading);
-    font-size: 18px;
     font-weight: 500;
     color: var(--text-primary);
 }
 
 .contact-method-value span {
     color: var(--text-primary);
+    font-size: 14px;
+}
+.contact-method-value-ru a {
+    font-family: "Tektur", sans-serif;
+    font-weight: 100;
+    font-size: 12px;
 }
 
 .contact-method:hover .contact-method-value span {
@@ -701,7 +711,6 @@ a:hover {
 
 /* ======= FOOTER  ========= */
 .footer {
-    padding: 40px 48px;
     border-top: 1px solid var(--border-color);
     display: flex;
     justify-content: space-between;

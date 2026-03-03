@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 
 
 //GET /users - список задач (index)
@@ -37,21 +37,9 @@ class UsersController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreUserRequest $request)
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'last_name' => 'nullable|string|max:255',
-            'email' => 'required|email|unique:users',
-            'phone' => 'nullable|string|max:20',
-            'telegram' => 'nullable|string|max:255',
-            'username' => 'nullable|string|max:255|unique:users',
-            'password' => 'required|min:6',
-        ]);
-
-        $validated['password'] = bcrypt($validated['password']);
-
-        User::create($validated);
+        User::query()->create($request->validated());
 
         return redirect()->route('users.index')
             ->with('success', 'Пользователь создан успешно.');
@@ -99,33 +87,9 @@ class UsersController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(UpdateUserRequest $request, User $user)
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'last_name' => 'nullable|string|max:255',
-            'email' => [
-                'required',
-                'email',
-                Rule::unique('users')->ignore($user->id)
-            ],
-            'phone' => 'nullable|string|max:20',
-            'telegram' => 'nullable|string|max:255',
-            'username' => [
-                'nullable',
-                'string',
-                'max:255',
-                Rule::unique('users')->ignore($user->id)
-            ],
-        ]);
-
-        // Если передан пароль, обновляем его
-        if ($request->filled('password')) {
-            $request->validate(['password' => 'min:6']);
-            $validated['password'] = bcrypt($request->password);
-        }
-
-        $user->update($validated);
+        $user->update($request->validated());
 
         return redirect()->route('users.index')
             ->with('success', 'Пользователь обновлен успешно.');
