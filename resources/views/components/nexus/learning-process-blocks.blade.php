@@ -2,10 +2,9 @@
     <section class="section" id="services">
         <div class="section-header">
             <div class="section-label">Learning process</div>
-            <h2 class="section-title">Как учим</h2>
+            <h2 class="section-title">Как записаться</h2>
             <div class="section-divider" aria-hidden="true"></div>
         </div>
-
         <div class="services-grid">
             <div class="service-card">
                 <div class="service-index">00</div>
@@ -16,7 +15,6 @@
                 </p>
                 <span class="service-tag">AI / ML</span>
             </div>
-
             <div class="service-card">
                 <div class="service-index">01</div>
                 <div class="service-name">Выберите модуль</div>
@@ -33,6 +31,15 @@
                 </p>
                 <span class="service-tag">Infrastructure</span>
             </div>
+        </div>
+
+        <div style="height: 80px"></div>
+        <div class="section-header">
+            <div class="section-label">Learning process</div>
+            <h2 class="section-title">Как учим</h2>
+            <div class="section-divider" aria-hidden="true"></div>
+        </div>
+        <div class="services-grid">
             <div class="service-card">
                 <div class="service-index">03</div>
                 <div class="service-name">Оплата</div>
@@ -58,5 +65,6 @@
                 <span class="service-tag">Big Data</span>
             </div>
         </div>
+
     </section>
 </div>

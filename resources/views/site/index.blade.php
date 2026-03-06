@@ -37,7 +37,7 @@
     <section class="section_" id="about">
         <div class="section-header">
             <div class="section-label">training</div>
-            <h2 class="section-title" >Чему учим</h2>
+            <h2 class="section-title">Чему учим</h2>
             <div class="section-divider" aria-hidden="true"></div>
         </div>
     </section>
@@ -124,10 +124,7 @@
 
 {{-- Обычный двойной Контейнер --}}
 <x-cyber.simple-double></x-cyber.simple-double>
-<br>
-<br>
-<br>
-<br>
+<div style="height: 150px"></div>
 
 <x-footer-dark></x-footer-dark>
 <br>

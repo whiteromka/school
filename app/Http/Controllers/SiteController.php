@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\IPFormatter;
-use App\Services\VacancyService;
+use App\Services\ModuleService;
 
 class SiteController extends Controller
 {
     public function __construct(
-        private readonly VacancyService $vacancyService
+        private readonly ModuleService $moduleService
     ) {}
 
     // GET /
@@ -30,7 +30,9 @@ class SiteController extends Controller
     // GET /site/back
     public function back()
     {
-        return view('site.back');
+        return view('site.back', [
+            'modules' => $this->moduleService->getBackModules(),
+        ]);
     }
 
     // GET /site/gamedev

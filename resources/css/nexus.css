@@ -448,9 +448,11 @@ a:hover {
 }
 
 .service-card, .service-card-die  {
+    display: flex;
+    flex-direction: column;
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    padding: 40px 32px;
+    padding: clamp(25px, 5vw, 50px) clamp(8px, 5vw, 42px);
     position: relative;
     transition: border-color 0.3s, box-shadow 0.3s;
 }
@@ -460,7 +462,7 @@ a:hover {
     box-shadow: inset 0 0 30px rgba(0, 240, 255, 0.03);
 }
 
-.service-card:hover .service-index {
+.service-card:hover .service-index .left {
     color: var(--accent-cyan);
     text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
 }
@@ -476,7 +478,30 @@ a:hover {
     color: var(--border-color);
     transition: color 0.3s, text-shadow 0.3s;
     margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
+
+.right > div {
+    border-left: 1px dotted #343434;
+    color: #343434;
+    width: 140px;
+    padding: 5px;
+    padding-left: 15px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0px;
+
+    font-size: 12px;
+    font-family: "Share Tech Mono", monospace;
+    font-style: normal;
+    font-weight: 400;
+}
+
 
 .service-name {
     font-family: Tektur, sans-serif;
@@ -489,11 +514,16 @@ a:hover {
 }
 
 .service-desc {
-    font-size: 13px;
+    font-size: 15px;
     color: var(--text-muted);
     line-height: 1.7;
 }
-
+.ul-item-module {
+    list-style-type: square;
+}
+.service-techs {
+    margin-top: auto;
+}
 .service-tag {
     display: inline-block;
     margin-top: 20px;

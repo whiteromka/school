@@ -17,6 +17,9 @@
 .bg {background: #171718;}
 
 .orange {color: orange}
+.cyan {color: #00f0ff}
+.dark-gey {color: #505050
+}
 .red {color: red}
 .br {border: 2px solid red;}
 .line { border-bottom: 1px solid #c6c6c6}
@@ -163,8 +166,6 @@
 .plr-20 {
     padding: 0 20px;
 }
-
-
 
 .empty-div {
     margin-top: 3px;
@@ -474,11 +475,10 @@ body {
 /*==========  custom-block  =========*/
 .custom-block {
     /*margin-top: 30px !important;*/
-    margin-bottom: 60px;
+    margin-bottom: 30px;
     position: relative;
     width: 100%;
 }
-
 .trapezoid-top {
     width: 100%;
     height: 0;
@@ -507,15 +507,6 @@ body {
     font-family: "Share Tech Mono", monospace;
     box-shadow: inset 0 0 20px 10px rgba(93, 225, 207, 0.07);
 }
-.php-custom-block-head {
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    font-family: Tektur, sans-serif;
-    border-left: 1px solid #00eaff;
-    background: rgba(0,255,242,0.06);
-    color: #ffffff;
-    padding: 5px;
-}
 .custom-block-content {
     margin: 3px;
     border: 1px solid rgba(165, 165, 165, 0.11);
@@ -534,10 +525,107 @@ body {
     color: #5c5c5c;
     text-align: center;
 }
+.php-custom-block-head {
+    border-left: 1px solid #00eaff;
+    background: rgba(0,255,242,0.06);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-family: Tektur, sans-serif;
+    color: #ffffff;
+    padding: 5px;
+}
 .php-custom-block-text {
     color: #8e8e8e;
     padding: 0 10px;
 }
+
+/*==== Контейнер с перспективой===== */
+.persp-1600 {
+    perspective: 1600px;
+    perspective-origin: center center;
+}
+.custom-block_persp {
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateY(-45deg) rotateX(10deg);
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center center;
+    margin-left: auto;
+}
+.custom-block_persp:hover {
+    transform: rotateY(-5deg) rotateX(2deg);
+}
+.trapezoid-bottom_persp,
+.trapezoid-top_persp {
+    transform: translateZ(20px);
+    position: relative;
+    z-index: 1;
+}
+.trapezoid-bottom_persp {
+    width: 100%;
+    height: 20px;
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
+    opacity: 0.8;
+}
+.trapezoid-top_persp {
+    width: 100%;
+    height: 20px;
+    background: linear-gradient(135deg, #ff6c00 0%, #2c3e50 100%);
+    clip-path: polygon(10% 0, 90% 0, 100% 100%, 0 100%);
+    opacity: 0.8;
+}
+.php-custom-block-content_persp {
+    transform: translateZ(50px);
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+    border-radius: 12px;
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.15),
+        0 4px 6px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin: -10px 0;
+    transform-style: preserve-3d;
+}
+.php-custom-block-content_persp img {
+    transform: translateZ(30px);
+    position: relative;
+    border-radius: 50%;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+.php-custom-block-head_persp {
+    transform: translateZ(45px);
+    position: relative;
+    font-size: 1.2rem;
+    font-weight: 200;
+    color: #2c3e50;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: block;
+    margin: 0;
+    border-left: 1px solid #00c1d5;
+    background: rgba(8, 124, 153, 0.28);
+}
+.php-custom-block-help_persp {
+    transform: translateZ(40px);
+    position: relative;
+    font-size: 0.8rem;
+    font-weight: 100;
+    color: red;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: block;
+    margin: 0;
+    border-radius: 6px;
+}
+.php-custom-block-btn_persp {
+    transform: translateZ(50px);
+    position: relative;
+}
+/**/
+
+
 
 /* Контейнеры  */
 .red-container {
@@ -550,4 +638,14 @@ body {
     );
     backdrop-filter: blur(1px);
     box-shadow: inset 0 0 50px 0 rgba(187,44,70,0.69);
+}
+
+.warning {
+    padding: 10px;
+    text-align: center;
+    font-size: clamp(10px, 1vw, 12px);
+    font-family: 'Tektur', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: rgba(5, 243, 255, 0.25);
 }
