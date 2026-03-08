@@ -75,8 +75,10 @@ class SeedModulesCommand extends Command
                     'Основы git',
                 ],
                 'description' => 'Начальный модуль по PHP. Разберемся с функциональным программированием в PHP.
-                    Переменные, массивы, циклы, условные операторы, супер глобальные массивы, обработка ошибок в php. Помучаем ТГ апи, напишем простого ТГ бота',
-                'description2' => '',
+                    Переменные, массивы, циклы, условные операторы, супер глобальные массивы, обработка ошибок в php.
+                    Помучаем Telegram API, напишем Telegram бота. Разберём, как работает клиент-серверное взаимодействие:
+                    GET и POST-запросы, заголовки, куки и сессии. Поймём, как PHP получает данные от браузера и отдаёт ответ.',
+                'description2' => 'В итоге должен получится блог на php',
                 'active' => 1,
                 'author' => Module::AUTHOR_ROMAN,
             ],
@@ -131,13 +133,24 @@ class SeedModulesCommand extends Command
                 'type' => 'Back',
                 'number' => 4,
                 'name' => 'Брокеры сообщений, очереди, данные',
-                'level' => 8,
+                'level' => 7,
                 'module_price' => 6000,
                 'lesson_price' => 500,
                 'count_lessons' => 12,
                 'duration' => '1 - 1.5 мес',
-                'techs' => ['Rabbit mq', 'ApacheKafka', 'Yii2', 'yii2-queue', 'PgSql', 'composer', 'redis', 'docker', 'AI', 'git',],
-                'topics' => [''],
+                'techs' => ['Rabbit mq', 'ApacheKafka ?', 'Yii2', 'yii2-queue', 'PgSql', 'composer', 'redis', 'docker', 'AI', 'git',],
+                'topics' => [
+                    'Зачем нужны брокеры сообщений и очереди',
+                    'Установка и запуск RabbitMQ',
+                    'Очереди, обменники и ключи маршрутизации',
+                    'Отправка и получение сообщений',
+                    'Типы обменников: direct, topic, fanout, headers',
+                    'Подтверждения и надёжная доставка',
+                    'Масштабирование через консьюмеры',
+                    'Задержанные и отложенные задачи',
+                    'Обработка ошибок и dead letter queues',
+                    'Мониторинг очередей в веб-интерфейсе'
+                ],
                 'description' => 'Курс по брокерам очередей для начинающих разработчиков охватывает архитектуру сообщений и паттерны
                     (producer/consumer, гарантии доставки, dead letter queues), погружение в RabbitMQ (AMQP, exchanges,
                     bindings, acknowledgments, TTL, RPC, кластеризация) и Kafka (distributed log, партиции, репликация,

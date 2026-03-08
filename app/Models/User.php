@@ -6,6 +6,7 @@ use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Carbon;
@@ -31,6 +32,7 @@ use Illuminate\Support\Carbon;
  * @property array $additional_data
  *
  * @property-read Collection|OauthAccount[] $oauthAccounts
+ * @property-read Profile|null $profile
  */
 class User extends Authenticatable
 {
@@ -102,5 +104,13 @@ class User extends Authenticatable
     public function oauthAccounts(): hasMany
     {
         return $this->hasMany(OauthAccount::class, 'user_id', 'id');
+    }
+
+    /**
+     * Связь с профилем
+     */
+    public function profile(): HasOne
+    {
+        return $this->hasOne(Profile::class);
     }
 }

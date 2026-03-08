@@ -23,18 +23,26 @@
         <div class="container cy-items-container" >
             <div class="row">
                 @php $courses = [
-                    ['name' => 'Front', 'label' => 'JS', 'css' => 'bg-JS', 'crew' => 14, 'img' => 'img/site/fly_red.jpeg',  'tabs' => [
+                    [
+                        'name' => 'Front', 'label' => 'JS', 'css' => 'bg-JS', 'crew' => 14, 'img' => 'img/site/fly_red.jpeg',
+                        'tabs' => [
                             'speed'=>'1 PHP прост в освоении и позволяет быстро запускать проекты. Отличный выбор для старта в веб-разработке и быстрого прототипирования.',
                             'ecosystem' => '1 Огромная экосистема: Laravel, Symfony, Yii. Тысячи пакетов и готовых решений для реальных проектов.',
                             'practice' => '1 PHP используется в реальных продуктах и даёт быстрый выход на рынок труда. Минимум теории — максимум практики.'
-                    ]],
-                    ['name' => 'Back', 'label' => 'PHP', 'css' => 'bg-PHP', 'crew' => 17, 'img' => 'img/site/robo1.jpeg', 'tabs' => [
+                        ],
+                        'link' => route('site.front')
+                    ],
+                    [
+                        'name' => 'Back', 'label' => 'PHP', 'css' => 'bg-PHP', 'crew' => 17, 'img' => 'img/site/robo1.jpeg',
+                        'tabs' => [
                             'speed'=>'2 PHP прост в освоении и позволяет быстро запускать проекты. Отличный выбор для старта в веб-разработке и быстрого прототипирования.',
                             'ecosystem' => '2 Огромная экосистема: Laravel, Symfony, Yii. Тысячи пакетов и готовых решений для реальных проектов.',
                             'practice' => '2 PHP используется в реальных продуктах и даёт быстрый выход на рынок труда. Минимум теории — максимум практики.'
-                    ]],
-                    ['name' => 'Gamedev', 'label' => 'C#', 'css' => 'bg-DEFAULT', 'crew' => 2, 'img' => 'img/site/yellow.jpeg', 'tabs' => []],
-                    ['name' => 'Foreign Lang', 'label' => 'En', 'css' => 'bg-DEFAULT', 'crew' => 25, 'img' => 'img/site/neon_robo.jpeg', 'tabs' => []],
+                        ],
+                        'link' => route('site.back')
+                    ],
+                    ['name' => 'Gamedev', 'label' => 'C#', 'css' => 'bg-DEFAULT', 'crew' => 2, 'img' => 'img/site/yellow.jpeg', 'tabs' => [], 'link' => route('site.gamedev')],
+                    ['name' => 'Foreign Lang', 'label' => 'En', 'css' => 'bg-DEFAULT', 'crew' => 25, 'img' => 'img/site/neon_robo.jpeg', 'tabs' => [], 'link' => route('site.english')],
                 ];
                 @endphp
 
@@ -101,7 +109,7 @@
                             </div>
                         </div>
 
-                        <div class="item-btn-wrapper">
+                        <a class="item-btn-wrapper" href="{{ url($course['link']) }}">
                             <div class="item-btn js-cyber-text-animation">
                                 <span>Подробнее</span>
                             </div>
@@ -110,8 +118,7 @@
                                 <div></div>
                                 <div></div>
                             </div>
-                        </div>
-
+                        </a>
                     </div>
                 @endforeach
             </div>

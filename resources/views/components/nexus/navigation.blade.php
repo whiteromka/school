@@ -32,7 +32,7 @@
                     <li><a class="dropdown-item" href="{{ route('login') }}">Login</a></li>
                     <li><a class="dropdown-item" href="{{ route('register') }}">Registration</a></li>
                 @else
-                    <li><a class="dropdown-item" href="{{ route('account') }}">Account</a></li>
+                    <li><a class="dropdown-item" href="{{ route('profile.index') }}">Profile</a></li>
                     <li>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf

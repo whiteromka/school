@@ -11,8 +11,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Инициализируем каждый элемент
     animatedElements.forEach((element, index) => {
-        // Сохраняем оригинальный текст элемента
-        const originalText = element.textContent.trim();
+        const charSpans = element.querySelectorAll('span[data-target]');
+        let originalText = '';
+
+        // Собираем текст только из data-target атрибутов, игнорируя пробелы между тегами
+        charSpans.forEach(span => {
+            originalText += span.getAttribute('data-target');
+        });
 
         // Определяем тип элемента (анимированный или однократный)
         const isAnimationType = element.classList.contains('js-cyber-text-animation');

@@ -2,17 +2,14 @@
 
 namespace App\Providers;
 
-use App\Helpers\IPFormatter;
 use App\Http\Controllers\Oauth\GithubController;
 use App\Http\Controllers\Oauth\YandexController;
-use App\Models\Vacancy;
 use App\Services\OAuth\Github\GithubAuthService;
 use App\Services\OAuth\Github\GithubOAuthClient;
 use App\Services\OAuth\OAuthClientInterface;
 use App\Services\OAuth\OAuthServiceInterface;
 use App\Services\OAuth\Yandex\YandexAuthService;
 use App\Services\OAuth\Yandex\YandexOAuthClient;
-use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider

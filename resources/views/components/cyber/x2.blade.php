@@ -4,7 +4,7 @@
     </h2>
 </div>
 
-<div class="container-fluid top-ark bg-pink px-0">
+<div class="container-fluid top-ark bg-yellow px-0">
     <div class="streaks">
         <div class="streak-left streak-b"></div>
         <div class="streak-left streak-b"></div>
@@ -12,10 +12,10 @@
         <span> [][][]== ===</span>
     </div>
 </div>
-<div class="container-fluid bg-pink px-0" style="height: 5px">
+<div class="container-fluid bg-yellow px-0" style="height: 5px">
 </div>
 
-<div class="container-fluid red-container bg-pink_ px-0">
+<div class="container-fluid yellow-container bg-pink_ px-0">
     <x-cyber.matrix></x-cyber.matrix>
 
     <div class="container">
@@ -32,12 +32,12 @@
                     <div>
 
                         <div class="custom-block mt-1">
-                            <div class="trapezoid-bottom"></div>
+                            <div class="trapezoid-bottom" style="border-bottom: 5px solid var(--yellow-color);"></div>
                             <div class="php-custom-block-content ta-c" style="min-height: 190px">
                                 <p class="php-custom-block-head">{{ $advantage['name'] }}</p>
                                 <p class="php-custom-block-text">{!! $advantage['descr'] !!}</p>
                             </div>
-                            <div class="trapezoid-top"></div>
+                            <div class="trapezoid-top" style="border-top: 5px solid var(--yellow-color);"></div>
                         </div>
                     </div>
                 </div>
@@ -46,10 +46,10 @@
     </div>
 </div>
 
-<div class="container-fluid bg-pink px-0">
+<div class="container-fluid bg-yellow px-0">
     <br>
 </div>
-<div class="container-fluid bottom-ark bg-pink px-0">
+<div class="container-fluid bottom-ark bg-yellow px-0">
     <div class="streaks">
         <span>== ===[][] == ==[] === [][][]</span>
         <div class="streak-left streak-b"></div>

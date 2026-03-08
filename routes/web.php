@@ -5,6 +5,7 @@ use App\Http\Controllers\LkController;
 use App\Http\Controllers\Oauth\GithubController;
 use App\Http\Controllers\Oauth\GoogleController;
 use App\Http\Controllers\Oauth\YandexController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\TelegramAuthController;
@@ -21,8 +22,6 @@ Route::get('/site/front', [SiteController::class, 'front'])->name('site.front');
 Route::get('/site/back', [SiteController::class, 'back'])->name('site.back');
 Route::get('/site/gamedev', [SiteController::class, 'gamedev'])->name('site.gamedev');
 Route::get('/site/english', [SiteController::class, 'english'])->name('site.english');
-
-Route::get('/site/account', [SiteController::class, 'account'])->name('account');
 
 Route::get('/user/index', [UserController::class, 'index'])->name('user.index');
 Route::get('/user/test', [UserController::class, 'test'])->name('user.test');
@@ -85,3 +84,7 @@ Route::post('/business-request/store', [BusinessRequestController::class, 'store
 // Reviews
 Route::get('/review/create', [ReviewController::class, 'create'])->name('review.create');
 Route::post('/review/store', [ReviewController::class, 'store'])->name('review.store');
+
+// Profile
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index')->middleware('auth');
+Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update')->middleware('auth');

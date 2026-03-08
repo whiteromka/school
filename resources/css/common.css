@@ -65,6 +65,8 @@
 .w-300 {width: 300px}
 .w-350 {width: 350px}
 
+.p-12 {padding:12px !important;}
+.p-15 {padding:15px !important;}
 .pt-10 {padding-top: 10px}
 .pt-20 {padding-top: 20px}
 .p-lr-10 {padding-left: 10px; padding-right: 10px}
@@ -89,6 +91,7 @@
 .ta-c {text-align: center}
 .ta-l {text-align: left}
 .ta-r {text-align: right}
+.tt-up {text-transform: uppercase}
 
 .c-p {cursor: pointer}
 

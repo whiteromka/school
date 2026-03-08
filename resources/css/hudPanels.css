@@ -213,6 +213,7 @@
     gap: 8px;
     padding: 6px 12px;
     border-bottom: 1px solid hsla(185, 60%, 25%, 0.5);
+    background: rgba(0, 242, 255, 0.18);
 }
 .data-panel--orange .data-panel__header {
     border-bottom-color: hsla(8, 60%, 30%, 0.5);
@@ -220,23 +221,24 @@
 .data-panel__dot {
     width: 6px; height: 6px;
     background: var(--cyan);
+    margin-right: 10px;
 }
 .data-panel--orange .data-panel__dot {
     background: var(--orange);
 }
 .data-panel__title {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 10px;
+    font-family: Tektur, sans-serif;
+    font-size: 12px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--cyan-dim);
+    color: var(--cyan);
 }
 .data-panel--orange .data-panel__title {
     color: var(--orange-dim);
 }
 .data-panel__line {
     flex: 1;
-    height: 1px;
+    height: 0px;
     background: linear-gradient(to right, hsla(185, 100%, 55%, 0.6), transparent);
 }
 .data-panel--orange .data-panel__line {

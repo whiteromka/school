@@ -92,10 +92,4 @@
             </div>
         </div>
     </div>
-
-
-    {{--    <script>--}}
-{{--        const isDarkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;--}}
-{{--        console.log(isDarkTheme ? 'dark' : 'light');--}}
-{{--    </script>--}}
 @endsection
