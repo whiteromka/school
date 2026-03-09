@@ -1,23 +1,23 @@
 <?php
 
 namespace App\Models;
+
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Review
+ * Class TechStack
  *
  * @property int $id
  * @property string $name
- * @property string $course
- * @property string $message
+ * @property string $description
  */
-class Review extends Model
+class TechStack extends Model
 {
     protected $fillable = [
+        'id',
         'name',
-        'course',
-        'message'
+        'description'
     ];
 
-    protected $table = 'reviews';
+    protected $table = 'tech_stacks';
 }
