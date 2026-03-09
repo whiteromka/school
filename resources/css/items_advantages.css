@@ -139,7 +139,7 @@
     background: rgba(63, 63, 63, 0.15);
     backdrop-filter: blur(2px);
 }
-.cy-item-tabs, cy-item-tabs-tekur {
+.cy-item-tabs, .cy-item-tabs-tektur {
     border-bottom: 1px solid var(--border-color);
     margin-bottom: 12px;
 }
@@ -155,7 +155,10 @@
 }
 .cy-item-tabs-tektur .nav-link {
     font-family: 'Tektur', sans-serif;
-    letter-spacing: 1px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 9px;
 }
 
 .cy-item-tabs .nav-link:hover {
