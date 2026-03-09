@@ -341,7 +341,10 @@
                 }
                 return response.json();
             })
-            .then(data => console.log('Данные:', data))
+            .then(data => {
+                document.getElementById("js-techStack").textContent = data.res.name;
+                document.getElementById("js-description").textContent = data.res.description;
+            })
             .catch(error => console.error('Ошибка:', error.message));
     }
 </script>
