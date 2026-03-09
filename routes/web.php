@@ -36,10 +36,6 @@ Route::middleware('guest')->group(function () {
 
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware('auth');
-
 // OAuth Login services
 Route::get('/yandex/verification-code',  [YandexController::class, 'verificationCode'])->name('yandex.verificationCode');
 Route::get('/github/verification-code',  [GithubController::class, 'verificationCode'])->name('github.verificationCode');

@@ -6,15 +6,15 @@
             <div class="hero-tag">
                 <span class="accent">|</span> backend
             </div>
-            <h1 class="hero-title" data-text="WE BUILD THE PHP">
-                WE BUILD THE <span class="highlight">PHP </span>
+            <h1 class="hero-title" data-text="BACKEND WITH PHP">
+                BACKEND WITH <span class="highlight">PHP </span>
             </h1>
             <p class="hero-subtitle">
-                Digital systems engineering, neural network architecture, and cybernetic solutions for organizations operating at the edge of innovation.
+               Простой и проверенный язык для быстрой разработки backend приложений
             </p>
             <div class="hero-actions">
-                <button class="nexus-btn" type="button">Initialize Contact</button>
-                <button class="nexus-btn nexus-btn-alt" type="button">View Projects</button>
+{{--                <button class="nexus-btn" type="button">Рынок труда</button>--}}
+{{--                <button class="nexus-btn nexus-btn-alt" type="button">Популярность</button>--}}
             </div>
         </div>
     </section>

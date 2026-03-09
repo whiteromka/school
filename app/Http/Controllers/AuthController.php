@@ -33,7 +33,7 @@ class AuthController extends Controller
         }
         $request->session()->regenerate();
 
-        return redirect('/');
+        return redirect('/profile');
     }
 
     /** GET /register */
@@ -48,7 +48,7 @@ class AuthController extends Controller
         $user = $this->userRepository->create($request->credentials());
         Auth::login($user);
 
-        return redirect('/');
+        return redirect('/profile')->with('success', 'Вы успешно зарегистрировались и вошли');
     }
 
     public function logout(Request $request): Redirector|RedirectResponse

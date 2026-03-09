@@ -31,6 +31,6 @@ class GoogleController extends Controller
         $socialiteUser = Socialite::driver('google')->user();
         $this->googleAuthService->authenticate($socialiteUser);
 
-        return redirect('/')->with('success', 'Ура! Вы успешно зарегистрировались и вошли в систему');
+        return redirect('/profile')->with('success', 'Вы успешно авторизовались через Google');
     }
 }

@@ -215,7 +215,7 @@ a.base-link:hover {
 
 /* ============= HERO =============== */
 .hero {
-    min-height: 80vh;
+    min-height: 60vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -297,7 +297,8 @@ a.base-link:hover {
 .hero-subtitle {
     font-size: 15px;
     color: var(--text-muted);
-    max-width: 560px;
+    color: orange;
+    max-width: 650px;
     margin: 0 auto 40px;
     line-height: 1.7;
 }
@@ -335,14 +336,15 @@ a.base-link:hover {
 }
 
 .nexus-btn-alt {
-    border-color: var(--border-color);
-    color: var(--text-muted);
+    border: 1px solid var(--accent-magenta);
+    background: transparent;
+    color: var(--accent-magenta);
 }
 
 .nexus-btn-alt:hover {
     border-color: var(--accent-magenta);
-    color: var(--accent-magenta);
-    background: transparent;
+    color: black;
+    background: var(--accent-magenta);
     box-shadow: 0 0 20px rgba(255, 42, 109, 0.2);
 }
 

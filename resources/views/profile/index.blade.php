@@ -237,7 +237,6 @@
                                     </div>
                                 </div>
 
-
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="custom-checkbox">
@@ -261,15 +260,13 @@
                                         </label>
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
 
                     <div class="d-flex justify-content-end">
                         <button class="btn btn--secondary btn-s" id="loadMoreVacancies" data-offset="6">
-                            <span class="btn__content">Отправить</span>
+                            <span class="btn__content">Сохранить</span>
                             <span class="btn__glitch"></span>
                             <span class="btn__label">xv-003</span>
                         </button>
