@@ -6,7 +6,7 @@
 @endphp
 
 <div class="container">
-    <section class="section_" id="services">
+    <section>
         <div class="section-header">
             <div class="section-label">Modules</div>
             <h2 class="section-title">Модули курса BACKEND</h2>
@@ -132,18 +132,14 @@
 
 @push('scripts')
     <script>
-        // Функция для навешивания обработчиков hover на карточки
-        function attachHoverHandlers() {
-            const serviceCards = document.querySelectorAll('.service-card');
+        document.addEventListener('DOMContentLoaded', function () {
+            // Hover-эффекты для карточек
+            document.querySelectorAll('.service-card').forEach(card => {
+                let hoverTimeout, spanTimeouts = [], colorTimeout;
 
-            serviceCards.forEach(card => {
-                let hoverTimeout;
-                let spanTimeouts = [];
-                let colorTimeout;
-
-                card.addEventListener('mouseenter', function () {
+                card.addEventListener('mouseenter', () => {
                     const rightDiv = card.querySelector('.right > div');
-                    const spans = rightDiv ? rightDiv.querySelectorAll('span span') : [];
+                    const spans = rightDiv?.querySelectorAll('span span') || [];
 
                     hoverTimeout = setTimeout(() => {
                         if (rightDiv) {
@@ -152,32 +148,25 @@
                         }
 
                         spans.forEach((span, index) => {
-                            const spanTimeout = setTimeout(() => {
-                                const currentClass = span.className;
-                                const newClass = currentClass.replace('_', '');
-                                span.className = newClass;
-                            }, 400 + (index * 100));
-                            spanTimeouts.push(spanTimeout);
+                            spanTimeouts.push(setTimeout(() => {
+                                span.className = span.className.replace('_', '');
+                            }, 400 + (index * 100)));
                         });
 
-                        // смена цвета после всех span
                         colorTimeout = setTimeout(() => {
-                            if (rightDiv) {
-                                rightDiv.style.color = '#8b8b8b';
-                            }
+                            if (rightDiv) rightDiv.style.color = '#8b8b8b';
                         }, 900);
-
                     }, 400);
                 });
 
-                card.addEventListener('mouseleave', function () {
+                card.addEventListener('mouseleave', () => {
                     clearTimeout(hoverTimeout);
-                    spanTimeouts.forEach(timeout => clearTimeout(timeout));
+                    spanTimeouts.forEach(clearTimeout);
                     spanTimeouts = [];
                     clearTimeout(colorTimeout);
 
                     const rightDiv = card.querySelector('.right > div');
-                    const spans = rightDiv ? rightDiv.querySelectorAll('span span') : [];
+                    const spans = rightDiv?.querySelectorAll('span span') || [];
 
                     if (rightDiv) {
                         rightDiv.style.borderLeft = '';
@@ -186,41 +175,27 @@
                     }
 
                     spans.forEach(span => {
-                        const currentClass = span.className;
-                        if (!currentClass.includes('_')) {
-                            span.className = currentClass + '_';
+                        if (!span.className.includes('_')) {
+                            span.className += '_';
                         }
                     });
                 });
             });
-        }
 
-        // Функция для навешивания обработчиков на кнопки
-        function attachModuleActionHandlers() {
-            const moduleActionButtons = document.querySelectorAll('.module-action-btn');
+            // Обработчик клика по кнопке
+            async function handleModuleAction(e) {
+                e.preventDefault();
 
-            moduleActionButtons.forEach(button => {
-                button.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const moduleId = this.dataset.moduleId;
-                    const action = this.dataset.action;
+                const moduleId = this.dataset.moduleId;
+                const action = this.dataset.action;
 
-                    if (!moduleId || !action) {
-                        console.error('Invalid button data');
-                        return;
-                    }
+                if (!moduleId || !action) return;
 
-                    // Блокируем кнопку на время запроса
-                    this.disabled = true;
-                    this.classList.add('disabled');
+                this.disabled = true;
+                this.classList.add('disabled');
 
-                    // Определяем URL и метод
-                    const url = action === 'join'
-                        ? '/active-module/join/' + moduleId
-                        : '/active-module/leave/' + moduleId;
-
-                    // Отправляем AJAX запрос
-                    fetch(url, {
+                try {
+                    const response = await fetch(`/active-module/${action}/${moduleId}`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -228,51 +203,76 @@
                             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content ?? ''
                         },
                         credentials: 'same-origin'
-                    })
-                    .then(response => {
-                        if (response.ok) {
-                            return response.text().then(html => {
-                                // Находим в ответе контейнер с компонентами и заменяем
-                                const parser = new DOMParser();
-                                const doc = parser.parseFromString(html, 'text/html');
-                                const newComponent = doc.querySelector('.container .section_');
-
-                                if (newComponent) {
-                                    const currentComponent = document.querySelector('.container .section_');
-                                    if (currentComponent) {
-                                        currentComponent.replaceWith(newComponent);
-
-                                        // Переназначаем обработчики событий на новые кнопки и карточки
-                                        attachModuleActionHandlers();
-                                        attachHoverHandlers();
-                                    }
-                                }
-                            });
-                        } else if (response.status === 401) {
-                            window.location.href = '/login';
-                        } else {
-                            return response.json().then(data => {
-                                alert(data.message || 'Произошла ошибка');
-                            });
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        alert('Произошла ошибка при выполнении операции');
-                    })
-                    .finally(() => {
-                        // Разблокируем кнопку (на случай если замена не произошла)
-                        this.disabled = false;
-                        this.classList.remove('disabled');
                     });
-                });
-            });
-        }
 
-        // Инициализация при загрузке страницы
-        document.addEventListener('DOMContentLoaded', function () {
-            attachHoverHandlers();
-            attachModuleActionHandlers();
+                    if (response.status === 401) {
+                        window.location.href = '/login';
+                        return;
+                    }
+
+                    const data = await response.json();
+
+                    if (!data.success) {
+                        alert(data.message || 'Произошла ошибка');
+                        return;
+                    }
+
+                    updateModuleButtons(moduleId, data.action);
+
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Произошла ошибка при выполнении операции');
+                } finally {
+                    this.disabled = false;
+                    this.classList.remove('disabled');
+                }
+            }
+
+            // Обновление кнопок для модуля
+            function updateModuleButtons(moduleId, action) {
+                const card = document.querySelector(`[data-module-id="${moduleId}"]`)?.closest('.service-card');
+                if (!card) return;
+
+                const buttonsContainer = card.querySelector('.d-flex');
+                if (!buttonsContainer) return;
+
+                if (action === 'joined') {
+                    buttonsContainer.innerHTML = `
+                        <div class="btn btn-s btn--success c-d">
+                            <span class="btn__content">Вы записаны</span>
+                            <span class="btn__glitch_"></span>
+                            <span class="btn__label_">r25</span>
+                        </div>
+                        <button data-module-id="${moduleId}"
+                                data-action="leave"
+                                class="btn btn-s btn--secondary module-action-btn">
+                            <span class="btn__content">Выписаться</span>
+                            <span class="btn__glitch"></span>
+                            <span class="btn__label">r25</span>
+                        </button>
+                    `;
+                } else {
+                    buttonsContainer.innerHTML = `
+                        <button data-module-id="${moduleId}"
+                                data-action="join"
+                                class="btn btn-s module-action-btn">
+                            <span class="btn__content">Записаться бесплатно</span>
+                            <span class="btn__glitch"></span>
+                            <span class="btn__label">r25</span>
+                        </button>
+                    `;
+                }
+
+                const newButton = buttonsContainer.querySelector('.module-action-btn');
+                if (newButton) {
+                    newButton.addEventListener('click', handleModuleAction);
+                }
+            }
+
+            // Инициализация обработчиков на кнопках
+            document.querySelectorAll('.module-action-btn').forEach(button => {
+                button.addEventListener('click', handleModuleAction);
+            });
         });
     </script>
 @endpush
