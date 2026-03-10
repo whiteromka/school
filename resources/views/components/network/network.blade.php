@@ -322,6 +322,7 @@
         if (params.nodes.length > 0) {
             const id = params.nodes[0];
             console.log("ID:", id);
+            sendToBack(id);
         }
     });
     network.on("dragStart", function (params) {
@@ -330,5 +331,21 @@
             console.log("Перетаскиваем узел ID:", id);
         }
     });
+
+    // отправка данных на бэк и отрисовка ответа
+    function sendToBack(id) {
+        fetch('tech-stack/info/' + id)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP ошибка! Статус: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                document.getElementById("js-techStack").textContent = data.res.name;
+                document.getElementById("js-description").textContent = data.res.description;
+            })
+            .catch(error => console.error('Ошибка:', error.message));
+    }
 </script>
 @endpush

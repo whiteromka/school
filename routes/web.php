@@ -9,6 +9,7 @@ use App\Http\Controllers\Oauth\YandexController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\TechStackController;
 use App\Http\Controllers\TelegramAuthController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\TgbotController;
@@ -81,6 +82,8 @@ Route::post('/business-request/store', [BusinessRequestController::class, 'store
 // Reviews
 Route::get('/review/create', [ReviewController::class, 'create'])->name('review.create');
 Route::post('/review/store', [ReviewController::class, 'store'])->name('review.store');
+
+Route::get('/tech-stack/info/{id}', [TechStackController::class, 'info'])->name('techStack.info');
 
 // Profile
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index')->middleware('auth');
