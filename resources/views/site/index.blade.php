@@ -106,6 +106,7 @@
 <x-cyber.courses></x-cyber.courses>
 <div style="height: 60px"></div>
 
+{{-- Вакансии --}}
 <x-nexus.vacancies></x-nexus.vacancies>
 <div style="height: 150px"></div>
 

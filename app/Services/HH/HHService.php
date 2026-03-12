@@ -21,20 +21,25 @@ class HHService
     }
 
     /**
-     * Получить вакансии PHP с hh.ru и сохранить в БД
+     * Получить вакансии с hh.ru и сохранить в БД
      */
     public function fetchVacancies(): void
     {
-        $response = Http::get('https://api.hh.ru/vacancies', [
-            'text' => $this->type,
-            'per_page' => self::COUNT_ITEMS,
-            'order_by' => 'publication_time',
-            'search_field' => 'name',
-        ]);
+        $types = [self::TYPE_PHP, self::TYPE_JS];
 
-        // Получаем данные
-        $dataVacancies = $response->json();
-        $this->saveVacancies($dataVacancies);
+        foreach ($types as $type) {
+            $this->type = $type;
+            $response = Http::get('https://api.hh.ru/vacancies', [
+                'text' => $this->type,
+                'per_page' => self::COUNT_ITEMS,
+                'order_by' => 'publication_time',
+                'search_field' => 'name',
+            ]);
+
+            // Получаем данные
+            $dataVacancies = $response->json();
+            $this->saveVacancies($dataVacancies);
+        }
     }
 
     private function saveVacancies(array $data): void

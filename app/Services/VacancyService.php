@@ -15,9 +15,9 @@ class VacancyService
         private readonly HHService $hhService
     ) {}
 
-    public function getLatest(int $offset = 0): Collection
+    public function getLatest(int $offset = 0, ?string $type = null): Collection
     {
-        return $this->vacancyRepository->getLatest(6, $offset);
+        return $this->vacancyRepository->getLatest(6, $offset, $type);
     }
 
     /**
@@ -25,12 +25,12 @@ class VacancyService
      *
      * @return Collection
      */
-    public function checkAndGetLatest(): Collection
+    public function checkAndGetLatest(?string $type = null): Collection
     {
-        $cacheKey = 'vacancies_fresh_12h';
+        $cacheKey = 'vacancies_fresh_12h_' . ($type ?? 'all');
 
         if (!Cache::has($cacheKey)) {
-            $lastCreatedAt = $this->vacancyRepository->getLastPublishedAt();
+            $lastCreatedAt = $this->vacancyRepository->getLastPublishedAt($type);
             if (!$lastCreatedAt) {
                 $this->hhService->fetchVacancies();
                 Cache::put($cacheKey, true, now()->addHours(12));
@@ -44,6 +44,6 @@ class VacancyService
             }
         }
 
-        return $this->vacancyRepository->getLatest(6, 0);
+        return $this->vacancyRepository->getLatest(6, 0, $type);
     }
 }

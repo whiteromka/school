@@ -7,18 +7,27 @@ use Illuminate\Support\Collection;
 
 class VacancyRepository
 {
-    public function getLatest(int $limit, int $offset = 0): Collection
+    public function getLatest(int $limit, int $offset = 0, ?string $type = null): Collection
     {
-        return Vacancy::query()
+        $query = Vacancy::query()
             ->orderByDesc('published_at')
             ->orderByRaw('COALESCE(salary_to, salary_from, 0) DESC')
             ->offset($offset)
-            ->limit($limit)
-            ->get();
+            ->limit($limit);
+
+        if ($type) {
+            $query->where('type', $type);
+        }
+
+        return $query->get();
     }
 
-    public function getLastPublishedAt(): ?string
+    public function getLastPublishedAt(?string $type = null): ?string
     {
-        return Vacancy::query()->latest('published_at')->value('published_at');
+        $query = Vacancy::query()->latest('published_at');
+        if ($type) {
+            $query->where('type', $type);
+        }
+        return $query->value('published_at');
     }
 }

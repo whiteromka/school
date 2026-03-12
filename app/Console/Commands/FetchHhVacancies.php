@@ -32,7 +32,7 @@ class FetchHhVacancies extends Command
     {
         $type = $this->argument('type');
         $this->info("Fetching $type vacancies from HeadHunter...");
-        $service = new HHService($type);
+        $service = new HHService();
 
         try {
             $service->fetchVacancies();

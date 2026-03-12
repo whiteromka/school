@@ -13,15 +13,15 @@ class VacancyController extends Controller
     ) {}
 
     /**
+     * GET /vacancy/check
      * Проверяет нужно ли подтянуть свежие вакансии с hh.ru.
      * Если нужно стянуть, то сохраняет их в БД.
      * Возвращает последние актуальные вакансии.
-     *
-     * @return JsonResponse
      */
-    public function check(): JsonResponse
+    public function check(Request $request): JsonResponse
     {
-        $vacancies = $this->vacancyService->checkAndGetLatest();
+        $type = $request->get('type');
+        $vacancies = $this->vacancyService->checkAndGetLatest($type);
         $html = view('vacancy._items', ['vacancies' => $vacancies])->render();
 
         return response()->json([
@@ -30,10 +30,14 @@ class VacancyController extends Controller
         ]);
     }
 
+    /**
+     * GET /vacancy/load-more
+     */
     public function loadMore(Request $request): JsonResponse
     {
         $offset = (int)$request->get('offset', 0);
-        $vacancies = $this->vacancyService->getLatest($offset);
+        $type = $request->get('type');
+        $vacancies = $this->vacancyService->getLatest($offset, $type);
         $html = view('vacancy._items', ['vacancies' => $vacancies])->render();
 
         return response()->json([
