@@ -722,7 +722,9 @@ a.base-link:hover {
 }
 
 .form-group input,
-.form-group textarea {
+.form-group textarea,
+.form-group .form-control
+{
     font-family: var(--font-mono);
     font-size: 14px;
     padding: 12px 16px;
@@ -731,6 +733,7 @@ a.base-link:hover {
     color: var(--text-primary);
     outline: none;
     transition: border-color 0.3s, box-shadow 0.3s;
+    border-radius: 0px;
 }
 
 .form-group input:focus,

@@ -63,7 +63,6 @@ Route::get('/business-request/create', [BusinessRequestController::class, 'creat
 Route::post('/business-request/store', [BusinessRequestController::class, 'store'])->name('businessRequest.store');
 
 // Reviews
-Route::get('/review/create', [ReviewController::class, 'create'])->name('review.create');
 Route::post('/review/store', [ReviewController::class, 'store'])->name('review.store');
 
 Route::get('/tech-stack/info/{id}', [TechStackController::class, 'info'])->name('techStack.info');

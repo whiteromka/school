@@ -146,7 +146,70 @@
             </p>
         </div>
         <div class="col-md-4">
-            @include('livewire.review-form', ['activeModules' => $activeModules])
+
+            <div class="review-form-container" id="review-form-container">
+                @include('partials.review-form', ['activeModules' => $activeModules])
+            </div>
+
+            @push('scripts')
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const container = document.getElementById('review-form-container');
+                        const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
+
+                        // Обработчик отправки формы (делегирование событий)
+                        container.addEventListener('submit', async function(e) {
+                            e.preventDefault();
+
+                            const form = e.target;
+                            const submitBtn = form.querySelector('#review-submit-btn');
+                            const btnContent = submitBtn?.querySelector('.btn__content');
+
+                            if (!submitBtn || submitBtn.disabled) return;
+
+                            // Блокировка кнопки
+                            submitBtn.disabled = true;
+                            if (btnContent) {
+                                btnContent.textContent = 'Отправка...';
+                            }
+
+                            // Сбор данных формы
+                            const formData = new FormData(form);
+
+                            try {
+                                const response = await fetch('/review/store', {
+                                    method: 'POST',
+                                    body: formData,
+                                    headers: {
+                                        'X-Requested-With': 'XMLHttpRequest',
+                                        'X-CSRF-TOKEN': csrfToken,
+                                        'Accept': 'text/html'
+                                    }
+                                });
+
+                                const html = await response.text();
+                                container.innerHTML = html;
+
+                            } catch (error) {
+                                console.error('Error submitting review:', error);
+                            }
+                        });
+
+                        // Очистка ошибок при вводе
+                        container.addEventListener('input', function(e) {
+                            const target = e.target;
+                            if (target.tagName === 'SELECT' || target.tagName === 'TEXTAREA') {
+                                target.classList.remove('is-invalid');
+                                const errorEl = target.parentElement.querySelector('.invalid-feedback');
+                                if (errorEl) {
+                                    errorEl.style.display = 'none';
+                                }
+                            }
+                        });
+                    });
+                </script>
+            @endpush
+
         </div>
     </div>
 </div>
