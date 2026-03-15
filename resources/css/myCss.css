@@ -687,9 +687,10 @@ body {
     transform: translateZ(30px);
     font-family: "Tektur", sans-serif;
     color: #ffffff;
+    font-size: clamp(12px, 2vw, 26px);
 }
 .profile-main-panel p {
-    font-size: 13px;
+    font-size: clamp(11px, 2vw, 14px);
     margin: 0;
     font-family: "Share Tech Mono", monospace;
 }
