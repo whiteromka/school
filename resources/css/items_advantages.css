@@ -158,6 +158,7 @@
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 9px;
+    font-size: clamp(9px, 1vw, 11px) !important;
 }
 
 .cy-item-tabs .nav-link:hover {

@@ -450,7 +450,7 @@ a.base-link:hover {
     max-width: 1100px;
 }
 
-.service-card, .service-card-die  {
+.service-card, .service-card-die_  {
     display: flex;
     flex-direction: column;
     background: var(--bg-card);
@@ -459,6 +459,48 @@ a.base-link:hover {
     position: relative;
     transition: border-color 0.3s, box-shadow 0.3s;
 }
+
+.service-card-count-line-wrap {
+    border-left: 1px dotted var(--blue-color);
+    border-right: 1px dotted var(--blue-color);
+    padding: 0 4px;
+    max-width: 300px;
+    display: flex;
+    flex-direction: row; /* Элементы в ряд */
+    align-items: center; /* Центрируем по вертикали */
+    gap: 8px; /* Отступ между span и линией */
+    min-height: 10px;
+}
+
+.service-card-count-line-wrap span {
+    flex-shrink: 0; /* Запрещаем сжиматься */
+    width: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.service-card-count-line-wrap span svg {
+    width: 100%;
+    height: auto;
+    fill: #00f0ff;
+    fill: orange;
+}
+
+.service-card-count-line {
+    display: flex;
+    gap: 4px;
+    background: rgba(255, 255, 255, 0.02);
+    overflow: hidden;
+    flex: 1; /* Занимает оставшееся пространство */
+    max-width: 300px;
+}
+
+.service-card-count-line .item {
+    width: 5px;
+    height: 5px;
+    background: orange;
+}
+
 
 .service-card:hover {
     border-color: var(--accent-cyan);
@@ -517,7 +559,7 @@ a.base-link:hover {
 }
 
 .service-desc {
-    font-size: 15px;
+    font-size: clamp(12px, 2vw, 15px);
     color: var(--text-muted);
     line-height: 1.7;
 }

@@ -73,6 +73,20 @@
         <div class="data-panel" data-panel-id="main-data">
             <div class="data-panel__header p-12_">
                 <div class="data-panel__dot"></div>
+                <span class="data-panel__title">Ваши курсы</span>
+                <div class="data-panel__line"></div>
+                <span class="btn-collapse" data-action="collapse"> — </span>
+            </div>
+            <div class="data-panel__body data-stream">
+                ---
+            </div>
+        </div>
+        <br>
+        <br>
+
+        <div class="data-panel" data-panel-id="main-data">
+            <div class="data-panel__header p-12_">
+                <div class="data-panel__dot"></div>
                 <span class="data-panel__title">Основные данные</span>
                 <div class="data-panel__line"></div>
                 <span class="btn-collapse" data-action="collapse"> — </span>

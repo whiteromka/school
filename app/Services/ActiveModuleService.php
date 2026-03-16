@@ -68,4 +68,13 @@ class ActiveModuleService
         $activeModule->users()->detach($user->id);
         return true;
     }
+
+    /**
+     * Получить активные модули пользователя [id => name]
+     */
+    public function getUserActiveModules(User $user): array
+    {
+        $user->load('activeModules.module');
+        return $user->activeModules->pluck('module.name', 'module.id')->toArray();
+    }
 }
