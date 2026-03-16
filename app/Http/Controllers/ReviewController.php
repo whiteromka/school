@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Review;
 use App\Services\CaptchaService;
-use App\Services\ModuleService;
+use App\Services\ReviewService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Response;
@@ -12,11 +12,11 @@ use Illuminate\Http\Response;
 class ReviewController extends Controller
 {
     public function __construct(
-        private readonly ModuleService $moduleService
+        private readonly ReviewService $reviewService
     ) {}
 
     /**
-     * Получить активные модули пользователя
+     * Получить активные модули пользователя [id => name]
      */
     private function getActiveModules(): array
     {
@@ -80,7 +80,7 @@ class ReviewController extends Controller
         }
 
         $validated = $validator->validated();
-        Review::query()->create([
+        $this->reviewService->create([
             'user_id' => auth()->id(),
             'stars' => $validated['stars'],
             'modules_id' => $validated['modules_id'] ?? null,
