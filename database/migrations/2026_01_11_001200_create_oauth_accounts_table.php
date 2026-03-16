@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('oauth_accounts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->unsignedBigInteger('user_id');
             $table->string('provider')->comment('Название oauth провайдера');
             $table->string('provider_user_id');
             $table->text('access_token');
@@ -24,6 +24,8 @@ return new class extends Migration
             $table->json('raw_response')->nullable();
             $table->timestamps();
             $table->unique(['provider', 'provider_user_id']);
+
+            $table->index('user_id');
         });
 
     }

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->unsignedBigInteger('user_id');
             $table->string('gender')->nullable()->comment('Пол');
             $table->date('birthday')->nullable()->comment('Дата рождения');
             $table->string('country')->nullable()->default('РФ')->comment('Страна');

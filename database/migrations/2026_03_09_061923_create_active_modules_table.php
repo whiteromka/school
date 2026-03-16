@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('active_modules', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('module_id')->constrained()->onDelete('cascade');
+            $table->unsignedBigInteger('module_id');
             $table->string('name')->nullable();
             $table->timestamp('started_at')->nullable()->comment('Дата начала');
             $table->timestamp('ended_at')->nullable()->comment('Приблизительная дата конца');
             $table->string('status')->default('open'); // open | started_free | started_full | finished
             $table->timestamps();
 
-            $table->index(['module_id', 'status']);
+            $table->index(['module_id']);
         });
     }
 

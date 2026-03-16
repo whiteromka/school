@@ -9,9 +9,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  *
  * @property int $id
  * @property int $user_id
+ * @property int|null $modules_id
  * @property int $stars
  * @property string $status
- * @property int|null $modules_id
+ * @property string $name
  * @property string $message
  */
 class Review extends Model

@@ -13,11 +13,13 @@ return new class extends Migration
     {
         Schema::create('active_module_to_user', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('active_module_id')->constrained()->onDelete('cascade');
+            $table->unsignedBigInteger('active_module_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamp('joined_at')->nullable()->comment('Дата присоединения');
             $table->timestamps();
 
+            $table->index('user_id', 'idx_user_id');
+            $table->index('active_module_id', 'idx_active_module_id');
             // Уникальная пара: пользователь может быть в активном модуле один раз
             $table->unique(['user_id', 'active_module_id'], 'unique_user_active_module');
         });
