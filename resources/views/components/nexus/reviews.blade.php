@@ -18,9 +18,13 @@
             <h2 class="font-tektur font-w-100 ta-c">нет отзывов</h2>
         </div>
         <div class="col-md-4">
-
             <div class="review-form-container" id="review-form-container">
-                @include('partials.review-form', ['activeModules' => $activeModules, 'captcha' => $captcha])
+                {{-- Форма загружается через AJAX --}}
+                <div class="text-center py-4">
+                    <div class="spinner-border text-secondary" role="status">
+                        <span class="visually-hidden">Загрузка...</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -30,6 +34,26 @@
         document.addEventListener('DOMContentLoaded', function() {
             const container = document.getElementById('review-form-container');
             const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
+
+            // Загрузка формы при инициализации
+            loadReviewForm();
+
+            function loadReviewForm() {
+                fetch('/review/form', {
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'Accept': 'text/html'
+                    }
+                })
+                .then(response => response.text())
+                .then(html => {
+                    container.innerHTML = html;
+                })
+                .catch(error => {
+                    console.error('Error loading review form:', error);
+                    container.innerHTML = '<div class="alert alert-danger">Ошибка загрузки формы</div>';
+                });
+            }
 
             // Обработчик отправки формы (делегирование событий)
             container.addEventListener('submit', async function(e) {

@@ -63,6 +63,7 @@ Route::get('/business-request/create', [BusinessRequestController::class, 'creat
 Route::post('/business-request/store', [BusinessRequestController::class, 'store'])->name('businessRequest.store');
 
 // Reviews
+Route::get('/review/form', [ReviewController::class, 'form'])->name('review.form');
 Route::post('/review/store', [ReviewController::class, 'store'])->name('review.store');
 Route::get('/review/refresh-captcha', [ReviewController::class, 'refreshCaptcha'])->name('review.refresh-captcha');
 

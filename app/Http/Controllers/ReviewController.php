@@ -17,6 +17,27 @@ class ReviewController extends Controller
     ) {}
 
     /**
+     * Инициализация формы отзывов (AJAX)
+     */
+    public function form(): Response
+    {
+        $user = auth()->user();
+        $activeModules = [];
+        
+        if ($user) {
+            $activeModules = $this->activeModuleService->getUserActiveModules($user);
+        }
+
+        return response()->view('partials.review-form', [
+            'activeModules' => $activeModules,
+            'errors' => [],
+            'oldInput' => [],
+            'success' => false,
+            'captcha' => CaptchaService::generate(),
+        ]);
+    }
+
+    /**
      * Store a newly created review in storage.
      */
     public function store(StoreReviewRequest $request): Response

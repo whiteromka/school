@@ -1,9 +1,9 @@
 @php
     $activeModules = $activeModules ?? [];
-    $errors = $errors ?? [];
     $oldInput = $oldInput ?? [];
     $success = $success ?? false;
     $captcha = $captcha ?? null;
+    $errors = $errors ?? [];
 @endphp
 
 <div class="review-form-container">
@@ -19,7 +19,7 @@
 
         <div class="form-group">
             <label for="modules_id">Module</label>
-            <select id="modules_id" name="modules_id" class="form-control @if($errors['modules_id'] ?? false) is-invalid @endif">
+            <select id="modules_id" name="modules_id" class="form-control {{ isset($errors['modules_id']) ? 'is-invalid' : '' }}">
                 <option value="">Модуль</option>
                 @foreach($activeModules as $id => $name)
                     <option value="{{ $id }}" {{ (isset($oldInput['modules_id']) && $oldInput['modules_id'] == $id) ? 'selected' : '' }}>
@@ -27,14 +27,14 @@
                     </option>
                 @endforeach
             </select>
-            @if($errors['modules_id'] ?? false)
+            @if(isset($errors['modules_id']))
                 <div class="invalid-feedback" style="display: block;">{{ $errors['modules_id'][0] }}</div>
             @endif
         </div>
 
         <div class="form-group">
             <label for="stars">Stars</label>
-            <select id="stars" name="stars" class="form-control @if($errors['stars'] ?? false) is-invalid @endif">
+            <select id="stars" name="stars" class="form-control {{ isset($errors['stars']) ? 'is-invalid' : '' }}">
                 <option value="">Оценка</option>
                 @for($i = 1; $i <= 5; $i++)
                     <option value="{{ $i }}" {{ (isset($oldInput['stars']) && $oldInput['stars'] == $i) ? 'selected' : '' }}>
@@ -42,20 +42,20 @@
                     </option>
                 @endfor
             </select>
-            @if($errors['stars'] ?? false)
+            @if(isset($errors['stars']))
                 <div class="invalid-feedback" style="display: block;">{{ $errors['stars'][0] }}</div>
             @endif
         </div>
 
         <div class="form-group">
             <label for="message">Message</label>
-            <textarea id="message" name="message" class="form-control @if($errors['message'] ?? false) is-invalid @endif" rows="5">{{ $oldInput['message'] ?? '' }}</textarea>
-            @if($errors['message'] ?? false)
+            <textarea id="message" name="message" class="form-control {{ isset($errors['message']) ? 'is-invalid' : '' }}" rows="5">{{ $oldInput['message'] ?? '' }}</textarea>
+            @if(isset($errors['message']))
                 <div class="invalid-feedback" style="display: block;">{{ $errors['message'][0] }}</div>
             @endif
         </div>
 
-        @if($errors['auth'] ?? false)
+        @if(isset($errors['auth']))
             <div class="invalid-feedback" style="display: block; margin-bottom: 10px;">{{ $errors['auth'][0] }}</div>
         @endif
 

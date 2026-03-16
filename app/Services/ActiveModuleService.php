@@ -72,8 +72,12 @@ class ActiveModuleService
     /**
      * Получить активные модули пользователя [id => name]
      */
-    public function getUserActiveModules(User $user): array
+    public function getUserActiveModules(User $user = null): array
     {
+        if (!$user) {
+            return [];
+        }
+
         $user->load('activeModules.module');
         return $user->activeModules->pluck('module.name', 'module.id')->toArray();
     }
