@@ -3,7 +3,6 @@
     $oldInput = $oldInput ?? [];
     $success = $success ?? false;
     $captcha = $captcha ?? null;
-    $errors = $errors ?? [];
 @endphp
 
 <div class="review-form-container">
@@ -19,7 +18,7 @@
 
         <div class="form-group">
             <label for="modules_id">Module</label>
-            <select id="modules_id" name="modules_id" class="form-control {{ isset($errors['modules_id']) ? 'is-invalid' : '' }}">
+            <select id="modules_id" name="modules_id" class="form-control {{ $errors->has('modules_id') ? 'is-invalid' : '' }}">
                 <option value="">Модуль</option>
                 @foreach($activeModules as $id => $name)
                     <option value="{{ $id }}" {{ (isset($oldInput['modules_id']) && $oldInput['modules_id'] == $id) ? 'selected' : '' }}>
@@ -27,14 +26,14 @@
                     </option>
                 @endforeach
             </select>
-            @if(isset($errors['modules_id']))
-                <div class="invalid-feedback" style="display: block;">{{ $errors['modules_id'][0] }}</div>
+            @if($errors->has('modules_id'))
+                <div class="invalid-feedback" style="display: block;">{{ $errors->first('modules_id') }}</div>
             @endif
         </div>
 
         <div class="form-group">
             <label for="stars">Stars</label>
-            <select id="stars" name="stars" class="form-control {{ isset($errors['stars']) ? 'is-invalid' : '' }}">
+            <select id="stars" name="stars" class="form-control {{ $errors->has('stars') ? 'is-invalid' : '' }}">
                 <option value="">Оценка</option>
                 @for($i = 1; $i <= 5; $i++)
                     <option value="{{ $i }}" {{ (isset($oldInput['stars']) && $oldInput['stars'] == $i) ? 'selected' : '' }}>
@@ -42,25 +41,25 @@
                     </option>
                 @endfor
             </select>
-            @if(isset($errors['stars']))
-                <div class="invalid-feedback" style="display: block;">{{ $errors['stars'][0] }}</div>
+            @if($errors->has('stars'))
+                <div class="invalid-feedback" style="display: block;">{{ $errors->first('stars') }}</div>
             @endif
         </div>
 
         <div class="form-group">
             <label for="message">Message</label>
-            <textarea id="message" name="message" class="form-control {{ isset($errors['message']) ? 'is-invalid' : '' }}" rows="5">{{ $oldInput['message'] ?? '' }}</textarea>
-            @if(isset($errors['message']))
-                <div class="invalid-feedback" style="display: block;">{{ $errors['message'][0] }}</div>
+            <textarea id="message" name="message" class="form-control {{ $errors->has('message') ? 'is-invalid' : '' }}" rows="5">{{ $oldInput['message'] ?? '' }}</textarea>
+            @if($errors->has('message'))
+                <div class="invalid-feedback" style="display: block;">{{ $errors->first('message') }}</div>
             @endif
         </div>
 
-        @if(isset($errors['auth']))
-            <div class="invalid-feedback" style="display: block; margin-bottom: 10px;">{{ $errors['auth'][0] }}</div>
+        @if($errors->has('auth'))
+            <div class="invalid-feedback" style="display: block; margin-bottom: 10px;">{{ $errors->first('auth') }}</div>
         @endif
 
         {{-- Капча --}}
-        @include('partials.captcha', ['error' => $errors['captcha'] ?? null])
+        @include('partials.captcha', ['error' => $errors->has('captcha') ? $errors->first('captcha') : null])
 
         <div class="d-flex align-items-center justify-content-end">
             @guest

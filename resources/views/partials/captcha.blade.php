@@ -1,6 +1,9 @@
 @php
+    /** @var array $captcha */
+    /** @var \Illuminate\Support\ViewErrorBag $errors */
+
     $captcha = $captcha ?? \App\Services\CaptchaService::generate();
-    $error = $error ?? ($errors['captcha'] ?? null);
+    $error = $error ?? ($errors?->has('captcha') ? $errors?->first('captcha') : null);
     $errorMessage = is_array($error) ? ($error[0] ?? null) : $error;
 @endphp
 

@@ -19,9 +19,12 @@
         </div>
         <div class="col-md-4">
             <div class="review-form-container" id="review-form-container">
+                @php
+                    $emptyErrorBag = new \Illuminate\Support\ViewErrorBag();
+                @endphp
                 @include('partials.review-form', [
                     'activeModules' => $activeModules,
-                    'errors' => [],
+                    'errors' => $emptyErrorBag,
                     'oldInput' => [],
                     'success' => false,
                     'captcha' => $captcha
