@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Helpers\IPFormatter;
 use App\Services\ModuleService;
-use Illuminate\Support\Facades\Auth;
 
 class SiteController extends Controller
 {
@@ -31,8 +30,7 @@ class SiteController extends Controller
     // GET /site/back
     public function back()
     {
-        /** @var User $user */
-        $user = Auth::user();
+        $user = auth()->user();
         $userModuleIds = [];
         if ($user) {
             $user->load('activeModules');

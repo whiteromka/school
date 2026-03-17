@@ -19,12 +19,13 @@
         </div>
         <div class="col-md-4">
             <div class="review-form-container" id="review-form-container">
-                {{-- Форма загружается через AJAX --}}
-                <div class="text-center py-4">
-                    <div class="spinner-border text-secondary" role="status">
-                        <span class="visually-hidden">Загрузка...</span>
-                    </div>
-                </div>
+                @include('partials.review-form', [
+                    'activeModules' => $activeModules,
+                    'errors' => [],
+                    'oldInput' => [],
+                    'success' => false,
+                    'captcha' => $captcha
+                ])
             </div>
         </div>
     </div>
@@ -34,26 +35,6 @@
         document.addEventListener('DOMContentLoaded', function() {
             const container = document.getElementById('review-form-container');
             const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
-
-            // Загрузка формы при инициализации
-            loadReviewForm();
-
-            function loadReviewForm() {
-                fetch('/review/form', {
-                    headers: {
-                        'X-Requested-With': 'XMLHttpRequest',
-                        'Accept': 'text/html'
-                    }
-                })
-                .then(response => response.text())
-                .then(html => {
-                    container.innerHTML = html;
-                })
-                .catch(error => {
-                    console.error('Error loading review form:', error);
-                    container.innerHTML = '<div class="alert alert-danger">Ошибка загрузки формы</div>';
-                });
-            }
 
             // Обработчик отправки формы (делегирование событий)
             container.addEventListener('submit', async function(e) {
