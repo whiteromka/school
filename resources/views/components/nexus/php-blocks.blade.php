@@ -61,7 +61,7 @@
                     </div>
                     <div class="service-name">
                             <?= $module->name ?>
-                        <span class="dark-gey"> / </span>
+                        <span class="dark-grey"> / </span>
                         <span class="orange"> <?= $module->module_price ?> RUR </span>
                     </div>
 

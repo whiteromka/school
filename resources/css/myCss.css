@@ -16,14 +16,6 @@
 .mh-1200 {min-height: 1200px;}
 .bg {background: #171718;}
 
-.white {color: white}
-.light-grey {color: #dddddd}
-.grey {color: gray;}
-.orange {color: orange}
-.cyan {color: #00f0ff}
-.dark-gey {color: #505050}
-.red {color: red}
-.light-red { color: #ff4949;}
 .br {border: 2px solid red;}
 .line { border-bottom: 1px solid #c6c6c6}
 
@@ -737,3 +729,10 @@ body {
     border-top-color: #dc3545;
 }
 
+/* Отзывы */
+.reviews-list {}
+.review-item {
+    padding:  15px 30px;
+    background: rgba(126, 126, 126, 0.24);
+    backdrop-filter: blur(8px);
+}

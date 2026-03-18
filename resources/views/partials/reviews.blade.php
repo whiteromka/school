@@ -9,27 +9,30 @@
 @else
     <div class="reviews-list">
         @foreach($reviews as $review)
-            <div class="card mb-3">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-start mb-2">
-                        <div>
-                            <h6 class="mb-0">{{ $review->user->name ?? 'Аноним' }}</h6>
+            <div class="review-item mb-3 js-cy-brackets">
+                <div class="card-body_ row">
+                    <div class="col-sm-12 col-md-6">
+                        <h6 class="mb-0">
+                            {{ $review->user->getFullNameOrEmail() }}
                             @if($review->module)
-                                <small class="text-muted">{{ $review->module->name }}</small>
+                                 <small class="grey"> | {{ $review->module->name }}</small>
                             @endif
-                        </div>
-                        <div class="text-warning">
-                            @for($i = 0; $i < 5; $i++)
-                                @if($i < $review->stars)
-                                    <i class="bi bi-star-fill"></i>
-                                @else
-                                    <i class="bi bi-star"></i>
-                                @endif
-                            @endfor
-                        </div>
+                        </h6>
                     </div>
-                    <p class="card-text mb-0">{{ $review->message }}</p>
-                    <small class="text-muted">{{ $review->created_at->format('d.m.Y H:i') }}</small>
+                    <div class="col-sm-12 col-md-6 text-md-end">
+                        <span class="grey fs-13" style="padding-bottom: 10px">
+                            {{ $review->created_at->format('d.m.Y') }}
+                        </span>
+                        @for($i = 0; $i < 5; $i++)
+                            @if($i < $review->stars)
+                                <span class="cyan">*</span>
+                            @else
+                                <span class="dark-grey">*</span>
+                            @endif
+                        @endfor
+                    </div>
+                    <p class="mb-0">{{ $review->message }}</p>
+
                 </div>
             </div>
         @endforeach

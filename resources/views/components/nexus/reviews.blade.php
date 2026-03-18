@@ -1,4 +1,4 @@
-<div class="container section">
+<div class="container">
     <div class="row">
         <div class="col-md-6">
             <div class="section-header">
@@ -9,11 +9,15 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-12">
             <p class="grey">
                 Друзья мы не хотим вводить вас в заблуждение и не станем сами себе писать тут фейковые хвалебные отзывы о нашей работе.
                 Мы никого не обманываем! Тут отображаются настоящие отзывы которые вы пишите о нашей деятельности, конструктивная критика приветствуется.
             </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
             <div>
                 @livewire('reviews')
             </div>
