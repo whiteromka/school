@@ -1,11 +1,8 @@
-@php
-    /** @var array $captcha */
-    /** @var \Illuminate\Support\ViewErrorBag $errors */
-
+<?php
     $captcha = $captcha ?? \App\Services\CaptchaService::generate();
     $error = $error ?? ($errors?->has('captcha') ? $errors?->first('captcha') : null);
     $errorMessage = is_array($error) ? ($error[0] ?? null) : $error;
-@endphp
+?>
 
 <div class="form-group" id="captcha-group">
     <label for="captcha">Captcha</label>
@@ -40,3 +37,4 @@
 
     </div>
 </div>
+
