@@ -46,7 +46,7 @@
             </div>
             <div class="service-card">
                 <div class="service-index"> <div class="left">05</div></div>
-                <div class="service-name">Практика</div>
+                <div class="service-name">Практика и ДЗ</div>
                 <p class="service-desc">
                     Теория сразу закрепляется на задачах. От основ до техник, которые
                     используют в индустрии прямо сейчас

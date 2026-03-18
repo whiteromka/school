@@ -14,6 +14,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string $status
  * @property string $name
  * @property string $message
+ *
+ * @property-read User $user
+ * @property-read Module|null $module
  */
 class Review extends Model
 {

@@ -17,6 +17,11 @@ class ReviewService
         return $this->reviewRepository->getAll();
     }
 
+    public function getReviews(): Collection
+    {
+        return $this->reviewRepository->getReviews();
+    }
+
     public function getById(int $id): ?Review
     {
         return $this->reviewRepository->getById($id);

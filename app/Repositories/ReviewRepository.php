@@ -12,6 +12,13 @@ class ReviewRepository
         return Review::query()->get();
     }
 
+    public function getReviews(): Collection
+    {
+        return Review::query()
+            ->with(['user', 'module'])
+            ->get();
+    }
+
     public function getById(int $id): ?Review
     {
         return Review::query()->find($id);
