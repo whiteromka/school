@@ -26,12 +26,13 @@ class GithubController extends Controller
     ) {}
 
     /**
+     * Страница на которую редиректит github с кодом в url
      * url: http://localhost:8080/github/verification-code
      */
-    public function verificationCode(VerificationCodeRequest $request): Redirector|RedirectResponse {
+    public function verificationCode(VerificationCodeRequest $request): Redirector|RedirectResponse
+    {
         $this->authService->authenticate($request->getCode());
 
-        return redirect('/profile')
-            ->with('success', 'Вы успешно авторизовались через Github');
+        return redirect('/profile')->with('success', 'Вы успешно авторизовались через Github');
     }
 }

@@ -23,6 +23,7 @@ class GoogleController extends Controller
     }
 
     /**
+     * Страница на которую редиректит google
      * Обработка callback от Google
      */
     public function verificationCode(): Redirector|RedirectResponse

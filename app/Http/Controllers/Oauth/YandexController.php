@@ -23,6 +23,7 @@ class YandexController extends Controller
     ) {}
 
     /**
+     * Страница на которую редиректит яндекс с кодом в url
      * url: http://localhost:8080/yandex/verification-code
      */
     public function verificationCode(Request $request): Redirector|RedirectResponse

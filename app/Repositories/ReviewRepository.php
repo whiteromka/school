@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Review;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\DB;
 
 class ReviewRepository
 {
@@ -21,6 +22,20 @@ class ReviewRepository
 
     public function getReviewsPaginated(int $page, int $perPage): Collection
     {
+//        $offset = ($page - 1) * $perPage;
+//        $sql = 'SELECT
+//            reviews.*,
+//            users.email,
+//            users.first_name,
+//            users.last_name,
+//            modules.name as module_name
+//        FROM reviews
+//            INNER JOIN users ON reviews.user_id = users.id
+//            LEFT JOIN modules ON reviews.modules_id = modules.id
+//        ORDER BY reviews.created_at DESC
+//        LIMIT ? OFFSET ?';
+//        $results = DB::select($sql, [$perPage, $offset]);
+
         return Review::query()
             ->with(['user', 'module'])
             ->orderBy('created_at', 'desc')
