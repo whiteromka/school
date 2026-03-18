@@ -6,13 +6,15 @@ use App\Http\Requests\ReviewStoreRequest;
 use App\Models\Review;
 use App\Services\ActiveModuleService;
 use App\Services\CaptchaService;
+use App\Services\ReviewService;
 use Illuminate\Http\Response;
 use Illuminate\Support\ViewErrorBag;
 
 class ReviewController extends Controller
 {
     public function __construct(
-        private readonly ActiveModuleService $activeModuleService
+        private readonly ActiveModuleService $activeModuleService,
+        private readonly ReviewService $reviewService
     ) {}
 
     /**

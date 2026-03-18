@@ -19,6 +19,22 @@ class ReviewRepository
             ->get();
     }
 
+    public function getReviewsPaginated(int $page, int $perPage): Collection
+    {
+        return Review::query()
+            ->with(['user', 'module'])
+            ->orderBy('created_at', 'desc')
+            ->skip(($page - 1) * $perPage)
+            ->take($perPage)
+            ->get();
+    }
+
+    public function hasMoreReviews(int $page, int $perPage): bool
+    {
+        $total = Review::query()->count();
+        return $total > ($page * $perPage);
+    }
+
     public function getById(int $id): ?Review
     {
         return Review::query()->find($id);

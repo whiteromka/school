@@ -22,6 +22,16 @@ class ReviewService
         return $this->reviewRepository->getReviews();
     }
 
+    public function getReviewsPaginated(int $page, int $perPage): Collection
+    {
+        return $this->reviewRepository->getReviewsPaginated($page, $perPage);
+    }
+
+    public function hasMoreReviews(int $page, int $perPage): bool
+    {
+        return $this->reviewRepository->hasMoreReviews($page, $perPage);
+    }
+
     public function getById(int $id): ?Review
     {
         return $this->reviewRepository->getById($id);
