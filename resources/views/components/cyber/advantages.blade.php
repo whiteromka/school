@@ -18,39 +18,50 @@
 
 {{--    <x-telegram.login></x-telegram.login>--}}
 
-    <x-cyber.matrix></x-cyber.matrix>
+    @include('components.cyber.matrix', ['css' => 'matrix-pos-tl'])
 
     <div class="container">
         <div class="row">
-            <?php $advantages = [
-                ['name' => 'Можно начать с нуля', 'descr' => 'Есть вступительные и модули для новичков совсем без опыта'],
-                ['name' => 'Пошаговое обучение','descr' => 'От простого к сложному. Все обучение разбито на модули'],
-                ['name' => 'Модульная система' , 'descr' => 'Выбирайте только нужные вам модули курса'],
-                ['name' => 'Групповые занятия', 'descr' => 'Онлайн занятия с опытным специалистом. В группе с вами студенты со схожим опытом'],
-                ['name' => 'Проверенные технологии' , 'descr' => '<b>PHP</b> и <b>JavaScript</b> - регулярно попадают в топ 10 языков программирования в РФ'],
-                ['name' => 'Наставники из индустрии', 'descr' => 'Преподаватели работают в IT-компаниях, а не только преподают'],
-                ['name' => 'Code review', 'descr' => 'Проверка кода преподавателем с разбором ошибок'],
-                ['name' => 'Адекватные цены', 'descr' => 'Стоимость занятия от 400 руб за 1.5 часа'],
-            ];?>
+            <?php
+            $advantages = [
+                ['n' => '01', 'name' => 'Можно начать с нуля', 'descr' => 'Есть вступительные и модули для новичков совсем без опыта'],
+                ['n' => '02', 'name' => 'Пошаговое обучение', 'descr' => 'От простого к сложному. Все обучение разбито на модули'],
+                ['n' => '03', 'name' => 'Модульная система', 'descr' => 'Выбирайте только нужные вам модули курса'],
+                ['n' => '04', 'name' => 'Групповые занятия', 'descr' => 'Онлайн занятия с опытным специалистом. В группе с вами студенты со схожим опытом'],
+                ['n' => '05', 'name' => 'Проверенные технологии', 'descr' => '<b>PHP</b>, <b>С#</b> и <b>JavaScript</b> - регулярно попадают в топ 10 языков программирования в РФ'],
+                ['n' => '06', 'name' => 'Наставники из индустрии', 'descr' => 'Преподаватели работают в IT-компаниях, а не только преподают'],
+                ['n' => '07', 'name' => 'Code review', 'descr' => 'Проверка кода преподавателем с разбором ошибок'],
+                ['n' => '08', 'name' => 'Адекватные цены', 'descr' => 'Стоимость занятия от 400 руб за 1.5 часа'],
+            ];
+            ?>
+            @php $i = 0; @endphp
             @foreach($advantages as $advantage)
-            <div class="col-md-6 col-lg-4 col-xl-3">
+                <div class="col-md-6 col-lg-4 col-xl-6 col-xxl-5 {{$i % 2 === 0 ? 'offset-xxl-1' : ''}} ">
                 <div>
                     <br>
                     <br>
-                    <div class="advantage">
-                        <div class="js-cy-brackets bg-opas-dark_" data-color="red" data-width="2" data-size="8">
-                            <span> {{ $advantage['name'] }} </span>
+                    <div class="advantage d-flex justify-content-center align-items-end">
+                        <div class="js-cy-brackets bg-opas-dark d-flex  align-items-center" data-color="red" data-width="2" data-size="8">
+                            <div class="n n1">
+                                <span> {{ $advantage['n'] }} </span>
+                            </div>
+                            <div style="width: 70%">
+                                <span class="name name1 ta-c"> {{ $advantage['name'] }} </span>
+                            </div>
                         </div>
                     </div>
                     <p class="advantage-descr p-lr-10"> {!! $advantage['descr'] !!}  </p>
                 </div>
             </div>
+            @php $i++; @endphp
             @endforeach
         </div>
         <div class="row">
             <br> <br> <br>
         </div>
     </div>
+
+    @include('components.cyber.matrix', ['css' => 'matrix-pos-bl'])
 </div>
 
 <div class="container-fluid bottom-ark bg-yellow px-0">

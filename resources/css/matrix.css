@@ -3,29 +3,69 @@
 }
 .matrix {
     position: absolute;
-    top:100px;
-    left:15px;
     display: flex;
     flex-wrap: wrap;
     border-right:  1px dotted #6b6b6b;
     padding: 2px;
     width: 40px;
 }
+.matrix-pos-tl {
+    top:70px;
+    left:15px;
+}
+.matrix-pos-bl {
+    bottom:70px;
+    left:15px;
+}
 .matrix-cube {
     margin: 2px;
-    width: 4px;
-    height: 4px;
+    width: 6px;
+    height: 6px;
     background: rgba(20, 20, 20, 0.1);
 }
 .matrix-cube-mark {
     margin: 2px;
-    width: 4px;
-    height: 4px;
+    width: 6px;
+    height: 6px;
     background: rgba(0, 0, 0, 0.22);
 }
 .matrix-cube-red {
     margin: 2px;
-    width: 4px;
-    height: 4px;
-    background: rgba(255, 0, 0, 0.42);
+    width: 6px;
+    height: 6px;
+    background: rgba(255, 0, 0, 0.32);
+}
+
+.xtext-wrapper {
+    position: absolute;
+    top:50px;
+    right: 20px;
+    font-family: "Orbitron", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    word-spacing: 0.5em;
+    font-size: 33px;
+}
+.xtext {
+    writing-mode: vertical-rl;
+}
+.xtext span {
+    display: block;
+    color: rgba(0,0,0,0.13);
+    font-size: 16px;
+    padding: 10px 0px;
+
+}
+.xtext span b {
+    font-size: 28px;
+    color: rgba(255, 103, 135, 0.4);
+}
+.xtext span i {
+    color: rgba(0,0,0,0.13);
+    font-size: 16px
+}
+.xtext-border {
+    border-bottom: 1px solid rgba(255,0,0,0.54);
+    border-left:1px solid rgba(255,0,0,0.51);
 }

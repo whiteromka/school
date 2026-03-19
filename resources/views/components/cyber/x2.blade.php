@@ -39,6 +39,7 @@
                             </div>
                             <div class="trapezoid-top" style="border-top: 5px solid var(--yellow-color);"></div>
                         </div>
+
                     </div>
                 </div>
             @endforeach

@@ -5,29 +5,32 @@
             <h2 class="section-title">Что нужно для обучения</h2>
             <div class="section-divider" aria-hidden="true"></div>
         </div>
+        @php
+            $data = [
+                ['en' => 'Confident PC user','ru' => 'Уверенное владение ПК',
+                'descr' => 'Мы ожидаем от студентов хороший уверенный уровень владения ПК'
+                ],
+                ['en' => 'Equipment','ru' => 'Оборудование',
+                    'descr' => 'Вам понадобится компьютер или ноутбук на windows/linux, так же микрофон для общения'
+                ],
+                ['en' => 'Involvement','ru' => 'Вовлечённость',
+                 'descr' => 'Обучение - это диалог. Ждём активного участия: вопросы, обсуждения, домашние задания. Чем больше вы вкладываете, тем быстрее растёте'
+                ],
+            ];
+        @endphp
+
         <div class="services-grid">
+            @foreach($data as $item)
             <div class="service-card">
-                <div class="service-index"> <div class="left">01</div></div>
-                <div class="service-name">Уверенное владение ПК</div>
+                <div class="service-index">
+                    <div class="left fs-20">{{ $item['en'] }}</div>
+                </div>
+                <div class="service-name">{{ $item['ru'] }}</div>
                 <p class="service-desc">
-                    Мы ожидаем от студентов хороший уверенный уровень владения ПК
-                </p>
-{{--                <span class="service-tag">AI / ML</span>--}}
-            </div>
-            <div class="service-card">
-                <div class="service-index"> <div class="left">02</div></div>
-                <div class="service-name">Оборудование</div>
-                <p class="service-desc">
-                    Вам понадобится компьютер или ноутбук на windows/linux, так же микрофон для общения
+                    {{ $item['descr']  }}
                 </p>
             </div>
-            <div class="service-card">
-                <div class="service-index"> <div class="left">03</div></div>
-                <div class="service-name">Вовлечённость</div>
-                <p class="service-desc">
-                    Обучение - это диалог. Ждём активного участия: вопросы, обсуждения, домашние задания. Чем больше вы вкладываете, тем быстрее растёте
-                </p>
-            </div>
+            @endforeach
         </div>
 
         <div style="height: 80px"></div>
@@ -36,30 +39,35 @@
             <h2 class="section-title">Как учим</h2>
             <div class="section-divider" aria-hidden="true"></div>
         </div>
+
+        @php
+        $data2 = [
+            ['en' => 'Live classes','ru' => 'Живые занятия',
+            'descr' => 'Увидите как рассуждает реальный программист. Задавайте вопросы сразу, работайте вместе с менторами'
+            ],
+            ['en' => 'Practice & Homework','ru' => 'Практика и ДЗ',
+            'descr' => 'Теория сразу закрепляется на задачах. От основ до техник, которые используют в индустрии прямо сейчас'
+            ],
+            ['en' => 'Building projects','ru' => 'Пишем проекты',
+            'descr' => 'Каждый модуль завершается полноценным проектом. К концу модуля у вас будет готовый и проект в портфолио'
+            ]
+        ];
+        @endphp
+
         <div class="services-grid">
-            <div class="service-card">
-                <div class="service-index"> <div class="left">04</div></div>
-                <div class="service-name">Живые занятия</div>
-                <p class="service-desc">
-                    Увидите как рассуждает реальный программист. Задавайте вопросы сразу, работайте
-                    вместе с менторами</p>
-            </div>
-            <div class="service-card">
-                <div class="service-index"> <div class="left">05</div></div>
-                <div class="service-name">Практика и ДЗ</div>
-                <p class="service-desc">
-                    Теория сразу закрепляется на задачах. От основ до техник, которые
-                    используют в индустрии прямо сейчас
-                </p>
-            </div>
-            <div class="service-card">
-                <div class="service-index"> <div class="left">06</div></div>
-                <div class="service-name">Пишем проекты</div>
-                <p class="service-desc">
-                    Каждый модуль завершается полноценным проектом. К концу модуля у вас будет готовый
-                    и проект в портфолио
-                </p>
-            </div>
+
+            @foreach($data2 as $item)
+                <div class="service-card">
+                    <div class="service-index">
+                        <div class="left fs-20">{{ $item['en']  }}</div>
+                    </div>
+                    <div class="service-name">{{ $item['ru']  }}</div>
+                    <p class="service-desc">
+                        {{ $item['descr']  }}
+                    </p>
+                </div>
+            @endforeach
+
         </div>
 
     </section>

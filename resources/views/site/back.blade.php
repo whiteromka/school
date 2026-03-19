@@ -11,9 +11,8 @@
 
 @section('content')
 
-    <x-nexus.hello></x-nexus.hello>
-
-    <x-cyber.php-adv></x-cyber.php-adv>
+    @include('components.nexus.hello')
+    @include('components.cyber.php-adv2')
 
     <div class="container">
         <div class="cy-item-tabs-wrap">
@@ -156,7 +155,7 @@
     </div>
     <div style="height: 150px"></div>
 
-    <x-nexus.php-blocks :modules="$modules" :userModuleIds="$userModuleIds"></x-nexus.php-blocks>
+    @include('components.nexus.php-blocks', ['modules' => $modules, 'userModuleIds' => $userModuleIds])
 
     <div class="container">
         <br>

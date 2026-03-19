@@ -25,6 +25,9 @@
 .bg-DEFAULT {background: #6a6a6a;}
 .bg-purple {background: var(--purple-color);}
 .bg-yellow {background: var(--yellow-color);}
+.bg-white {background: white;}
+.bg-light-grey {background: #bababa;}
+.bg-grey {background: grey;}
 
 .bg-pink {background: #bb2c46;}
 .bg-black {background: black;}
@@ -45,6 +48,8 @@
 .br-b { border: 2px solid #0b99ff; }  .br-b1 { border: 1px solid #0b99ff; }
 .br-t2 { border: 2px solid turquoise; }
 
+.fs-30 {font-size: 30px !important;}
+.fs-20 {font-size: 20px !important;}
 .fs-13, .fs-13 > li > button {font-size: 13px !important;}
 .fs-12 {font-size: 12px !important;}
 .fs-11 {font-size: 11px !important;}

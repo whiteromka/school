@@ -108,13 +108,14 @@
 @include('components.nexus.vacancies')
 <div style="height: 150px"></div>
 
-@include('components.cyber.x2')
+{{--@include('components.cyber.x2')--}}
+@include('components.cyber.advantages2')
 <div style="height: 150px"></div>
 
 <div class="container">
     <section class="section_" id="about">
         <div class="section-header">
-            <div class="section-label">finaly...</div>
+            <div class="section-label">finally...</div>
             <h2 class="section-title" >Тут конец...</h2>
             <div class="section-divider" aria-hidden="true"></div>
         </div>

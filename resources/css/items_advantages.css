@@ -17,7 +17,6 @@
     font-style: normal;
     word-spacing: 0.5em;
 }
-
 .cy-items-container {
     padding-top: 20px;
 }
@@ -199,6 +198,19 @@
     font-size: 16px;
 }
 
+.header-ark {
+    width: 65%;
+    margin-right: 0px;
+    margin-bottom: -1px;
+    display: flex;
+    align-items: center;
+    /*justify-content: flex-end;*/
+    height: 60px;
+    clip-path: polygon(34px 0%, calc(100% - 34px) 0%, 100% 100%, 0% 100%);
+}
+.header-ark {
+    color: black;
+}
 
 .top-ark {
     width: 85%;
@@ -210,6 +222,7 @@
     height: 30px;
     clip-path: polygon(34px 0%, 100% 0%, 100% 100%, 0% 100%);
 }
+
 .bottom-ark {
     width:85%;
     margin-left: 0px;
@@ -278,12 +291,30 @@
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    border: 1px dotted rgba(0, 0, 0, 0.11);
+    border: 1px dotted rgba(0, 0, 0, 0.25);
 }
 .advantage > div{
     width: 100%;
 }
-.advantage span {
+.advantage span.n, .advantage .n {
+    font-size: 28px;
+    font-family: "Orbitron", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    word-spacing: 0.5em;
+    color: orange;
+    padding: 0 10px;
+    background: rgba(0, 251, 255, 0.09);
+    border: 1px solid rgba(6, 80, 90, 0.36);
+}
+.advantage .n1 {
+    color: white;
+    color: #00f2ff;
+    border: 1px solid #888888;
+    background: rgba(0, 0, 0, 0.18);
+}
+.advantage div span.name {
     font-size: 14px;
     text-transform: uppercase;
     display: block;
@@ -293,8 +324,8 @@
     font-weight: 600;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    padding: 10px;
     text-align: center;
+    width: 100%;
 }
 .advantage-descr {
     font-family: "Share Tech Mono", monospace;
@@ -302,7 +333,6 @@
     font-weight: 200;
     font-style: normal;
     color: #060606;
-    /*font-size: 14px;*/
     line-height: 2.0;
     text-align: center;
 }

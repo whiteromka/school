@@ -1,6 +1,6 @@
 <div class="container">
     <h2 class="h2-common">
-        Вопросы - ответы / FAQ
+        Вопросы - ответы  <span>FAQ</span>
     </h2>
 </div>
 

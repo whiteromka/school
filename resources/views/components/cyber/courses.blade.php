@@ -1,6 +1,6 @@
 <div class="container">
     <h2 class="h2-common">
-        {{--        <span>0.01</span> <br>--}}
+{{--        <span class="fs-12">Courses</span><br>--}}
         НАШИ КУРСЫ И МОДУЛИ
     </h2>
 </div>

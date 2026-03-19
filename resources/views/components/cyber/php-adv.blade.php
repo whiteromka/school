@@ -16,7 +16,6 @@
 </div>
 
 <div class="container-fluid bg-pink_ px-0" style="background: rgba(85,85,85,0.09)">
-    <x-cyber.matrix></x-cyber.matrix>
 
     <div class="container">
         <br>

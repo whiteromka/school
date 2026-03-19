@@ -731,8 +731,50 @@ body {
 
 /* Отзывы */
 .reviews-list {}
-.review-item {
-    padding:  15px 30px;
-    background: rgba(126, 126, 126, 0.24);
+.review-item-wrap {
+    padding:  4px;
+    background: rgba(126, 126, 126, 0.05);
     backdrop-filter: blur(8px);
 }
+.review-item {
+    padding: 10px 18px;
+    padding-bottom: 6px;
+}
+
+/* Кастомный мини блок контейнер */
+.wrap-custom-block-cy {
+    margin-bottom: 20px;
+}
+
+.wrap-custom-block-cy .outer-border {
+    border: 1px solid rgba(255, 116, 116, 0.29);
+    padding: 4px;
+    display: flex;
+    justify-content: center;
+}
+.custom-block-cy-left {
+    width: 100%;
+}
+.custom-block-cy-head {
+    background: #ea3355;
+    text-align: center;
+    text-transform: uppercase;
+    color: black;
+    font-family: "Tektur", sans-serif;
+    padding: 8px 10px;
+    margin-bottom: 6px;
+}
+.custom-block-cy-head h6{margin-bottom: 0;}
+.custom-block-cy-body {
+    border: 1px solid rgba(126, 126, 126, 0.45);
+    padding: 4px 11px;
+    font-size: 10px;
+    color: #666666;
+}
+
+.custom-block-cy-right {
+    background: #ea3355;
+    margin-left: 4px;
+    font-family: "Share Tech Mono", monospace;
+}
+
