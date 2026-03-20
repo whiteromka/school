@@ -18,7 +18,10 @@
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
+                        <th>Last Name</th>
                         <th>Email</th>
+                        <th>Email Verified</th>
+                        <th>Is Admin</th>
                         <th>Phone</th>
                         <th>Telegram</th>
                         <th>Created</th>
@@ -41,12 +44,21 @@
             columns: [
                 { data: 'id', name: 'id' },
                 { data: 'name', name: 'name' },
+                { data: 'last_name', name: 'last_name' },
                 { data: 'email', name: 'email' },
+                { data: 'email_verified_at', name: 'email_verified_at' },
+                { 
+                    data: 'is_admin', 
+                    name: 'is_admin',
+                    render: function(data) {
+                        return data ? '<span class="badge bg-success">Yes</span>' : '<span class="badge bg-secondary">No</span>';
+                    }
+                },
                 { data: 'phone', name: 'phone' },
                 { data: 'telegram', name: 'telegram' },
                 { data: 'created_at', name: 'created_at' },
-                { 
-                    data: 'actions', 
+                {
+                    data: 'actions',
                     name: 'actions',
                     orderable: false,
                     searchable: false

@@ -39,17 +39,10 @@
         <div class="sidebar p-3" style="width: 250px;">
             <h4 class="text-white mb-4">Admin Panel</h4>
             <a href="{{ route('admin.users') }}" class="{{ request()->routeIs('admin.users') ? 'active' : '' }}">
-                👥 Users
+                Users
             </a>
-            <a href="#" class="">
-                📄 Vacancies
-            </a>
-            <a href="#" class="">
-                📝 Requests
-            </a>
-            <hr class="text-white">
-            <a href="{{ url('/') }}" target="_blank">
-                ← Back to Site
+            <a href="{{ route('admin.modules') }}" class="{{ request()->routeIs('admin.modules*') ? 'active' : '' }}">
+                Modules
             </a>
         </div>
 

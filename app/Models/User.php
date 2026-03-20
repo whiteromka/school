@@ -27,6 +27,7 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $email_verified_at
  * @property string $password
  * @property null|int $password_verified
+ * @property int $is_admin
  * @property string|null $remember_token
  * @property Carbon $created_at
  * @property Carbon $updated_at
@@ -57,7 +58,8 @@ class User extends Authenticatable
         'password_verified',
         'from_tgbot_unknown',
         'username',
-        'additional_data'
+        'additional_data',
+        'is_admin'
     ];
 
     /**
@@ -82,6 +84,7 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'additional_data' => 'array',
+            'is_admin' => 'boolean',
         ];
     }
 

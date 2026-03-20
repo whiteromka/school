@@ -20,10 +20,10 @@ class AdminMiddleware
             return redirect()->route('admin.login');
         }
 
-        // Check if user has admin role (add is_admin column to users table)
-        // if (!auth()->user()->is_admin) {
-        //     abort(403, 'Unauthorized access.');
-        // }
+        // Check if user has admin role
+        if (!auth()->user()->is_admin) {
+            abort(403, 'Unauthorized access.');
+        }
 
         return $next($request);
     }

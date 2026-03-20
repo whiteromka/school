@@ -37,6 +37,15 @@ class UserController extends Controller
                     </form>
                 ';
             })
+            ->editColumn('last_name', function ($user) {
+                return $user->last_name ?? '-';
+            })
+            ->editColumn('email_verified_at', function ($user) {
+                return $user->email_verified_at ? $user->email_verified_at->format('Y-m-d H:i') : '-';
+            })
+            ->editColumn('is_admin', function ($user) {
+                return $user->is_admin ? 1 : 0;
+            })
             ->editColumn('created_at', function ($user) {
                 return $user->created_at ? $user->created_at->format('Y-m-d H:i') : '-';
             })
