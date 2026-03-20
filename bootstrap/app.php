@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Middleware\AdminMiddleware;
+use App\Providers\ViewComposerServiceProvider;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -12,9 +14,13 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->validateCsrfTokens(except: ['tgbot/events',]);
+
+        $middleware->alias([
+            'admin' => AdminMiddleware::class,
+        ]);
     })
     ->withProviders([
-        \App\Providers\ViewComposerServiceProvider::class,
+        ViewComposerServiceProvider::class,
     ])
     ->withExceptions(function (Exceptions $exceptions): void {
         //

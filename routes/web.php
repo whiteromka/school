@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\AuthController as AdminAuthController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\BusinessRequestController;
 use App\Http\Controllers\Oauth\GithubController;
 use App\Http\Controllers\Oauth\GoogleController;
@@ -73,3 +75,26 @@ Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index
 Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update')->middleware('auth');
 Route::get('/profile/update-password-view', [ProfileController::class, 'updatePasswordView'])->name('profile.update-password-view')->middleware('auth');
 Route::post('/profile/update-password', [ProfileController::class, 'updatePassword'])->name('profile.update-password')->middleware('auth');
+
+// ===============================================================
+// Admin Panel Routes
+// ===============================================================
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    // Auth routes
+    Route::get('/login', [AdminAuthController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [AdminAuthController::class, 'login']);
+    Route::post('/logout', [AdminAuthController::class, 'logout'])->name('logout');
+
+    // Protected admin routes
+    Route::middleware(['auth', 'admin'])->group(function () {
+        // Users CRUD
+        Route::get('/users', [AdminUserController::class, 'index'])->name('users');
+        Route::get('/users/data', [AdminUserController::class, 'data'])->name('users.data');
+        Route::get('/users/create', [AdminUserController::class, 'create'])->name('users.create');
+        Route::post('/users', [AdminUserController::class, 'store'])->name('users.store');
+        Route::get('/users/{user}/edit', [AdminUserController::class, 'edit'])->name('users.edit');
+        Route::put('/users/{user}', [AdminUserController::class, 'update'])->name('users.update');
+        Route::delete('/users/{user}', [AdminUserController::class, 'destroy'])->name('users.destroy');
+    });
+});
