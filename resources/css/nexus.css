@@ -461,19 +461,24 @@ a.base-link:hover {
 }
 
 .service-card-count-line-wrap {
-    border-left: 1px dotted var(--blue-color);
-    border-right: 1px dotted var(--blue-color);
+    border-left: 1px dotted #505050;
+    border-right: 1px dotted #505050;
     padding: 0 4px;
+    min-width: 164px;
     max-width: 300px;
     display: flex;
-    flex-direction: row; /* Элементы в ряд */
-    align-items: center; /* Центрируем по вертикали */
-    gap: 8px; /* Отступ между span и линией */
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
     min-height: 10px;
+}
+.service-card:hover  .service-card-count-line-wrap {
+    border-left: 1px dotted var(--blue-color);
+    border-right: 1px dotted var(--blue-color);
 }
 
 .service-card-count-line-wrap span {
-    flex-shrink: 0; /* Запрещаем сжиматься */
+    flex-shrink: 0;
     width: 20px;
     display: flex;
     align-items: center;
@@ -482,23 +487,33 @@ a.base-link:hover {
 .service-card-count-line-wrap span svg {
     width: 100%;
     height: auto;
-    fill: #00f0ff;
-    fill: orange;
+    fill: #393939;
 }
 
 .service-card-count-line {
     display: flex;
-    gap: 4px;
+    gap: 2px;
     background: rgba(255, 255, 255, 0.02);
     overflow: hidden;
-    flex: 1; /* Занимает оставшееся пространство */
+    flex: 1;
     max-width: 300px;
+    border: 1px solid #2b2b2b;
+    min-height: 7px;
+}
+.service-card:hover  .service-card-count-line {
+    border: 1px solid #6a6a6a;
 }
 
 .service-card-count-line .item {
-    width: 5px;
+    width: 3px;
     height: 5px;
     background: orange;
+}
+.service-card-count-line-wrap .icon-grey {
+    fill: #2b2b2b;
+}
+.service-card:hover  .service-card-count-line-wrap .icon-grey {
+    fill: orange;
 }
 
 
@@ -529,6 +544,27 @@ a.base-link:hover {
     width: 100%;
 }
 
+.service-index .left{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+}
+.user-counter {
+    width: 146px;
+    /*height: 34px;*/
+    border: 1px solid rgba(179, 103, 103, 0.29);
+    display: flex;
+    gap: 0px;
+    flex-wrap: wrap
+}
+.user-counter .item {
+    width: 4px;
+    height: 4px;
+    background: rgba(97, 97, 97, 0.92);
+    margin: 2px;
+}
+
 .right > div {
     border-left: 1px dotted #343434;
     color: #343434;
@@ -540,7 +576,6 @@ a.base-link:hover {
     flex-direction: column;
     align-items: flex-start;
     gap: 0px;
-
     font-size: 12px;
     font-family: "Share Tech Mono", monospace;
     font-style: normal;
