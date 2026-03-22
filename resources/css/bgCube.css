@@ -71,3 +71,34 @@ body {
         height: 3px;
     }
 }
+
+/* характеристики квадрата */
+.grid-square.active {
+    outline: 1px solid rgba(255, 0, 0, 0.9);
+    box-shadow:
+        inset 0 0 20px rgba(255, 0, 0, 0.5),
+        0 0 20px rgba(255, 0, 0, 0.4);
+    transform: scale(1.05);
+    transition: all 0.1s;
+}
+
+.debug-menu {
+    padding: 10px;
+    border: 1px solid rgba(255, 0, 0, 0.4);
+    color: #f5ebeb;
+    font-size: 9px;
+    backdrop-filter: blur(6px);
+    z-index: 9999;
+}
+
+.debug-line {
+    margin-bottom: 1px;
+    opacity: 0;
+    animation: fadeIn 0.3s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
