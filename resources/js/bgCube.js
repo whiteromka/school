@@ -46,27 +46,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // helper для задержек
-    const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
-    // анимация по очереди
-    async function animatePoints() {
-        for (const point of points) {
-            point.style.background = '#6bf20a';
-            point.style.boxShadow = '0 0 5px 2px rgba(51, 255, 0, 0.5)';
-
-            const square = point.parentElement;
-            if (square) {
-                square.style.outline = '1px solid rgba(98, 255, 0, 0.11)';
-            }
-            await sleep(100);
-        }
-    }
-    window.animatePoints = animatePoints;
-
     createGrid();
-
     window.addEventListener('resize', createGrid);
-    // setTimeout(() => {
-    //     animatePoints();
-    // }, 100);
 });
