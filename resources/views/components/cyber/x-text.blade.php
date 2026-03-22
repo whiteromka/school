@@ -1,6 +1,6 @@
 <?php
-    $main = !empty($main) ? $main : 'HOST';
-    $mainSpan = !empty($mainSpan) ? $mainSpan : '---- YYC';
+    $main = !empty($main) ? $main : 'XXX';
+    $mainSpan = !empty($mainSpan) ? $mainSpan : ' YC';
     $descr = !empty($descr) ? $descr : 'xx.xx 1067.34'
 ?>
 <div class="xtext-wrapper d-none d-xxl-block">

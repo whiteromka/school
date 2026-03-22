@@ -87,13 +87,6 @@
                         Стоимость интеграции нового программиста в разработку невелика благодаря простоте языка.
                         И результат работы php разработчика виден быстро.
                     </p>
-                    <p>Ниже различные рейтинги языков программирования:</p>
-                    <a href="https://www.opennet.ru/opennews/art.shtml?num=64135" target="_blank">opennet.ru</a>,
-                    <a href="https://habr.com/ru/companies/selectel/articles/951348/" target="_blank">habr.com</a>,
-                    <a href="https://www.tiobe.com/tiobe-index/" target="_blank">tiobe.com</a>,
-                    <a href="https://journal.sovcombank.ru/obuchenie/kakie-yaziki-programmirovaniya-budut-vostrebovani#h_24855822511737673974105"
-                       target="_blank">sovcombank.ru</a>,
-                    <a href="https://rb.ru/stories/most-in-demand-languages/" target="_blank">rb.ru</a>
                 </div>
                 <div class="tab-pane fade" id="Популярный">
                     {{--                    <h4>PHP — двигатель современного интернета</h4>--}}
@@ -112,6 +105,13 @@
                         всегда будет востребован,
                         потому что поддерживать и развивать существующую инфраструктуру нужно постоянно.
                     </p>
+                    <p>Ниже различные рейтинги языков программирования:</p>
+                    <a href="https://www.opennet.ru/opennews/art.shtml?num=64135" target="_blank">opennet.ru</a>,
+                    <a href="https://habr.com/ru/companies/selectel/articles/951348/" target="_blank">habr.com</a>,
+                    <a href="https://www.tiobe.com/tiobe-index/" target="_blank">tiobe.com</a>,
+                    <a href="https://journal.sovcombank.ru/obuchenie/kakie-yaziki-programmirovaniya-budut-vostrebovani#h_24855822511737673974105"
+                       target="_blank">sovcombank.ru</a>,
+                    <a href="https://rb.ru/stories/most-in-demand-languages/" target="_blank">rb.ru</a>
                 </div>
                 <div class="tab-pane fade" id="Простой">
                     {{--                    <h4>Низкий порог входа</h4>--}}

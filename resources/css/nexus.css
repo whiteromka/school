@@ -410,6 +410,15 @@ a.base-link:hover {
     border-left: 1px solid var(--border-color);
     padding-left: 16px;
 }
+.meta-item-actived {
+    border-left: 2px solid #00fbff;
+    background: rgba(0, 230, 255, 0.08);
+    background: linear-gradient(
+        to right,
+        rgba(0, 230, 255, 0.08),
+        rgba(0, 230, 255, 0)
+    );
+}
 
 .meta-label {
     font-size: 10px;
@@ -551,9 +560,8 @@ a.base-link:hover {
 
 }
 .user-counter {
-    width: 146px;
-    /*height: 34px;*/
-    border: 1px solid rgba(179, 103, 103, 0.29);
+    width: 244px;
+    border: 1px solid rgba(179, 103, 103, 0.19);
     display: flex;
     gap: 0px;
     flex-wrap: wrap
@@ -561,7 +569,7 @@ a.base-link:hover {
 .user-counter .item {
     width: 4px;
     height: 4px;
-    background: rgba(97, 97, 97, 0.92);
+    background: rgba(97, 97, 97, 0.43);
     margin: 2px;
 }
 

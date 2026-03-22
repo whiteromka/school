@@ -17,7 +17,7 @@
     <br>
 </div>
 
-    <div class="container-fluid px-0">
+    <div class="container-fluid px-0 bg-pink">
         <div class="slider-wrapper">
             <div class="slider-header_"></div>
             <?php
@@ -80,8 +80,8 @@
                 ],
             ];
             ?>
-            <div class="slider-container">
-                <div class="swiper mySwiper">
+            <div>
+                <div class="swiper_ mySwiper">
                     <div class="swiper-wrapper">
 
                         @foreach($items as $k => $v)

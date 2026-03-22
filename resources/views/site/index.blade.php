@@ -116,14 +116,91 @@
     <section class="section_" id="about">
         <div class="section-header">
             <div class="section-label">finally...</div>
-            <h2 class="section-title" >Тут конец...</h2>
+            <h2 class="section-title" >В заключении</h2>
             <div class="section-divider" aria-hidden="true"></div>
         </div>
     </section>
 </div>
 
 {{-- Обычный двойной Контейнер --}}
-@include('components.cyber.simple-double')
+{{--@include('components.cyber.simple-double')--}}
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-12">
+            <div class="js-cy-brackets" data-color="white" data-width="1" data-size="10" style="padding: 5px">
+
+                <div class="bottom-main">
+
+                    <div class="deco-cube-40 top-10 right-10"></div>
+                    <br>
+                    <div class="row" style="border: 1px solid #070707; border-right: none ">
+                        <p></p>
+                        <div class="col-4" style="display: flex; flex-direction: column;">
+                            <div class="ta-c js-cy-brackets" data-color="white" data-size="8" data-width="8"
+                                 style="height: 100%;"
+                            >
+                                <br><br>
+                                <h2 style="color: black; font-family: 'Tektur', sans-serif">НЕ ОБМАНЫВАЕМ<br>И НЕ БРОСАЕМ</h2>
+                                <br><br>
+                            </div>
+                        </div>
+
+                        <div class="col-8">
+                            <div class="js-cy-brackets container-t " data-color="white" style="padding: 4px">
+                                <div style="
+
+                                /*background-image:*/
+                                /*  repeating-linear-gradient(45deg,*/
+                                /*    rgba(0,0,0,0.13) 4px,  rgba(0,0,0,0.93) 2px,*/
+                                /*    rgba(0,0,0,0.20) 5px,  rgba(0,0,0,0.20) 10px);*/
+                                /*background-size: 6px 6px;*/
+
+
+                                padding: 10px 40px">
+                                    <br>
+                                    <p style="color: #a2a2a2; font-size: 15px; letter-spacing: 1px; line-height: 1;">Кто мы такие?
+                                        Честно? Маленькая команда энтузиастов. Без офиса в Москва-Сити, без рекламы на ТВ и без громких имён в инвесторах.
+                                        Зато у нас есть:
+                                        15 лет коммерческого опыта на двоих Желание сделать реально крутой продукт Понимание, что каждый студент важен и это наша репутация
+                                        Мы не строим из себя гуру. Мы просто показываем, что умеем сами и как сейчас пишут приложения в компания.
+                                        Помогаем повторить. Если ты хочешь, чтобы тебя вели за ручку, но при этом уважали — нам по пути.
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <p></p>
+                    </div>
+
+                </div>
+                <div class="bottom-main-footer" style="margin-top: -1px"></div>
+
+            </div>
+        </div>
+
+{{--        <div class="col-12 col-md-6">--}}
+{{--            <div class="custom-block mt-1">--}}
+{{--                <div class="trapezoid-bottom"></div>--}}
+{{--                <div class="php-custom-block-content ta-c" style="min-height: 190px">--}}
+{{--                    <p class="php-custom-block-head" id="js-techStack">МЫ НЕ ОБМАНЫВВАЕМ И НЕ НИКОГО НЕ БРОСАЕМ</p>--}}
+{{--                    <br>--}}
+{{--                    <p class="php-custom-block-text ta-l">--}}
+{{--                        Кто мы такие?--}}
+{{--                        Честно? Маленькая команда энтузиастов. Без офиса в Москва-Сити, без рекламы на ТВ и без громких имён в инвесторах.--}}
+{{--                        Зато у нас есть:--}}
+{{--                        15 лет коммерческого опыта на двоих Желание сделать реально крутой продукт Понимание, что каждый студент важен и это наша репутация--}}
+{{--                        Мы не строим из себя гуру. Мы просто показываем, что умеем сами и как сейчас пишут приложения в компания. Помогаем повторить. Если ты хочешь, чтобы тебя вели за ручку, но при этом уважали — нам по пути.</p>--}}
+{{--                    <br>--}}
+{{--                </div>--}}
+{{--                <div class="trapezoid-top"></div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+
+    </div>
+</div>
+
 <div style="height: 150px"></div>
 
 {{--  Отзывы  --}}

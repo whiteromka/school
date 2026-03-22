@@ -98,8 +98,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 320px;
-    opacity: 0.4;
+    min-height: 350px;
+    opacity: 0.7;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -109,7 +109,7 @@
 }
 
 .swiper-slide:hover {
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 /* Карточки */

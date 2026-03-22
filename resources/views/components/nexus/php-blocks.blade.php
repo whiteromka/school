@@ -3,7 +3,7 @@
 
     /** @var Collection $modules */
     /** @var int[] $userModuleIds */
-    $max = 90;
+    $max = 94;
 @endphp
 
 <div class="container">
@@ -34,18 +34,18 @@
                      data-users-count="{{ $module->openActiveModule?->users->count() ?? 0 }}"
                      data-max-users="{{ $max }}">
 
-                    {{--                            <div class="user-counter" data-context="Записалось на бесплатную часть">--}}
-                    {{--                                <?php for($x = 1; $x <= 90; $x++) :?>--}}
-                    {{--                                <div class="item"></div>--}}
-                    {{--                                <?php endfor;?>--}}
-                    {{--                            </div>--}}
-
                     <div class="service-index">
-                        <div class="left">
+                        <div class="left d-flex flex-column flex-sm-row align-items-center gap-2 gap-sm-3">
                             <span>0<?= $i ?></span>
-                            <div class="service-card-count-line-wrap" data-context="Записалось на бесплатную часть">
+{{--                            <div class="user-counter" data-context="Записалось на бесплатную часть">--}}
+{{--                                <?php for($x = 1; $x <= 90; $x++) :?>--}}
+{{--                                    <div class="item"></div>--}}
+{{--                                <?php endfor;?>--}}
+{{--                            </div>--}}
+
+                            <div class="service-card-count-line-wrap w-100 w-sm-auto" data-context="Записалось на бесплатную часть">
                                 <div class="service-card-count-line">
-                                    {{-- блоки .item будут добавлены через JS --}}
+                                     блоки .item будут добавлены через JS
                                 </div>
                                 <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="icon-grey">
@@ -53,6 +53,7 @@
                                     </svg>
                                 </span>
                             </div>
+
                         </div>
 
                         <div class="right">
@@ -133,7 +134,7 @@
             const ITEM_WIDTH = 3;      // ширина блока .item в px
             const GAP_WIDTH = 2;       // gap между блоками в px
             const TOTAL_PER_ITEM = ITEM_WIDTH + GAP_WIDTH; // 9px на один блок
-            const MAX_USERS = 90;      // максимальное количество пользователей
+            const MAX_USERS = 94;      // максимальное количество пользователей
 
             /**
              * Отрисовка блоков заполненности для одной карточки

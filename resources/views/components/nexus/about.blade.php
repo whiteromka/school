@@ -7,21 +7,25 @@
         </div>
         <div class="info-grid">
             <div class="info-meta">
-                <div class="meta-item">
+                <div class="meta-item meta-item-actived" >
                     <div class="meta-label">Founders</div>
                     <div class="meta-value"><span class="accent">02</span> разработчика</div>
                 </div>
-                <div class="meta-item">
+                <div class="meta-item meta-item-actived">
                     <div class="meta-label">years of experience</div>
                     <div class="meta-value"><span class="accent">15</span> лет</div>
                 </div>
-                <div class="meta-item">
+{{--                <div class="meta-item meta-item-actived">--}}
+{{--                    <div class="meta-label">courses</div>--}}
+{{--                    <div class="meta-value"><span class="accent">4</span> направления</div>--}}
+{{--                </div>--}}
+                <div class="meta-item meta-item-actived">
+                    <div class="meta-label">modules</div>
+                    <div class="meta-value">более <span class="accent">10</span> модулей</div>
+                </div>
+                <div class="meta-item meta-item-actived">
                     <div class="meta-label">we teach</div>
                     <div class="meta-value"><span class="accent">30</span> технологий</div>
-                </div>
-                <div class="meta-item">
-                    <div class="meta-label">number of modules</div>
-                    <div class="meta-value">более <span class="accent">10</span> модулей</div>
                 </div>
             </div>
             <div class="info-body">

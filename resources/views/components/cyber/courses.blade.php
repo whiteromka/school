@@ -1,11 +1,13 @@
 <div class="container">
     <h2 class="h2-common">
 {{--        <span class="fs-12">Courses</span><br>--}}
-        НАШИ КУРСЫ И МОДУЛИ
+        НАШИ КУРСЫ
     </h2>
 </div>
 
-<div class="container-fluid top-ark bg-purple px-0">
+<div class="container-fluid top-ark bg-purple_  bg-pink_ bg-yellow_ bg-PHP_ bg-fantom px-0"
+     style="border-top: 1px solid rgba(255,255,255,0.19)"
+>
     <div class="streaks">
         <div class="streak-left streak-b"></div>
         <div class="streak-left streak-b"></div>
@@ -13,14 +15,14 @@
         <span> [][][]== ===</span>
     </div>
 </div>
-<div class="container-fluid  bg-purple px-0">
+<div class="container-fluid  bg-purple_ bg-pink_ bg-yellow_ bg-PHP_ bg-fantom px-0">
     <br>
 </div>
 
-<div class="container-fluid px-0 bg-purple_  wrapper-starfield ">
+<div class="container-fluid px-0 bg-purple_  wrapper-starfield">
     <canvas id="starfield"></canvas>
-    <div class="container-fluid px-0 signal-light">
-        <div class="container cy-items-container" >
+    <div class="container-fluid px-0 signal-light bg-yellow_ bg-fantom ">
+        <div class="container cy-items-container">
             <div class="row">
                 @php $courses = [
                     [
@@ -126,10 +128,10 @@
     </div>
 </div>
 
-<div class="container-fluid  bg-purple px-0">
+<div class="container-fluid  bg-purple_ bg-yellow_ bg-PHP_ bg-fantom px-0">
     <br>
 </div>
-<div class="container-fluid bottom-ark bg-purple px-0">
+<div class="container-fluid bottom-ark bg-purple_ bg-yellow_ bg-PHP_ bg-fantom px-0">
     <div class="streaks">
         <span>== ===[][] == ==[] === [][][]</span>
         <div class="streak-left streak-b"></div>
