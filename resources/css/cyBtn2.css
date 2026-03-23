@@ -33,12 +33,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
     width: 180px;
     height: 40px;
     background: var(--yellow-color);
     clip-path: polygon(100% 0, 100% 40%, 100% 100%, 10% 100%, 0% 63%, 0 0);
-    /*clip-path: polygon(100% 0, 100% 60%, 90% 100%, 10% 100%, 0% 60%, 0 0);*/
 
     font-family: "Tektur", sans-serif;
     font-optical-sizing: auto;

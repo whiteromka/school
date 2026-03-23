@@ -158,10 +158,6 @@
     font-family: Arial, sans-serif;
 }
 
-.plr-20 {
-    padding: 0 20px;
-}
-
 .empty-div {
     margin-top: 3px;
     margin-bottom: 2px;
@@ -469,7 +465,6 @@ body {
 
 /*==========  custom-block  =========*/
 .custom-block {
-    /*margin-top: 30px !important;*/
     margin-bottom: 30px;
     position: relative;
     width: 100%;
@@ -531,7 +526,6 @@ body {
 }
 .php-custom-block-text {
     color: #8e8e8e;
-    padding: 0 10px;
 }
 
 /*==== Контейнер с перспективой===== */
@@ -778,13 +772,29 @@ body {
     font-family: "Share Tech Mono", monospace;
 }
 
-
+.bottom-main-head {
+    background: #bb2c46;
+    padding: clamp(5px, 2vw, 65px);
+    position: relative;
+    min-height: 60px;
+}
 .bottom-main {
     background: #bb2c46;
-    min-height: 300px;
-    padding: 40px;
+    padding: clamp(5px, 2vw, 65px);
+    padding-top: 0;
     position: relative;
 }
+.bottom-main h2 {
+    color: black;
+    font-family: 'Tektur', sans-serif
+}
+.bottom-main p {
+    color: #a2a2a2;
+    font-size: 15px;
+    letter-spacing: 1px;
+    line-height: 1
+}
+
 .bottom-main-footer {
     background: #bb2c46;
     height: 30px;

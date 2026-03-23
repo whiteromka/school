@@ -82,6 +82,7 @@
             ?>
             <div>
                 <div class="swiper_ mySwiper">
+                    <div style="height: 20px"></div>
                     <div class="swiper-wrapper">
 
                         @foreach($items as $k => $v)
@@ -95,8 +96,6 @@
                             </div>
                         @endforeach
                     </div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
                 </div>
                 <div class="swiper-pagination_ swiper-pagination-progressbar_"></div>
             </div>

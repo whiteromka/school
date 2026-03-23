@@ -55,7 +55,6 @@
         @endphp
 
         <div class="services-grid">
-
             @foreach($data2 as $item)
                 <div class="service-card">
                     <div class="service-index">
@@ -67,8 +66,6 @@
                     </p>
                 </div>
             @endforeach
-
         </div>
-
     </section>
 </div>

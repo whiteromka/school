@@ -1,31 +1,29 @@
 <div class="container-fuid px-0">
-    <div class="container">
-        <p class="grey">
-            Рынок труда в IT радикально изменился за последние годы. Если раньше достаточно было знать один язык программирования,
-            то сегодня работодатель ищет специалистов с широким технологическим кругозором. Fullstack стал нормой. Backend-разработчик обязан
-            понимать frontend, а фронтендер — разбираться в API и базах данных.  DevOps-практики, понимание облачной инфраструктуры,
-            смежные области. Бизнес ждёт инженеров широкого профиля. Всем этим технологиям обучаем на курсах.
-        </p>
-        <br>
-        <div class="row">
-            <div class="col-12 col-md-12 col-lg-8 col-xl-9">
-                <div class="js-cy-brackets" data-color="orange" data-type="bracket" data-size="23" data-on-hover="green">
-                    @include('components.network.network')
-                </div>
+    <p class="grey">
+        Рынок труда в IT радикально изменился за последние годы. Если раньше достаточно было знать один язык программирования,
+        то сегодня работодатель ищет специалистов с широким технологическим кругозором. Fullstack стал нормой. Backend-разработчик обязан
+        понимать frontend, а фронтендер — разбираться в API и базах данных.  DevOps-практики, понимание облачной инфраструктуры,
+        смежные области. Бизнес ждёт инженеров широкого профиля. Всем этим технологиям обучаем на курсах.
+    </p>
+    <br>
+    <div class="row">
+        <div class="col-12 col-md-12 col-lg-8 mb-20">
+            <div class="js-cy-brackets" data-color="orange" data-type="bracket" data-size="23" data-on-hover="green">
+                @include('components.network.network')
             </div>
-            <div class="col-12 col-md-12 col-lg-4 col-xl-3">
-                <div class="custom-block mt-1">
-                    <div class="trapezoid-bottom"></div>
-                    <div class="php-custom-block-content ta-c" style="min-height: 190px">
-                        <p class="php-custom-block-head" id="js-techStack">технологический стек</p>
-                        <br>
-                        <p class="php-custom-block-text ta-l" id="js-description">На карте представлены все технологии
-                            которым мы обучаем и будем использовать в модулях. Связи между технологиями упрощены для визуально восприятия.
-                            Важно понимать что не все представленные тут технологии нужно знать идеально. В реальности для
-                            некоторых технологий достаточно понять принцип работы, и основные методики использования.</p>
-                        <br>
-                    </div>
-                    <div class="trapezoid-top"></div>
+        </div>
+        <div class="col-12 col-md-12 col-lg-4 mb-20">
+            <div class="js-cy-brackets container-t" data-color="white" style="padding: 4px">
+                <div class="p-clamp-1">
+                    <h5 class="php-custom-block-head_ grey font-tektur" id="js-techStack">Технологический стек</h5>
+                    <p id="js-description" class="grey">
+                        Кто мы такие?
+                        Честно? Маленькая команда энтузиастов. Без офиса в Москва-Сити, без рекламы на ТВ и без громких имён в инвесторах.
+                        Зато у нас есть:
+                        15 лет коммерческого опыта на двоих Желание сделать реально крутой продукт Понимание, что каждый студент важен и это наша репутация
+                        Мы не строим из себя гуру. Мы просто показываем, что умеем сами и как сейчас пишут приложения в компания.
+                        Помогаем повторить. Если ты хочешь, чтобы тебя вели за ручку, но при этом уважали — нам по пути.
+                    </p>
                 </div>
             </div>
         </div>

@@ -3,14 +3,14 @@ document.addEventListener('DOMContentLoaded', function () {
     // ================= CONFIG =================
     const CONFIG = {
         square: {
-            blinkDuration: 3000,
-            blinkInterval: 300,
+            blinkDuration: 2500,
+            blinkInterval: 250,
         },
         menu: {
             lineDelay: 300,
             menuDelay: 5000,
-            blinkDuration: 2000,
-            blinkInterval: 350,
+            blinkDuration: 2500,
+            blinkInterval: 250,
         },
         loop: {
             delayBetweenRuns: 2000,
