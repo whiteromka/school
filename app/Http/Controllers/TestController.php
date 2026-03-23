@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\ActiveModuleService;
+use App\Services\ReviewService;
+use App\Services\TelegramService;
+use App\Services\UserService;
 use App\Models\User;
 use App\Test\Business\Office\OfficeWorker;
 use App\Test\Business\System;
@@ -27,8 +31,23 @@ use Illuminate\Http\Request;
 
 class TestController extends Controller
 {
+    public function __construct(
+        private readonly UserService $userService
+    ) {}
+
+    // /test/tg
+    public function tg()
+    {
+        $telegramService = new TelegramService();
+        $telegramService->sendToCommonChat('(test) Это сообщение отправлено из php в Тг бота который опубликовал его в группе в которой он сам состоит.');
+        die;
+    }
+
+    // GET /test/test
     public function test()
     {
+        $user = $this->userService->findByEmail('judin-ilya@yandex.ru');
+        dd($user->activeModules[0]->module->author);
         $int = 1;
         $str = 'Rom';
         $str2 = "wqeqwe";

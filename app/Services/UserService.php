@@ -42,4 +42,9 @@ class UserService
     {
         return $this->userRepository->getUsersEmails($numberOfEmails);
     }
+
+    public function findByEmail(string $email): ?User
+    {
+        return $this->userRepository->where("email", $email);
+    }
 }
