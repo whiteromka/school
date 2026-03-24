@@ -22,7 +22,7 @@
                     <div class="section-divider" aria-hidden="true"></div>
                 </div>
             </div>
-            <div class="col-md-6 col-xl-4 ms-auto" style="perspective: 1200px; transform-style: preserve-3d; border-left: 1px dotted #00b0db">
+            <div class="col-md-6 col-xl-4 ms-auto profile-card">
                 <div class="profile-main-panel js-cy-brackets" data-color="white" data-size="8">
                     <div class="row">
                         <div class="col-4 col-sm-3 col-md-4 col-xl-3">
@@ -31,11 +31,10 @@
                             </div>
                         </div>
                         <div class="col-8 col-sm-9 col-md-8 col-xl-9">
-                            <h3 class="username tt-up">{{ $user->getFullNameOrEmail()}}</h3>
+                            <h3 class="username tt-up">{{ $user->getFullNameOrEmail() }}</h3>
                         </div>
                     </div>
                     <br>
-
 
                     <p><span class="{{ $user->telegram ? 'cyan' : 'red' }} width-85">Telegram:</span> {{ $user->telegram}}</p>
                     <p><span class="{{ $user->email ? 'cyan' : 'red' }} width-85">Email:</span>{{ $user->email }}</p>
