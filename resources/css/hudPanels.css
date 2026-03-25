@@ -202,6 +202,7 @@
     border: 1px solid hsla(185, 60%, 25%, 0.5);
     background: hsla(220, 20%, 6%, 0.8);
     overflow: hidden;
+    backdrop-filter: blur(4px);
 }
 .data-panel--orange {
     border-color: hsla(8, 60%, 30%, 0.5);
