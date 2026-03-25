@@ -87,4 +87,20 @@ class ActiveModule extends Model
             ->withPivot('joined_at')
             ->withTimestamps();
     }
+
+    public function getRuStatus(): string
+    {
+        $map = self::statusMap();
+        return isset($map[$this->status]) ? $map[$this->status] : '';
+    }
+
+    public static function statusMap(): array
+    {
+        return [
+            self::STATUS_OPEN => 'Запись открыта',
+            self::STATUS_STARTED_FREE => 'Идут бесплатные уроки',
+            self::STATUS_STARTED_FULL => 'Запись закрыта',
+            self::STATUS_FINISHED => 'Завершен'
+        ];
+    }
 }

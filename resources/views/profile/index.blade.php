@@ -1,5 +1,5 @@
 @php
-    use App\Models\User;
+    use App\Models\User;use Illuminate\Support\Carbon;
 
     /** @var User $user */
     /** @var string[] $name */
@@ -43,9 +43,9 @@
                     <div class="profile-main-panel-code-wrap">
                         <br>
                         <span class="cyan width-85">Code:</span>
-                        <span class="js-cyber-text-animation cy-char p-lr-20 w-250 br-t1 ta-c bg-black" style="display: inline-block">
-                                <span
-                                data-target="0">1</span><span data-target="2">$</span><span
+                        <span class="js-cyber-text-animation cy-char p-lr-20 w-250 br-t1 ta-c bg-black"
+                              style="display: inline-block">
+                                <span data-target="0">1</span><span data-target="2">$</span><span
                                 data-target=" ">G</span><span data-target=".">L</span><span
                                 data-target="0">Y</span><span data-target="2">%</span><span
                                 data-target=" ">5</span><span data-target="0">N</span><span
@@ -77,7 +77,46 @@
                 <span class="btn-collapse" data-action="collapse"> — </span>
             </div>
             <div class="data-panel__body data-stream">
-                ---
+                <table class="table table-dark">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Курс</th>
+                        <th scope="col">Статус</th>
+                        <th scope="col">Статус оплаты</th>
+                        <th scope="col">Дата начала</th>
+                        <th scope="col">Дата окончания</th>
+                        <th scope="col">Преподаватель</th>
+                        <th scope="col">Расписание</th>
+                        <th scope="col">Действия</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @php
+                        $number = 1;
+                    @endphp
+                    @foreach($user->activeModules as $activeModule)
+                        <tr>
+                            <th scope="row"> {{ $number++ }} </th>
+                            <td>{{ $activeModule->module->name }}</td>
+                            <td>{{ $activeModule->getRuStatus() }}</td>
+                            <td>--</td>
+                            <td>{{ ($activeModule->started_at === null) ? '--' : $activeModule->started_at->format('d.m.Y') }}</td>
+                            <td>{{ ($activeModule->ended_at === null) ? '--' : $activeModule->ended_at->format('d.m.Y') }}</td>
+                            <td>{{ $activeModule->module->author }}</td>
+                            <td>{{ $activeModule->module->schedule }}</td>
+                            <td>
+                                <a class="btn btn-small btn-success" href="" target="_blank">
+                                    Оплатить
+                                </a>
+                                <a class="btn btn-small btn-danger" href="" target="_blank">
+                                    Покинуть
+                                </a>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
         <br>
@@ -129,9 +168,9 @@
                                 <div class="col-md-6">
                                     <div class="form-group ">
                                         @php
-                                        $warn = empty($user->telegram) ? '<span class="font-tektur light-red ani-blink">Важно! укажите ваш настоящий аккаунт</span>' : '';
+                                            $warn = empty($user->telegram) ? '<span class="font-tektur light-red ani-blink">Важно! укажите ваш настоящий аккаунт</span>' : '';
                                         @endphp
-                                        <label for="telegram" class="form-label">Telegram <?= $warn?></label>
+                                        <label for="telegram" class="form-label">Telegram <?= $warn ?></label>
                                         <input type="text" id="telegram" name="telegram"
                                                value="{{ old('telegram', $user->telegram) }}" placeholder="@username">
                                     </div>
@@ -310,184 +349,185 @@
 
 @push('scripts')
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Создаем сетку пикселей
-    const grid = document.getElementById('pixelGrid');
-    const pixelCount = 36; // 10x10 сетка (или любое другое значение)
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Создаем сетку пикселей
+            const grid = document.getElementById('pixelGrid');
+            const pixelCount = 36; // 10x10 сетка (или любое другое значение)
 
-    // Вычисляем размер стороны квадрата
-    const gridSize = Math.floor(Math.sqrt(pixelCount));
+            // Вычисляем размер стороны квадрата
+            const gridSize = Math.floor(Math.sqrt(pixelCount));
 
-    // Устанавливаем CSS Grid для квадратной сетки
-    grid.style.display = 'grid';
-    grid.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
-    grid.style.gridTemplateRows = `repeat(${gridSize}, 1fr)`;
-    grid.style.gap = '2px';
-    grid.style.width = '100%';
-    grid.style.aspectRatio = '1 / 1';
+            // Устанавливаем CSS Grid для квадратной сетки
+            grid.style.display = 'grid';
+            grid.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
+            grid.style.gridTemplateRows = `repeat(${gridSize}, 1fr)`;
+            grid.style.gap = '2px';
+            grid.style.width = '100%';
+            grid.style.aspectRatio = '1 / 1';
 
-    // Создаем пиксели
-    for (let i = 0; i < pixelCount; i++) {
-        const pixel = document.createElement('div');
-        pixel.className = 'pixel';
-        pixel.style.width = '100%';
-        pixel.style.height = '100%';
-        grid.appendChild(pixel);
-    }
-
-    const pixels = document.querySelectorAll('.pixel');
-
-    // Функция для генерации случайного оттенка красного
-    function getRandomRedShade() {
-        // Базовый красный: hsl(0, 70%, 50%)
-        // Варьируем lightness от 20% до 80%
-        const lightness = Math.floor(Math.random() * 60) + 20; // 20-80%
-        const saturation = Math.floor(Math.random() * 40) + 60; // 60-100%
-        return `hsl(0, ${saturation}%, ${lightness}%)`;
-    }
-
-    // Функция для обновления цветов 30 случайных пикселей
-    function updateRandomPixels() {
-        // Создаем массив индексов
-        const indices = Array.from({length: pixels.length}, (_, i) => i);
-
-        // Перемешиваем массив (Fisher-Yates shuffle)
-        for (let i = indices.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [indices[i], indices[j]] = [indices[j], indices[i]];
-        }
-
-        // Берем первые 30 пикселей
-        const count = 30;
-
-        for (let i = 0; i < count; i++) {
-            const pixelIndex = indices[i];
-            pixels[pixelIndex].style.backgroundColor = getRandomRedShade();
-        }
-    }
-
-    // Инициализация начальных цветов
-    pixels.forEach(pixel => {
-        pixel.style.backgroundColor = getRandomRedShade();
-    });
-
-    // Обновляем каждую секунду
-    setInterval(updateRandomPixels, 1000);
-});
-</script>
-
-
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const STORAGE_KEY = 'profile_panels_state';
-
-    /**
-     * Сохранить состояние панели в localStorage
-     */
-    function savePanelState(panelId, isExpanded) {
-        const panelsState = getPanelsState();
-        panelsState[panelId] = isExpanded ? 'expanded' : 'collapsed';
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(panelsState));
-    }
-
-    /**
-     * Получить состояние всех панелей из localStorage
-     */
-    function getPanelsState() {
-        const savedState = localStorage.getItem(STORAGE_KEY);
-        return savedState ? JSON.parse(savedState) : {};
-    }
-
-    /**
-     * Проверить, свёрнута ли панель в данный момент
-     */
-    function isPanelCollapsed(body) {
-        const style = window.getComputedStyle(body);
-        return style.display === 'none';
-    }
-
-    function setCollapse(body, button) {
-        body.style.display = 'none';
-        button.textContent = ' + ';
-        button.setAttribute('data-action', 'collapse');
-    }
-    function setExpand(body, button) {
-        body.style.display = 'block';
-        button.textContent = ' — ';
-        button.setAttribute('data-action', 'expand');
-    }
-
-    /**
-     * Переключить видимость панели
-     */
-    function togglePanel(button) {
-        const header = button.closest('.data-panel__header');
-        const panel = header.closest('.data-panel');
-        const body = panel.querySelector('.data-panel__body');
-        if (!body) return;
-
-        const wasCollapsed = isPanelCollapsed(body);
-        const panelId = panel.dataset.panelId || panel.querySelector('.data-panel__title')?.textContent?.trim() || '';
-        if (!panelId) return;
-
-        // Переключить видимость
-        if (wasCollapsed) {
-            setExpand(body, button)
-        } else {
-            setCollapse(body, button)
-        }
-
-        // Сохранить НОВОЕ состояние в localStorage (после переключения)
-        savePanelState(panelId, wasCollapsed);
-    }
-
-    /**
-     * Восстановить состояние панелей из localStorage
-     */
-    function restorePanelStates() {
-        const panelsState = getPanelsState();
-        const panels = document.querySelectorAll('.data-panel');
-
-        // Применить сохранённое состояние к каждой панели
-        panels.forEach(panel => {
-            const panelId = panel.dataset.panelId || panel.querySelector('.data-panel__title')?.textContent?.trim();
-            if (!panelId || !panelsState.hasOwnProperty(panelId)) return;
-
-            const state = panelsState[panelId];
-            const body = panel.querySelector('.data-panel__body');
-            const button = panel.querySelector('.btn-collapse');
-            if (!body || !button) return;
-
-            if (state === 'collapsed') {
-                setCollapse(body, button)
-            } else {
-                setExpand(body, button)
+            // Создаем пиксели
+            for (let i = 0; i < pixelCount; i++) {
+                const pixel = document.createElement('div');
+                pixel.className = 'pixel';
+                pixel.style.width = '100%';
+                pixel.style.height = '100%';
+                grid.appendChild(pixel);
             }
-        });
-    }
 
-    /**
-     * Инициализировать функционал сворачивания
-     */
-    function initCollapse() {
-        // Добавить обработчики клика ко всем кнопкам сворачивания
-        const collapseButtons = document.querySelectorAll('.btn-collapse');
+            const pixels = document.querySelectorAll('.pixel');
 
-        collapseButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.preventDefault();
-                togglePanel(button);
+            // Функция для генерации случайного оттенка красного
+            function getRandomRedShade() {
+                // Базовый красный: hsl(0, 70%, 50%)
+                // Варьируем lightness от 20% до 80%
+                const lightness = Math.floor(Math.random() * 60) + 20; // 20-80%
+                const saturation = Math.floor(Math.random() * 40) + 60; // 60-100%
+                return `hsl(0, ${saturation}%, ${lightness}%)`;
+            }
+
+            // Функция для обновления цветов 30 случайных пикселей
+            function updateRandomPixels() {
+                // Создаем массив индексов
+                const indices = Array.from({length: pixels.length}, (_, i) => i);
+
+                // Перемешиваем массив (Fisher-Yates shuffle)
+                for (let i = indices.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [indices[i], indices[j]] = [indices[j], indices[i]];
+                }
+
+                // Берем первые 30 пикселей
+                const count = 30;
+
+                for (let i = 0; i < count; i++) {
+                    const pixelIndex = indices[i];
+                    pixels[pixelIndex].style.backgroundColor = getRandomRedShade();
+                }
+            }
+
+            // Инициализация начальных цветов
+            pixels.forEach(pixel => {
+                pixel.style.backgroundColor = getRandomRedShade();
             });
+
+            // Обновляем каждую секунду
+            setInterval(updateRandomPixels, 1000);
         });
+    </script>
 
-        // Восстановить сохранённые состояния
-        restorePanelStates();
-    }
 
-    // Инициализация
-    initCollapse();
-});
-</script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const STORAGE_KEY = 'profile_panels_state';
+
+            /**
+             * Сохранить состояние панели в localStorage
+             */
+            function savePanelState(panelId, isExpanded) {
+                const panelsState = getPanelsState();
+                panelsState[panelId] = isExpanded ? 'expanded' : 'collapsed';
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(panelsState));
+            }
+
+            /**
+             * Получить состояние всех панелей из localStorage
+             */
+            function getPanelsState() {
+                const savedState = localStorage.getItem(STORAGE_KEY);
+                return savedState ? JSON.parse(savedState) : {};
+            }
+
+            /**
+             * Проверить, свёрнута ли панель в данный момент
+             */
+            function isPanelCollapsed(body) {
+                const style = window.getComputedStyle(body);
+                return style.display === 'none';
+            }
+
+            function setCollapse(body, button) {
+                body.style.display = 'none';
+                button.textContent = ' + ';
+                button.setAttribute('data-action', 'collapse');
+            }
+
+            function setExpand(body, button) {
+                body.style.display = 'block';
+                button.textContent = ' — ';
+                button.setAttribute('data-action', 'expand');
+            }
+
+            /**
+             * Переключить видимость панели
+             */
+            function togglePanel(button) {
+                const header = button.closest('.data-panel__header');
+                const panel = header.closest('.data-panel');
+                const body = panel.querySelector('.data-panel__body');
+                if (!body) return;
+
+                const wasCollapsed = isPanelCollapsed(body);
+                const panelId = panel.dataset.panelId || panel.querySelector('.data-panel__title')?.textContent?.trim() || '';
+                if (!panelId) return;
+
+                // Переключить видимость
+                if (wasCollapsed) {
+                    setExpand(body, button)
+                } else {
+                    setCollapse(body, button)
+                }
+
+                // Сохранить НОВОЕ состояние в localStorage (после переключения)
+                savePanelState(panelId, wasCollapsed);
+            }
+
+            /**
+             * Восстановить состояние панелей из localStorage
+             */
+            function restorePanelStates() {
+                const panelsState = getPanelsState();
+                const panels = document.querySelectorAll('.data-panel');
+
+                // Применить сохранённое состояние к каждой панели
+                panels.forEach(panel => {
+                    const panelId = panel.dataset.panelId || panel.querySelector('.data-panel__title')?.textContent?.trim();
+                    if (!panelId || !panelsState.hasOwnProperty(panelId)) return;
+
+                    const state = panelsState[panelId];
+                    const body = panel.querySelector('.data-panel__body');
+                    const button = panel.querySelector('.btn-collapse');
+                    if (!body || !button) return;
+
+                    if (state === 'collapsed') {
+                        setCollapse(body, button)
+                    } else {
+                        setExpand(body, button)
+                    }
+                });
+            }
+
+            /**
+             * Инициализировать функционал сворачивания
+             */
+            function initCollapse() {
+                // Добавить обработчики клика ко всем кнопкам сворачивания
+                const collapseButtons = document.querySelectorAll('.btn-collapse');
+
+                collapseButtons.forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        togglePanel(button);
+                    });
+                });
+
+                // Восстановить сохранённые состояния
+                restorePanelStates();
+            }
+
+            // Инициализация
+            initCollapse();
+        });
+    </script>
 @endpush

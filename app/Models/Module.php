@@ -27,6 +27,7 @@ use Illuminate\Support\Carbon;
  * @property string|null $description2
  * @property int $active             Активность (1 = активен, 0 = нет)
  * @property string $author
+ * @property string $schedule
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  *
@@ -53,6 +54,7 @@ class Module extends Model
         'description',
         'description2',
         'author',
+        'schedule',
         'active',
     ];
 
