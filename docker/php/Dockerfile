@@ -19,7 +19,9 @@ RUN apk add --no-cache \
     python3 \
     nodejs \
     npm \
-    && docker-php-ext-install pdo_mysql mbstring pcntl intl xml opcache
+    pkgconfig \
+    libzip-dev \
+    && docker-php-ext-install pdo_mysql mbstring pcntl intl xml opcache zip
 
 # Создаем пользователя appuser с указанным UID и GID
 RUN addgroup -g ${GID} appgroup \

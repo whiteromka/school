@@ -1,8 +1,5 @@
 <?php
 
-use App\Http\Controllers\Admin\AuthController as AdminAuthController;
-use App\Http\Controllers\Admin\ModuleController as AdminModuleController;
-use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\BusinessRequestController;
 use App\Http\Controllers\Oauth\GithubController;
 use App\Http\Controllers\Oauth\GoogleController;
@@ -77,34 +74,3 @@ Route::post('/profile', [ProfileController::class, 'update'])->name('profile.upd
 Route::get('/profile/update-password-view', [ProfileController::class, 'updatePasswordView'])->name('profile.update-password-view')->middleware('auth');
 Route::post('/profile/update-password', [ProfileController::class, 'updatePassword'])->name('profile.update-password')->middleware('auth');
 
-// ===============================================================
-// Admin Panel Routes
-// ===============================================================
-
-Route::prefix('admin')->name('admin.')->group(function () {
-    // Auth routes
-    Route::get('/login', [AdminAuthController::class, 'showLoginForm'])->name('login');
-    Route::post('/login', [AdminAuthController::class, 'login']);
-    Route::post('/logout', [AdminAuthController::class, 'logout'])->name('logout');
-
-    // Protected admin routes
-    Route::middleware(['auth', 'admin'])->group(function () {
-        // Users CRUD /admin/users
-        Route::get('/users', [AdminUserController::class, 'index'])->name('users');
-        Route::get('/users/data', [AdminUserController::class, 'data'])->name('users.data');
-        Route::get('/users/create', [AdminUserController::class, 'create'])->name('users.create');
-        Route::post('/users', [AdminUserController::class, 'store'])->name('users.store');
-        Route::get('/users/{user}/edit', [AdminUserController::class, 'edit'])->name('users.edit');
-        Route::put('/users/{user}', [AdminUserController::class, 'update'])->name('users.update');
-        Route::delete('/users/{user}', [AdminUserController::class, 'destroy'])->name('users.destroy');
-
-        // Modules CRUD /admin/modules
-        Route::get('/modules', [AdminModuleController::class, 'index'])->name('modules');
-        Route::get('/modules/data', [AdminModuleController::class, 'data'])->name('modules.data');
-        Route::get('/modules/create', [AdminModuleController::class, 'create'])->name('modules.create');
-        Route::post('/modules', [AdminModuleController::class, 'store'])->name('modules.store');
-        Route::get('/modules/{module}/edit', [AdminModuleController::class, 'edit'])->name('modules.edit');
-        Route::put('/modules/{module}', [AdminModuleController::class, 'update'])->name('modules.update');
-        Route::delete('/modules/{module}', [AdminModuleController::class, 'destroy'])->name('modules.destroy');
-    });
-});

@@ -1,3 +1,5 @@
+//docker-compose build --no-cache
+
 Для windows проект разворачивать внутри WSL например: ~/dev/<папка_с_проектом>
 
 Склонировать через git:
@@ -107,10 +109,18 @@ Http::get("https://api.telegram.org/bot" . env('TELEGRAM_BOT_TOKEN') . "/getWebh
     ],
 ]
 
-
 https://uiverse.io/
+===================
 
-====
-QWEN
-mcp: context7
-"How do I use the new Next.js `after` function? use context7"
+filament:
+    http://localhost:8080/admin
+
+    Учётные данные:
+     - Email: admin@filament.local
+     - Пароль: admin123
+
+команды:
+ docker compose exec app php artisan make:filament-resource Review --generate
+
+
+
