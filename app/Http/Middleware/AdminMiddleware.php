@@ -15,12 +15,10 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        // Check if user is authenticated
         if (!auth()->check()) {
-            return redirect()->route('admin.login');
+            return redirect()->route('filament.admin.auth.login');
         }
 
-        // Check if user has admin role
         if (!auth()->user()->is_admin) {
             abort(403, 'Unauthorized access.');
         }
