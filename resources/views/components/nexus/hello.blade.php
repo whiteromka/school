@@ -10,7 +10,8 @@
                 BACKEND WITH <span class="highlight">PHP </span>
             </h1>
             <p class="hero-subtitle">
-               Простой и проверенный язык для быстрой разработки backend части приложений
+                Простой и проверенный язык для быстрой разработки backend части приложений.
+                Отличный выбор для первого языка программирования.
             </p>
             <div class="hero-actions">
 {{--                <button class="nexus-btn" type="button">Рынок труда</button>--}}
