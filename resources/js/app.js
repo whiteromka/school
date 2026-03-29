@@ -6,3 +6,4 @@ import './cyBrackets';
 import './mainLoading';
 import './perspective3D';
 import './faqCol';
+import  './fly';
