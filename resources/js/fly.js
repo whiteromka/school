@@ -10,8 +10,9 @@ const CONFIG = {
     planeSize: 50,             // Размер для расчёта границ
     baseSpeed: 0.2,            // Базовая скорость
     directionChangeInterval: 2500, // Средний интервал смены направления (мс)
-    directionChangeChance: 0.15,   // Шанс смены направления (15%)
-    maxAngleChange: 45         // Максимальное изменение угла в градусах
+    directionChangeChance: 0.05,   // Шанс смены направления
+    // 8 направлений: 0°, 45°, 90°, 135°, 180°, 225°, 270°, 315°
+    directions: [0, 45, 90, 135, 180, 225, 270, 315]
 };
 
 // === Настройки следа ===
@@ -48,7 +49,9 @@ document.addEventListener('DOMContentLoaded', function() {
         element.style.opacity = '0.4'; // Изначально 60% прозрачности
         container.appendChild(element);
 
-        const angle = Math.random() * Math.PI * 2;
+        // Выбираем случайное направление из 8 возможных
+        const randomDirIndex = Math.floor(Math.random() * CONFIG.directions.length);
+        const angle = CONFIG.directions[randomDirIndex] * Math.PI / 180;
         const speed = CONFIG.baseSpeed * (0.8 + Math.random() * 0.4);
 
         // Создаём путь для следа
@@ -57,6 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
         path.setAttribute('stroke', 'rgba(055,055,055,0.81)');
         path.setAttribute('stroke-width', '1');
         path.setAttribute('stroke-linecap', 'round');
+        path.setAttribute('stroke-dasharray', '10 10');
         path.setAttribute('opacity', '0.4');
         path.style.filter = 'drop-shadow(0 0 3px #00ff00)';
         svg.appendChild(path);
@@ -116,9 +120,11 @@ document.addEventListener('DOMContentLoaded', function() {
             // Проверяем, не пора ли сменить направление
             if (now - plane.lastDirectionChange > plane.nextDirectionChange) {
                 if (Math.random() < CONFIG.directionChangeChance) {
-                    const changeAngle = (Math.random() - 0.5) * 2 * CONFIG.maxAngleChange * Math.PI / 180;
+                    // Поворот на ±45° или ±90°
+                    const turnOptions = [-45, 45, -90, 90];
+                    const randomTurn = turnOptions[Math.floor(Math.random() * turnOptions.length)];
                     const currentAngle = Math.atan2(plane.vy, plane.vx);
-                    const newAngle = currentAngle + changeAngle;
+                    const newAngle = currentAngle + randomTurn * Math.PI / 180;
                     const speed = Math.sqrt(plane.vx * plane.vx + plane.vy * plane.vy);
 
                     plane.vx = Math.cos(newAngle) * speed;
