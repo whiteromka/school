@@ -16,12 +16,24 @@ class ModuleRepository
     }
 
     /**
-     * Получить back модули с активными модулями со статусом 'open' и пользователями
+     * Получить общий модуль для фронта и бека
      */
-    public function getBackModulesWithActiveModulesAndUsers(): Collection
+    public function getFirstCommonModule(): Module
     {
         return Module::query()
-            ->where('type', 'back')
+            ->where('number', 1)
+            ->where('active', true)
+            ->with(['openActiveModule.users'])
+            ->first();
+    }
+
+    /**
+     * Получить модули с активными модулями со статусом 'open' и пользователями
+     */
+    public function getModulesWithActiveModulesAndUsers(string $type): Collection
+    {
+        return Module::query()
+            ->where('type', $type)
             ->where('active', true)
             ->with(['openActiveModule.users'])
             ->orderBy('number')

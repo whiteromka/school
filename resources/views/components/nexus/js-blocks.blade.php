@@ -10,7 +10,7 @@
     <section>
         <div class="section-header">
             <div class="section-label">Modules</div>
-            <h2 class="section-title">Модули курса BACKEND</h2>
+            <h2 class="section-title">Модули курса FRONTEND</h2>
             <div class="section-divider" aria-hidden="true"></div>
         </div>
 
@@ -52,6 +52,7 @@
                                     </svg>
                                 </span>
                             </div>
+
                         </div>
 
                         <div class="right">

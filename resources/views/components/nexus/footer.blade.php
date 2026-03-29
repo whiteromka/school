@@ -55,9 +55,9 @@
                                 <div class="contact-method-label">Services</div>
                                 <div class="contact-method-value">
                                     <span class="contact-method-value-ru">
-                                        <a href="#">Разработка сайта</a>
+                                        <a href="{{ route('businessRequest.create') }}">Разработка сайта</a>
                                         <br>
-                                        <a href="#">Автоматизация бизнес процессов</a>
+                                        <a href="{{ route('businessRequest.create') }}">Автоматизация бизнес процессов</a>
                                     </span>
                                 </div>
                             </div>

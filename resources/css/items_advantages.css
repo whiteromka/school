@@ -335,4 +335,17 @@
     color: #060606;
     line-height: 1.4;
     text-align: center;
+    margin-top: 3px;
+    margin-bottom: 40px;
+}
+.advantage-descr-red {
+    font-family: "Share Tech Mono", monospace;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+    color: #a90b0b;
+    line-height: 1.4;
+    text-align: center;
+    margin-top: 3px;
+    margin-bottom: 40px;
 }

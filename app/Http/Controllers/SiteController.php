@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\ModuleType;
 use App\Helpers\IPFormatter;
 use App\Services\ModuleService;
 
@@ -24,7 +25,21 @@ class SiteController extends Controller
     // GET /site/front
     public function front()
     {
-        return view('site.front');
+        $user = auth()->user();
+        $userModuleIds = [];
+        if ($user) {
+            $user->load('activeModules');
+            $userModuleIds = $user->activeModules->pluck('module_id')->toArray();
+        }
+
+        $firstModule = $this->moduleService->getFirstCommonModule();
+        $frontModules = $this->moduleService->getModulesWithActiveModulesAndUsers(ModuleType::FRONT->value);
+        $frontModules = $frontModules->prepend($firstModule);
+
+        return view('site.front', [
+            'modules' => $frontModules,
+            'userModuleIds' => $userModuleIds,
+        ]);
     }
 
     // GET /site/back
@@ -38,7 +53,7 @@ class SiteController extends Controller
         }
 
         return view('site.back', [
-            'modules' => $this->moduleService->getBackModulesWithActiveModulesAndUsers(),
+            'modules' => $this->moduleService->getModulesWithActiveModulesAndUsers(ModuleType::BACK->value),
             'userModuleIds' => $userModuleIds,
         ]);
     }

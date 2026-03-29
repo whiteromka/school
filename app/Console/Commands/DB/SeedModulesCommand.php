@@ -2,12 +2,13 @@
 
 namespace App\Console\Commands\DB;
 
+use App\Enums\ModuleType;
 use App\Models\Module;
 use App\Services\ModuleService;
 use Illuminate\Console\Command;
 
 /**
- * команда: php artisan seed:modules
+ * команда: docker compose exec app php artisan seed:modules
  */
 class SeedModulesCommand extends Command
 {
@@ -22,11 +23,9 @@ class SeedModulesCommand extends Command
 
     public function handle(): int
     {
-        $this->info('Очистка таблицы modules...');
-
         $modules = [
             [
-                'type' => 'Back',
+                'type' => ModuleType::BACK,
                 'number' => 1,
                 'name' => 'Старт с нуля',
                 'level' => 1,
@@ -52,7 +51,7 @@ class SeedModulesCommand extends Command
             ],
 
             [
-                'type' => 'Back',
+                'type' => ModuleType::BACK,
                 'number' => 2,
                 'name' => 'Основы PHP',
                 'level' => 2,
@@ -84,7 +83,7 @@ class SeedModulesCommand extends Command
             ],
 
             [
-                'type' => 'Back',
+                'type' => ModuleType::BACK,
                 'number' => 2,
                 'name' => 'PHP OOP',
                 'level' => 3,
@@ -101,7 +100,7 @@ class SeedModulesCommand extends Command
             ],
 
             [
-                'type' => 'Back',
+                'type' => ModuleType::BACK,
                 'number' => 3,
                 'name' => 'Framework Yii2',
                 'level' => 6,
@@ -130,7 +129,7 @@ class SeedModulesCommand extends Command
             ],
 
             [
-                'type' => 'Back',
+                'type' => ModuleType::BACK,
                 'number' => 4,
                 'name' => 'Брокеры сообщений, очереди, данные',
                 'level' => 7,
@@ -162,8 +161,105 @@ class SeedModulesCommand extends Command
                 'author' => Module::AUTHOR_ROMAN,
             ],
 
+            [
+                'type' => ModuleType::FRONT,
+                'number' => 5,
+                'name' => 'Основы JavaScript',
+                'level' => 2,
+                'module_price' => 6000,
+                'lesson_price' => 500,
+                'count_lessons' => 12,
+                'duration' => '1 - 1.5 мес',
+                'techs' => ['js', 'html', 'css', 'git', 'AI'],
+                'topics' => [
+                    'Переменные: let, const, var',
+                    'Типы данных: string, number, boolean, null, undefined, object',
+                    'Операторы: арифметические, сравнения, логические',
+                    'Условные конструкции — if/else, switch, тернарный оператор',
+                    'Циклы: for, while, do-while',
+                    'Функции: function declaration, expression, arrow functions',
+                    'Массивы и методы массивов (map, filter, reduce)',
+                    'Объекты и работа с ними',
+                    'Работа с DOM (document, события)',
+                    'Обработка событий (click, input и др.)',
+                    'Асинхронность: setTimeout, fetch, promises',
+                    'Основы работы с API',
+                ],
+                'description' => 'Базовый модуль по JavaScript. Разберём фундамент языка и научимся писать интерактивные веб-страницы.
+                    Поймём, как работает браузер, как JavaScript взаимодействует с HTML и CSS.
+                    Освоим переменные, функции, массивы, объекты и события. Познакомимся с асинхронностью и научимся получать данные с сервера через API.
+                    В процессе создадим несколько мини-проектов, чтобы закрепить знания на практике.',
+                'description2' => 'В итоге должен получиться интерактивный сайт с динамическими элементами и работой с API',
+                'active' => 1,
+                'author' => Module::AUTHOR_ROMAN,
+            ],
+
+            [
+                'type' => ModuleType::FRONT,
+                'number' => 6,
+                'name' => 'JavaScript ООП',
+                'level' => 3,
+                'module_price' => 6000,
+                'lesson_price' => 500,
+                'count_lessons' => 12,
+                'duration' => '1 - 1.5 мес',
+                'techs' => ['js', 'oop', 'git', 'AI'],
+                'topics' => [
+                    'Прототипы и прототипное наследование',
+                    'Классы в JavaScript',
+                    'Конструкторы',
+                    'Методы и свойства объектов',
+                    'this и контекст выполнения',
+                    'Инкапсуляция',
+                    'Наследование и полиморфизм',
+                    'Статические методы и свойства',
+                    'Геттеры и сеттеры',
+                    'Модули (import/export)',
+                    'Основы архитектуры приложений',
+                ],
+                'description' => 'Углублённый модуль по JavaScript с упором на объектно-ориентированное программирование.
+                    Разберём, как устроены классы и прототипы в JS, научимся правильно проектировать структуру приложения.
+                    Поймём, как управлять состоянием, разбивать код на модули и писать поддерживаемый код.
+                    Закладываем фундамент для перехода к фреймворкам.',
+                'description2' => 'В итоге должен получиться небольшой проект с продуманной архитектурой и использованием ООП',
+                'active' => 1,
+                'author' => Module::AUTHOR_ROMAN,
+            ],
+
+            [
+                'type' => ModuleType::FRONT,
+                'number' => 7,
+                'name' => 'Vue - Pinia - TypeScript',
+                'level' => 6,
+                'module_price' => 12000,
+                'lesson_price' => 500,
+                'count_lessons' => 24,
+                'duration' => '2 - 3 мес',
+                'techs' => ['js', 'vue', 'pinia', 'typescript', 'vite', 'api', 'git', 'AI'],
+                'topics' => [
+                    'Введение в Vue 3',
+                    'Option API',
+                    'Реактивность (ref, reactive)',
+                    'Компоненты и их структура',
+                    'Props и emits',
+                    'Жизненный цикл компонентов',
+                    'State management (Pinia)',
+                    'Работа с API (axios/fetch)',
+                    'Формы и валидация',
+                    'TypeScript в Vue',
+                    'Оптимизация и структура проекта',
+                ],
+                'description' => 'Практический модуль по современному фронтенду.
+                    Освоим Vue 3, научимся строить SPA-приложения с использованием Options API.
+                    Разберём управление состоянием через Pinia, работу с сервером и типизацию через TypeScript.
+                    Отдельное внимание уделим архитектуре проекта и правильной организации кода.',
+                'description2' => 'В итоге должен получиться полноценный SPA-проект (например: личный кабинет, CRM или админка)',
+                'active' => 1,
+                'author' => Module::AUTHOR_ROMAN,
+            ],
         ];
 
+        $this->info('Очистка таблицы modules...');
         $this->moduleService->seedModules($modules);
 
         $this->info('Модули успешно добавлены.');
