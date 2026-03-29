@@ -54,19 +54,33 @@ a.base-link:hover {
 
 /* ============== GLITCH KEYFRAMES ============= */
 @keyframes glitch-1 {
-    0%, 100% { clip-path: inset(0 0 96% 0); transform: translate(-2px, 0); }
-    20% { clip-path: inset(30% 0 50% 0); transform: translate(2px, 0); }
-    40% { clip-path: inset(60% 0 20% 0); transform: translate(-1px, 0); }
-    60% { clip-path: inset(80% 0 5% 0); transform: translate(1px, 0); }
-    80% { clip-path: inset(10% 0 75% 0); transform: translate(0, 0); }
+    /* Активный glitch — первые 30% (0% - 30%) */
+    0% { clip-path: inset(0 0 96% 0); transform: translate(-2px, 0); }
+    6% { clip-path: inset(30% 0 50% 0); transform: translate(2px, 0); }
+    12% { clip-path: inset(60% 0 20% 0); transform: translate(-1px, 0); }
+    18% { clip-path: inset(80% 0 5% 0); transform: translate(1px, 0); }
+    24% { clip-path: inset(10% 0 75% 0); transform: translate(0, 0); }
+    30% { clip-path: inset(0 0 96% 0); transform: translate(-2px, 0); }
+
+    /* 70% времени — тишина (30% - 100%) */
+    30.01%, 100% {
+        clip-path: inset(0 0 96% 0);
+        transform: translate(-2px, 0);
+    }
 }
 
 @keyframes glitch-2 {
-    0%, 100% { clip-path: inset(95% 0 0 0); transform: translate(2px, 0); }
-    20% { clip-path: inset(50% 0 30% 0); transform: translate(-2px, 0); }
-    40% { clip-path: inset(20% 0 60% 0); transform: translate(1px, 0); }
-    60% { clip-path: inset(5% 0 80% 0); transform: translate(-1px, 0); }
-    80% { clip-path: inset(75% 0 10% 0); transform: translate(0, 0); }
+    0% { clip-path: inset(95% 0 0 0); transform: translate(2px, 0); }
+    6% { clip-path: inset(50% 0 30% 0); transform: translate(-2px, 0); }
+    12% { clip-path: inset(20% 0 60% 0); transform: translate(1px, 0); }
+    18% { clip-path: inset(5% 0 80% 0); transform: translate(-1px, 0); }
+    24% { clip-path: inset(75% 0 10% 0); transform: translate(0, 0); }
+    30% { clip-path: inset(95% 0 0 0); transform: translate(2px, 0); }
+
+    30.01%, 100% {
+        clip-path: inset(95% 0 0 0);
+        transform: translate(2px, 0);
+    }
 }
 
 @keyframes flicker {
@@ -240,7 +254,6 @@ a.base-link:hover {
     position: relative;
     z-index: 2;
     text-align: center;
-    max-width: 900px;
 }
 
 .hero-tag {
@@ -259,7 +272,7 @@ a.base-link:hover {
     color: var(--accent-cyan);
 }
 
-.hero-title {
+.hero-title, .hero-title-js {
     font-family: "Orbitron", sans-serif;
     font-optical-sizing: auto;
     font-weight: 600;
@@ -273,10 +286,18 @@ a.base-link:hover {
     margin-bottom: 24px;
     position: relative;
 }
+.hero-title-js {
+    color: red;
+}
 
 .hero-title .highlight {
     color: var(--accent-cyan);
     text-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+}
+
+.hero-title-js .highlight {
+    color: #bb2c46;
+    text-shadow: 0 0 20px rgba(255, 0, 68, 0.3);
 }
 
 /* Glitch layers */
@@ -291,12 +312,12 @@ a.base-link:hover {
 
 .hero-title::before {
     color: var(--accent-magenta);
-    animation: glitch-1 3s infinite linear;
+    animation: glitch-1 9s infinite linear;
 }
 
 .hero-title::after {
     color: var(--accent-cyan);
-    animation: glitch-2 3s infinite linear;
+    animation: glitch-2 9s infinite linear;
 }
 
 .hero-subtitle {
@@ -305,6 +326,14 @@ a.base-link:hover {
     max-width: 650px;
     margin: 0 auto 40px;
     line-height: 1.7;
+}
+.hero-subtitle-js {
+    font-size: 16px;
+    line-height: 1.7;
+    padding: 10px;
+    color: black;
+    margin-bottom: 0;
+
 }
 
 .hero-actions {
