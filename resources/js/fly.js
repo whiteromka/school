@@ -42,12 +42,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const planes = [];
 
+    // Названия групп и статусы
+    const groupNames = ['ALFA', 'BRAVO', 'WHISKEY', 'FOXTROT'];
+    const statuses = ['online', 'offline'];
+
     // Создаём треугольники
     for (let i = 0; i < CONFIG.maxPlanes; i++) {
         const element = document.createElement('div');
         element.className = 'radar-plane';
         element.style.opacity = '0.4'; // Изначально 60% прозрачности
         container.appendChild(element);
+
+        // Создаём метку с информацией
+        const label = document.createElement('div');
+        label.className = 'radar-plane-label';
+        const groupName = groupNames[i % groupNames.length];
+        const status = statuses[i % statuses.length];
+        label.innerHTML = `
+            <span class="group-name">${groupName}</span>
+            <span class="status ${status}">${status.toUpperCase()}</span>
+        `;
+        container.appendChild(label);
 
         // Выбираем случайное направление из 8 возможных
         const randomDirIndex = Math.floor(Math.random() * CONFIG.directions.length);
@@ -57,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Создаём путь для следа
         const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
         path.setAttribute('fill', 'none');
-        path.setAttribute('stroke', 'rgba(055,055,055,0.81)');
+        path.setAttribute('stroke', 'rgba(085,085,085,0.81)');
         path.setAttribute('stroke-width', '1');
         path.setAttribute('stroke-linecap', 'round');
         path.setAttribute('stroke-dasharray', '10 10');
@@ -67,6 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const plane = {
             element: element,
+            label: label,
             path: path,
             x: Math.random() * (window.innerWidth - CONFIG.planeSize),
             y: Math.random() * (window.innerHeight - CONFIG.planeSize),
@@ -152,10 +168,14 @@ document.addEventListener('DOMContentLoaded', function() {
             // Вычисляем угол поворота по направлению движения
             plane.angle = Math.atan2(plane.vy, plane.vx) + Math.PI / 2;
 
-            // Позиционирование и вращение
+            // Позиционирование и вращение треугольника
             plane.element.style.left = plane.x + 'px';
             plane.element.style.top = plane.y + 'px';
             plane.element.style.transform = `rotate(${plane.angle}rad)`;
+
+            // Позиционирование метки (над треугольником, без вращения)
+            plane.label.style.left = (plane.x + 10) + 'px';
+            plane.label.style.top = (plane.y - 40) + 'px';
         });
 
         requestAnimationFrame(animate);
