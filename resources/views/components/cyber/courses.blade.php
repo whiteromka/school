@@ -132,13 +132,16 @@
                 spanTimeout,
                 strokesStartTimeout,
                 strokesTimeouts = [],
-                numberInterval;
+                numberInterval,
+                sideTextTimeout,
+                sideTextIntervals = [];
 
             const cyItem = container.querySelector('.cy-item');
             const btnWrapper = container.querySelector('.item-btn-wrapper');
             const cyberText = btnWrapper?.querySelector('.js-cyber-text-animation');
             const btn = btnWrapper?.querySelector('.item-btn');
             const strokes = btnWrapper?.querySelector('.item-btn-strokes');
+            const sideTexts = interfaceContainer?.querySelectorAll('.side-text');
 
             function updateNumbers() {
                 if (!numberElement || !topCodeElement) return;
@@ -206,6 +209,44 @@
                 if (progressFill) {
                     progressFill.classList.add('progress-fill-active');
                 }
+
+                // Покраска side-text через 0.3 сек
+                sideTextTimeout = setTimeout(() => {
+                    if (sideTexts) {
+                        sideTexts.forEach(sideText => {
+                            // Оборачиваем каждый символ в span, если ещё не обернут
+                            if (!sideText.querySelector('span.char')) {
+                                const text = sideText.textContent;
+                                sideText.textContent = '';
+                                for (let char of text) {
+                                    const span = document.createElement('span');
+                                    span.className = 'char';
+                                    span.textContent = char;
+                                    span.style.color = '#885500';
+                                    span.style.transition = 'color 0.1s';
+                                    sideText.appendChild(span);
+                                }
+                            }
+
+                            // Поочерёдно красим символы в красный
+                            const chars = sideText.querySelectorAll('span.char');
+                            const totalChars = chars.length;
+                            chars.forEach((char, index) => {
+                                const timeout = setTimeout(() => {
+                                    char.style.color = 'red';
+                                    // Когда последний символ покрашен, добавляем класс
+                                    if (index === totalChars - 1) {
+                                        const mainTitle = interfaceContainer?.querySelector('.main-title');
+                                        if (mainTitle) {
+                                            mainTitle.classList.add('main-title-active');
+                                        }
+                                    }
+                                }, index * 50);
+                                sideTextIntervals.push(timeout);
+                            });
+                        });
+                    }
+                }, 300);
             });
 
             container.addEventListener('mouseleave', () => {
@@ -248,6 +289,26 @@
                 // Деактивируем прогресс-бар
                 if (progressFill) {
                     progressFill.classList.remove('progress-fill-active');
+                }
+
+                // Сброс side-text
+                clearTimeout(sideTextTimeout);
+                sideTextIntervals.forEach(interval => clearInterval(interval));
+                sideTextIntervals = [];
+
+                if (sideTexts) {
+                    sideTexts.forEach(sideText => {
+                        const chars = sideText.querySelectorAll('span.char');
+                        chars.forEach(char => {
+                            char.style.color = '#885500';
+                        });
+                    });
+                }
+
+                // Сброс класса у main-title
+                const mainTitle = interfaceContainer?.querySelector('.main-title');
+                if (mainTitle) {
+                    mainTitle.classList.remove('main-title-active');
                 }
             });
         });

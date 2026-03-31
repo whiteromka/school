@@ -52,7 +52,7 @@
         <div class="progress-block">
             <div class="progress-fill"></div>
         </div>
-        <div class="main-title tt-up">{{ $course['name'] }}</div>
+        <div class="js-main-title main-title tt-up">{{ $course['name'] }}</div>
         <div class="sub-title ta-c">SYSTEM DATA LOADING MODULE</div>
         <div class="code-number">800 122 554</div>
     </div>
