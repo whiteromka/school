@@ -121,7 +121,7 @@
 .mt-30vh {margin-top: 30vh}
 .mt-40vh {margin-top: 40vh}
 
-.ta-c {text-align: center}
+.ta-c {text-align: center !important;}
 .ta-l {text-align: left}
 .ta-r {text-align: right}
 .tt-up {text-transform: uppercase}

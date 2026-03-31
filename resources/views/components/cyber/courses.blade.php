@@ -28,8 +28,7 @@
                     [
                         'name' => 'Front', 'label' => 'JS', 'css' => 'bg-JS', 'crew' => 14,
                         'tabs' => [
-                            'speed'=>'1 PHP прост в освоении и позволяет быстро запускать проекты. Отличный выбор для старта в веб-разработке и быстрого прототипирования.',
-                            'ecosystem' => '1 Огромная экосистема: Laravel, Symfony, Yii. Тысячи пакетов и готовых решений для реальных проектов.',
+                            'promo'=>'JavaScript универсален и позволяет оживлять любые веб-интерфейсы. Незаменимый инструмент для фронтенда и идеальный фундамент для современной карьеры программиста.',
                             'practice' => '1 PHP используется в реальных продуктах и даёт быстрый выход на рынок труда. Минимум теории — максимум практики.'
                         ],
                         'link' => route('site.front')
@@ -37,25 +36,28 @@
                     [
                         'name' => 'Back', 'label' => 'PHP', 'css' => 'bg-PHP', 'crew' => 17,
                         'tabs' => [
-                            'speed'=>'2 PHP прост в освоении и позволяет быстро запускать проекты. Отличный выбор для старта в веб-разработке и быстрого прототипирования.',
-                            'ecosystem' => '2 Огромная экосистема: Laravel, Symfony, Yii. Тысячи пакетов и готовых решений для реальных проектов.',
+                            'promo'=>'PHP прост в освоении и позволяет быстро запускать проекты. Отличный выбор для старта в веб-разработке и быстрого прототипирования.',
                             'practice' => '2 PHP используется в реальных продуктах и даёт быстрый выход на рынок труда. Минимум теории — максимум практики.'
                         ],
                         'link' => route('site.back')
                     ],
                     [
                         'name' => 'Gamedev', 'label' => 'C#', 'css' => 'bg-DEFAULT', 'crew' => 2,
-                        'tabs' => [], 'link' => route('site.gamedev')
+                        'tabs' => [
+                            'promo' => 'C# надежен и является основным языком популярного движка Unity. Отличный выбор для создания игр и быстрого старта в индустрии геймдева.'
+                        ], 'link' => route('site.gamedev')
                     ],
                     [
-                        'name' => 'Foreign Lang', 'label' => 'En', 'css' => 'bg-DEFAULT', 'crew' => 25,
-                        'tabs' => [], 'link' => route('site.english')
+                        'name' => 'English', 'label' => 'En', 'css' => 'bg-DEFAULT', 'crew' => 25,
+                        'tabs' => [
+                            'promo' => 'Английский открывает доступ к оригинальной документации и глобальному комьюнити. Ключевой навык для работы в международных командах и быстрого карьерного роста.'
+                        ], 'link' => route('site.english')
                     ],
                 ];
                 @endphp
 
                 @foreach($courses as $k => $course)
-                    <div class="col-12 col-sm-6 col-xxl-3 mb-20 px-1">
+                    <div class="col-12 col-sm-6 col-xxl-3 mb-20 px-1 js-item-container">
                         <div class="pipki">
                             @for($i = 1; $i <= $course['crew']; $i++)
                                 <div class="pipka"></div>
@@ -72,46 +74,6 @@
                             </div>
                             <div class="cy-item-body">
                                 @include('components.frameshift', ['course' => $course])
-                                <div class="php-tabs-wrapper">
-                                    {{-- Табы --}}
-                                    @if(count($course['tabs']))
-                                    <ul class="nav nav-tabs cy-item-tabs" id="{{$course['name']}}" role="tablist">
-                                        @php
-                                            $i = 1;
-                                            foreach ($course['tabs'] as $tabKey => $tab):
-                                        @endphp
-                                        <li class="nav-item" role="presentation">
-                                            <button class="nav-link {{ $i === 1 ? 'active' : ''}}"
-                                                    data-bs-toggle="tab"
-                                                    data-bs-target="#{{ $course['name'] }}-{{ $tabKey }}"
-                                                    type="button">
-                                                {{ $tabKey }}
-                                            </button>
-                                        </li>
-                                        @php
-                                            $i++;
-                                            endforeach;
-                                        @endphp
-                                    </ul>
-
-                                    {{-- Таб контент --}}
-                                    <div class="tab-content cy-item-tabs-content">
-                                        @php $first = true; @endphp
-                                        @foreach($course['tabs'] as $tabKey => $text)
-                                            <div class="tab-pane fade {{ $first ? 'show active' : '' }}" id="{{ $course['name'] }}-{{ $tabKey }}">
-                                                <p>{{ $text }}</p>
-                                            </div>
-                                            @php $first = false; @endphp
-                                        @endforeach
-                                    </div>
-                                    @endif
-                                </div>
-                                <br>
-                                <div class="cy-item-body-main-text">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad alias aliquid nobis quas quos!
-                                        Maxime nemo!
-                                    </p>
-                                </div>
                             </div>
                         </div>
 
@@ -150,21 +112,36 @@
 @push('scripts')
 
 <script>
-    // Анимация случайных чисел для каждого interface-container
+    // Анимация случайных чисел и управление при наведении на .js-item-container
     document.addEventListener('DOMContentLoaded', () => {
-        const interfaceContainers = document.querySelectorAll('.interface-container');
+        const itemContainers = document.querySelectorAll('.js-item-container');
 
         function randomInt(min, max) {
             return Math.floor(Math.random() * (max - min + 1) + min);
         }
 
-        interfaceContainers.forEach(container => {
-            const numberElement = container.querySelector('.js-random-number');
-            const topCodeElement = container.querySelector('.js-top-code');
+        itemContainers.forEach(container => {
+            const interfaceContainer = container.querySelector('.interface-container');
+            const numberElement = interfaceContainer?.querySelector('.js-random-number');
+            const topCodeElement = interfaceContainer?.querySelector('.js-top-code');
+            const progressFill = interfaceContainer?.querySelector('.progress-fill');
 
-            if (!numberElement || !topCodeElement) return;
+            let headTimeout,
+                bracketTimeout,
+                blinkInterval,
+                spanTimeout,
+                strokesStartTimeout,
+                strokesTimeouts = [],
+                numberInterval;
+
+            const cyItem = container.querySelector('.cy-item');
+            const btnWrapper = container.querySelector('.item-btn-wrapper');
+            const cyberText = btnWrapper?.querySelector('.js-cyber-text-animation');
+            const btn = btnWrapper?.querySelector('.item-btn');
+            const strokes = btnWrapper?.querySelector('.item-btn-strokes');
 
             function updateNumbers() {
+                if (!numberElement || !topCodeElement) return;
                 let newNum = '';
                 for(let i=0; i<13; i++) {
                     newNum += randomInt(0, 9);
@@ -177,7 +154,102 @@
                     topCodeElement.innerText = `${codePart} ${letter}${letter}`;
                 }
             }
-            setInterval(updateNumbers, 150);
+
+            container.addEventListener('mouseenter', () => {
+                // Запуск анимации чисел
+                numberInterval = setInterval(updateNumbers, 150);
+
+                const headRight = cyItem.querySelector('.cy-item-head-right');
+                const headSpan = headRight.querySelector('span');
+
+                // Мигалка для верхнего блока
+                headTimeout = setTimeout(() => {
+                    let count = 0;
+                    blinkInterval = setInterval(() => {
+                        headRight.classList.toggle('bs-blue');
+                        count++;
+                        if (count >= 6) {
+                            clearInterval(blinkInterval);
+                            headRight.classList.add('bs-blue');
+                            spanTimeout = setTimeout(() => {
+                                if (headSpan) {
+                                    headSpan.classList.add('cy-item-head-right-hovered');
+                                }
+                            }, 100);
+                        }
+                    }, 100);
+                }, 400);
+
+                // Превращение скобок
+                const brackets = cyItem.querySelectorAll(
+                    '.cy-brackets-tl, .cy-brackets-tr, .cy-brackets-bl, .cy-brackets-br'
+                );
+                brackets.forEach(b => b.style.backgroundColor = 'transparent');
+                bracketTimeout = setTimeout(() => {
+                    brackets.forEach(b => b.style.backgroundColor = 'orange');
+                }, 100);
+
+                // Красим кнопку по кускам
+                let strokeDivs = strokes ? Array.from(strokes.children).reverse() : [];
+                strokeDivs.push(btn);
+
+                strokesStartTimeout = setTimeout(() => {
+                    strokeDivs.forEach((div, i) => {
+                        const t = setTimeout(() => {
+                            div.classList.add('active');
+                        }, i * 150);
+                        strokesTimeouts.push(t);
+                    });
+                }, 1200);
+
+                // Активируем прогресс-бар
+                if (progressFill) {
+                    progressFill.classList.add('progress-fill-active');
+                }
+            });
+
+            container.addEventListener('mouseleave', () => {
+                // Остановка анимации чисел
+                clearInterval(numberInterval);
+
+                const headRight = cyItem.querySelector('.cy-item-head-right');
+                const headSpan = headRight.querySelector('span');
+
+                clearTimeout(headTimeout);
+                clearTimeout(bracketTimeout);
+                clearTimeout(spanTimeout);
+                clearTimeout(strokesStartTimeout);
+                clearInterval(blinkInterval);
+
+                strokesTimeouts.forEach(t => clearTimeout(t));
+                strokesTimeouts = [];
+
+                // Сброс
+                headRight.classList.remove('bs-blue');
+                if (headSpan) {
+                    headSpan.classList.remove('cy-item-head-right-hovered');
+                }
+
+                const brackets = cyItem.querySelectorAll(
+                    '.cy-brackets-tl, .cy-brackets-tr, .cy-brackets-bl, .cy-brackets-br'
+                );
+                brackets.forEach(b => b.style.backgroundColor = 'transparent');
+
+                // Сброс кнопки
+                if (strokes) {
+                    strokes.querySelectorAll('div').forEach(div => {
+                        div.classList.remove('active');
+                    });
+                }
+                if (btn) {
+                    btn.classList.remove('active');
+                }
+
+                // Деактивируем прогресс-бар
+                if (progressFill) {
+                    progressFill.classList.remove('progress-fill-active');
+                }
+            });
         });
     });
 </script>
@@ -265,120 +337,6 @@
             requestAnimationFrame(animate);
         }
         animate();
-    });
-</script>
-
-<script>
-    // Для управления анимациями при наведении на модуль
-    document.addEventListener('DOMContentLoaded', () => {
-        const cyItems = document.querySelectorAll('.cy-item');
-
-        cyItems.forEach(item => {
-            let headTimeout,
-                bracketTimeout,
-                blinkInterval,
-                spanTimeout,
-                strokesStartTimeout,
-                strokesTimeouts = [];
-
-            item.addEventListener('mouseenter', () => {
-                const headRight = item.querySelector('.cy-item-head-right');
-                const headSpan = headRight.querySelector('span');
-
-                // Мигалка для верхнего блока
-                headTimeout = setTimeout(() => {
-                    let count = 0;
-                    blinkInterval = setInterval(() => {
-                        headRight.classList.toggle('bs-blue');
-                        count++;
-                        if (count >= 6) {
-                            clearInterval(blinkInterval);
-                            headRight.classList.add('bs-blue');
-                            spanTimeout = setTimeout(() => {
-                                if (headSpan) {
-                                    headSpan.classList.add('cy-item-head-right-hovered');
-                                }
-                            }, 100);
-                        }
-                    }, 100);
-                }, 400);
-
-                // Превращение скобок
-                const brackets = item.querySelectorAll(
-                    '.cy-brackets-tl, .cy-brackets-tr, .cy-brackets-bl, .cy-brackets-br'
-                );
-                brackets.forEach(b => b.style.backgroundColor = 'transparent');
-                bracketTimeout = setTimeout(() => {
-                    brackets.forEach(b => b.style.backgroundColor = 'orange');
-                }, 100);
-
-                // Эмитируем событие наведения на кнопку
-                const btnWrapper = item.parentElement.querySelector('.item-btn-wrapper');
-                const cyberText = btnWrapper?.querySelector('.js-cyber-text-animation');
-                if (cyberText) {
-                    cyberText.dispatchEvent(new MouseEvent('mouseenter', { bubbles: true }));
-                }
-
-                // Красим кнопку по кускам
-                const btn = btnWrapper?.querySelector('.item-btn');
-                const strokes = btnWrapper?.querySelector('.item-btn-strokes');
-                let strokeDivs = strokes ? Array.from(strokes.children).reverse() : [];
-                strokeDivs.push(btn);
-                console.log(strokeDivs)
-
-                strokesStartTimeout = setTimeout(() => {
-                    strokeDivs.forEach((div, i) => {
-                        const t = setTimeout(() => {
-                            div.classList.add('active');
-                        }, i * 150);
-                        strokesTimeouts.push(t);
-                    });
-                }, 1200);
-            });
-
-            item.addEventListener('mouseleave', () => {
-                const headRight = item.querySelector('.cy-item-head-right');
-                const headSpan = headRight.querySelector('span');
-
-                clearTimeout(headTimeout);
-                clearTimeout(bracketTimeout);
-                clearTimeout(spanTimeout);
-                clearTimeout(strokesStartTimeout);
-                clearInterval(blinkInterval);
-
-                strokesTimeouts.forEach(t => clearTimeout(t));
-                strokesTimeouts = [];
-
-                // Сброс
-                headRight.classList.remove('bs-blue');
-                if (headSpan) {
-                    headSpan.classList.remove('cy-item-head-right-hovered');
-                }
-
-                const brackets = item.querySelectorAll(
-                    '.cy-brackets-tl, .cy-brackets-tr, .cy-brackets-bl, .cy-brackets-br'
-                );
-                brackets.forEach(b => b.style.backgroundColor = 'transparent');
-
-                const btnWrapper = item.parentElement.querySelector('.item-btn-wrapper');
-                const cyberText = btnWrapper?.querySelector('.js-cyber-text-animation');
-
-                if (cyberText) {
-                    cyberText.dispatchEvent(new MouseEvent('mouseleave', { bubbles: true }));
-                }
-
-                const strokes = btnWrapper?.querySelector('.item-btn-strokes');
-                const btn = btnWrapper?.querySelector('.item-btn');
-                if (strokes) {
-                    strokes.querySelectorAll('div').forEach(div => {
-                        div.classList.remove('active');
-                    });
-                }
-                if (btn) {
-                    btn.classList.remove('active');
-                }
-            });
-        });
     });
 </script>
 @endpush

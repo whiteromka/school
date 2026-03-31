@@ -175,19 +175,6 @@
                             <a class="item-btn-wrapper p-lr-10" href="http://localhost:8080/site/back">
                                 <div class="item-btn js-cyber-text-animation bg-white"><span data-target="П">0</span><span data-target="о">L</span><span data-target="д">N</span><span data-target="р">!</span><span data-target="о">U</span><span data-target="б">X</span><span data-target="н">O</span><span data-target="е">8</span><span data-target="е">B</span></div>
                             </a>
-
-                            <a class="item-btn-wrapper p-lr-10" href="http://localhost:8080/site/back">
-                                <div class="item-btn js-cyber-text-animation bg-white"><span data-target="П">0</span><span data-target="о">L</span><span data-target="д">N</span><span data-target="р">!</span><span data-target="о">U</span><span data-target="б">X</span><span data-target="н">O</span><span data-target="е">8</span><span data-target="е">B</span></div>
-                            </a>
-
-                            <a class="item-btn-wrapper p-lr-10" href="http://localhost:8080/site/back">
-                                <div class="item-btn js-cyber-text-animation bg-white"><span data-target="П">0</span><span data-target="о">L</span><span data-target="д">N</span><span data-target="р">!</span><span data-target="о">U</span><span data-target="б">X</span><span data-target="н">O</span><span data-target="е">8</span><span data-target="е">B</span></div>
-                            </a>
-
-                            <a class="item-btn-wrapper p-lr-10" href="http://localhost:8080/site/back">
-                                <div class="item-btn js-cyber-text-animation bg-white"><span data-target="П">0</span><span data-target="о">L</span><span data-target="д">N</span><span data-target="р">!</span><span data-target="о">U</span><span data-target="б">X</span><span data-target="н">O</span><span data-target="е">8</span><span data-target="е">B</span></div>
-                            </a>
-
 {{--                            <button class="btn btn-s btn--secondary" id="loadMoreVacancies-php" data-offset="6" data-type="PHP">--}}
 {{--                                <span class="btn__content">Еще PHP вакансии</span>--}}
 {{--                                <span class="btn__glitch"></span>--}}

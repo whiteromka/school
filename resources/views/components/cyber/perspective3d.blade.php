@@ -10,7 +10,7 @@
             </div>
         </div>
 
-        <div class="col-7 mb-20">
+        <div class="col-md-7 mb-20">
             <div class="js-cy-brackets container-t" data-color="white" style="padding: 4px">
                 <div class="p-clamp-1 grey">
                     <h5 class="font-tektur">Web приложение</h5>

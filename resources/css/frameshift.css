@@ -4,9 +4,7 @@
     --grid-color-t1: #333333;
     --dim-color-t1: #885500;
 
-    /* Базовые размеры (для 300px) */
-    --container-width-t1: 300px;
-    --container-height-t1: 500px;
+    --container-height-t1: 400px;
     --container-padding-t1: 15px;
     --base-font-size-t1: 10px;
 
@@ -34,8 +32,8 @@
 /* --- БОЛЬШОЙ ЭКРАН (от 600px) --- */
 @media (min-width: 600px) {
     :root {
-        --container-width-t1: 600px;
-        --container-height-t1: 500px;
+        /*--container-width-t1: 600px;*/
+        --container-height-t1: 450px;
         --container-padding-t1: 40px;
         --base-font-size-t1: 14px;
 
@@ -86,7 +84,7 @@
 .interface-container {
     position: relative;
     width: 100%;
-    max-width: var(--container-width-t1);
+    /*max-width: var(--container-width-t1);*/
     height: var(--container-height-t1);
     border: 1px solid var(--dim-color-t1);
     background-color: var(--bg-color-t1);
@@ -101,14 +99,14 @@
 
 .grid-overlay {
     position: absolute;
-    top: var(--grid-top-t1);
-    left: var(--grid-left-t1);
-    right: var(--grid-left-t1);
-    bottom: var(--grid-bottom-t1);
+    top: 10px;
+    left: 0px;
+    right: 0px;
+    bottom: 10px;
     background-image: radial-gradient(var(--grid-color-t1) 1px, transparent 1px);
     background-size: var(--grid-size-t1) var(--grid-size-t1);
     z-index: 0;
-    opacity: 0.6;
+    opacity: 0.4;
     pointer-events: none;
 }
 
@@ -126,12 +124,11 @@
 
 .side-text {
     position: absolute;
-    top: 60%;
-    width: 200px;
+    top: 50%;
     text-align: center;
     font-size: 10px;
     color: var(--dim-color-t1);
-    letter-spacing: 2px;
+    letter-spacing: 5px;
     opacity: 0.7;
     display: none; /* Скрыто на малых экранах */
 }
@@ -142,7 +139,7 @@
 }
 .side-right {
     right: 17px;
-    transform: rotate(90deg) translateX(-50%);
+    transform: rotate(90deg) translateX(50%);
     transform-origin: right center;
 }
 
@@ -245,10 +242,12 @@
 }
 
 .sub-title {
-    font-size: 7px;
-    letter-spacing: 1px;
+    font-size: 12px;
+    letter-spacing: 0.2px;
+    line-height: 1.2;
     color: var(--dim-color-t1);
     margin-bottom: 3px;
+    text-align: left;
 }
 
 .code-number {
@@ -270,8 +269,10 @@
     top: 0;
     left: 0;
     height: 100%;
-    width: 60%;
+    width: 00%;
     background: var(--primary-color-t1);
+}
+.progress-fill-active {
     animation: load 2s infinite ease-in-out;
 }
 
@@ -294,14 +295,9 @@
 .circle {
     width: var(--circle-size-t1);
     height: var(--circle-size-t1);
-    background-color: var(--primary-color-t1);
-    border-radius: 50%;
-    box-shadow: 0 0 10px var(--primary-color-t1);
+    background-color: rgba(73, 73, 73, 0.15);
 }
 
-.blink {
-    animation: blinker 1s linear infinite;
-}
 @keyframes blinker {
     50% { opacity: 0; }
 }
