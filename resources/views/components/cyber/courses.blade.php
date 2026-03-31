@@ -26,7 +26,7 @@
             <div class="row">
                 @php $courses = [
                     [
-                        'name' => 'Front', 'label' => 'JS', 'css' => 'bg-JS', 'crew' => 14, 'img' => 'img/site/fly_red.jpeg',
+                        'name' => 'Front', 'label' => 'JS', 'css' => 'bg-JS', 'crew' => 14,
                         'tabs' => [
                             'speed'=>'1 PHP прост в освоении и позволяет быстро запускать проекты. Отличный выбор для старта в веб-разработке и быстрого прототипирования.',
                             'ecosystem' => '1 Огромная экосистема: Laravel, Symfony, Yii. Тысячи пакетов и готовых решений для реальных проектов.',
@@ -35,7 +35,7 @@
                         'link' => route('site.front')
                     ],
                     [
-                        'name' => 'Back', 'label' => 'PHP', 'css' => 'bg-PHP', 'crew' => 17, 'img' => 'img/site/robo1.jpeg',
+                        'name' => 'Back', 'label' => 'PHP', 'css' => 'bg-PHP', 'crew' => 17,
                         'tabs' => [
                             'speed'=>'2 PHP прост в освоении и позволяет быстро запускать проекты. Отличный выбор для старта в веб-разработке и быстрого прототипирования.',
                             'ecosystem' => '2 Огромная экосистема: Laravel, Symfony, Yii. Тысячи пакетов и готовых решений для реальных проектов.',
@@ -43,8 +43,14 @@
                         ],
                         'link' => route('site.back')
                     ],
-                    ['name' => 'Gamedev', 'label' => 'C#', 'css' => 'bg-DEFAULT', 'crew' => 2, 'img' => 'img/site/yellow.jpeg', 'tabs' => [], 'link' => route('site.gamedev')],
-                    ['name' => 'Foreign Lang', 'label' => 'En', 'css' => 'bg-DEFAULT', 'crew' => 25, 'img' => 'img/site/neon_robo.jpeg', 'tabs' => [], 'link' => route('site.english')],
+                    [
+                        'name' => 'Gamedev', 'label' => 'C#', 'css' => 'bg-DEFAULT', 'crew' => 2,
+                        'tabs' => [], 'link' => route('site.gamedev')
+                    ],
+                    [
+                        'name' => 'Foreign Lang', 'label' => 'En', 'css' => 'bg-DEFAULT', 'crew' => 25,
+                        'tabs' => [], 'link' => route('site.english')
+                    ],
                 ];
                 @endphp
 
@@ -65,9 +71,7 @@
                                 </div>
                             </div>
                             <div class="cy-item-body">
-                                @if($course['img'])
-                                    <img src="{{ asset($course['img']) }}" class="img-fluid" alt="">
-                                @endif
+                                @include('components.frameshift', ['course' => $course])
                                 <div class="php-tabs-wrapper">
                                     {{-- Табы --}}
                                     @if(count($course['tabs']))
@@ -144,6 +148,40 @@
 <br>
 
 @push('scripts')
+
+<script>
+    // Анимация случайных чисел для каждого interface-container
+    document.addEventListener('DOMContentLoaded', () => {
+        const interfaceContainers = document.querySelectorAll('.interface-container');
+
+        function randomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+
+        interfaceContainers.forEach(container => {
+            const numberElement = container.querySelector('.js-random-number');
+            const topCodeElement = container.querySelector('.js-top-code');
+
+            if (!numberElement || !topCodeElement) return;
+
+            function updateNumbers() {
+                let newNum = '';
+                for(let i=0; i<13; i++) {
+                    newNum += randomInt(0, 9);
+                }
+                numberElement.innerText = newNum;
+
+                if(Math.random() > 0.7) {
+                    let codePart = randomInt(100000, 999999);
+                    let letter = String.fromCharCode(65 + randomInt(0, 25));
+                    topCodeElement.innerText = `${codePart} ${letter}${letter}`;
+                }
+            }
+            setInterval(updateNumbers, 150);
+        });
+    });
+</script>
+
 <script>
     // Для создания звездного неба
     document.addEventListener('DOMContentLoaded', () => {

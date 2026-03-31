@@ -1,5 +1,7 @@
 @php
     use Illuminate\Support\Facades\Auth;
+
+    /** @var string $userIp */
 @endphp
 
 <div class="container">

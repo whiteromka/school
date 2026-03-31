@@ -4,7 +4,7 @@
     </h2>
 </div>
 
-<div class="container-fluid top-ark bg-light-grey px-0">
+<div class="container-fluid top-ark bg-light-grey_ bg-yellow px-0">
     <div class="streaks">
         <div class="streak-left streak-b"></div>
         <div class="streak-left streak-b"></div>
@@ -13,13 +13,13 @@
     </div>
 </div>
 
-<div class="container-fluid bg-light-grey px-0 pos-r">
+<div class="container-fluid bg-light-grey_ bg-yellow px-0 pos-r">
     @include('components.cyber.matrix', ['css' => 'matrix-pos-tl'])
-    @include('components.cyber.x-text', [
-    'main' => 'JS',
-    'mainSpan' => '>>> ||',
-    'descr' => 'SYS modules XXX'
-    ])
+{{--    @include('components.cyber.x-text', [--}}
+{{--        'main' => 'JS',--}}
+{{--        'mainSpan' => '>>> ||',--}}
+{{--        'descr' => 'SYS modules XXX'--}}
+{{--    ])--}}
 
     <div class="container">
         <div style="height: 60px"></div>
@@ -42,7 +42,7 @@
                                 js-cy-brackets d-flex align-items-center"
                                  data-color="red" data-width="2" data-size="8"
                             >
-                                <div class="n">
+                                <div class="n {{ $advantage['type'] == 'good' ? 'n1' : '' }}">
                                     <span> {{ $advantage['n'] }} </span>
                                 </div>
                                 <div style="width: 70%">
@@ -61,7 +61,7 @@
     </div>
 </div>
 
-<div class="container-fluid bottom-ark bg-light-grey px-0">
+<div class="container-fluid bottom-ark bg-light-grey_ bg-yellow px-0">
     <div class="streaks">
         <span>== ===[][] == ==[] === [][][]</span>
         <div class="streak-left streak-b"></div>

@@ -328,12 +328,13 @@ a.base-link:hover {
     line-height: 1.7;
 }
 .hero-subtitle-js {
-    font-size: 16px;
+    font-size: 14px;
     line-height: 1.7;
     padding: 10px;
     color: black;
     margin-bottom: 0;
-
+    font-family: "Tektur", sans-serif;
+    /*text-transform: uppercase;*/
 }
 
 .hero-actions {

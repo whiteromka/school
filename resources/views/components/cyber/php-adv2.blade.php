@@ -17,9 +17,9 @@
 <div class="container-fluid bg-light-grey px-0 pos-r">
     @include('components.cyber.matrix', ['css' => 'matrix-pos-tl'])
     @include('components.cyber.x-text', [
-    'main' => 'PHP',
-    'mainSpan' => '>>> ||',
-    'descr' => 'SYS modules XXX'
+        'main' => 'PHP',
+        'mainSpan' => '>>> ||',
+        'descr' => 'SYS modules XXX'
     ])
 
     <div class="container">

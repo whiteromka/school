@@ -1,0 +1,547 @@
+/* === ЦВЕТОВАЯ СХЕМА === */
+:root {
+    --bg-color-ot: #0a0a0a;
+    --primary-color-ot: #ffb000;
+    --secondary-color-ot: #ff8c00;
+    --dim-color-ot: #8b6914;
+    --glow-color-ot: rgba(255, 176, 0, 0.5);
+    --php-blue-ot: #6b8cff;
+    --php-orange-ot: #ff9f43;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body .tui-window {
+    background-color: var(--bg-color-ot);
+    font-family: 'VT323', monospace;
+    color: var(--primary-color-ot);
+    overflow-x: hidden;
+    overflow-y: auto;
+    /*min-height: 100vh;*/
+    position: relative;
+}
+
+/* === CRT ЭФФЕКТЫ (без рыбьего глаза) === */
+.crt-container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 20px;
+    overflow: visible;
+    padding-bottom: 60px;
+}
+
+.crt-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+    background:
+        radial-gradient(ellipse at center, transparent 0%, transparent 50%, rgba(0,0,0,0.3) 100%),
+        repeating-linear-gradient(0deg, rgba(0,0,0,0.15) 0px, rgba(0,0,0,0.15) 1px, transparent 1px, transparent 3px);
+    animation: flicker 0.15s infinite;
+}
+
+.crt-overlay::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+    animation: noise 0.5s steps(10) infinite;
+}
+
+@keyframes flicker {
+    0% { opacity: 0.97; }
+    50% { opacity: 1; }
+    100% { opacity: 0.98; }
+}
+
+@keyframes noise {
+    0%, 100% { transform: translate(0, 0); }
+    25% { transform: translate(-5px, -5px); }
+    50% { transform: translate(5px, 5px); }
+    75% { transform: translate(-5px, 5px); }
+}
+
+/* === TUI ОКНА === */
+.tui-window {
+    background: rgba(10, 10, 10, 0.95);
+    border: 2px solid var(--primary-color-ot);
+    border-radius: 4px;
+    box-shadow:
+        0 0 10px var(--glow-color-ot),
+        inset 0 0 20px rgba(255, 176, 0, 0.1);
+    margin-bottom: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+.tui-window::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    border: 1px solid var(--dim-color-ot);
+    pointer-events: none;
+}
+
+.tui-header {
+    background: var(--primary-color-ot);
+    color: var(--bg-color-ot);
+    padding: 4px 10px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.tui-header .window-controls {
+    display: flex;
+    gap: 5px;
+}
+
+.tui-header .window-controls span {
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+.tui-header .window-controls span:hover {
+    background: var(--bg-color-ot);
+    color: var(--primary-color-ot);
+}
+
+.tui-content {
+    padding: 10px;
+    height: calc(100% - 35px);
+    overflow: hidden;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* === ТЕКСТОВЫЕ ЭФФЕКТЫ === */
+.glow-text {
+    text-shadow: 0 0 5px var(--glow-color-ot), 0 0 10px var(--glow-color-ot);
+}
+
+.blink {
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.cursor {
+    display: inline-block;
+    width: 10px;
+    height: 18px;
+    background: var(--primary-color-ot);
+    animation: blink 0.8s infinite;
+    vertical-align: middle;
+}
+
+/* === ЛОГИ === */
+.log-container {
+    font-size: 12px;
+    overflow-y: auto;
+    height: 100%;
+}
+
+.log-entry {
+    margin-bottom: 3px;
+    white-space: pre-wrap;
+    word-break: break-all;
+    opacity: 0;
+    animation: fadeIn 0.3s ease-in forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.log-timestamp {
+    color: var(--secondary-color-ot);
+    margin-right: 10px;
+}
+
+.log-info { color: var(--primary-color-ot); }
+.log-warn { color: #ffcc00; }
+.log-error { color: #ff4444; }
+.log-success { color: #00ff00; }
+
+/* === СТАТИЧНЫЙ ЗАГОЛОВОК === */
+.static-header {
+    background: rgba(255, 176, 0, 0.1);
+    padding: 8px 15px;
+    text-align: center;
+    border: 1px solid var(--dim-color-ot);
+    margin-bottom: 15px;
+}
+
+.static-header-text {
+    letter-spacing: 3px;
+    font-size: 16px;
+}
+
+/* === ПРОГРЕСС БАРЫ === */
+.ascii-progress {
+    background: var(--dim-color-ot);
+    height: 20px;
+    margin: 5px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.ascii-progress-bar {
+    height: 100%;
+    background: var(--primary-color-ot);
+    transition: width 0.3s;
+    position: relative;
+}
+
+.ascii-progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 10px,
+        rgba(0,0,0,0.3) 10px,
+        rgba(0,0,0,0.3) 20px
+    );
+}
+
+/* === PHP БЛОК === */
+.php-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.php-logo {
+    font-size: 72px;
+    font-weight: bold;
+    color: var(--php-blue-ot);
+    text-shadow:
+        0 0 10px rgba(107, 140, 255, 0.8),
+        0 0 20px rgba(107, 140, 255, 0.5),
+        0 0 30px rgba(107, 140, 255, 0.3);
+    letter-spacing: 10px;
+    animation: php-shake 3s infinite;
+    position: relative;
+    z-index: 2;
+}
+
+.php-subtitle {
+    font-size: 18px;
+    color: var(--php-orange-ot);
+    text-shadow:
+        0 0 5px rgba(255, 159, 67, 0.6),
+        0 0 10px rgba(255, 159, 67, 0.3);
+    letter-spacing: 3px;
+    margin-top: 10px;
+    animation: php-flicker 4s infinite;
+    position: relative;
+    z-index: 2;
+}
+
+.php-version {
+    font-size: 12px;
+    color: var(--dim-color-ot);
+    margin-top: 5px;
+    letter-spacing: 2px;
+    z-index: 2;
+}
+
+/* Тряска текста PHP */
+@keyframes php-shake {
+    0%, 90%, 100% {
+        transform: translate(0, 0);
+    }
+    91% {
+        transform: translate(1px, 1px);
+    }
+    92% {
+        transform: translate(0px, 0px);
+    }
+    93% {
+        transform: translate(-1px, -1px);
+    }
+    94% {
+        transform: translate(0px, 0px);
+    }
+    95% {
+        transform: translate(0, 0);
+    }
+}
+
+/* Мерцание подзаголовка */
+@keyframes php-flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.95; }
+    52% { opacity: 0.8; }
+    54% { opacity: 0.95; }
+    70% { opacity: 1; }
+    71% { opacity: 0.7; }
+    72% { opacity: 1; }
+}
+
+/* Горизонтальная полоса помех */
+.php-glitch-bar {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(107, 140, 255, 0.8) 20%,
+        rgba(255, 159, 67, 0.8) 50%,
+        rgba(107, 140, 255, 0.8) 80%,
+        transparent 100%
+    );
+    opacity: 0;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.php-glitch-bar.active {
+    animation: glitch-bar-move 0.3s linear forwards;
+}
+
+@keyframes glitch-bar-move {
+    0% {
+        opacity: 0.7;
+        transform: translateY(0) scaleY(1);
+    }
+    25% {
+        opacity: 0.9;
+        transform: translateY(0) scaleY(2);
+    }
+    50% {
+        opacity: 0.5;
+        transform: translateY(-5px) scaleY(0.5);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(10px) scaleY(0);
+    }
+}
+
+/* Эффект шума на фоне PHP блока */
+.php-noise {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.05;
+    z-index: 1;
+    background: url("image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    animation: php-noise-anim 0.2s steps(5) infinite;
+}
+
+@keyframes php-noise-anim {
+    0%, 100% { transform: translate(0, 0); }
+    25% { transform: translate(-3px, 3px); }
+    50% { transform: translate(3px, -3px); }
+    75% { transform: translate(-3px, -3px); }
+}
+
+/* Сканлайн эффект для PHP блока */
+.php-scanlines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.1) 0px,
+        rgba(0, 0, 0, 0.1) 1px,
+        transparent 1px,
+        transparent 3px
+    );
+    z-index: 4;
+    pointer-events: none;
+}
+
+/* === КУРСЫ ВАЛЮТ === */
+.currency-container {
+    font-size: 14px;
+}
+
+.currency-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 5px;
+    border-bottom: 1px dashed var(--dim-color-ot);
+    opacity: 1;
+}
+
+.currency-row .currency-name {
+    color: var(--secondary-color-ot);
+    min-width: 60px;
+}
+
+.currency-row .currency-value {
+    color: var(--primary-color-ot);
+    font-weight: bold;
+    min-width: 120px;
+    text-align: right;
+}
+
+.currency-row .currency-change {
+    font-size: 12px;
+    min-width: 70px;
+    text-align: right;
+}
+
+.currency-row .currency-change.up {
+    color: #00ff00;
+}
+
+.currency-row .currency-change.down {
+    color: #ff4444;
+}
+
+.currency-row .currency-placeholder {
+    color: var(--dim-color-ot);
+}
+
+.currency-loading {
+    text-align: center;
+    padding: 20px;
+}
+
+.loading-dots::after {
+    content: '';
+    animation: dots 1.5s steps(4) infinite;
+}
+
+@keyframes dots {
+    0%, 20% { content: ''; }
+    40% { content: '.'; }
+    60% { content: '..'; }
+    80%, 100% { content: '...'; }
+}
+
+/* Анимация появления строки */
+.currency-row.loaded {
+    animation: rowAppear 0.3s ease-out forwards;
+}
+
+@keyframes rowAppear {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Курсор для печати в строке валюты */
+.typing-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 14px;
+    background: var(--primary-color-ot);
+    animation: blink 0.5s infinite;
+    vertical-align: middle;
+    margin-left: 2px;
+}
+
+/* === СТАТУС БАР === */
+.status-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--primary-color-ot);
+    color: var(--bg-color-ot);
+    padding: 5px 15px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    z-index: 1001;
+}
+
+/* === СКРОЛЛБАР === */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-color-ot);
+    border: 1px solid var(--dim-color-ot);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color-ot);
+    border: 1px solid var(--dim-color-ot);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color-ot);
+}
+
+/* === АДАПТИВНОСТЬ === */
+@media (max-width: 768px) {
+    .crt-container {
+        padding: 10px;
+        padding-bottom: 70px;
+    }
+
+    .tui-window {
+        margin-bottom: 10px;
+    }
+
+    .status-bar {
+        font-size: 12px;
+        flex-wrap: wrap;
+    }
+
+    .tui-window {
+        height: auto !important;
+        min-height: 150px;
+    }
+
+    .tui-window#mainTerminal {
+        min-height: 400px;
+    }
+
+    .php-logo {
+        font-size: 48px;
+        letter-spacing: 5px;
+    }
+
+    .php-subtitle {
+        font-size: 14px;
+    }
+}
