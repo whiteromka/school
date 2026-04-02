@@ -59,7 +59,6 @@
 
     /* Показываем боковой текст на больших экранах */
     .side-text {
-        display: block !important;
         font-weight: bold;
     }
 }
@@ -135,12 +134,12 @@
 }
 .side-left {
     left: 17px;
-    transform: rotate(-90deg) translateX(-50%);
+    transform: rotate(-90deg) translateX(-40%);
     transform-origin: left center;
 }
 .side-right {
     right: 17px;
-    transform: rotate(90deg) translateX(50%);
+    transform: rotate(90deg) translateX(44%);
     transform-origin: right center;
 }
 

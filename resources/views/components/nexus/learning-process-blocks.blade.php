@@ -2,7 +2,11 @@
     <section class="section" id="services">
         <div class="section-header">
             <div class="section-label">Learning process</div>
-            <h2 class="section-title">Что нужно для обучения</h2>
+            <h2 class="section-title">
+                <span class="js-glitch" data-text="Что нужно для обучения">
+                    Что нужно для обучения
+                </span>
+            </h2>
             <div class="section-divider" aria-hidden="true"></div>
         </div>
         @php

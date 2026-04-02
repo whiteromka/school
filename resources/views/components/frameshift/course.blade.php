@@ -15,15 +15,15 @@
     <div class="corner-dot-group bl">:::</div>
     <div class="corner-dot-group br">:::</div>
 
-    <div class="side-text side-left">||||||||||||||||||||||</div>
-    <div class="side-text side-right">||||||||||||||||||||||</div>
+    <div class="side-text side-left d-block">||||||||||||||||||||||</div>
+    <div class="side-text side-right d-block">||||||||||||||||||||||</div>
 
     <div class="top-section">
         <div class="top-header">
             <span>COMMAND</span>
             <span>
-{{--                <span class="blink">x</span>--}}
-                <span class="js-top-code">00555985 AA</span></span>
+                <span class="js-top-code">00555985 AA</span>
+            </span>
         </div>
 
         <div class="data-bar">

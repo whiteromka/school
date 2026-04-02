@@ -37,8 +37,10 @@
 <div class="container">
     <section class="section_" id="about">
         <div class="section-header">
-            <div class="section-label">training</div>
-            <h2 class="section-title">Чему учим</h2>
+            <div class="section-label">What we teach</div>
+            <h2 class="section-title">
+                <span class="js-glitch" data-text="Чему учим">Чему учим</span>
+            </h2>
             <div class="section-divider" aria-hidden="true"></div>
         </div>
     </section>
@@ -120,103 +122,112 @@
     <section class="section_" id="about">
         <div class="section-header">
             <div class="section-label">finally...</div>
-            <h2 class="section-title" >В заключении</h2>
+            <h2 class="section-title">
+                <span class="js-glitch" data-text="В заключении">В заключении</span>
+            </h2>
             <div class="section-divider" aria-hidden="true"></div>
         </div>
     </section>
 </div>
 
-{{-- Обычный двойной Контейнер --}}
-{{--@include('components.cyber.simple-double')--}}
+<div class="hud-container_ container px-0">
+    <!-- Range Region Area Header -->
+    <div class="range-header">
+        <div class="range-marker"></div>
+        <span class="range-text">Warning Message Area</span>
+        <div class="range-marker"></div>
+    </div>
 
-<div class="container">
+    <!-- Central Data Block -->
     <div class="row">
+        <div class="col-sm-12">
 
-        <div class="col-12">
-            <div class="js-cy-brackets p-5" data-color="white" data-width="1" data-size="10">
-
-                <div class="bottom-main-head">
-                    <div class="deco-cube-40 top-10 right-10"></div>
+            <div class="data-block">
+                <div class="progress-markers">
+                    <div class="progress-marker"></div>
+                    <div class="progress-line-bottom"></div>
+                    <div class="progress-marker"></div>
                 </div>
-                <div class="bottom-main">
-                    <div class="row" style="border: 1px solid #070707; border-right: none">
-                        <div class="col-12 col-md-4 d-flex flex-column mt-10">
-                            <div class="ta-c js-cy-brackets" data-color="white" data-size="8" data-width="8"
-                                 style="height: 100%;"
-                            >
-                                <br>
-                                <br>
-                                <h2>ВСЕМ ПОМОЖЕМ<br>НИ КОГО НЕ БРОСИМ</h2>
-                                <br>
-                                <br>
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-md-8 mt-10">
-                            <div class="js-cy-brackets container-t" data-color="white" style="padding: 4px">
-                                <div class="p-clamp-1">
-                                    <p>
-                                        Формат занятий предполагает открытый и простой диалог. Друзья, не стесняйтесь задавать вопросы и просить о помощи.
-                                        Если что-то не поняли, забыли или упустили просто попросите повторить.
-                                        Просите больше примеров на интересующие вас темы: мы достаточно гибкие, чтобы подстроиться прямо по ходу урока.
-                                        Если застряли с домашкой - просто попросите разобрать и объяснить ещё раз!
-                                        Мы всегда идём навстречу и обязательно поможем, никого не бросим.
-                                        Все нужные и важные темы, обозначенные в модуле, мы обязательно пройдём.
-                                        Если потребуется, увеличим количество уроков в модуле без дополнительной оплаты.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <p></p>
-                    </div>
-
-                    <div class="row mt-10">
-                        <div class="col-12 px-1_ d-flex justify-content-start" style="padding-left: 14px">
-                            <a class="item-btn-wrapper p-lr-10" href="http://localhost:8080/site/back">
-                                <div class="item-btn js-cyber-text-animation bg-white"><span data-target="П">0</span><span data-target="о">L</span><span data-target="д">N</span><span data-target="р">!</span><span data-target="о">U</span><span data-target="б">X</span><span data-target="н">O</span><span data-target="е">8</span><span data-target="е">B</span></div>
-                            </a>
-{{--                            <button class="btn btn-s btn--secondary" id="loadMoreVacancies-php" data-offset="6" data-type="PHP">--}}
-{{--                                <span class="btn__content">Еще PHP вакансии</span>--}}
-{{--                                <span class="btn__glitch"></span>--}}
-{{--                                <span class="btn__label">r25</span>--}}
-{{--                            </button>--}}
-                        </div>
-                    </div>
-
-
+                <div class="side-text side-left d-none d-md-block ls-10">||||||||||</div>
+                <div class="side-text side-right d-none d-md-block ls-10">||||||||||</div>
+                <div class="data-main">
+                    {{--                        <span class="num-left">0147</span>--}}
+                    <span class="num-inf">INFO</span>
+                    {{--                        <span class="data-separator">.</span>--}}
+                    {{--                        <span class="num-inf">WARN</span>--}}
+                    {{--                        <span class="num-right">WARN</span>--}}
                 </div>
-                <div class="bottom-main-footer" style="margin-top: -1px"></div>
+                <div class="progress-markers">
+                    <div class="progress-marker"></div>
+                    <div class="progress-line-bottom"></div>
+                    <div class="progress-marker"></div>
+                </div>
 
+                <!-- Loading Section -->
+                <div class="loading-section mt-2">
+                    <div class="loading-header ta-l p-lr-10 p-tb-20">
+                        <p class="loading-text-code1 ta-c">
+                            <span class="pink2">
+                                Всем поможем! Ни кого не бросим!
+                            </span>
+                        </p>
+                        <p class="fs-15 ">
+                            Формат занятий предполагает открытый и простой диалог. Друзья, не стесняйтесь
+                            задавать вопросы и просить о помощи. Если что-то не поняли, забыли или упустили
+                            просто попросите повторить. Просите больше примеров на интересующие вас темы:
+                            мы достаточно гибкие, чтобы подстроиться прямо по ходу урока. Если застряли с
+                            домашкой - просто попросите разобрать и объяснить ещё раз! Мы всегда идём
+                            навстречу и обязательно поможем, никого не бросим. Все нужные и важные темы,
+                            обозначенные в модуле, мы обязательно пройдём. Если потребуется, увеличим
+                            количество уроков в модуле без дополнительной оплаты.
+                        </p>
+                    </div>
+                </div>
             </div>
-        </div>
 
-{{--        <div class="col-12 col-md-6">--}}
-{{--            <div class="custom-block mt-1">--}}
-{{--                <div class="trapezoid-bottom"></div>--}}
-{{--                <div class="php-custom-block-content ta-c" style="min-height: 190px">--}}
-{{--                    <p class="php-custom-block-head" id="js-techStack">МЫ НЕ ОБМАНЫВВАЕМ И НЕ НИКОГО НЕ БРОСАЕМ</p>--}}
-{{--                    <br>--}}
-{{--                    <p class="php-custom-block-text ta-l">--}}
-{{--                        Кто мы такие?--}}
-{{--                        Честно? Маленькая команда энтузиастов. Без офиса в Москва-Сити, без рекламы на ТВ и без громких имён в инвесторах.--}}
-{{--                        Зато у нас есть:--}}
-{{--                        15 лет коммерческого опыта на двоих Желание сделать реально крутой продукт Понимание, что каждый студент важен и это наша репутация--}}
-{{--                        Мы не строим из себя гуру. Мы просто показываем, что умеем сами и как сейчас пишут приложения в компания. Помогаем повторить. Если ты хочешь, чтобы тебя вели за ручку, но при этом уважали — нам по пути.</p>--}}
-{{--                    <br>--}}
-{{--                </div>--}}
-{{--                <div class="trapezoid-top"></div>--}}
+        </div>
+    </div>
+
+    {{-- Side Elements --}}
+{{--    <div class="side-elements">--}}
+{{--        <div class="side-element">--}}
+{{--            <span class="side-number">22 42</span>--}}
+{{--            <div class="side-grid">--}}
+{{--                <div class="grid-cell active"></div>--}}
+{{--                <div class="grid-cell active"></div>--}}
+{{--                <div class="grid-cell"></div>--}}
+{{--                <div class="grid-cell"></div>--}}
+{{--                <div class="grid-cell active"></div>--}}
+{{--                <div class="grid-cell"></div>--}}
+{{--                <div class="grid-cell"></div>--}}
+{{--                <div class="grid-cell active"></div>--}}
 {{--            </div>--}}
+{{--            <span class="side-number">22 42</span>--}}
 {{--        </div>--}}
 
-    </div>
+{{--        <div class="side-element">--}}
+{{--            <span class="side-number">22 46</span>--}}
+{{--            <div class="side-grid">--}}
+{{--                <div class="grid-cell active"></div>--}}
+{{--                <div class="grid-cell active"></div>--}}
+{{--                <div class="grid-cell active"></div>--}}
+{{--                <div class="grid-cell active"></div>--}}
+{{--                <div class="grid-cell"></div>--}}
+{{--                <div class="grid-cell active"></div>--}}
+{{--                <div class="grid-cell"></div>--}}
+{{--                <div class="grid-cell active"></div>--}}
+{{--            </div>--}}
+{{--            <span class="side-number">47 35</span>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 </div>
+
+
 
 <div style="height: 150px"></div>
 
 {{--  Отзывы  --}}
 @include('components.nexus.reviews')
-
-@include('components.footer-dark')
 <br>
 <br>
 <br>

@@ -2,7 +2,9 @@
     <section class="section_" id="about">
         <div class="section-header">
             <div class="section-label">About</div>
-            <h2 class="section-title" >О Проекте / о нас</h2>
+            <h2 class="section-title">
+                <span class="js-glitch" data-text="О Проекте / о нас">О Проекте / о нас</span>
+            </h2>
             <div class="section-divider" aria-hidden="true"></div>
         </div>
         <div class="info-grid">

@@ -19,6 +19,7 @@
 .black {color: black}
 .light-red { color: #ff4949;}
 .pink {color: #bb2c46;}
+.pink2 {color: #ff4d4d;}
 
 .bg-JS {background: #c70c3b;}
 .bg-PHP {background: #0091b5;}
@@ -51,6 +52,9 @@
 
 .fs-30 {font-size: 30px !important;}
 .fs-20 {font-size: 20px !important;}
+.fs-16 {font-size: 16px !important;}
+.fs-15 {font-size: 15px !important;}
+.fs-14 {font-size: 14px !important;}
 .fs-13, .fs-13 > li > button {font-size: 13px !important;}
 .fs-12 {font-size: 12px !important;}
 .fs-11 {font-size: 11px !important;}
@@ -100,6 +104,9 @@
     padding:  clamp(10px, 2vw, 25px);
 }
 
+.p-tb-20 {padding-top: 20px; padding-bottom: 20px}
+.p-tb-10 {padding-top: 10px; padding-bottom: 10px}
+.p-lr-20 {padding-left: 20px; padding-right: 20px}
 .p-lr-10 {padding-left: 10px; padding-right: 10px}
 .p-lr-20 {padding-left: 20px; padding-right: 20px}
 .p-lr-30 {padding-left: 30px; padding-right: 30px}
@@ -152,3 +159,11 @@ a {
     font-style: normal;
     font-variation-settings: "wdth" 100;
 }
+
+.ls-1 {letter-spacing: 1px !important;}
+.ls-2 {letter-spacing: 2px !important;}
+.ls-3 {letter-spacing: 3px !important;}
+.ls-6 {letter-spacing: 6px !important;}
+.ls-10 {letter-spacing: 10px !important;}
+.ls-14 {letter-spacing: 14px !important;}
+.ls-18 {letter-spacing: 18px !important;}

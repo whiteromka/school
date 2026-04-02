@@ -73,7 +73,7 @@
                                 </div>
                             </div>
                             <div class="cy-item-body">
-                                @include('components.frameshift', ['course' => $course])
+                                @include('components.frameshift.course', ['course' => $course])
                             </div>
                         </div>
 

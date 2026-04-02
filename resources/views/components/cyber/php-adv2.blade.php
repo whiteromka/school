@@ -16,13 +16,24 @@
 
 <div class="container-fluid bg-light-grey px-0 pos-r">
     @include('components.cyber.matrix', ['css' => 'matrix-pos-tl'])
-    @include('components.cyber.x-text', [
-        'main' => 'PHP',
-        'mainSpan' => '>>> ||',
-        'descr' => 'SYS modules XXX'
-    ])
 
-    <div class="container">
+    <div class="d-none d-xxl-block_">
+        @include('components.cyber.x-text', [
+            'main' => 'PHP',
+            'mainSpan' => '>>> ||',
+            'descr' => 'SYS modules XXX'
+        ])
+    </div>
+
+    <br>
+    <div class="container" style="
+        position: relative;
+        border: 1px solid rgba(0,0,0,0.1);
+        border-radius: 5px;
+    ">
+        <div class="side-text side-left d-none d-xxl-block" style="letter-spacing: 8px">||||||||||||||||||</div>
+        <div class="side-text side-right d-none d-xxl-block" style="letter-spacing: 8px">|||||||||||||||||</div>
+
         <div style="height: 60px"></div>
         <div class="row">
             <?php $advantages = [
@@ -59,6 +70,7 @@
         </div>
         <div style="height: 80px"></div>
     </div>
+    <br>
 </div>
 
 <div class="container-fluid bottom-ark bg-light-grey px-0">

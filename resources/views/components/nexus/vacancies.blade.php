@@ -8,7 +8,11 @@
     <div>
         <div class="section-header">
             <div class="section-label" id="js-jobs">jobs</div>
-            <h2 class="section-title">Актуальные вакансии</h2>
+            <h2>
+                <span class="section-title js-glitch" data-text="Актуальные вакансии">
+                    Актуальные вакансии
+                </span>
+            </h2>
             <div class="section-divider" aria-hidden="true"></div>
         </div>
 

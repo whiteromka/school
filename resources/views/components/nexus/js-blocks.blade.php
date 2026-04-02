@@ -15,11 +15,8 @@
         </div>
 
         <div class="row mb-10">
-            <div class="col-12 p">
-                <div class="js-cy-brackets warning " data-color="red" data-size="8" data-width="1">
-                    <span class="orange">Warning!</span> Первые уроки каждого модуля бесплатные! Для посещения
-                    последующих нужно будет оплатить модуль
-                </div>
+            <div class="col-12">
+                @include('components.frameshift.info-panel')
             </div>
         </div>
 
