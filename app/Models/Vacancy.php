@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Cache;
 
 /**
  * @property int $id
@@ -123,5 +124,23 @@ class Vacancy extends Model
         ];
 
         return $experienceMap[$this->experience] ?? $this->experience ?? '-';
+    }
+
+    /**
+     * Получить все уникальные валюты из кеша.
+     *
+     * @return array<string>
+     */
+    public static function getUniqueCurrencies(): array
+    {
+        return Cache::remember('vacancies.currencies', now()->addDay(), function () {
+            return self::query()
+                ->whereNotNull('salary_currency')
+                ->distinct()
+                ->pluck('salary_currency')
+                ->sort()
+                ->values()
+                ->toArray();
+        });
     }
 }
