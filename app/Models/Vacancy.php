@@ -112,4 +112,16 @@ class Vacancy extends Model
         }
         return $salary . ' ' . $this->salary_currency ?? 'RUR';
     }
+
+    public function getExperienceFormattedAttribute(): ?string
+    {
+        $experienceMap = [
+            'noExperience' => 'Без опыта',
+            'between1And3' => '1-3 года',
+            'between3And6' => '3-6 лет',
+            'moreThan6' => 'Более 6 лет',
+        ];
+
+        return $experienceMap[$this->experience] ?? $this->experience ?? '-';
+    }
 }

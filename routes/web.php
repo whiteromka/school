@@ -16,6 +16,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\VacancyController;
 use Illuminate\Support\Facades\Route;
 
+// site
 Route::get('/', [SiteController::class, 'index'])->name('site.index');
 Route::get('/site/front', [SiteController::class, 'front'])->name('site.front');
 Route::get('/site/back', [SiteController::class, 'back'])->name('site.back');
@@ -25,17 +26,14 @@ Route::get('/site/english', [SiteController::class, 'english'])->name('site.engl
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
     Route::post('/login', [AuthController::class, 'login']);
-
     Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
     Route::post('/register', [AuthController::class, 'register']);
 });
-
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
 
 // OAuth Login services
 Route::get('/yandex/verification-code',  [YandexController::class, 'verificationCode'])->name('yandex.verificationCode');
 Route::get('/github/verification-code',  [GithubController::class, 'verificationCode'])->name('github.verificationCode');
-
 Route::get('/google/login', [GoogleController::class, 'login'])->name('google.login');
 Route::get('/google/verification-code', [GoogleController::class, 'verificationCode']);
 
@@ -66,6 +64,7 @@ Route::post('/business-request/store', [BusinessRequestController::class, 'store
 Route::post('/review/store', [ReviewController::class, 'store'])->name('review.store');
 Route::get('/review/refresh-captcha', [ReviewController::class, 'refreshCaptcha'])->name('review.refresh-captcha');
 
+// Тех Стек
 Route::get('/tech-stack/info/{id}', [TechStackController::class, 'info'])->name('techStack.info');
 
 // Profile

@@ -1,4 +1,5 @@
-//docker-compose build --no-cache
+// docker compose down -v
+// docker-compose build --no-cache
 
 Для windows проект разворачивать внутри WSL например: ~/dev/<папка_с_проектом>
 

@@ -7,7 +7,7 @@
             <li><a href="{{ route('site.front') }}">Front</a></li>
             <li><a href="{{ route('site.back') }}">Back</a></li>
             <li><a href="{{ route('site.gamedev') }}">Gamedev</a></li>
-            <li><a href="#">English</a></li>
+            <li><a href="{{ route('site.english') }}">English</a></li>
         </ul>
         <!-- MENU DROPDOWN -->
         <div class="nav-status dropdown">
