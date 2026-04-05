@@ -1,10 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Находим все элементы с классом .js-glitch
     const glitchElements = document.querySelectorAll('.js-glitch');
     if (glitchElements.length === 0) return;
-    let currentIndex = 0;
 
-    // Функция активации глитча для одного элемента
     function activateGlitch(element) {
         element.classList.add('glitch');
         setTimeout(() => {
@@ -12,11 +9,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 300);
     }
 
-    // Основная функция цикла
+    // Элементы с data-timer — работают независимо
+    const timedElements = document.querySelectorAll('.js-glitch[data-timer]');
+    timedElements.forEach(element => {
+        setTimeout(() => activateGlitch(element), 1000);
+        const interval = parseInt(element.dataset.timer, 10) || 10000;
+        setInterval(() => activateGlitch(element), interval);
+    });
+
+    // Остальные элементы — циклический перебор
+    const cycleElements = [...glitchElements].filter(el => !el.dataset.timer);
+    if (cycleElements.length === 0) return;
+
+    let currentIndex = 0;
+
     function runCycle() {
-        const currentElement = glitchElements[currentIndex];
+        const currentElement = cycleElements[currentIndex];
         activateGlitch(currentElement);
-        currentIndex = (currentIndex + 1) % glitchElements.length;
+        currentIndex = (currentIndex + 1) % cycleElements.length;
         setTimeout(runCycle, 5000);
     }
 

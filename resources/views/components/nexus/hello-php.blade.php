@@ -1,13 +1,13 @@
 <div class="container-fluid px-0">
     <section class="hero" id="hero">
-        <div class="hero-grid-bg" aria-hidden="true"></div>
-
+        <div class="hero-grid-bg"></div>
         <div class="hero-content">
             <div class="hero-tag">
                 <span class="accent">|</span> backend
             </div>
             <h1 class="hero-title" data-text="BACKEND WITH PHP">
-                BACKEND WITH <span class="highlight">PHP </span>
+                BACKEND WITH
+                <span class="highlight">PHP </span>
             </h1>
             <p class="hero-subtitle">
                 Простой и проверенный язык для быстрой разработки backend части приложений.

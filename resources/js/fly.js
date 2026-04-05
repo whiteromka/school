@@ -163,7 +163,11 @@ document.addEventListener('DOMContentLoaded', function() {
             }, CONFIG.spawnDelay * (i + 1));
         }
     }
-    startSpawnPlanes();
+
+    if (!window.common.isActionName('gamedev')) {
+        startSpawnPlanes();
+    }
+
 
     // Анимация
     function animate() {

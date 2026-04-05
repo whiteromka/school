@@ -61,7 +61,18 @@ class SiteController extends Controller
     // GET /site/gamedev
     public function gamedev()
     {
-        return view('site.gamedev');
+        $user = auth()->user();
+        $userModuleIds = [];
+        if ($user) {
+            $user->load('activeModules');
+            $userModuleIds = $user->activeModules->pluck('module_id')->toArray();
+        }
+
+        return view('site.gamedev', [
+            'modules' => $this->moduleService->getModulesWithActiveModulesAndUsers(ModuleType::GAME->value),
+            'userModuleIds' => $userModuleIds,
+        ]);
+
     }
 
     // GET /site/english

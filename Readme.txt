@@ -1,3 +1,5 @@
+// docker compose exec app npm run dev
+
 // docker compose down -v
 // docker-compose build --no-cache
 

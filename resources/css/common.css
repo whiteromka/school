@@ -16,7 +16,7 @@
 .cyan {color: #00f0ff}
 .dark-grey {color: #505050}
 .red {color: red}
-.black {color: black}
+.black {color: black !important;}
 .light-red { color: #ff4949;}
 .pink {color: #bb2c46;}
 .pink2 {color: #ff4d4d;}
@@ -92,6 +92,10 @@
 .p-5 {padding:5px !important;}
 .p-12 {padding:12px !important;}
 .p-15 {padding:15px !important;}
+.p-20 {padding:20px !important;}
+.p-25 {padding:25px !important;}
+.p-30 {padding:30px !important;}
+
 .pt-10 {padding-top: 10px}
 .pt-20 {padding-top: 20px}
 .pt-40 {padding-top: 40px}
@@ -106,6 +110,8 @@
 
 .p-tb-20 {padding-top: 20px; padding-bottom: 20px}
 .p-tb-10 {padding-top: 10px; padding-bottom: 10px}
+.p-lr-35 {padding-left: 35px; padding-right: 35px}
+.p-lr-30 {padding-left: 30px; padding-right: 30px}
 .p-lr-20 {padding-left: 20px; padding-right: 20px}
 .p-lr-10 {padding-left: 10px; padding-right: 10px}
 .p-lr-20 {padding-left: 20px; padding-right: 20px}

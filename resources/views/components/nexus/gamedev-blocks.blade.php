@@ -10,13 +10,18 @@
     <section>
         <div class="section-header">
             <div class="section-label">Modules</div>
-            <h2 class="section-title">Модули курса BACKEND</h2>
-            <div class="section-divider" aria-hidden="true"></div>
+            <h2 class="section-title">Модули курса GAMEDEV</h2>
+            <div class="section-divider"></div>
         </div>
 
         <div class="row mb-10">
             <div class="col-12">
-                @include('components.frameshift.info-panel')
+                @php $txt = "
+                    Друзья мы не являемся профессиональными разработчиками в области gamedev-а.
+                    Тем не менее у нас есть некоторые перспективные проекты которые мы ведем и развиваем самостоятельно,
+                    и возможно вам они тоже покажутся интересными... Первые уроки как всегда бесплатные для всех!";
+                @endphp
+                @include('components.frameshift.info-panel', ['text' => $txt])
             </div>
         </div>
 

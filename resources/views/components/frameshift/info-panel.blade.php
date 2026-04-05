@@ -28,8 +28,9 @@ if (!isset($text)) {
     </div>
 
     <div class="loading-section mt-2">
-        <div class="loading-header ta-c">
-            <span class="loading-text-code1 ta-c_">
+        @php $css = mb_strlen($text) <=  110 ? 'ta-c' : ''; @endphp
+        <div class="loading-header {{ $css }}" >
+            <span class="loading-text-code1 ">
                 <span class="pink2  ta-c_">
                     {{ $text }}
                 </span>

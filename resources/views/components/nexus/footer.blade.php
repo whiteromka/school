@@ -1,5 +1,9 @@
 {{--===============  FOOTER ==============--}}
-<footer class="footer">
+@php
+    use Illuminate\Support\Facades\Route;
+    $action = explode('@',Route::currentRouteAction())[1] ?? '';
+@endphp
+<footer class="footer {{ $action === 'gamedev' ? 'footer-game-dev' : '' }}">
     <div class="container-fluid">
         <div class="container">
             <div class="row ">
