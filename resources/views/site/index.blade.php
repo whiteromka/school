@@ -15,7 +15,7 @@
 <br>
 <br>
 
-<x-ico-tech></x-ico-tech>
+@include('components.ico-tech')
 
 {{-- ========  ABOUT =========--}}
 <div style="height: 80px"></div>

@@ -20,6 +20,8 @@
     overflow: hidden;
     padding: 20px 0 50px;
     width: 100%;
+    background: rgba(36, 36, 36, 0.2);
+    outline: 1px dotted #a2a2a2;
 }
 
 /* Swiper */
@@ -62,7 +64,6 @@
 /* Стили для карточек FAQ */
 .faq-service-card {
     background: var(--bg-card);
-    /*border: 1px solid #6b6b6b;*/
     padding: 35px 32px;
     position: relative;
     transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;

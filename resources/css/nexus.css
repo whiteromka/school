@@ -33,7 +33,8 @@ body::after {
 }
 
 body {
-    background-color: var(--bg-primary);
+    background: #001b21;
+    background: radial-gradient(circle, rgb(1, 29, 36) 0%, rgb(0, 9, 14) 100%);
     color: var(--text-primary);
     font-family: var(--font-mono);
     font-size: 15px;

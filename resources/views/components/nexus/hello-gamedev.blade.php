@@ -23,7 +23,7 @@
 <div id="rings-bg"></div>
 
 <div class="container_ px-0" style="
-    height: 75vh;
+    height: 85vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -53,25 +53,25 @@
 @push('scripts')
 
     <!-- Скрипты -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.rings.min.js"></script>
-    <script>
-        // Запускаем VANTA после загрузки DOM
-        document.addEventListener('DOMContentLoaded', function () {
-            VANTA.RINGS({
-                el: "#rings-bg",
-                mouseControls: true,
-                touchControls: true,
-                gyroControls: false,
-                minHeight: 200,
-                minWidth: 200,
-                scale: 1,
-                scaleMobile: 1,
-                color: 0xff6347, // пример цвета колец (томат)
-                backgroundColor: 0x0a0a0a // фон под кольцами
-            });
-        });
-    </script>
+{{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>--}}
+{{--    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.rings.min.js"></script>--}}
+{{--    <script>--}}
+{{--        // Запускаем VANTA после загрузки DOM--}}
+{{--        document.addEventListener('DOMContentLoaded', function () {--}}
+{{--            VANTA.RINGS({--}}
+{{--                el: "#rings-bg",--}}
+{{--                mouseControls: true,--}}
+{{--                touchControls: true,--}}
+{{--                gyroControls: false,--}}
+{{--                minHeight: 200,--}}
+{{--                minWidth: 200,--}}
+{{--                scale: 1,--}}
+{{--                scaleMobile: 1,--}}
+{{--                color: 0xff6347, // пример цвета колец (томат)--}}
+{{--                backgroundColor: 0x0a0a0a // фон под кольцами--}}
+{{--            });--}}
+{{--        });--}}
+{{--    </script>--}}
 
 {{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>--}}
 {{--    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.trunk.min.js"></script>--}}
@@ -94,27 +94,20 @@
 {{--    </script>--}}
 
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const cubes = document.querySelectorAll('.js-square-block');
+{{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>--}}
+{{--    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>--}}
+{{--    <script>--}}
+{{--        VANTA.GLOBE({--}}
+{{--            el: "#rings-bg",--}}
+{{--            mouseControls: true,--}}
+{{--            touchControls: true,--}}
+{{--            gyroControls: false,--}}
+{{--            minHeight: 200.00,--}}
+{{--            minWidth: 200.00,--}}
+{{--            scale: 1.00,--}}
+{{--            scaleMobile: 1.00,--}}
+{{--            size: 1.90--}}
+{{--        })--}}
+{{--    </script>--}}
 
-        function animateCubes() {
-            cubes.forEach((cube, index) => {
-                setTimeout(() => {
-                    cube.style.transition = 'opacity 0.5s';
-                    cube.style.opacity = '0.1';
-                    setTimeout(() => {
-                        cube.style.opacity = '1';
-                    }, 500);
-                }, index * 500);
-            });
-        }
-
-        // Запускаем первый цикл
-        animateCubes();
-
-        // Повторяем анимацию бесконечно (9 кубов * 500ms = 4500ms на полный цикл)
-        setInterval(animateCubes, 4500);
-    });
-</script>
 @endpush
