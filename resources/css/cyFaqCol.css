@@ -79,7 +79,7 @@
 
 .faq-service-index {
     font-family: var(--font-heading);
-    font-size: clamp(12px, 4vw, 38px);
+    font-size: clamp(20px, 4vw, 38px);
     margin-bottom: 10px;
     font-weight: 700;
     color: rgba(255, 255, 255, 0.17);
@@ -102,7 +102,7 @@
 }
 
 .faq-service-desc {
-    font-size: clamp(11px, 1vw, 14px);
+    /*font-size: clamp(11px, 1vw, 14px);*/
     color: #8e8e8e;
     line-height: 1.7;
     margin-bottom: 0;

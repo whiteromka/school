@@ -33,9 +33,9 @@
         </div>
 
         <div class="status-block">
-            <div><span>STATUS:</span> {{ $course['name'] }} REGENERATING</div>
-            <div><span>STATUS:</span> GENERATING DATA PROCESSING</div>
-            <div><span>MODE:</span> SECURE CONNECTION</div>
+            <div class="fs-14 ta-c">Technology: {{ $course['label'] }}</div>
+{{--            <div><span>STATUS:</span> GENERATING DATA PROCESSING</div>--}}
+{{--            <div><span>MODE:</span> SECURE CONNECTION</div>--}}
         </div>
     </div>
 

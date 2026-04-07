@@ -297,7 +297,7 @@
     width: 100%;
 }
 .advantage span.n, .advantage .n {
-    font-size: 28px;
+    font-size: 26px;
     font-family: "Orbitron", sans-serif;
     font-optical-sizing: auto;
     font-weight: 600;
@@ -309,7 +309,6 @@
     border: 1px solid rgba(6, 80, 90, 0.36);
 }
 .advantage .n1 {
-    color: white;
     color: #00f2ff;
     border: 1px solid #888888;
     background: rgba(0, 0, 0, 0.18);

@@ -9,7 +9,7 @@
             <div class="js-cy-brackets container-t" data-color="white" style="padding: 4px">
                 <div class="p-clamp-1">
                     <h5 class="php-custom-block-head_ grey font-tektur" id="js-techStack">Технологический стек</h5>
-                    <p id="js-description" class="grey">
+                    <p id="js-description" class="grey fs-p">
                         Рынок труда в IT радикально изменился за последние годы. Если раньше достаточно было знать один язык программирования,
                         то сегодня работодатель ищет специалистов с широким технологическим кругозором. Fullstack стал нормой. Backend-разработчик обязан
                         понимать frontend, а фронтендер — разбираться в API и базах данных.  DevOps-практики, понимание облачной инфраструктуры,

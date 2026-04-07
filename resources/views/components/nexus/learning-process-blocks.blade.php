@@ -30,8 +30,8 @@
                     <div class="left fs-20">{{ $item['en'] }}</div>
                 </div>
                 <div class="service-name">{{ $item['ru'] }}</div>
-                <p class="service-desc">
-                    {{ $item['descr']  }}
+                <p class="service-desc fs-p">
+                    {{ $item['descr'] }}
                 </p>
             </div>
             @endforeach
@@ -40,7 +40,9 @@
         <div style="height: 80px"></div>
         <div class="section-header">
             <div class="section-label">Learning process</div>
-            <h2 class="section-title">Как учим</h2>
+            <h2 class="section-title">
+                <span class="js-glitch" data-text="Как учим">Как учим</span>
+            </h2>
             <div class="section-divider" aria-hidden="true"></div>
         </div>
 

@@ -83,12 +83,14 @@
 .mw-350 {min-width: 350px}
 
 .w-150 {width: 150px}
+.w-175 {width: 175px}
 .w-200 {width: 200px}
 .w-250 {width: 250px}
 .w-300 {width: 300px}
 .w-350 {width: 350px}
 
 .p-5 {padding:5px !important;}
+.p-10 {padding:10px !important;}
 .p-12 {padding:12px !important;}
 .p-15 {padding:15px !important;}
 .p-20 {padding:20px !important;}
@@ -127,6 +129,14 @@
 .mb-10 {margin-bottom: 10px}
 .mb-15 {margin-bottom: 15px}
 .mb-20 {margin-bottom: 20px}
+
+.mr-10 {margin-right:10px }
+.mr-15 {margin-right:15px }
+.mr-20 {margin-right:20px }
+.ml-5 {margin-left:5px }
+.ml-10 {margin-left:10px }
+.ml-15 {margin-left:15px }
+.ml-20 {margin-left:20px }
 
 .mt-10vh {margin-top: 10vh}
 .mt-20vh {margin-top: 20vh}
@@ -172,3 +182,35 @@ a {
 .ls-10 {letter-spacing: 10px !important;}
 .ls-14 {letter-spacing: 14px !important;}
 .ls-18 {letter-spacing: 18px !important;}
+
+
+/* Универсальные размеры шрифтов */
+/* Базовый текст (ваш эталон) */
+.fs-p {
+    font-size: clamp(0.8525rem, 0.79rem + 0.69vw, 1rem) !important;
+}
+
+/* Варианты параграфа */
+.fs-p-small {
+    font-size: clamp(0.8rem, 0.70rem + 0.5vw, 0.93rem) !important;
+}
+.fs-p-big {
+    font-size: clamp(1.02rem, 0.88rem + 0.75vw, 1.25rem) !important;
+}
+
+/* Заголовки — от меньшего к большему */
+.fs-h5 {
+    font-size: clamp(0.97rem, 0.84rem + 0.72vw, 1.2rem) !important;
+}
+.fs-h4 {
+    font-size: clamp(1.14rem, 0.98rem + 0.84vw, 1.4rem) !important;
+}
+.fs-h3 {
+    font-size: clamp(1.38rem, 1.19rem + 1.02vw, 1.7rem) !important;
+}
+.fs-h2 {
+    font-size: clamp(1.62rem, 1.4rem + 1.2vw, 2.2rem) !important;
+}
+.fs-h1 {
+    font-size: clamp(2.03rem, 1.75rem + 1.5vw, 2.5rem) !important;
+}

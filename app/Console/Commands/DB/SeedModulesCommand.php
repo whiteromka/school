@@ -24,6 +24,7 @@ class SeedModulesCommand extends Command
     public function handle(): int
     {
         $modules = [
+            // ==== BACK ====
             [
                 'type' => ModuleType::BACK,
                 'number' => 1,
@@ -161,6 +162,7 @@ class SeedModulesCommand extends Command
                 'author' => Module::AUTHOR_ROMAN,
             ],
 
+            // ==== FRONT ====
             [
                 'type' => ModuleType::FRONT,
                 'number' => 5,
@@ -254,6 +256,71 @@ class SeedModulesCommand extends Command
                     Разберём управление состоянием через Pinia, работу с сервером и типизацию через TypeScript.
                     Отдельное внимание уделим архитектуре проекта и правильной организации кода.',
                 'description2' => 'В итоге должен получиться полноценный SPA-проект (например: личный кабинет, CRM или админка)',
+                'active' => 1,
+                'author' => Module::AUTHOR_ROMAN,
+            ],
+
+            // ==== GAMEDEV ====
+            [
+                'type' => ModuleType::GAME,
+                'number' => 8,
+                'name' => '3d моделирование для Unity',
+                'level' => 3,
+                'module_price' => 6000,
+                'lesson_price' => 500,
+                'count_lessons' => 12,
+                'duration' => '1 - 1.5 мес',
+                'techs' => ['blender', 'unity'],
+                'topics' => [
+                    'Интерфейс Blender и навигация в 3D-пространстве',
+                    'Базовое моделирование: Edit Mode, экструзия, петли',
+                    'Модификаторы: Subdivision Surface, Mirror, Bevel',
+                    'Hard Surface моделирование (детали техники)',
+                    'Основы UV-развертки (UV Unwrapping)',
+                    'Текстурирование и работа с материалами (PBR)',
+                    'Ретопология: оптимизация сетки для игр',
+                    'Запекание карт нормалей (Baking Normal Maps)',
+                    'Настройка сцены и освещение (Cycles/Eevee)',
+                    'Экспорт моделей в FBX/OBJ для Unity',
+                    'Импорт ассетов в Unity и настройка материалов',
+                ],
+                'description' => 'Мы будем создавать 3D модели в Blender для игры, ваши модели потом будут использоваться в игре.
+                    Основы и базовые техники для создания моделей в блендере, покраска, и подготовка моделей к переносу в Unity',
+                'description2' => 'В итоге должна получится полноценная модель авто в стилистике Mad Max для игры',
+                'active' => 1,
+                'author' => Module::AUTHOR_ROMAN,
+            ],
+
+            [
+                'type' => ModuleType::GAME,
+                'number' => 9, // Предположим, следующий номер
+                'name' => '2D GameDev: Космический шутер',
+                'level' => 9,
+                'module_price' => 12000,
+                'lesson_price' => 500,
+                'count_lessons' => 24,
+                'duration' => '2 - 3 мес',
+                'techs' => ['unity', 'c#', '2d', 'physics', 'photoshop', 'AI', 'math', 'geometry', 'vectors'],
+                'topics' => [
+                    'Настройка 2D-проекта в Unity и работа со Sprite Editor',
+                    'Движение корабля: физика (Rigidbody2D) vs трансформации',
+                    'Система стрельбы: создание префабов пуль и пул объектов',
+                    'Работа с коллайдерами и триггерами (Collision vs Trigger)',
+                    'Создание противников: простой AI и паттерны движения',
+                    'Система здоровья и уничтожение объектов',
+                    'UI интерфейс: HUD, счетчик очков, меню паузы',
+                    'Анимация спрайтов: Animator и Animation Clips',
+                    'Эффекты частиц (Particle System): взрывы и двигатели',
+                    'Звук в игре: SFX выстрелов и фоновая музыка',
+                    'Спавн врагов и волн (Spawn Manager)',
+                    'Смена локаций: космос и космические станции',
+                    'Сохранение прогресса (PlayerPrefs или JSON)',
+                    'Оптимизация 2D-игры и сборка билда',
+                ],
+                'description' => 'Погружение в разработку полноценной 2D аркады на Unity.
+                    Напишем логику управления кораблем, реализуем систему боя, создадим умных противников
+                    и красивые эффекты разрушений. Разберем работу с UI, анимациями и звуком.',
+                'description2' => 'В итоге получится динамичный космический шутер с несколькими уровнями, боссами и системой очков',
                 'active' => 1,
                 'author' => Module::AUTHOR_ROMAN,
             ],

@@ -515,7 +515,7 @@ a.base-link:hover {
 .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
+    gap: 6px;
     max-width: 1100px;
 }
 
@@ -523,7 +523,7 @@ a.base-link:hover {
     display: flex;
     flex-direction: column;
     background: var(--bg-card);
-    border: 1px solid var(--border-color);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     padding: clamp(20px, 3vw, 45px) clamp(2px, 2vw, 42px);
     position: relative;
     transition: border-color 0.3s, box-shadow 0.3s;
@@ -662,7 +662,7 @@ a.base-link:hover {
 }
 
 .service-desc {
-    font-size: clamp(12px, 2vw, 15px);
+    /*font-size: clamp(12px, 2vw, 15px);*/
     color: var(--text-muted);
     /*line-height: 1.7;*/
 }
@@ -771,7 +771,7 @@ a.base-link:hover {
 }
 
 .project-year {
-    font-size: 10px;
+    font-size: 12px;
     letter-spacing: 3px;
     color: var(--text-muted);
     text-transform: uppercase;
@@ -788,14 +788,14 @@ a.base-link:hover {
 }
 
 .project-tech {
-    font-size: 12px;
+    /*font-size: 12px;*/
     color: var(--accent-cyan);
     letter-spacing: 1px;
     margin-bottom: 16px;
 }
 
 .project-desc {
-    font-size: 13px;
+    /*font-size: 13px;*/
     color: var(--text-muted);
     line-height: 1.7;
 }

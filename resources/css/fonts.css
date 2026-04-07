@@ -34,6 +34,13 @@
     font-style: normal;
     font-variation-settings: "wdth" 100;
 }
+.font-tektur-slim {
+    font-family: "Tektur", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+}
 
 .font-orbitron {
     font-family: "Orbitron", sans-serif;

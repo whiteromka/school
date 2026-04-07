@@ -1,5 +1,6 @@
 /* Что бы заработало нужно добавить классы .js-cyber-text-animation .cy-btn */
 document.addEventListener('DOMContentLoaded', function() {
+
     // Символы для хаотичного обновления
     const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&*<>?";
 
@@ -246,4 +247,19 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }, 50);
     }
+
+    // При наведении на .soon-module дата расшифровывается
+    // Связка: hover на .soon-module → hover на .course-date ===
+    const soonModules = document.querySelectorAll('.soon-module');
+    soonModules.forEach(module => {
+        const courseDateEl = module.querySelector('.course-date.js-cyber-text-animation');
+        if (!courseDateEl) return;
+
+        // Находим состояние этого course-date в массиве cyberButtons
+        const dateState = cyberButtons.find(s => s.element === courseDateEl);
+        if (!dateState) return;
+
+        module.addEventListener('mouseenter', () => handleMouseEnter(dateState));
+        module.addEventListener('mouseleave', () => handleMouseLeave(dateState));
+    });
 });

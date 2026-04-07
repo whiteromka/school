@@ -84,14 +84,13 @@
         {{-- Таб контент --}}
         <div class="tab-content cy-item-tabs-content info-body-bg pt-40 p-clamp-1">
             <div class="tab-pane fade show  active" id="web">
-                <div class="container_ ">
-                    <p class="grey">
+                <div>
+                    <p class="grey fs-p">
                         В основном мы специализируемся на web технологиях фронтенд и бекенд.
                         Фронтенд - пользовательская часть приложения. Бекенд серверная сторона где хранятся данные и выполняется вся логика.
                         Так же у нас есть курс по gamedev(unity) и Английскому языку
                     </p>
                 </div>
-
                 <br>
                 @include('components.cyber.perspective3d')
             </div>
@@ -165,13 +164,13 @@
 
                 <!-- Loading Section -->
                 <div class="loading-section mt-2">
-                    <div class="loading-header ta-l p-lr-10 p-tb-20">
+                    <div class="loading-header_ ta-l">
                         <p class="loading-text-code1 ta-c">
                             <span class="pink2">
                                 Всем поможем! Ни кого не бросим!
                             </span>
                         </p>
-                        <p class="fs-15 ">
+                        <p class="fs-15">
                             Формат занятий предполагает открытый и простой диалог. Друзья, не стесняйтесь
                             задавать вопросы и просить о помощи. Если что-то не поняли, забыли или упустили
                             просто попросите повторить. Просите больше примеров на интересующие вас темы:

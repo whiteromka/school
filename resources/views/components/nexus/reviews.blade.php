@@ -3,14 +3,16 @@
         <div class="col-md-6">
             <div class="section-header">
                 <div class="section-label">Reviews</div>
-                <h2 class="section-title">Отзывы</h2>
+                <h2 class="section-title">
+                    <span class="js-glitch" data-text="Отзывы">Отзывы</span>
+                </h2>
                 <div class="section-divider" aria-hidden="true"></div>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-12">
-            <p class="grey">
+            <p class="grey fs-p-small">
                 Друзья мы не хотим вводить вас в заблуждение и не станем сами себе писать тут фейковые хвалебные отзывы о нашей работе.
                 Мы никого не обманываем! Тут отображаются настоящие отзывы которые вы пишите о нашей деятельности, конструктивная критика приветствуется.
             </p>
