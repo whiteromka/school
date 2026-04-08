@@ -167,10 +167,13 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-
     let loopStarted = false;
     function checkAndStartLoop() {
-        if (!loopStarted && window.innerWidth > 1200) {
+        if (
+            !window.common.isActionName('gamedev') &&
+            !loopStarted &&
+            window.innerWidth > 1200
+        ) {
             loopStarted = true;
             loop();
         }

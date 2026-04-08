@@ -1,7 +1,7 @@
-// resources/js/swiper-faq.js
+// FAQ Swiper - настройка слайдера
 
 import Swiper from 'swiper';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { Autoplay, Pagination } from 'swiper/modules';
 
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -10,35 +10,42 @@ document.addEventListener('DOMContentLoaded', function () {
 
     new Swiper(container, {
 
-        modules: [Navigation, Pagination, Autoplay],
+        modules: [Autoplay, Pagination],
 
-        slidesPerView: 'auto',
-        spaceBetween: 30,
-        centeredSlides: true,
+        slidesPerView: 2,
+        spaceBetween: 20,
         grabCursor: true,
         loop: true,
-        speed: 1800,
+        speed: 800,
 
         autoplay: {
-            delay: 7000,
-            disableOnInteraction: true,
+            delay: 3000,
+            disableOnInteraction: false,
             pauseOnMouseEnter: true,
         },
 
         pagination: {
-            el: container.querySelector('.swiper-pagination'),
+            el: '.swiper-pagination',
             type: 'progressbar',
         },
 
-        navigation: {
-            nextEl: container.querySelector('.swiper-button-next'),
-            prevEl: container.querySelector('.swiper-button-prev'),
-        },
-
         breakpoints: {
-            320: { slidesPerView: 1, spaceBetween: 20 },
-            768: { slidesPerView: 'auto', spaceBetween: 25 },
-            992: { slidesPerView: 'auto', spaceBetween: 30 }
+            320: { 
+                slidesPerView: 1, 
+                spaceBetween: 15 
+            },
+            576: { 
+                slidesPerView: 2, 
+                spaceBetween: 20 
+            },
+            992: { 
+                slidesPerView: 3, 
+                spaceBetween: 25 
+            },
+            1400: { 
+                slidesPerView: 4, 
+                spaceBetween: 30 
+            }
         }
     });
 });

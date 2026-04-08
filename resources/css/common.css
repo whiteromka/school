@@ -16,8 +16,10 @@
 .cyan {color: #00f0ff}
 .dark-grey {color: #505050}
 .red {color: red}
-.black {color: black}
+.black {color: black !important;}
 .light-red { color: #ff4949;}
+.pink {color: #bb2c46;}
+.pink2 {color: #ff4d4d;}
 
 .bg-JS {background: #c70c3b;}
 .bg-PHP {background: #0091b5;}
@@ -26,14 +28,13 @@
 .bg-purple {background: var(--purple-color);}
 .bg-yellow {background: var(--yellow-color);}
 .bg-white {background: white;}
-.bg-light-grey {background: #bababa;}
+.bg-light-grey {background: #cacaca;}
 .bg-grey {background: grey;}
 .bg-pink {background: #bb2c46;}
 .bg-black {background: black;}
 .bg-blue {background: #0be8f4;}
 .bg-fantom {background: #262634;}
 
-.bg-light-grey {background: #e4e4e4;}
 .bg-opas-dark {background: rgba(0, 0, 0, 0.035);}
 
 .bg-test {background: var(--pink-color);}
@@ -50,6 +51,9 @@
 
 .fs-30 {font-size: 30px !important;}
 .fs-20 {font-size: 20px !important;}
+.fs-16 {font-size: 16px !important;}
+.fs-15 {font-size: 15px !important;}
+.fs-14 {font-size: 14px !important;}
 .fs-13, .fs-13 > li > button {font-size: 13px !important;}
 .fs-12 {font-size: 12px !important;}
 .fs-11 {font-size: 11px !important;}
@@ -79,14 +83,20 @@
 .mw-350 {min-width: 350px}
 
 .w-150 {width: 150px}
+.w-175 {width: 175px}
 .w-200 {width: 200px}
 .w-250 {width: 250px}
 .w-300 {width: 300px}
 .w-350 {width: 350px}
 
 .p-5 {padding:5px !important;}
+.p-10 {padding:10px !important;}
 .p-12 {padding:12px !important;}
 .p-15 {padding:15px !important;}
+.p-20 {padding:20px !important;}
+.p-25 {padding:25px !important;}
+.p-30 {padding:30px !important;}
+
 .pt-10 {padding-top: 10px}
 .pt-20 {padding-top: 20px}
 .pt-40 {padding-top: 40px}
@@ -99,6 +109,11 @@
     padding:  clamp(10px, 2vw, 25px);
 }
 
+.p-tb-20 {padding-top: 20px; padding-bottom: 20px}
+.p-tb-10 {padding-top: 10px; padding-bottom: 10px}
+.p-lr-35 {padding-left: 35px; padding-right: 35px}
+.p-lr-30 {padding-left: 30px; padding-right: 30px}
+.p-lr-20 {padding-left: 20px; padding-right: 20px}
 .p-lr-10 {padding-left: 10px; padding-right: 10px}
 .p-lr-20 {padding-left: 20px; padding-right: 20px}
 .p-lr-30 {padding-left: 30px; padding-right: 30px}
@@ -115,12 +130,20 @@
 .mb-15 {margin-bottom: 15px}
 .mb-20 {margin-bottom: 20px}
 
+.mr-10 {margin-right:10px }
+.mr-15 {margin-right:15px }
+.mr-20 {margin-right:20px }
+.ml-5 {margin-left:5px }
+.ml-10 {margin-left:10px }
+.ml-15 {margin-left:15px }
+.ml-20 {margin-left:20px }
+
 .mt-10vh {margin-top: 10vh}
 .mt-20vh {margin-top: 20vh}
 .mt-30vh {margin-top: 30vh}
 .mt-40vh {margin-top: 40vh}
 
-.ta-c {text-align: center}
+.ta-c {text-align: center !important;}
 .ta-l {text-align: left}
 .ta-r {text-align: right}
 .tt-up {text-transform: uppercase}
@@ -150,4 +173,44 @@ a {
     font-weight: 300;
     font-style: normal;
     font-variation-settings: "wdth" 100;
+}
+
+.ls-1 {letter-spacing: 1px !important;}
+.ls-2 {letter-spacing: 2px !important;}
+.ls-3 {letter-spacing: 3px !important;}
+.ls-6 {letter-spacing: 6px !important;}
+.ls-10 {letter-spacing: 10px !important;}
+.ls-14 {letter-spacing: 14px !important;}
+.ls-18 {letter-spacing: 18px !important;}
+
+
+/* Универсальные размеры шрифтов */
+/* Базовый текст (ваш эталон) */
+.fs-p {
+    font-size: clamp(0.8525rem, 0.79rem + 0.69vw, 1rem) !important;
+}
+
+/* Варианты параграфа */
+.fs-p-small {
+    font-size: clamp(0.8rem, 0.70rem + 0.5vw, 0.93rem) !important;
+}
+.fs-p-big {
+    font-size: clamp(1.02rem, 0.88rem + 0.75vw, 1.25rem) !important;
+}
+
+/* Заголовки — от меньшего к большему */
+.fs-h5 {
+    font-size: clamp(0.97rem, 0.84rem + 0.72vw, 1.2rem) !important;
+}
+.fs-h4 {
+    font-size: clamp(1.14rem, 0.98rem + 0.84vw, 1.4rem) !important;
+}
+.fs-h3 {
+    font-size: clamp(1.38rem, 1.19rem + 1.02vw, 1.7rem) !important;
+}
+.fs-h2 {
+    font-size: clamp(1.62rem, 1.4rem + 1.2vw, 2.2rem) !important;
+}
+.fs-h1 {
+    font-size: clamp(2.03rem, 1.75rem + 1.5vw, 2.5rem) !important;
 }

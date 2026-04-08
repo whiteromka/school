@@ -123,4 +123,13 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    'authors' => [
+        'rom' => [
+            'photo' => '/img/site/back/t12.jpg',
+        ],
+        'iliya' => [
+            'photo' => '',
+        ]
+    ]
+
 ];

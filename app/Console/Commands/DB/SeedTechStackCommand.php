@@ -24,7 +24,6 @@ class SeedTechStackCommand extends Command
         $this->info('Очистка таблицы tech_stacks...');
 
         $data = [
-            // front c 30
             [
                 'id' => 1,
                 'name' => 'JavaScript',

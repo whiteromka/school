@@ -21,14 +21,13 @@
 
 {{--Основной контейнер для контента--}}
 <div class="container-fluid mt-10vh px-0 main-container">
-
-    <x-nexus.navigation></x-nexus.navigation>
+    @include('components.nexus.navigation')
 
     <div class="main">
         @yield('content')
     </div>
 
-    <x-nexus.footer></x-nexus.footer>
+    @include('components.nexus.footer')
 </div>
 
 @livewireScripts

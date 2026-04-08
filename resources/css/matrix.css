@@ -39,13 +39,22 @@
 .xtext-wrapper {
     position: absolute;
     top:50px;
-    right: 20px;
+    right: 0px;
     font-family: "Orbitron", sans-serif;
     font-optical-sizing: auto;
     font-weight: 600;
     font-style: normal;
     word-spacing: 0.5em;
     font-size: 33px;
+
+    /*border-top:2px solid rgba(255, 255, 255, 0.61);*/
+    /*border-bottom: 1px solid rgba(255, 255, 255, 0.84);*/
+    /*border-left:1px solid rgba(255, 255, 255, 0.61);*/
+    /*padding: 30px;*/
+    /*padding-right: 0;*/
+    /*background: rgba(255, 101, 0, 0.08);*/
+    /*box-shadow: inset 4px 4px 4px 0px rgba(11, 11, 11, 0.44);*/
+    /*border-radius: 34px 0 0 34px;*/
 }
 .xtext {
     writing-mode: vertical-rl;
@@ -67,6 +76,6 @@
     font-size: 22px
 }
 .xtext-border {
-    border-bottom: 1px solid rgba(255,0,0,0.54);
-    border-left:1px solid rgba(255,0,0,0.51);
+    /*border-bottom: 1px solid rgba(255,0,0,0.54);*/
+    /*border-left:1px solid rgba(255,0,0,0.51);*/
 }

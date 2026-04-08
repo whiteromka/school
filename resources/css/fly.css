@@ -1,0 +1,47 @@
+/* Летающие треугольники-самолеты на радаре */
+.radar-plane {
+    position: absolute;
+    width: 0;
+    height: 0;
+    /* Вытянутый треугольник с острым носом */
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    border-bottom: 21px solid rgba(255, 0, 0, 0.7);
+    filter: drop-shadow(0 0 5px rgba(255, 155, 155, 0.5));
+    z-index: 1;
+    pointer-events: auto;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+/* Полупрозрачное меню с информацией о самолёте */
+.radar-plane-label {
+    position: absolute;
+    /*background: rgba(0, 0, 0, 0.01);*/
+    /*border: 1px solid rgba(0, 255, 0, 0.2);*/
+    padding: 4px 8px;
+    color: rgba(0, 255, 0, 0.33);
+    font-size: 10px;
+    white-space: nowrap;
+    pointer-events: none;
+    transform: translateX(-50%);
+}
+
+.radar-plane-label .group-name {
+    display: block;
+    margin-bottom: 2px;
+}
+
+.radar-plane-label .status {
+    display: block;
+    font-size: 6px;
+    font-weight: normal;
+}
+
+.radar-plane-label .status.online {
+    color: rgba(0, 255, 0, 0.17);
+}
+
+.radar-plane-label .status.offline {
+    color: rgba(255, 102, 0, 0.17);
+}

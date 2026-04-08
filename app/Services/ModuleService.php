@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Module;
 use App\Repositories\ModuleRepository;
 use Illuminate\Support\Collection;
 
@@ -16,12 +17,17 @@ class ModuleService
         return $this->moduleRepository->getByType('back');
     }
 
+    public function getFirstCommonModule(): Module
+    {
+        return $this->moduleRepository->getFirstCommonModule();
+    }
+
     /**
      * Получить коллекцию модулей со связью с активными со связью с записавшимися пользователями
      */
-    public function getBackModulesWithActiveModulesAndUsers(): Collection
+    public function getModulesWithActiveModulesAndUsers(string $type): Collection
     {
-        return $this->moduleRepository->getBackModulesWithActiveModulesAndUsers();
+        return $this->moduleRepository->getModulesWithActiveModulesAndUsers($type);
     }
 
     /**

@@ -45,9 +45,34 @@
     }
 </style>
 
+<div class="container-fluid top-ark bg-purple_  bg-pink_ bg-yellow_ bg-PHP_ bg-fantom px-0"
+     style="border-top: 1px solid rgba(255,255,255,0.19)"
+>
+    <div class="streaks">
+        <div class="streak-left streak-b"></div>
+        <div class="streak-left streak-b"></div>
+        <div class="streak-left streak-b"></div>
+        <span> [][][]== ===</span>
+    </div>
+</div>
+<div class="container-fluid  bg-purple_ bg-pink_ bg-yellow_ bg-PHP_ bg-fantom px-0" style="height: 10px">
+</div>
+
 <div class="logos-container">
     <div class="logos-track" id="logosTrack"></div>
 </div>
+
+<div class="container-fluid  bg-purple_ bg-yellow_ bg-PHP_ bg-fantom px-0" style="height: 10px">
+</div>
+<div class="container-fluid bottom-ark bg-purple_ bg-yellow_ bg-PHP_ bg-fantom px-0">
+    <div class="streaks">
+        <span>== ===[][] == ==[] === [][][]</span>
+        <div class="streak-left streak-b"></div>
+        <div class="streak-left streak-b"></div>
+        <div class="streak-left streak-b"></div>
+    </div>
+</div>
+
 
 @push('scripts')
 <script>

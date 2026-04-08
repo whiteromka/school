@@ -1,5 +1,9 @@
 {{--===============  FOOTER ==============--}}
-<footer class="footer">
+@php
+    use Illuminate\Support\Facades\Route;
+    $action = explode('@',Route::currentRouteAction())[1] ?? '';
+@endphp
+<footer class="footer {{ $action === 'gamedev' ? 'footer-game-dev' : '' }}">
     <div class="container-fluid">
         <div class="container">
             <div class="row ">
@@ -55,9 +59,9 @@
                                 <div class="contact-method-label">Services</div>
                                 <div class="contact-method-value">
                                     <span class="contact-method-value-ru">
-                                        <a href="#">Разработка сайта</a>
+                                        <a href="{{ route('businessRequest.create') }}">Разработка сайта</a>
                                         <br>
-                                        <a href="#">Автоматизация бизнес процессов</a>
+                                        <a href="{{ route('businessRequest.create') }}">Автоматизация бизнес процессов</a>
                                     </span>
                                 </div>
                             </div>

@@ -173,8 +173,8 @@
 /* Content */
 .cy-item-tabs-content {
     font-family: var(--font-mono);
-    font-size: 14px;
-    line-height: 1.5;
+    font-size: 15px;
+    /*line-height: 1.5;*/
     color: var(--text-muted);
     min-height: 80px;
 }
@@ -297,7 +297,7 @@
     width: 100%;
 }
 .advantage span.n, .advantage .n {
-    font-size: 28px;
+    font-size: 26px;
     font-family: "Orbitron", sans-serif;
     font-optical-sizing: auto;
     font-weight: 600;
@@ -309,7 +309,6 @@
     border: 1px solid rgba(6, 80, 90, 0.36);
 }
 .advantage .n1 {
-    color: white;
     color: #00f2ff;
     border: 1px solid #888888;
     background: rgba(0, 0, 0, 0.18);
@@ -335,4 +334,17 @@
     color: #060606;
     line-height: 1.4;
     text-align: center;
+    margin-top: 3px;
+    margin-bottom: 40px;
+}
+.advantage-descr-red {
+    font-family: "Share Tech Mono", monospace;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+    color: #a90b0b;
+    line-height: 1.4;
+    text-align: center;
+    margin-top: 3px;
+    margin-bottom: 40px;
 }

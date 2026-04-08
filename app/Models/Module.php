@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\ModuleType;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -13,7 +14,7 @@ use Illuminate\Support\Carbon;
  * Class Module
  *
  * @property int $id
- * @property string $type            Тип модуля (Back | Front | Eng)
+ * @property ModuleType $type    Тип модуля (Back | Front | Eng | Game)
  * @property int|null $number        Порядковый номер
  * @property string $name            Название модуля
  * @property int $level              Уровень сложности
@@ -59,6 +60,7 @@ class Module extends Model
     ];
 
     protected $casts = [
+        'type' => ModuleType::class,
         'techs' => 'array',
         'topics' => 'array',
         'active' => 'boolean',

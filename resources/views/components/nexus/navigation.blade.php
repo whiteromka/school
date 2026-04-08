@@ -1,13 +1,17 @@
 @php use Illuminate\Support\Facades\Auth; @endphp
 <div class="container-fluid px-0">
     <nav class="nexus-nav" role="navigation" aria-label="Main navigation">
-        <div class="nav-logo">NEXUS</div>
+        <div class="nav-logo">station</div>
+{{--        <div class="nav-logo">voyager</div>--}}
+        {{--        <div class="nav-logo">polymer</div>--}}
+        <div class="nav-logo-under">technologies  hub</div>
+
         <ul class="nav-links d-none d-md-flex">
             <li><a href="{{ route('site.index') }}">Главная</a></li>
             <li><a href="{{ route('site.front') }}">Front</a></li>
             <li><a href="{{ route('site.back') }}">Back</a></li>
             <li><a href="{{ route('site.gamedev') }}">Gamedev</a></li>
-            <li><a href="#">English</a></li>
+            <li><a href="{{ route('site.english') }}">English</a></li>
         </ul>
         <!-- MENU DROPDOWN -->
         <div class="nav-status dropdown">

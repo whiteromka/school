@@ -16,20 +16,33 @@
 
 <div class="container-fluid bg-light-grey px-0 pos-r">
     @include('components.cyber.matrix', ['css' => 'matrix-pos-tl'])
-    @include('components.cyber.x-text', [
-    'main' => 'PHP',
-    'mainSpan' => '>>> ||',
-    'descr' => 'SYS modules XXX'
-    ])
 
-    <div class="container">
+    <div class="d-none d-xxl-block_">
+        @include('components.cyber.x-text', [
+            'main' => 'PHP',
+            'mainSpan' => '>>> ||',
+            'descr' => 'SYS modules XXX'
+        ])
+    </div>
+
+    <br>
+    <div class="container" style="
+        position: relative;
+        border: 1px solid rgba(0,0,0,0.1);
+        border-radius: 5px;
+    ">
+        <div class="side-text side-left d-none d-xxl-block" style="letter-spacing: 8px">||||||||||||||||||</div>
+        <div class="side-text side-right d-none d-xxl-block" style="letter-spacing: 8px">|||||||||||||||||</div>
+
         <div style="height: 60px"></div>
         <div class="row">
             <?php $advantages = [
-                ['n'=>'01', 'name' => 'Популярный', 'descr' => 'Один из самых популярных языков программирования в РФ! 75% всего интернета в МИРЕ написано на PHP'],
-                ['n'=>'02', 'name' => 'Простой', 'descr' => 'Низкий порог входа. Очень простой язык в сравнении с C++, GO и Java'],
-                ['n'=>'03', 'name' => 'Наглядный', 'descr' => 'Имея самые базовые знания можно начать писать свое приложение'],
-                ['n'=>'04', 'name' => 'Проверенный', 'descr' => 'PHP настоящий титан IT индустрии. Первая версия языка вышла в 1995. Крайняя версия языка вышла в ноябре 2025'],
+                ['n'=>'01', 'name' => 'Максимально быстрый вход', 'descr' => 'Порог входа низкий: можно быстро начать писать полезный код. Простая модель: запрос - скрипт - ответ', 'type' => 'good'],
+                ['n'=>'02','name' => 'Огромная экосистема веба', 'descr' => 'Исторически ~70–75% сайтов. Много готовых решений. Фреймворки Laravel, Symfony, Yii2', 'type' => 'good'],
+                ['n'=>'03','name' => 'Дешёвый и простой деплой', 'descr' => 'Хостинг есть везде. Не требует сложной инфраструктуры', 'type' => 'good'],
+                ['n'=>'04','name' => 'Меньший уровень конкуренции', 'descr' => 'Меньше хайпа вокруг php. Проще найти работу', 'type' => 'good'],
+                ['n'=>'05','name' => 'Исторический багаж', 'descr' => '"Плохие практики" из прошлого. Код-базы часто превращаются в легаси', 'type' => 'bad'],
+                ['n'=>'06','name' => 'Узкая специализация', 'descr' => 'Язык для web разработки', 'type' => 'bad'],
             ]; ?>
 
             @php $i = 0; @endphp
@@ -37,7 +50,9 @@
                 <div class="col-md-6 col-lg-4 col-xl-6 col-xxl-5 {{$i % 2 === 0 ? 'offset-xxl-1' : ''}} ">
                     <div>
                         <div class="advantage d-flex justify-content-center align-items-end">
-                            <div class="js-cy-brackets bg-opas-dark d-flex  align-items-center" data-color="red" data-width="2" data-size="8">
+                            <div class="{{ $advantage['type'] == 'good' ? 'bg-opas-dark' : 'bg-test' }}
+                            js-cy-brackets d-flex align-items-center" data-color="red" data-width="2" data-size="8"
+                            >
                                 <div class="n">
                                     <span> {{ $advantage['n'] }} </span>
                                 </div>
@@ -46,7 +61,7 @@
                                 </div>
                             </div>
                         </div>
-                        <p class="advantage-descr p-lr-10"> {!! $advantage['descr'] !!}  </p>
+                        <p class="p-lr-10 {{ $advantage['type'] == 'good' ? 'advantage-descr' : 'advantage-descr-red' }}"> {!! $advantage['descr'] !!}  </p>
                     </div>
                 </div>
                 @php $i++; @endphp
@@ -55,6 +70,7 @@
         </div>
         <div style="height: 80px"></div>
     </div>
+    <br>
 </div>
 
 <div class="container-fluid bottom-ark bg-light-grey px-0">

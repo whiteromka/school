@@ -13,9 +13,8 @@
             </div>
 
             <div class="project-name">{{ $item->name }}</div>
-            <div class="project-tech">{{ $item->requirement }}</div>
-
-            <p class="project-desc flex-grow-1">
+            <div class="project-tech fs-p-small">{{ $item->requirement }}</div>
+            <p class="project-desc fs-p-small flex-grow-1">
                 {{ $item->responsibility }}
             </p>
 
