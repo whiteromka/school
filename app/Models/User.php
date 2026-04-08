@@ -36,6 +36,7 @@ use Illuminate\Support\Carbon;
  * @property-read Collection|OauthAccount[] $oauthAccounts
  * @property-read Profile|null $profile
  * @property-read Collection|ActiveModule[] $activeModules
+ * @property-read Collection|Review[] $reviews
  */
 class User extends Authenticatable
 {
@@ -128,4 +129,13 @@ class User extends Authenticatable
             ->withPivot('joined_at')
             ->withTimestamps();
     }
+
+    /**
+     * Связь с отзывами (one-to-many)
+     */
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(Review::class);
+    }
+
 }

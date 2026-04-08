@@ -43,4 +43,19 @@ class Review extends Model
     {
         return $this->belongsTo(Module::class, 'modules_id');
     }
+
+    public function getRuStatus(): string
+    {
+        $map = self::statusMap();
+        return isset($map[$this->status]) ? $map[$this->status] : '';
+    }
+
+    public static function statusMap(): array
+    {
+        return [
+            self::STATUS_NEW => 'Новый',
+            self::STATUS_APPROVED => 'Одобрен',
+            self::STATUS_REJECTED => 'Отклонен'
+        ];
+    }
 }
