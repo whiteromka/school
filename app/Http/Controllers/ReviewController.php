@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ReviewStoreRequest;
+use App\Http\Requests\ReviewUpdateRequest;
 use App\Models\Review;
 use App\Services\ActiveModuleService;
 use App\Services\CaptchaService;
 use App\Services\ReviewService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 use Illuminate\Support\ViewErrorBag;
 
@@ -46,6 +48,47 @@ class ReviewController extends Controller
         return response()->view('partials.captcha', [
             'captcha' => $captcha,
             'errors' => $errors,
+        ]);
+    }
+
+    /**
+     * GET /review/delete-review
+    */
+    public function deleteReview(int $id): JsonResponse
+    {
+        $user = auth()->user();
+        $review = $this->reviewService->getById($id);
+        $isDeleted = false;
+        if ($review->user_id === $user->id) {
+            $isDeleted = $this->reviewService->delete($id);
+        }
+        return response()->json(['success' => $isDeleted]);
+    }
+
+    /**
+     * GET /review/get-by-id
+     */
+    public function getById(int $id): JsonResponse
+    {
+        $review = $this->reviewService->getById($id);
+        return response()->json([
+            'review' => $review,
+            'success' => (bool)$review
+        ]);
+    }
+
+    /**
+     * POST /review/update
+     */
+    public function update(ReviewUpdateRequest $request): JsonResponse
+    {
+        $data = $request->validated();
+        $review = $this->reviewService->getById($data['id']);
+        $success = $review->update($data);
+        $review->refresh();
+        return response()->json([
+            'success' => $success,
+            'review' => $review
         ]);
     }
 }
