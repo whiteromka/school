@@ -92,7 +92,7 @@
     @endphp
     <div class="soon-modules">
         <div class="info-body">
-            <h4 class="soon-modules-header">Скоро начинем</h4>
+            <h4 class="soon-modules-header">Скоро начинаем</h4>
             <br>
             <div class="container px-0">
                 @foreach($soonCourses as $course)
