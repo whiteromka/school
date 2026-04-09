@@ -13,7 +13,7 @@
 
 @section('content')
 
-    <div class="container py-5">
+    <div class="container py-5 px-0">
         <div class="row">
             <div class="col-md-6">
                 <div class="section-header">
@@ -69,26 +69,21 @@
             </div>
         @endif
 
-        @include('components.profile.courses')
-        <br>
-        <br>
-
-        @include('components.profile.basic-data')
-        <br>
-        <br>
-
-        @include('components.profile.additional-data')
-        <br>
-        <br>
-
-        @include('components.profile.reviews', ['user' => $user])
-
-        <div class="d-flex justify-content-end">
-            <a href="{{ route('profile.update-password-view')  }}" class="btn btn-s btn--secondary">
-                <span class="btn__content">Сменить пароль</span>
-                <span class="btn__glitch"></span>
-                <span class="btn__label">r25</span>
-            </a>
+        <div class="info-body__no-line-height">
+            @include('components.profile.courses')
+            <br>
+            @include('components.profile.basic-data')
+            <br>
+            @include('components.profile.additional-data')
+            <br>
+            @include('components.profile.reviews', ['user' => $user])
+            <div class="d-flex justify-content-end">
+                <a href="{{ route('profile.update-password-view')  }}" class="btn btn-s btn--secondary">
+                    <span class="btn__content">Сменить пароль</span>
+                    <span class="btn__glitch"></span>
+                    <span class="btn__label">r25</span>
+                </a>
+            </div>
         </div>
 
     </div>
@@ -98,6 +93,7 @@
 @push('scripts')
 
     <script>
+        // Анимации визитки пользователя
         document.addEventListener('DOMContentLoaded', function () {
             // Создаем сетку пикселей
             const grid = document.getElementById('pixelGrid');
@@ -162,11 +158,8 @@
             // Обновляем каждую секунду
             setInterval(updateRandomPixels, 1000);
         });
-    </script>
 
-
-
-    <script>
+        // Панели и состояние
         document.addEventListener('DOMContentLoaded', function () {
             const STORAGE_KEY = 'profile_panels_state';
 
@@ -197,13 +190,13 @@
 
             function setCollapse(body, button) {
                 body.style.display = 'none';
-                button.textContent = ' + ';
+                button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M214.6 470.6c-12.5 12.5-32.8 12.5-45.3 0l-160-160c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L192 402.7 329.4 265.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3l-160 160zm160-352l-160 160c-12.5 12.5-32.8 12.5-45.3 0l-160-160c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L192 210.7 329.4 73.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3z"/></svg>';
                 button.setAttribute('data-action', 'collapse');
             }
 
             function setExpand(body, button) {
                 body.style.display = 'block';
-                button.textContent = ' — ';
+                button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160zm160 352l-160-160c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 329.4 438.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3z"/></svg>';
                 button.setAttribute('data-action', 'expand');
             }
 

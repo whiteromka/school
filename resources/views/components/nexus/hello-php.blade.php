@@ -19,10 +19,10 @@
     @php
         $imgs = ['/img/site/back/d6.jpg', '/img/site/back/d3.jpg', '/img/site/back/t5.jpg', '/img/site/back/t12.jpg', '/img/site/back/d10.jpg', '/img/site/back/d8.jpg'];
     @endphp
-    <div class="container px-0">
-        <div class="row">
+    <div class="container px-0_">
+        <div class="row px-0">
             @foreach($imgs as $img)
-                <div class="col-6 col-sm-6 col-md-4 col-lg-2 px-2 mb-15 js-glitch_">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-2 px-2_ mb-15 js-glitch_">
                     <div class="img-wrapper">
                         <img src="{{ asset($img) }}" alt="" class="img-fluid">
                     </div>

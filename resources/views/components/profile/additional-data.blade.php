@@ -1,10 +1,5 @@
 <div class="data-panel" data-panel-id="additional-data">
-    <div class="data-panel__header">
-        <div class="data-panel__dot"></div>
-        <span class="data-panel__title">Дополнительные данные</span>
-        <div class="data-panel__line"></div>
-        <span class="btn-collapse" data-action="collapse"> — </span>
-    </div>
+    @include('components.profile._profile-data-head', ['name' => 'Дополнительные данные'])
     <div class="data-panel__body data-stream">
         <form action="{{ route('profile.update') }}" method="POST">
             @csrf

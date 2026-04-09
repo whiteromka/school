@@ -4,12 +4,7 @@
 @endphp
 
 <div class="data-panel" data-panel-id="reviews">
-    <div class="data-panel__header p-12_">
-        <div class="data-panel__dot"></div>
-        <span class="data-panel__title">Ваши отзывы</span>
-        <div class="data-panel__line"></div>
-        <span class="btn-collapse" data-action="collapse"> — </span>
-    </div>
+    @include('components.profile._profile-data-head', ['name' => 'Ваши отзывы'])
     <div class="data-panel__body data-stream">
         <h1>Отзывы</h1>
         <table class="table table-dark">
