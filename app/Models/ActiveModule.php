@@ -28,6 +28,7 @@ class ActiveModule extends Model
 {
     const STATUS_OPEN = 'open';
     const STATUS_STARTED_FREE = 'started_free';
+    const STATUS_CAN_PAY = 'can_pay';
     const STATUS_STARTED_FULL = 'started_full';
     const STATUS_FINISHED = 'finished';
 
@@ -99,6 +100,7 @@ class ActiveModule extends Model
         return [
             self::STATUS_OPEN => 'Запись открыта',
             self::STATUS_STARTED_FREE => 'Идут бесплатные уроки',
+            self::STATUS_CAN_PAY => 'Можно оплачивать',
             self::STATUS_STARTED_FULL => 'Запись закрыта',
             self::STATUS_FINISHED => 'Завершен'
         ];

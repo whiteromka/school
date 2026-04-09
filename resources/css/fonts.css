@@ -1,5 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Jura:wght@300..700&family=Orbitron:wght@400..900&family=Russo+One&family=Tektur:wght@400..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Science+Gothic:wght@100..900&display=swap');*/
 
+
+/*.font-science {*/
+/*     font-family: "Science Gothic", sans-serif;*/
+/*     font-optical-sizing: auto;*/
+/*     font-weight: 500;*/
+/*     font-style: normal;*/
+/*     font-variation-settings:*/
+/*         "slnt" 0,*/
+/*         "wdth" 100,*/
+/*         "CTRS" 0;*/
+/* }*/
 /*.font-tektur {*/
 /*     font-family: "Tektur", sans-serif;*/
 /*     font-optical-sizing: auto;*/
@@ -26,7 +39,16 @@
 /*   font-style: normal;*/
 /*}*/
 
-
+.font-science {
+    font-family: "Science Gothic", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings:
+        "slnt" 0,
+        "wdth" 100,
+        "CTRS" 0;
+}
 .font-tektur {
     font-family: "Tektur", sans-serif;
     font-optical-sizing: auto;
@@ -57,7 +79,7 @@
     word-spacing: 0.5em;
 }
 .font-tech-mono {
-    font-family: "Share Tech Mono", monospace ;
+    font-family: "Share Tech Mono", monospace;
 }
 
 .font-w-100 { font-weight: 100;}

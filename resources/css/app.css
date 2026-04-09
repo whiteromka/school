@@ -3,7 +3,6 @@
 
 @import './myCss.css';
 @import './layout.css';
-@import './fonts.css';
 @import './cyBtn.css';
 @import './cyBtn2.css';
 @import './bgCube.css';
@@ -21,3 +20,4 @@
 @import './frameshift.css';
 @import './cyCode1.css';
 @import "./module.css";
+@import './fonts.css';

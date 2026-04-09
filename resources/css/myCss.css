@@ -287,15 +287,8 @@
     padding:0px 4px;
 }
 .cy-text {
-    font-optical-sizing: auto;
-    font-weight: 100;
-    font-style: normal;
-    font-variation-settings: "wdth" 100;
-    font-size: 17px;
-    /*font-size: clamp(12px, 2vw, 17px);*/
     color: #35ded3;
 }
-
 .cy-container {
     /*margin-top: 20px;*/
 }

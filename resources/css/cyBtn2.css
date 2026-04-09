@@ -101,7 +101,7 @@
 }
 
 .btn--secondary {
-    background-color: var(--black-color);
+    /*background-color: var(--black-color);*/
 }
 
 .btn--secondary .btn__content {
@@ -118,7 +118,7 @@
 }
 
 .btn--success {
-    background-color: var(--black-color);
+    /*background-color: var(--black-color);*/
 }
 
 .btn--success .btn__content {
