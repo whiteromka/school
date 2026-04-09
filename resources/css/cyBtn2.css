@@ -315,3 +315,28 @@
     bottom: -2px;
     left: 8px;
 }
+
+
+/* ===== Квадратные кнопки иконки ===== */
+.btn-ico {
+    background: transparent;
+    padding: 3px 3px;
+    font-family: "Tektur", sans-serif;
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    border: 1px solid rgba(128, 128, 128, 0.33);
+    margin-right: 3px;
+}
+.btn-ico-red {
+    fill: #cd1010;
+}
+.btn-ico-yellow {
+    fill: #d8840d;
+}
+.btn-ico-grey {
+    fill: grey;
+}
+.btn-ico-green {
+    fill: #43af1d;
+}

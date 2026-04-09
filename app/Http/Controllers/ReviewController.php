@@ -66,6 +66,15 @@ class ReviewController extends Controller
     }
 
     /**
+     * GET /review/list
+     */
+    public function index(): JsonResponse
+    {
+        $reviews = auth()->user()->reviews;
+        return response()->json(['reviews' => $reviews]);
+    }
+
+    /**
      * GET /review/get-by-id
      */
     public function getById(int $id): JsonResponse
@@ -84,6 +93,13 @@ class ReviewController extends Controller
     {
         $data = $request->validated();
         $review = $this->reviewService->getById($data['id']);
+        if ($review->status !== Review::STATUS_NEW) {
+            return response()->json([
+                'success' => false,
+                'error' => 'Нельзя редактировать отзыв с данным статусом'
+            ], 403);
+        }
+
         $success = $review->update($data);
         $review->refresh();
         return response()->json([

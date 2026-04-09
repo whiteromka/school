@@ -77,13 +77,9 @@
             @include('components.profile.additional-data')
             <br>
             @include('components.profile.reviews', ['user' => $user])
-            <div class="d-flex justify-content-end">
-                <a href="{{ route('profile.update-password-view')  }}" class="btn btn-s btn--secondary">
-                    <span class="btn__content">Сменить пароль</span>
-                    <span class="btn__glitch"></span>
-                    <span class="btn__label">r25</span>
-                </a>
-            </div>
+            <br>
+            @include('components.profile.password')
+            <br>
         </div>
 
     </div>

@@ -969,4 +969,7 @@ body {
 .img-wrapper.active .corner-bracket {
     opacity: 1;
 }
-
+.table-danger-row th,
+.table-danger-row td {
+    /*background: rgba(255, 0, 0, 0.28);*/
+}

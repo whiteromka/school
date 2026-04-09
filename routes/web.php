@@ -66,6 +66,7 @@ Route::get('/review/refresh-captcha', [ReviewController::class, 'refreshCaptcha'
 
 // Тех Стек
 Route::get('/tech-stack/info/{id}', [TechStackController::class, 'info'])->name('techStack.info');
+Route::get('/review/list', [ReviewController::class, 'index'])->name('review.list')->middleware('auth');
 Route::get('/review/delete-review/{id}', [ReviewController::class, 'deleteReview'])->name('review.deleteReview')->middleware('auth');
 Route::get('/review/get-by-id/{id}', [ReviewController::class, 'getById'])->name('review.getById')->middleware('auth');
 Route::post('/review/update', [ReviewController::class, 'update'])->name('review.update')->middleware('auth');
