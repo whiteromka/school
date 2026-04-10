@@ -53,7 +53,7 @@
                             <div class="{{ $advantage['type'] == 'good' ? 'bg-opas-dark' : 'bg-test' }}
                             js-cy-brackets d-flex align-items-center" data-color="red" data-width="2" data-size="8"
                             >
-                                <div class="n">
+                                <div class="n n-black">
                                     <span> {{ $advantage['n'] }} </span>
                                 </div>
                                 <div style="width: 70%">

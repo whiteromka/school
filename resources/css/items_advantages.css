@@ -313,6 +313,9 @@
     border: 1px solid #888888;
     background: rgba(0, 0, 0, 0.18);
 }
+.advantage .n-black {
+    color: #2e2e2e;
+}
 .advantage div span.name {
     font-size: 14px;
     text-transform: uppercase;
