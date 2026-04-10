@@ -14,14 +14,15 @@
                         <th scope="col">#</th>
                         <th scope="col">Отзыв</th>
                         <th scope="col">Оценка</th>
+                        <th scope="col">Модуль</th>
                         <th scope="col">Статус</th>
                         <th scope="col">Действия</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr v-for="review in reviews" :key="review.id"
+                    <tr v-for="(review, i) in reviews" :key="review.id"
                         :class="{ 'table-danger-row': review.status !== 'new' }">
-                        <th scope="row">@{{ review.id }}</th>
+                        <th scope="row">@{{ ++i }}</th>
 
                         <td>
                             <template v-if="editingId === review.id">
@@ -52,6 +53,7 @@
                                 @{{ review.stars }}
                             </template>
                         </td>
+                        <td>@{{ review?.module?.name || "-" }}</td>
 
                         <td>@{{ formatStatus(review.status) }}</td>
 
