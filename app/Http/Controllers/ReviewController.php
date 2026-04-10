@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Enums\ReviewStatus;
 use App\Http\Requests\ReviewStoreRequest;
 use App\Http\Requests\ReviewUpdateRequest;
+use App\Models\User;
 use App\Services\ActiveModuleService;
 use App\Services\CaptchaService;
 use App\Services\ReviewService;
@@ -70,7 +71,13 @@ class ReviewController extends Controller
      */
     public function index(): JsonResponse
     {
-        $reviews = auth()->user()->reviews;
+        /** @var User $user */
+        $user = auth()->user();
+        $reviews = $user
+            ->reviews()
+            ->with('module:id,name')
+            ->get();
+
         return response()->json(['reviews' => $reviews]);
     }
 
