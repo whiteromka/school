@@ -127,7 +127,8 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(ActiveModule::class, 'active_module_to_user')
             ->withPivot('joined_at')
-            ->withTimestamps();
+            ->withTimestamps()
+            ->orderBy('active_module_to_user.joined_at', 'asc');
     }
 
     /**
