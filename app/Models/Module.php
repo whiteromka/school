@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\ActiveModuleStatus;
 use App\Enums\ModuleType;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -91,6 +92,6 @@ class Module extends Model
     public function openActiveModule(): HasOne
     {
         return $this->hasOne(ActiveModule::class, 'module_id')
-            ->where('status', ActiveModule::STATUS_OPEN);
+            ->where('status', ActiveModuleStatus::OPEN->value);
     }
 }

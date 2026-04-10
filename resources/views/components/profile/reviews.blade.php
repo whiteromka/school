@@ -202,7 +202,14 @@
                 }
 
                 try {
-                    const response = await fetch(`/review/delete-review/${review.id}`);
+                    const formData = new FormData();
+                    formData.append('_token', this.csrfToken);
+
+                    const response = await fetch(`/review/delete-review/${review.id}`, {
+                        method: 'POST',
+                        headers: { 'Accept': 'application/json' },
+                        body: formData
+                    });
                     if (!response.ok) {
                         console.log(`HTTP error! status: ${response.status}`);
                         return;

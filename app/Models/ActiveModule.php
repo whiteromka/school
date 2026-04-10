@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\ActiveModuleStatus;
 use Exception;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -26,12 +27,6 @@ use Illuminate\Support\Carbon;
  */
 class ActiveModule extends Model
 {
-    const STATUS_OPEN = 'open';
-    const STATUS_STARTED_FREE = 'started_free';
-    const STATUS_CAN_PAY = 'can_pay';
-    const STATUS_STARTED_FULL = 'started_full';
-    const STATUS_FINISHED = 'finished';
-
     protected $fillable = [
         'module_id',
         'started_at',
@@ -51,12 +46,10 @@ class ActiveModule extends Model
         parent::boot();
 
         static::saving(function ($model) {
-            /** Статусы, которые должны быть уникальны в пределах одного module_id */
-            $uniqueStatuses = [
-                self::STATUS_OPEN,
-                self::STATUS_STARTED_FREE,
-                self::STATUS_STARTED_FULL,
-            ];
+            $uniqueStatuses = array_map(
+                fn($s) => $s->value,
+                ActiveModuleStatus::uniqueStatuses()
+            );
             if (in_array($model->status, $uniqueStatuses)) {
                 $exists = static::query()
                     ->where('module_id', $model->module_id)
@@ -97,12 +90,6 @@ class ActiveModule extends Model
 
     public static function statusMap(): array
     {
-        return [
-            self::STATUS_OPEN => 'Запись открыта',
-            self::STATUS_STARTED_FREE => 'Идут бесплатные уроки',
-            self::STATUS_CAN_PAY => 'Можно оплачивать',
-            self::STATUS_STARTED_FULL => 'Запись закрыта',
-            self::STATUS_FINISHED => 'Завершен'
-        ];
+        return ActiveModuleStatus::map();
     }
 }

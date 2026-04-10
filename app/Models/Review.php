@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -20,10 +21,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 class Review extends Model
 {
-    const STATUS_NEW = 'new';
-    const STATUS_APPROVED = 'approved';
-    const STATUS_REJECTED = 'rejected';
-
     protected $fillable = [
         'user_id',
         'stars',
@@ -42,20 +39,5 @@ class Review extends Model
     public function module(): BelongsTo
     {
         return $this->belongsTo(Module::class, 'modules_id');
-    }
-
-    public function getRuStatus(): string
-    {
-        $map = self::statusMap();
-        return isset($map[$this->status]) ? $map[$this->status] : '';
-    }
-
-    public static function statusMap(): array
-    {
-        return [
-            self::STATUS_NEW => 'Новый',
-            self::STATUS_APPROVED => 'Одобрен',
-            self::STATUS_REJECTED => 'Отклонен'
-        ];
     }
 }

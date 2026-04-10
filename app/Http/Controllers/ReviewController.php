@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\ReviewStatus;
 use App\Http\Requests\ReviewStoreRequest;
 use App\Http\Requests\ReviewUpdateRequest;
-use App\Models\Review;
 use App\Services\ActiveModuleService;
 use App\Services\CaptchaService;
 use App\Services\ReviewService;
@@ -27,7 +27,7 @@ class ReviewController extends Controller
         $this->reviewService->create([
             'user_id' => auth()->id(),
             ...$request->reviewData(),
-            'status' => Review::STATUS_NEW,
+            'status' => ReviewStatus::NEW->value,
         ]);
 
         return response()->view('partials.review-form', [
@@ -52,8 +52,8 @@ class ReviewController extends Controller
     }
 
     /**
-     * GET /review/delete-review
-    */
+     * POST /review/delete-review
+     */
     public function deleteReview(int $id): JsonResponse
     {
         $user = auth()->user();
@@ -93,7 +93,7 @@ class ReviewController extends Controller
     {
         $data = $request->validated();
         $review = $this->reviewService->getById($data['id']);
-        if ($review->status !== Review::STATUS_NEW) {
+        if ($review->status !== ReviewStatus::NEW->value) {
             return response()->json([
                 'success' => false,
                 'error' => 'Нельзя редактировать отзыв с данным статусом'

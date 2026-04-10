@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Enums\ActiveModuleStatus;
 use App\Models\ActiveModule;
 use App\Models\User;
 use App\Repositories\ActiveModuleRepository;
@@ -46,11 +47,11 @@ class ActiveModuleService
     public function joinUserToModule(User $user, int $moduleId): ActiveModule
     {
         // Ищем активный модуль со статусом STATUS_OPEN
-        $activeModule = $this->activeModuleRepository->getByModuleIdAndStatus($moduleId, ActiveModule::STATUS_OPEN);
+        $activeModule = $this->activeModuleRepository->getByModuleIdAndStatus($moduleId, ActiveModuleStatus::OPEN->value);
         if (!$activeModule) {
             $activeModule = $this->activeModuleRepository->create([
                 'module_id' => $moduleId,
-                'status' => ActiveModule::STATUS_OPEN,
+                'status' => ActiveModuleStatus::OPEN->value,
             ]);
         }
 
