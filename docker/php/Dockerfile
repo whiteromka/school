@@ -42,6 +42,12 @@ RUN chown -R appuser:appgroup /var/www/html
 # Xdebug проброс настроек
 COPY xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 
+# PHP-FPM конфигурация пула
+COPY www.conf /usr/local/etc/php-fpm.d/www.conf
+
+# Opcache настройки
+COPY opcache.ini /usr/local/etc/php/conf.d/opcache.ini
+
 USER appuser
 
 EXPOSE 9000

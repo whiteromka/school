@@ -1,8 +1,15 @@
 // docker compose exec app npm run dev
 
+// Полная пересборка
 // docker compose down -v
 // docker-compose build --no-cache
 
+// Полная пересборка app
+// docker compose down
+// docker compose build --no-cache app
+// docker compose up -d
+
+========= Установка ============
 Для windows проект разворачивать внутри WSL например: ~/dev/<папка_с_проектом>
 
 Склонировать через git:
