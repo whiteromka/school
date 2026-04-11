@@ -6,7 +6,7 @@ use App\Services\TechStackService;
 use Illuminate\Console\Command;
 
 /**
- * команда: php artisan seed:tech_stacks
+ * команда: docker compose exec app php artisan seed:tech_stacks
  */
 class SeedTechStackCommand extends Command
 {

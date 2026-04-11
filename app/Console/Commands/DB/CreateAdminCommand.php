@@ -7,7 +7,7 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Hash;
 
 /**
- * Команда: php artisan db:create-admin
+ * Команда: docker compose exec app php artisan db:create-admin
  */
 class CreateAdminCommand extends Command
 {
