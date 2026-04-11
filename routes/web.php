@@ -50,7 +50,6 @@ Route::get('/telegram-auth/auth', [TelegramAuthController::class, 'auth'])
 // ===============================================================
 
 Route::resource('users', UsersController::class);
-Route::get('/users/show/{user}', [UsersController::class, 'show'])->name('users.show');
 
 // Вакансии
 Route::get('/vacancy/check', [VacancyController::class, 'check'])->name('vacancy.check');

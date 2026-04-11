@@ -2,7 +2,7 @@
 
 // Полная пересборка
 // docker compose down -v
-// docker compose build --build-arg WITH_XDEBUG=false
+// docker compose build --build-arg WITH_XDEBUG=false    --no-cache
 // docker-compose build --no-cache
 
 // Полная пересборка app
@@ -58,6 +58,10 @@ php artisan migrate // если будет ошибка подождать 20 с
 
 // В контейнере с приложением устанавливаем бутстрап
 npm install
+
+php artisan db:create-admin
+app php artisan seed:modules
+php artisan seed:tech_stacks
 
 // Запуск режима разработки фронта: Vite с hot reload
 npm run dev
@@ -136,6 +140,7 @@ filament:
 
 ====== Ab tests ======
 ab -n 1000 -c 50 http://localhost:8080/test/test1
+ab -n 1000 -c 50 http://localhost:8080/test_native.php
 
 docker compose exec app bash
 php-fpm -tt

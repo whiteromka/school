@@ -9,6 +9,7 @@ class TestController extends Controller
     // GET /test/test1
     public function test1()
     {
+        $a = 1;
         return new Response([
             'status' => 'ok',
         ]);
