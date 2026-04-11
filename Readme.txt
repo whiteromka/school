@@ -2,6 +2,7 @@
 
 // Полная пересборка
 // docker compose down -v
+// docker compose build --build-arg WITH_XDEBUG=false
 // docker-compose build --no-cache
 
 // Полная пересборка app

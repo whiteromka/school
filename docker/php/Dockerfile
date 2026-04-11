@@ -1,52 +1,59 @@
-FROM php:8.3-fpm-alpine
+FROM php:8.3-fpm
 
-ARG UID
-ARG GID
+ARG UID=1000
+ARG GID=1000
+ARG WITH_XDEBUG=true
 
-RUN apk add --no-cache \
+ENV COMPOSER_CACHE_DIR=/tmp/composer-cache
+
+# 1. системные зависимости
+RUN apt-get update && apt-get install -y --no-install-recommends \
     bash \
     git \
     unzip \
     curl \
-    oniguruma-dev \
     zip \
-    mysql-client \
-    icu-dev \
-    libxml2-dev \
-    build-base \
-    autoconf \
-    linux-headers \
-    python3 \
+    default-mysql-client \
     nodejs \
     npm \
-    pkgconfig \
+    python3 \
+    libicu-dev \
+    libxml2-dev \
     libzip-dev \
-    && docker-php-ext-install pdo_mysql mbstring pcntl intl xml opcache zip
+    libonig-dev \
+    && rm -rf /var/lib/apt/lists/*
 
-# Создаем пользователя appuser с указанным UID и GID
-RUN addgroup -g ${GID} appgroup \
-    && adduser -D -G appgroup -u ${UID} appuser
+# 2. PHP extensions
+RUN docker-php-ext-install \
+    pdo_mysql \
+    mbstring \
+    pcntl \
+    intl \
+    xml \
+    opcache \
+    zip
 
-# Устанавливаем Composer
+# 3. Xdebug (условная установка)
+RUN if [ "$WITH_XDEBUG" = "true" ]; then \
+    pecl install xdebug && docker-php-ext-enable xdebug ; \
+fi
+
+# 4. пользователь
+RUN groupadd -g ${GID} appgroup \
+    && useradd -u ${UID} -g appgroup -m appuser
+
+# 5. composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-
-# Xdebug установка
-RUN pecl install xdebug \
-    && docker-php-ext-enable xdebug
 
 WORKDIR /var/www/html
 
-# ВАЖНО: права
-RUN chown -R appuser:appgroup /var/www/html
-
-# Xdebug проброс настроек
+# 6. конфиги PHP
 COPY xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
-
-# PHP-FPM конфигурация пула
+COPY opcache.ini /usr/local/etc/php/conf.d/opcache.ini
 COPY www.conf /usr/local/etc/php-fpm.d/www.conf
 
-# Opcache настройки
-COPY opcache.ini /usr/local/etc/php/conf.d/opcache.ini
+# 7. права
+RUN chown -R appuser:appgroup /var/www/html
 
 USER appuser
 
