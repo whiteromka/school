@@ -133,4 +133,9 @@ filament:
  docker compose exec app php artisan make:filament-resource Review --generate
 
 
+====== Ab tests ======
+ab -n 1000 -c 50 http://localhost:8080/test/test1
+
+docker compose exec app bash
+php-fpm -tt
 
