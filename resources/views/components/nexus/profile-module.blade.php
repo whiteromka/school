@@ -11,7 +11,7 @@
     $max = $max ?? 94;
 @endphp
 
-<div class="module"
+<div class="module profile-module"
      data-users-count="{{ $module->openActiveModule?->users->count() ?? 0 }}"
      data-max-users="{{ $max }}"
 >

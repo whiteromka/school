@@ -73,6 +73,12 @@ class ReviewController extends Controller
     {
         /** @var User $user */
         $user = auth()->user();
+//        $user->load([
+//            'profile',
+//            'oauthAccounts',
+//            'reviews.module:id,name'
+//        ]);
+
         $reviews = $user
             ->reviews()
             ->with('module:id,name')

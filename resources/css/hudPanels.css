@@ -250,8 +250,10 @@
     background: linear-gradient(to right, hsla(8, 90%, 55%, 0.6), transparent);
 }
 .data-panel__body {
+    border-top: 1px solid rgba(20, 20, 20, 0.66);
     padding: 12px;
-    background: rgba(0, 74, 90, 0.7);
+    background: rgba(5, 65, 72, 0.99);
+    /*box-shadow: inset 0 5px 5px 2px rgba(1, 8, 19, 0.34);*/
 }
 .data-panel__header:hover .btn-collapse {
     color: orange;

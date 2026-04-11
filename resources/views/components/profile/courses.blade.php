@@ -1,6 +1,6 @@
 @php
-
-/** @var \App\Models\User $user */
+    use App\Models\User;
+    /** @var User $user */
 @endphp
 <div class="data-panel" data-panel-id="courses">
     @include('components.profile._profile-data-head', ['name' => 'Ваши курсы'])

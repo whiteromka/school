@@ -77,3 +77,5 @@ Route::post('/profile', [ProfileController::class, 'update'])->name('profile.upd
 Route::get('/profile/update-password-view', [ProfileController::class, 'updatePasswordView'])->name('profile.update-password-view')->middleware('auth');
 Route::post('/profile/update-password', [ProfileController::class, 'updatePassword'])->name('profile.update-password')->middleware('auth');
 
+// Tests
+Route::get('/test/test1', [TestController::class, 'test1'])->name('test.test1');

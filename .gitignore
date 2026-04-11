@@ -12,6 +12,7 @@
 /.vscode
 /.zed
 t.txt
+t-ab.txt
 
 /auth.json
 /node_modules
