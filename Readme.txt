@@ -1,5 +1,7 @@
 // docker compose exec app npm run dev
 
+// composer create-project laravel/laravel:12.* ./
+
 // Полная пересборка
 // docker compose down -v
 // docker compose build --build-arg WITH_XDEBUG=false    --no-cache
@@ -9,6 +11,18 @@
 // docker compose down
 // docker compose build --no-cache app
 // docker compose up -d
+
+ab -n 1000 -c 50 http://localhost:8080/test/test1
+ab -n 1000 -c 50 http://localhost:8080/test_native.php
+
+// php -i | grep opcache.enable
+// php -i | grep max_children
+// cat /usr/local/etc/php-fpm.d/www.conf | grep pm.max_children
+// php artisan optimize:clear
+// типо для производительности
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
 
 ========= Установка ============
 Для windows проект разворачивать внутри WSL например: ~/dev/<папка_с_проектом>
@@ -60,7 +74,7 @@ php artisan migrate // если будет ошибка подождать 20 с
 npm install
 
 php artisan db:create-admin
-app php artisan seed:modules
+php artisan seed:modules
 php artisan seed:tech_stacks
 
 // Запуск режима разработки фронта: Vite с hot reload
@@ -139,7 +153,7 @@ filament:
 
 
 ====== Ab tests ======
-ab -n 1000 -c 50 http://localhost:8080/test/test1
+ab -n 1000 -c 50 http://localhost:8080/test/test1   156(no xdeg)|155|107
 ab -n 1000 -c 50 http://localhost:8080/test_native.php
 
 docker compose exec app bash

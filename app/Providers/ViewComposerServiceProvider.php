@@ -22,19 +22,19 @@ class ViewComposerServiceProvider extends ServiceProvider
     public function boot(): void
     {
         // Передаем данные в форму отзывов
-        View::composer('components.nexus.reviews', function ($view) {
-            $activeModules = [];
-
-            if (auth()->check()) {
-                $user = auth()->user();
-                $user->load('activeModules.module');
-                $activeModules = $user->activeModules->pluck('module.name', 'module.id')->toArray();
-            }
-
-            $view->with([
-                'activeModules' => $activeModules,
-                'captcha' => CaptchaService::generate(),
-            ]);
-        });
+//        View::composer('components.nexus.reviews', function ($view) {
+//            $activeModules = [];
+//
+//            if (auth()->check()) {
+//                $user = auth()->user();
+//                $user->load('activeModules.module');
+//                $activeModules = $user->activeModules->pluck('module.name', 'module.id')->toArray();
+//            }
+//
+//            $view->with([
+//                'activeModules' => $activeModules,
+//                'captcha' => CaptchaService::generate(),
+//            ]);
+//        });
     }
 }

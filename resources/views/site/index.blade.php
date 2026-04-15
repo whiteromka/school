@@ -226,7 +226,7 @@
 <div style="height: 150px"></div>
 
 {{--  Отзывы  --}}
-@include('components.nexus.reviews')
+{{--@include('components.nexus.reviews')--}}
 <br>
 <br>
 <br>

@@ -24,6 +24,7 @@
                 @livewire('reviews')
             </div>
         </div>
+
         <div class="col-md-4">
             <div class="review-form-container" id="review-form-container">
                 @php

@@ -11,7 +11,7 @@ class TestController extends Controller
     {
         $a = 1;
         return new Response([
-            'status' => 'ok',
+            'status' => 'school',
         ]);
     }
 }

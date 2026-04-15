@@ -27,17 +27,17 @@ RUN groupadd -g ${GID} appgroup \
 
 # PROD
 # эта важная команда для оптимизации при продакшене
-COPY . .
+#COPY . .
 
 RUN mkdir -p storage bootstrap/cache \
     && chown -R appuser:appgroup storage bootstrap/cache
 
 # PROD
 # эта важная команда для оптимизации при продакшене
-RUN composer install --no-dev --optimize-autoloader
+#RUN composer install --no-dev --optimize-autoloader
 
-COPY docker/php/opcache.ini /usr/local/etc/php/conf.d/opcache.ini
-COPY docker/php/www.conf /usr/local/etc/php-fpm.d/www.conf
+COPY opcache.ini /usr/local/etc/php/conf.d/opcache.ini
+COPY www.conf /usr/local/etc/php-fpm.d/www.conf
 
 RUN if [ "$WITH_XDEBUG" = "true" ]; then \
     pecl install xdebug && docker-php-ext-enable xdebug ; \
