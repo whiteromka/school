@@ -1,4 +1,6 @@
 // docker compose exec app npm run dev
+// docker compose exec app bash
+// php artisan migrate
 
 // composer create-project laravel/laravel:12.* ./
 
@@ -72,6 +74,10 @@ php artisan migrate // если будет ошибка подождать 20 с
 
 // В контейнере с приложением устанавливаем бутстрап
 npm install
+// ДЛЯ ПРОДА:
+    !!! docker compose exec -u root app npm install
+    !!! docker compose exec -u root app npm run build
+    !!! УДАЛИТЬ \public\hot:   docker compose exec -u root app rm -f public/hot
 
 php artisan db:create-admin
 php artisan seed:modules
@@ -153,9 +159,12 @@ filament:
 
 
 ====== Ab tests ======
-ab -n 1000 -c 50 http://localhost:8080/test/test1   156(no xdeg)|155|107
+ab -n 1000 -c 50 http://localhost:8080/test/test1
+156(no xdeg)|155|107
 ab -n 1000 -c 50 http://localhost:8080/test_native.php
 
-docker compose exec app bash
-php-fpm -tt
+====== Ab tests - new docker ======
+ab -n 11000 -c 50 http://localhost:8080/test/test1
+~500
+
 
