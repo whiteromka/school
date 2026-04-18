@@ -22,34 +22,23 @@ RUN docker-php-ext-install \
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Создаём пользователя
 RUN groupadd -g ${GID} appgroup \
     && useradd -u ${UID} -g appgroup -m appuser
 
-# Копируем все файлы проекта (пока от root)
-COPY . .
+# PROD
+# эта важная команда для оптимизации при продакшене
+#COPY . .
 
-# СОЗДАЁМ ДИРЕКТОРИИ ЗАНОВО (решение проблемы)
-#RUN mkdir -p storage/framework/{cache,sessions,views} \
-#    && mkdir -p storage/logs \
-#    && mkdir -p bootstrap/cache
-#
-## Устанавливаем правильные права (ВАЖНО: после создания директорий)
-#RUN chown -R appuser:appgroup storage bootstrap/cache \
-#    && chmod -R 775 storage bootstrap/cache
-RUN mkdir -p \
-    storage/framework/cache \
-    storage/framework/sessions \
-    storage/framework/views \
-    storage/logs \
-    bootstrap/cache \
- && chown -R appuser:appgroup storage bootstrap/cache
+RUN mkdir -p storage bootstrap/cache \
+    && chown -R appuser:appgroup storage bootstrap/cache
 
-# Запускаем composer от root (но файлы уже с правильными правами)
-RUN composer install --no-dev --optimize-autoloader --no-interaction
+# PROD
+# эта важная команда для оптимизации при продакшене
+#RUN composer install --no-dev --optimize-autoloader
 
-COPY docker/php/opcache.ini /usr/local/etc/php/conf.d/opcache.ini
-COPY docker/php/www.conf /usr/local/etc/php-fpm.d/www.conf
+COPY opcache.ini /usr/local/etc/php/conf.d/opcache.ini
+COPY xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
+COPY www.conf /usr/local/etc/php-fpm.d/www.conf
 
 RUN if [ "$WITH_XDEBUG" = "true" ]; then \
     pecl install xdebug && docker-php-ext-enable xdebug ; \

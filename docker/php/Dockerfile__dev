@@ -37,6 +37,7 @@ RUN mkdir -p storage bootstrap/cache \
 #RUN composer install --no-dev --optimize-autoloader
 
 COPY opcache.ini /usr/local/etc/php/conf.d/opcache.ini
+COPY xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 COPY www.conf /usr/local/etc/php-fpm.d/www.conf
 
 RUN if [ "$WITH_XDEBUG" = "true" ]; then \
