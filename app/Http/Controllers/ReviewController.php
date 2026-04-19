@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Enums\ReviewStatus;
 use App\Http\Requests\ReviewStoreRequest;
 use App\Http\Requests\ReviewUpdateRequest;
+use App\Models\Review;
 use App\Models\User;
 use App\Services\ActiveModuleService;
 use App\Services\CaptchaService;
@@ -20,37 +21,69 @@ class ReviewController extends Controller
         private readonly ReviewService $reviewService
     ) {}
 
-    /**
-     * Store a newly created review in storage.
+
+    /** Модули на которые записан пользователь
+     * GET /review/user-modules
      */
-    public function store(ReviewStoreRequest $request): Response
+    public function userModules(): JsonResponse
     {
-        $this->reviewService->create([
-            'user_id' => auth()->id(),
-            ...$request->reviewData(),
-            'status' => ReviewStatus::NEW->value,
+        /** @var User $user */
+        $user = auth()->user();
+
+        if ($user) {
+            $user->load(['activeModules.module:id,name']);
+            $modules = $user->activeModules
+                ->filter(fn($item) => $item->module !== null)
+                ->mapWithKeys(function ($item) {
+                    return [
+                        $item->module->id => $item->module->name
+                    ];
+                });
+        } else {
+            $modules = [];
+        }
+
+        return response()->json([
+            'success' => true,
+            'data' => $modules
+        ]);
+    }
+
+    /** Для главной страницы форма отправки отзывов
+     * POST /review/store
+     */
+    public function store(ReviewStoreRequest $request): JsonResponse
+    {
+        /** @var User $user */
+        $user = auth()->user();
+        $data = $request->validated();
+        $review = Review::query()->create([
+            'user_id' => $user->id,
+            'modules_id' => $data['modules_id'] ?? null,
+            'stars' => $data['stars'],
+            'message' => $data['message'],
+            'status' => 'new',
         ]);
 
-        return response()->view('partials.review-form', [
-            'activeModules' => $this->activeModuleService->getUserActiveModules(auth()->user()),
-            'errors' => new ViewErrorBag(),
+        return response()->json([
             'success' => true,
+            'data' => $review
         ]);
     }
 
     /**
      * Обновление капчи (AJAX)
      */
-    public function refreshCaptcha(): Response
-    {
-        $captcha = CaptchaService::generate();
-        $errors = session('errors') ?? new ViewErrorBag();
-
-        return response()->view('partials.captcha', [
-            'captcha' => $captcha,
-            'errors' => $errors,
-        ]);
-    }
+//    public function refreshCaptcha(): Response
+//    {
+//        $captcha = CaptchaService::generate();
+//        $errors = session('errors') ?? new ViewErrorBag();
+//
+//        return response()->view('partials.captcha', [
+//            'captcha' => $captcha,
+//            'errors' => $errors,
+//        ]);
+//    }
 
     /**
      * POST /review/delete-review

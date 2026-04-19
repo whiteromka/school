@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentElement = cycleElements[currentIndex];
         activateGlitch(currentElement);
         currentIndex = (currentIndex + 1) % cycleElements.length;
-        setTimeout(runCycle, 5000);
+        setTimeout(runCycle, 3000);
     }
 
     runCycle();

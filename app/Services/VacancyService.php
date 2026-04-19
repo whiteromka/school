@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Repositories\VacancyRepository;
+use App\Services\HH\HHParserService;
 use App\Services\HH\HHService;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Carbon;
@@ -10,9 +11,12 @@ use Illuminate\Support\Facades\Cache;
 
 class VacancyService
 {
+    private const int CACHE_HOURS = 12;
+
     public function __construct(
         private readonly VacancyRepository $vacancyRepository,
-        private readonly HHService $hhService
+        //private readonly HHService $hhService // Старый вариант с АПИ hh.ru
+        private readonly HHParserService $hhService
     ) {}
 
     public function getLatest(int $offset = 0, ?string $type = null): Collection
@@ -23,23 +27,24 @@ class VacancyService
     /**
      * Проверит нужно ли стянуть свежие вакансии с hh.ru, сохранит в БД, вернет коллекцию вакансий
      *
+     * @param string $type PHP | Java Script
      * @return Collection
      */
-    public function checkAndGetLatest(?string $type = null): Collection
+    public function checkAndGetLatest(string $type): Collection
     {
-        $cacheKey = 'vacancies_fresh_12h_' . ($type ?? 'all');
+        $cacheKey = 'cache_key_' . self::CACHE_HOURS . '_' . $type;
 
         if (!Cache::has($cacheKey)) {
-            $lastCreatedAt = $this->vacancyRepository->getLastPublishedAt($type);
+            $lastCreatedAt = $this->vacancyRepository->getLastCreatedAt($type);
             if (!$lastCreatedAt) {
-                $this->hhService->fetchVacancies();
-                Cache::put($cacheKey, true, now()->addHours(12));
+                $this->hhService->fetchVacancies($type);
+                Cache::put($cacheKey, true, now()->addHours(self::CACHE_HOURS));
             } else {
                 $lastCreatedAt = Carbon::parse($lastCreatedAt);
-                // если последняя вакансия старше 12 часов
-                if ($lastCreatedAt->lt(now()->subHours(12))) {
-                    $this->hhService->fetchVacancies();
-                    Cache::put($cacheKey, true, now()->addHours(12));
+                // Если последняя вакансия из БД старше N часов
+                if ($lastCreatedAt->lt(now()->subHours(self::CACHE_HOURS))) {
+                    $this->hhService->fetchVacancies($type);
+                    Cache::put($cacheKey, true, now()->addHours(self::CACHE_HOURS));
                 }
             }
         }

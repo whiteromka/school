@@ -16,6 +16,11 @@
 /.zed
 t.txt
 t-ab.txt
+t1.txt
+t2.txt
+t3.txt
+t4.txt
+t5.txt
 
 /auth.json
 /node_modules

@@ -61,7 +61,7 @@ Route::post('/business-request/store', [BusinessRequestController::class, 'store
 
 // Reviews
 Route::post('/review/store', [ReviewController::class, 'store'])->name('review.store');
-Route::get('/review/refresh-captcha', [ReviewController::class, 'refreshCaptcha'])->name('review.refresh-captcha');
+Route::get('/review/user-modules', [ReviewController::class, 'userModules'])->name('review.userModules');
 
 // Тех Стек
 Route::get('/tech-stack/info/{id}', [TechStackController::class, 'info'])->name('techStack.info');
@@ -78,3 +78,5 @@ Route::post('/profile/update-password', [ProfileController::class, 'updatePasswo
 
 // Tests
 Route::get('/test/test1', [TestController::class, 'test1'])->name('test.test1');
+Route::get('/test/hh', [TestController::class, 'hh'])->name('test.hh');
+Route::get('/test/hh-simple', [TestController::class, 'hhSimple'])->name('test.hhSimple');

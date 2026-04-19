@@ -14,9 +14,15 @@
 
             <div class="project-name">{{ $item->name }}</div>
             <div class="project-tech fs-p-small">{{ $item->requirement }}</div>
-            <p class="project-desc fs-p-small flex-grow-1">
+            <p class="project-desc fs-p-small flex-grow-1 mb-3">
                 {{ $item->responsibility }}
             </p>
+
+            <div class="vacancy-tech-list mb-3">
+                @foreach($item->key_skills as $skill)
+                    <span class="vacancy-tech"> {{ $skill }} </span>
+                @endforeach
+            </div>
 
             <div class="d-flex justify-content-end">
                 <a class="btn btn-s" href="{{ $item->url }}" target="_blank">

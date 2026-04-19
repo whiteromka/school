@@ -38,7 +38,7 @@
                     <br>
                     <div class="advantage d-flex justify-content-center align-items-end">
                         <div class="js-cy-brackets bg-opas-dark d-flex  align-items-center" data-color="red" data-width="2" data-size="8">
-                            <div class="n">
+                            <div class="n n-black">
                                 <span> {{ $advantage['n'] }} </span>
                             </div>
                             <div style="width: 70%">

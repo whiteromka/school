@@ -193,7 +193,7 @@ a {
 
 /* Варианты параграфа */
 .fs-p-small {
-    font-size: clamp(0.8rem, 0.70rem + 0.5vw, 0.93rem) !important;
+    font-size: clamp(0.8rem, 0.70rem + 0.5vw, 0.9rem) !important;
 }
 .fs-p-big {
     font-size: clamp(1.02rem, 0.88rem + 0.75vw, 1.25rem) !important;

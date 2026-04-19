@@ -76,7 +76,9 @@
         // Инициализация для PHP вакансий
         initVacanciesLoader('php', 'PHP');
         // Инициализация для JS вакансий
-        initVacanciesLoader('js', 'Java Script');
+        setTimeout(()=>{
+            initVacanciesLoader('js', 'Java Script');
+        }, 7000)
 
         function initVacanciesLoader(tabId, type) {
             const container = document.getElementById(`vacancies-container-${tabId}`);

@@ -35,7 +35,7 @@ class FetchHhVacancies extends Command
         $service = new HHService();
 
         try {
-            $service->fetchVacancies();
+            $service->fetchVacancies($type);
             $this->info("Vacancies successfully fetched and saved.");
         } catch (Exception $e) {
             $this->error("Error fetching vacancies: " . $e->getMessage());

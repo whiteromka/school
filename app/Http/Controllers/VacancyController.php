@@ -20,7 +20,7 @@ class VacancyController extends Controller
      */
     public function check(Request $request): JsonResponse
     {
-        $type = $request->get('type');
+        $type = $request->input('type'); // Java Script:
         $vacancies = $this->vacancyService->checkAndGetLatest($type);
         $html = view('vacancy._items', ['vacancies' => $vacancies])->render();
 
@@ -35,8 +35,8 @@ class VacancyController extends Controller
      */
     public function loadMore(Request $request): JsonResponse
     {
-        $offset = (int)$request->get('offset', 0);
-        $type = $request->get('type');
+        $offset = (int)$request->input('offset', 0);
+        $type = $request->input('type');
         $vacancies = $this->vacancyService->getLatest($offset, $type);
         $html = view('vacancy._items', ['vacancies' => $vacancies])->render();
 

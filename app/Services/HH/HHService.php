@@ -7,11 +7,11 @@ use Carbon\Carbon;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Http;
 
-class HHService
+class HHService implements HHInterface
 {
     private const int COUNT_ITEMS = 50;
     public const string TYPE_PHP = 'PHP';
-    public const string TYPE_JS = 'Java Script';
+    public const string TYPE_JS = 'JS';
 
     private string $type;
 
@@ -23,7 +23,7 @@ class HHService
     /**
      * Получить вакансии с hh.ru и сохранить в БД
      */
-    public function fetchVacancies(): void
+    public function fetchVacancies(string $type = 'PHP'): void
     {
         $types = [self::TYPE_PHP, self::TYPE_JS];
 

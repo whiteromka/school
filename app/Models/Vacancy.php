@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Cache;
  * @property int $id
  * @property string $hh_id
  * @property string $name
+ * @property string $type
  * @property string|null $description
  * @property string|null $area_id
  * @property string|null $area_name
@@ -24,7 +25,7 @@ use Illuminate\Support\Facades\Cache;
  * @property int|null $responses_count
  * @property string|null $experience
  * @property string|null $employment_name
- * @property array|null $key_skills
+ * @property array|null $key_skills это json. Пример из бд ["PHP", "Symfony"]
  * @property Carbon|null $published_at
  * @property Carbon|null $archived_at
  * @property string|null $url
@@ -45,7 +46,6 @@ class Vacancy extends Model
      */
     protected $table = 'vacancies';
 
-
     protected $guarded = [];
 
     /**
@@ -64,20 +64,6 @@ class Vacancy extends Model
     public function getShortPublishedAt(): string
     {
         return date('Y-m-d', strtotime($this->published_at));
-    }
-
-    protected function requirement(): Attribute
-    {
-        return Attribute::make(
-            get: fn ($value) => str_replace(['<highlighttext>', '</highlighttext>'], '', $value),
-        );
-    }
-
-    protected function responsibility(): Attribute
-    {
-        return Attribute::make(
-            get: fn ($value) => str_replace(['<highlighttext>', '</highlighttext>'], '', $value),
-        );
     }
 
     public function getPrettySalary(): ?string
@@ -114,18 +100,6 @@ class Vacancy extends Model
         return $salary . ' ' . $this->salary_currency ?? 'RUR';
     }
 
-    public function getExperienceFormattedAttribute(): ?string
-    {
-        $experienceMap = [
-            'noExperience' => 'Без опыта',
-            'between1And3' => '1-3 года',
-            'between3And6' => '3-6 лет',
-            'moreThan6' => 'Более 6 лет',
-        ];
-
-        return $experienceMap[$this->experience] ?? $this->experience ?? '-';
-    }
-
     /**
      * Получить все уникальные валюты из кеша.
      *
@@ -142,5 +116,15 @@ class Vacancy extends Model
                 ->values()
                 ->toArray();
         });
+    }
+
+    /**
+     * Получить все возможные типы вакансий
+     *
+     * @return string[]
+     */
+    public static function getUniqueTypes(): array
+    {
+        return ['PHP', 'JS'];
     }
 }

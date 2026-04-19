@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\HH\HHParserService;
 use Illuminate\Http\Response;
 
 class TestController extends Controller
@@ -14,4 +15,18 @@ class TestController extends Controller
             'status' => 'school',
         ]);
     }
+
+    // GET /test/hh
+//    public function hh(HhService $hh)
+//    {
+//        return $hh->search();
+//    }
+
+    // GET /test/hh-simple
+    public function hhSimple(HHParserService $hh)
+    {
+        return $hh->searchSimple();
+    }
+
+
 }
