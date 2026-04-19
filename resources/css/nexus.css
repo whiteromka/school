@@ -637,14 +637,11 @@ a.base-link:hover {
 }
 
 .project-tech {
-    /*font-size: 12px;*/
-    color: var(--accent-cyan);
     letter-spacing: 1px;
     margin-bottom: 16px;
 }
 
 .project-desc {
-    /*font-size: 13px;*/
     color: var(--text-muted);
     line-height: 1.7;
 }

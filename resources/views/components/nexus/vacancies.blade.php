@@ -41,7 +41,11 @@
 
                     <div class="row">
                         <div class="col-12 px-1 d-flex justify-content-end">
-                            <button class="btn btn-s btn--secondary" id="loadMoreVacancies-php" data-offset="0" data-type="PHP">
+                            <button class="btn btn-s btn--secondary"
+                                    id="loadMoreVacancies-php"
+                                    data-last-id=""
+                                    data-type="PHP"
+                            >
                                 <span class="btn__content">Еще PHP вакансии</span>
                                 <span class="btn__glitch"></span>
                                 <span class="btn__label">r25</span>
@@ -56,7 +60,11 @@
 
                     <div class="row">
                         <div class="col-12 px-1 d-flex justify-content-end">
-                            <button class="btn btn-s btn--secondary" id="loadMoreVacancies-js" data-offset="0" data-type="Java Script">
+                            <button class="btn btn-s btn--secondary"
+                                    id="loadMoreVacancies-js"
+                                    data-last-id=""
+                                    data-type="Java Script"
+                            >
                                 <span class="btn__content">Еще JS вакансии</span>
                                 <span class="btn__glitch"></span>
                                 <span class="btn__label">r25</span>
@@ -73,58 +81,80 @@
 @push('scripts')
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // Инициализация для PHP вакансий
         initVacanciesLoader('php', 'PHP');
-        // Инициализация для JS вакансий
-        setTimeout(()=>{
+
+        setTimeout(() => {
             initVacanciesLoader('js', 'Java Script');
-        }, 7000)
+        }, 7000);
 
         function initVacanciesLoader(tabId, type) {
             const container = document.getElementById(`vacancies-container-${tabId}`);
             const button = document.getElementById(`loadMoreVacancies-${tabId}`);
-            let offset = parseInt(button.dataset.offset, 10);
+
+            let lastId = null;
             let loading = false;
 
-            function updateOffset(count) {
-                offset += count;
-                button.dataset.offset = offset;
-            }
-
-            // Проверка новых вакансий при загрузке
+            // первичная загрузка
             async function loadFirstVacancy() {
                 try {
                     const response = await fetch(
                         '/vacancy/check?type=' + encodeURIComponent(type),
                         { headers: { 'X-Requested-With': 'XMLHttpRequest' } }
                     );
+
                     const data = await response.json();
+
                     if (data.count === 0) return;
+
                     container.insertAdjacentHTML('afterbegin', data.html);
-                    updateOffset(data.count);
+
+                    // берём lastId из последней карточки
+                    const cards = container.querySelectorAll('[data-vacancy-id]');
+                    if (cards.length) {
+                        lastId = cards[cards.length - 1].dataset.vacancyId;
+                    }
+
                 } catch (e) {
                     console.error('Ошибка загрузки вакансий', e);
                 }
             }
+
             loadFirstVacancy();
 
-            // Кнопка "Еще вакансии"
+            // загрузка следующих
             button.addEventListener('click', async () => {
                 if (loading) return;
+
                 loading = true;
                 button.disabled = true;
+
                 try {
-                    const response = await fetch(
-                        '/vacancy/load-more?offset=' + offset + '&type=' + encodeURIComponent(type),
-                        { headers: { 'X-Requested-With': 'XMLHttpRequest' } }
-                    );
+                    const url = new URL('/vacancy/load-more', window.location.origin);
+                    url.searchParams.append('type', type);
+
+                    if (lastId) {
+                        url.searchParams.append('last_id', lastId);
+                    }
+
+                    const response = await fetch(url, {
+                        headers: { 'X-Requested-With': 'XMLHttpRequest' }
+                    });
+
                     const data = await response.json();
+
                     if (data.count === 0) {
                         button.remove();
                         return;
                     }
+
                     container.insertAdjacentHTML('beforeend', data.html);
-                    updateOffset(data.count);
+
+                    // обновляем cursor
+                    const cards = container.querySelectorAll('[data-vacancy-id]');
+                    if (cards.length) {
+                        lastId = cards[cards.length - 1].dataset.vacancyId;
+                    }
+
                 } catch (e) {
                     console.error('Ошибка загрузки вакансий', e);
                 } finally {

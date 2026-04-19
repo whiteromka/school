@@ -105,10 +105,11 @@
         div.className = 'logo-item';
 
         const img = document.createElement('img');
-        img.className = 'logo-image';
+        img.className = 'logo-image js-cy-brackets';
         img.src = company.img;
         img.alt = company.name;
-        img.title = company.name;
+        img.dataset.context = company.name;
+        img.dataset.color='red';
 
         img.onerror = function() {
             this.style.display = 'none';

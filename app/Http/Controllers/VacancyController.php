@@ -35,13 +35,12 @@ class VacancyController extends Controller
      */
     public function loadMore(Request $request): JsonResponse
     {
-        $offset = (int)$request->input('offset', 0);
+        $lastId = $request->input('last_id');
         $type = $request->input('type');
-        $vacancies = $this->vacancyService->getLatest($offset, $type);
-        $html = view('vacancy._items', ['vacancies' => $vacancies])->render();
+        $vacancies = $this->vacancyService->getLatest($lastId, 6, $type);
 
         return response()->json([
-            'html' => $html,
+            'html' => view('vacancy._items', ['vacancies' => $vacancies])->render(),
             'count' => $vacancies->count(),
         ]);
     }

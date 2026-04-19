@@ -11,23 +11,23 @@ class VacancyRepository
      * Получить последние вакансии
      *
      * @param int $limit
-     * @param int $offset
+     * @param int|null $lastId
      * @param string|null $type
      * @return Collection
      */
-    public function getLatest(int $limit, int $offset = 0, ?string $type = null): Collection
+    public function getLatest(int $limit, ?int $lastId = null, ?string $type = null): Collection
     {
         $query = Vacancy::query()
-            ->orderByDesc('created_at')
-            //->orderByRaw('COALESCE(salary_to, salary_from, 0) DESC')
-            ->offset($offset)
-            ->limit($limit);
+            ->orderByDesc('id');
 
         if ($type) {
             $query->where('type', $type);
         }
+        if ($lastId) {
+            $query->where('id', '<', $lastId);
+        }
 
-        return $query->get();
+        return $query->limit($limit)->get();
     }
 
     /**

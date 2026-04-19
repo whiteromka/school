@@ -19,9 +19,9 @@ class VacancyService
         private readonly HHParserService $hhService
     ) {}
 
-    public function getLatest(int $offset = 0, ?string $type = null): Collection
+    public function getLatest(?int $lastId = null, int $limit = 6, ?string $type = null): Collection
     {
-        return $this->vacancyRepository->getLatest(6, $offset, $type);
+        return $this->vacancyRepository->getLatest($limit, $lastId, $type);
     }
 
     /**
