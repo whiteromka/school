@@ -1,71 +1,68 @@
-@extends('admin.layouts.app')
+@extends('layouts.admin')
 
 @section('title', 'Users')
 
 @section('content')
-<div class="container-fluid">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2>Users</h2>
-        <a href="{{ route('admin.users.create') }}" class="btn btn-primary">
-            + Add User
-        </a>
-    </div>
+<h1>Users</h1>
 
-    <div class="card shadow-sm">
-        <div class="card-body">
-            <table id="users-table" class="table table-striped table-bordered" style="width:100%">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Last Name</th>
-                        <th>Email</th>
-                        <th>Email Verified</th>
-                        <th>Is Admin</th>
-                        <th>Phone</th>
-                        <th>Telegram</th>
-                        <th>Created</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-            </table>
-        </div>
+<div class="card">
+    <div class="card-body p-0">
+
+        <table class="table table-striped table-hover mb-0 align-middle">
+            <thead class="table-light">
+            <tr>
+                <th style="width: 80px;">ID</th>
+                <th>Email</th>
+                <th>Name</th>
+                <th style="width: 120px;">Admin</th>
+                <th style="width: 220px;">Actions</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            @foreach($users as $user)
+                <tr>
+                    <td>{{ $user->id }}</td>
+                    <td>{{ $user->email }}</td>
+                    <td>{{ $user->getFullNameOrEmail() }}</td>
+                    <td>
+                        @if($user->is_admin)
+                            <span class="badge bg-success">YES</span>
+                        @else
+                            <span class="badge bg-secondary">NO</span>
+                        @endif
+                    </td>
+                    <td>
+                        <div class="d-flex gap-1">
+
+                            <a href="{{ route('admin.users.show', $user) }}"
+                               class="btn btn-sm btn-info">
+                                View
+                            </a>
+
+                            <a href="{{ route('admin.users.edit', $user) }}"
+                               class="btn btn-sm btn-warning">
+                                Edit
+                            </a>
+                            <form method="POST"
+                                  action="{{ route('admin.users.destroy', $user) }}"
+                                  onsubmit="return confirm('Delete user?')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit"
+                                        class="btn btn-sm btn-danger">
+                                    Delete
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+
     </div>
 </div>
-@endsection
 
-@push('scripts')
-<script>
-    $(document).ready(function() {
-        $('#users-table').DataTable({
-            processing: true,
-            serverSide: true,
-            ajax: '{{ route("admin.users.data") }}',
-            columns: [
-                { data: 'id', name: 'id' },
-                { data: 'name', name: 'name' },
-                { data: 'last_name', name: 'last_name' },
-                { data: 'email', name: 'email' },
-                { data: 'email_verified_at', name: 'email_verified_at' },
-                { 
-                    data: 'is_admin', 
-                    name: 'is_admin',
-                    render: function(data) {
-                        return data ? '<span class="badge bg-success">Yes</span>' : '<span class="badge bg-secondary">No</span>';
-                    }
-                },
-                { data: 'phone', name: 'phone' },
-                { data: 'telegram', name: 'telegram' },
-                { data: 'created_at', name: 'created_at' },
-                {
-                    data: 'actions',
-                    name: 'actions',
-                    orderable: false,
-                    searchable: false
-                }
-            ],
-            order: [[0, 'desc']]
-        });
-    });
-</script>
-@endpush
+{{ $users->links() }}
+@endsection

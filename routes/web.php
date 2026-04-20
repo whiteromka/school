@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\BusinessRequestController;
 use App\Http\Controllers\Oauth\GithubController;
 use App\Http\Controllers\Oauth\GoogleController;
@@ -75,6 +76,15 @@ Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index
 Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update')->middleware('auth');
 Route::get('/profile/update-password-view', [ProfileController::class, 'updatePasswordView'])->name('profile.update-password-view')->middleware('auth');
 Route::post('/profile/update-password', [ProfileController::class, 'updatePassword'])->name('profile.update-password')->middleware('auth');
+
+// Admin
+Route::middleware(['auth', 'admin'])
+    ->prefix('admin')
+    ->name('admin.')
+    ->group(function () {
+        Route::get('/', [UserController::class, 'index']);
+        Route::resource('users', UserController::class);
+    });
 
 // Tests
 Route::get('/test/test1', [TestController::class, 'test1'])->name('test.test1');
