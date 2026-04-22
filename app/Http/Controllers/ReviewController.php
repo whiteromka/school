@@ -72,20 +72,6 @@ class ReviewController extends Controller
     }
 
     /**
-     * Обновление капчи (AJAX)
-     */
-//    public function refreshCaptcha(): Response
-//    {
-//        $captcha = CaptchaService::generate();
-//        $errors = session('errors') ?? new ViewErrorBag();
-//
-//        return response()->view('partials.captcha', [
-//            'captcha' => $captcha,
-//            'errors' => $errors,
-//        ]);
-//    }
-
-    /**
      * POST /review/delete-review
      */
     public function deleteReview(int $id): JsonResponse

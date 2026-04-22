@@ -31,12 +31,14 @@
                             </div>
                         </div>
                         <div class="col-8 col-sm-9 col-md-8 col-xl-9">
-                            <h3 class="username tt-up">{{ $user->getFullNameOrEmail() }}</h3>
+                            <h3 class="username tt-up">{{ $user->getNameOrEmail() }}</h3>
                         </div>
                     </div>
                     <br>
 
-                    <p><span class="{{ $user->telegram ? 'cyan' : 'red' }} width-85">Telegram:</span> {{ $user->telegram}}</p>
+                    <p>
+                        <span class="{{ $user->telegram ? 'cyan' : 'red' }} width-85">Telegram:</span> {{ $user->telegram}}
+                    </p>
                     <p><span class="{{ $user->email ? 'cyan' : 'red' }} width-85">Email:</span>{{ $user->email }}</p>
                     <p><span class="{{ $user->phone ? 'cyan' : 'red' }} width-85">Phone:</span>{{ $user->phone }}</p>
 
@@ -46,15 +48,16 @@
                         <span class="js-cyber-text-animation cy-char p-lr-20 w-250 br-t1 ta-c bg-black"
                               style="display: inline-block">
                                 <span data-target="0">1</span><span data-target="2">$</span><span
-                                data-target=" ">G</span><span data-target=".">L</span><span
-                                data-target="0">Y</span><span data-target="2">%</span><span
-                                data-target=" ">5</span><span data-target="0">N</span><span
-                                data-target="2">8</span><span data-target=" ">D</span><span
-                                data-target=".">Y</span><span data-target="0">Z</span><span
-                                data-target="2">9</span><span data-target=" ">A</span><span
-                                data-target="2">O</span><span data-target="2">O</span><span
-                                data-target="3">%</span><span data-target=" ">W</span><span
-                                data-target=".">V</span><span data-target="0">&gt;</span><span data-target="2">P</span>
+                                    data-target=" ">G</span><span data-target=".">L</span><span
+                                    data-target="0">Y</span><span data-target="2">%</span><span
+                                    data-target=" ">5</span><span data-target="0">N</span><span
+                                    data-target="2">8</span><span data-target=" ">D</span><span
+                                    data-target=".">Y</span><span data-target="0">Z</span><span
+                                    data-target="2">9</span><span data-target=" ">A</span><span
+                                    data-target="2">O</span><span data-target="2">O</span><span
+                                    data-target="3">%</span><span data-target=" ">W</span><span
+                                    data-target=".">V</span><span data-target="0">&gt;</span><span
+                                    data-target="2">P</span>
                         </span>
                     </div>
                 </div>

@@ -93,15 +93,9 @@ class User extends Authenticatable
         'additional_data' => '{}',
     ];
 
-    public function getFullNameOrEmail(): string
+    public function getNameOrEmail(): string
     {
-        if ($this->name) {
-            if ($this->last_name) {
-                return $this->name . ' ' . $this->last_name;
-            }
-            return $this->name;
-        }
-        return $this->email;
+        return $this->name ?? $this->email;
     }
 
     /**

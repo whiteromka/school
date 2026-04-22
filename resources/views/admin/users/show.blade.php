@@ -33,7 +33,7 @@
 
                 <tr>
                     <th>Name</th>
-                    <td>{{ $user->getFullNameOrEmail() }}</td>
+                    <td>{{ $user->getNameOrEmail() }}</td>
                 </tr>
 
                 <tr>

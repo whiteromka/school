@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\ActiveModuleStatus;
+use App\Enums\ModuleType;
 use Exception;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -46,10 +47,8 @@ class ActiveModule extends Model
         parent::boot();
 
         static::saving(function ($model) {
-            $uniqueStatuses = array_map(
-                fn($s) => $s->value,
-                ActiveModuleStatus::uniqueStatuses()
-            );
+            $uniqueStatuses = ActiveModuleStatus::uniqueStatuses();
+
             if (in_array($model->status, $uniqueStatuses)) {
                 $exists = static::query()
                     ->where('module_id', $model->module_id)
@@ -91,5 +90,31 @@ class ActiveModule extends Model
     public static function statusMap(): array
     {
         return ActiveModuleStatus::map();
+    }
+
+    /**
+     *  Вернет дату начала или закодированную дату
+     */
+    public function getEncodedStartedAt(): string
+    {
+        $currentYear = Carbon::now()->year;
+        return $this->started_at ? ($this->started_at)->format('d.m.Y') : "XX .XX. {$currentYear}";
+    }
+
+    /**
+     * Вернет роут с якорем для активного модуля
+     */
+    public function getRouteWithAnchor(): string
+    {
+        if (!$this->module) {
+            return '#';
+        }
+        $anchor = "module-{$this->module_id}";
+        return match ($this->module->type) {
+            ModuleType::BACK => "/site/back#{$anchor}",
+            ModuleType::FRONT => "/site/front#{$anchor}",
+            ModuleType::GAME => "/site/gamedev#{$anchor}",
+            ModuleType::ENG => "/site/english#{$anchor}",
+        };
     }
 }
