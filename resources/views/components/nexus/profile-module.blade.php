@@ -1,5 +1,5 @@
 @php
-    use App\Models\ActiveModule;
+    use App\Enums\ActiveModuleStatus;use App\Models\ActiveModule;
     use App\Models\Module;
 
     /** @var int $i */
@@ -19,7 +19,7 @@
 
         <div class="row module-header">
             <div class="col-12 col-md-1">
-                <h3>0{{ $i  }} </h3>
+                <h3>0{{ $i }} </h3>
             </div>
             <div class="col-12 col-md-11 module-header-main">
                 <span>{{ $module->name }}</span>
@@ -68,26 +68,29 @@
                     <div class="col-12 col-md-6 col-lg-3 px-1">
                         <div class="prop">
                             <span class="">Дата начала:</span>
-                            <span class="cyan" style="font-family: 'Tektur', sans-serif">{{ $activeModule->started_at?->format('d.m.Y') }}</span>
+                            <span class="cyan"
+                                  style="font-family: 'Tektur', sans-serif">{{ $activeModule->started_at?->format('d.m.Y') }}</span>
                         </div>
                     </div>
-{{--                    <div class="col-12 col-md-6 col-lg-3 px-1">--}}
-{{--                        <div class="prop">--}}
-{{--                            <span class="">Дата окончания:</span>--}}
-{{--                            <span class="cyan" style="font-family: 'Tektur', sans-serif">{{ $activeModule->ended_at?->format('d.m.Y') }}</span>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
+                    {{--                    <div class="col-12 col-md-6 col-lg-3 px-1">--}}
+                    {{--                        <div class="prop">--}}
+                    {{--                            <span class="">Дата окончания:</span>--}}
+                    {{--                            <span class="cyan" style="font-family: 'Tektur', sans-serif">{{ $activeModule->ended_at?->format('d.m.Y') }}</span>--}}
+                    {{--                        </div>--}}
+                    {{--                    </div>--}}
                     <div class="col-12 col-md-6 col-lg-3 px-1">
                         <div class="prop">
                             <span class="">Расписание:</span>
-                            <span class="cyan" style="font-family: 'Tektur', sans-serif">{{ $activeModule->ended_at?->format('d.m.Y') }}</span>
+                            <span class="cyan"
+                                  style="font-family: 'Tektur', sans-serif">{{ $activeModule->ended_at?->format('d.m.Y') }}</span>
                         </div>
                     </div>
 
                     <div class="col-12 col-md-6 col-lg-3 px-1">
                         <div class="prop">
                             <span class="">Статус модуля</span>
-                            <span class="cyan" style="font-family: 'Tektur', sans-serif">{{ $activeModule->getRuStatus() }}</span>
+                            <span class="cyan"
+                                  style="font-family: 'Tektur', sans-serif">{{ $activeModule->getRuStatus() }}</span>
                         </div>
                     </div>
 
@@ -95,21 +98,30 @@
             </div>
         </div>
 
-        {{--  Кнопки купить / выписаться --}}
-        <div class="d-flex justify-content-end">
-            <div>
+
+        {{--  Кнопки оплатить / выйти --}}
+        <div class="d-flex flex-column flex-sm-row justify-content-sm-end gap-2 gap-sm-3">
+            @if($activeModule->status === ActiveModuleStatus::CAN_PAY->value)
                 <button class="btn btn-s btn--success">
                     <span class="btn__content">Оплатить</span>
                     <span class="btn__glitch"></span>
                     <span class="btn__label">r25</span>
                 </button>
-
-                <button class="btn btn-s btn--secondary">
-                    <span class="btn__content">Выйти</span>
+            @else
+                <div style="margin-top: 3px">
+                    @include('components.error-sign', ['text' => 'stat', 'context' => "Оплатить можно поле окончания бесплатной части"])
+                </div>
+                <button class="btn btn-s btn--success" disabled="disabled" style="opacity: 0.2">
+                    <span class="btn__content">Оплатить</span>
                     <span class="btn__glitch"></span>
                     <span class="btn__label">r25</span>
                 </button>
-            </div>
+            @endif
+            <button class="btn btn-s btn--secondary">
+                <span class="btn__content">Выйти</span>
+                <span class="btn__glitch"></span>
+                <span class="btn__label">r25</span>
+            </button>
         </div>
 
     </div>

@@ -21,10 +21,11 @@
                     <div class="section-divider" aria-hidden="true"></div>
                 </div>
             </div>
-            <div class="col-md-6 col-xl-4 ms-auto" style="perspective: 1200px; transform-style: preserve-3d; border-left: 1px dotted #00b0db">
+            <div class="col-md-6 col-xl-4 ms-auto"
+                 style="perspective: 1200px; transform-style: preserve-3d; border-left: 1px dotted #00b0db">
                 <div class="profile-main-panel js-cy-brackets" data-color="white" data-size="8">
                     <h3 class="username tt-up">
-                        {{ $user->getFullNameOrEmail()}}
+                        {{ $user->getNameOrEmail()}}
                     </h3>
                     <p>{{ $user->telegram}}</p>
                     <p>{{ $user->email }}</p>
@@ -32,18 +33,20 @@
 
                     <div class="profile-main-panel-code-wrap">
                         <br>
-                        <span class="js-cyber-text-animation cy-char p-lr-20 w-250 br-t1 d-block ta-c bg-black" style="display: inline-block">
+                        <span class="js-cyber-text-animation cy-char p-lr-20 w-250 br-t1 d-block ta-c bg-black"
+                              style="display: inline-block">
                                 <span
-                                    data-target="0">1</span><span data-target="2">$</span><span
-                                data-target=" ">G</span><span data-target=".">L</span><span
-                                data-target="0">Y</span><span data-target="2">%</span><span
-                                data-target=" ">5</span><span data-target="0">N</span><span
-                                data-target="2">8</span><span data-target=" ">D</span><span
-                                data-target=".">Y</span><span data-target="0">Z</span><span
-                                data-target="2">9</span><span data-target=" ">A</span><span
-                                data-target="2">O</span><span data-target="2">O</span><span
-                                data-target="3">%</span><span data-target=" ">W</span><span
-                                data-target=".">V</span><span data-target="0">&gt;</span><span data-target="2">P</span>
+                                        data-target="0">1</span><span data-target="2">$</span><span
+                                    data-target=" ">G</span><span data-target=".">L</span><span
+                                    data-target="0">Y</span><span data-target="2">%</span><span
+                                    data-target=" ">5</span><span data-target="0">N</span><span
+                                    data-target="2">8</span><span data-target=" ">D</span><span
+                                    data-target=".">Y</span><span data-target="0">Z</span><span
+                                    data-target="2">9</span><span data-target=" ">A</span><span
+                                    data-target="2">O</span><span data-target="2">O</span><span
+                                    data-target="3">%</span><span data-target=" ">W</span><span
+                                    data-target=".">V</span><span data-target="0">&gt;</span><span
+                                    data-target="2">P</span>
                         </span>
                     </div>
                 </div>
@@ -85,7 +88,8 @@
                                 <div class="col-md-6">
                                     <div class="form-group mb-15_">
                                         <label for="password" class="form-label">Новый пароль</label>
-                                        <input type="password" id="password" name="password" value="{{ old('password') }}">
+                                        <input type="password" id="password" name="password"
+                                               value="{{ old('password') }}">
                                         @error('password')
                                         <span class="text-danger small">{{ $message }}</span>
                                         @enderror
@@ -93,8 +97,10 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="password_confirmation" class="form-label">подтверждение пароля</label>
-                                        <input type="password" id="password_confirmation" name="password_confirmation" value="{{ old('password_confirmation') }}">
+                                        <label for="password_confirmation" class="form-label">подтверждение
+                                            пароля</label>
+                                        <input type="password" id="password_confirmation" name="password_confirmation"
+                                               value="{{ old('password_confirmation') }}">
                                     </div>
                                 </div>
 

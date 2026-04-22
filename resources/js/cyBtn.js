@@ -263,3 +263,169 @@ document.addEventListener('DOMContentLoaded', function() {
         module.addEventListener('mouseleave', () => handleMouseLeave(dateState));
     });
 });
+
+// Функция обработки дат
+document.addEventListener('DOMContentLoaded', function () {
+
+    const RANDOM_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    const ENCODE_SPEED = 250; // 4 раза в секунду
+    const DECODE_SPEED = 80;
+
+    const elements = document.querySelectorAll('.js-cyber-date-animation');
+
+    elements.forEach(el => {
+
+        const originalText = el.textContent.trim();
+        const realText = el.getAttribute('x-date') || originalText;
+
+        // если нет X — не трогаем
+        if (!originalText.includes('X')) return;
+
+        const state = {
+            el,
+            original: originalText,
+            real: realText,
+            chars: [],
+            encodeInterval: null,
+            decodeInterval: null,
+            decoded: false,
+            clickTimeout: null
+        };
+
+        // разбиваем на span
+        el.innerHTML = '';
+
+        for (let i = 0; i < originalText.length; i++) {
+            const span = document.createElement('span');
+            span.textContent = originalText[i];
+            el.appendChild(span);
+            state.chars.push(span);
+        }
+
+        // старт кодировки
+        startEncoding(state);
+
+        // hover
+        el.addEventListener('mouseenter', () => {
+            startDecoding(state);
+        });
+
+        el.addEventListener('mouseleave', () => {
+            if (!state.decoded) {
+                startEncoding(state);
+            }
+        });
+
+        // click (фиксирует раскрытие на 6 сек)
+        el.addEventListener('click', () => {
+            startDecoding(state);
+
+            clearTimeout(state.clickTimeout);
+            state.clickTimeout = setTimeout(() => {
+                state.decoded = false;
+                startEncoding(state);
+            }, 6000);
+        });
+
+    });
+
+    function randomChar() {
+        return RANDOM_CHARS[Math.floor(Math.random() * RANDOM_CHARS.length)];
+    }
+
+    // =========================
+    // 🔐 КОДИРОВКА
+    // =========================
+    function startEncoding(state) {
+
+        const ENCODE_SPEED = 300;
+
+        clearInterval(state.encodeInterval);
+        clearInterval(state.decodeInterval);
+
+        // собираем индексы X один раз
+        const xIndexes = [];
+
+        for (let i = 0; i < state.original.length; i++) {
+            if (state.original[i] === 'X') {
+                xIndexes.push(i);
+            }
+        }
+
+        state.encodeInterval = setInterval(() => {
+
+            if (state.decoded) return;
+            if (xIndexes.length === 0) return;
+
+            // сколько символов менять (1 или 2)
+            const changesCount = Math.random() > 0.5 ? 2 : 1;
+
+            for (let i = 0; i < changesCount; i++) {
+
+                const randomIndex = xIndexes[
+                    Math.floor(Math.random() * xIndexes.length)
+                    ];
+
+                // меняем только один символ
+                state.chars[randomIndex].textContent = randomChar();
+            }
+
+        }, ENCODE_SPEED);
+    }
+
+    // =========================
+    // 🔓 РАСКОДИРОВКА
+    // =========================
+    function startDecoding(state) {
+
+        clearInterval(state.encodeInterval);
+        clearInterval(state.decodeInterval);
+
+        state.decoded = true;
+
+        // собираем индексы X
+        const xIndexes = [];
+
+        for (let i = 0; i < state.original.length; i++) {
+            if (state.original[i] === 'X') {
+                xIndexes.push(i);
+            }
+        }
+
+        if (xIndexes.length === 0) return;
+
+        let step = 0;
+
+        state.decodeInterval = setInterval(() => {
+
+            if (step >= xIndexes.length) {
+                clearInterval(state.decodeInterval);
+
+                // показать результат и вернуть кодировку
+                setTimeout(() => {
+                    state.decoded = false;
+                    startEncoding(state);
+                }, 2000);
+
+                return;
+            }
+
+            const index = xIndexes[step];
+
+            // 🔥 берём РЕАЛЬНЫЙ символ
+            state.chars[index].textContent = state.real[index];
+
+            step++;
+
+        }, DECODE_SPEED);
+    }
+
+});
+
+// Нужно написать отдельный скрипт на .js-cyber-date-animation
+// Внутри  .js-cyber-date-animatio там либо дата в формате "01.01.2026" либо "XX.XX.2026"
+// Если там открытая дата то просто показываем ее "01.01.2026" и ничего не делаем
+// Если там зашифровано через  символ "X" то нужно к зашифрованным символам применять функцию "кодировки"
+// которая 4 раза  в секунду меняет X на случайный символ или цифру. А при наведении на или клике на .js-cyber-date-animation
+// происходит раскодировка сначало первый X показывается потом  второй, итд пока все не покажутся.
+// Если пользователь убрал мышь то снова  функцию "кодировки" если был сделан клик то запускаем через 6 секунд

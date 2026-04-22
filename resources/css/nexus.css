@@ -149,8 +149,9 @@ a.base-link:hover {
 }
 
 .nav-links {
+    padding-left: 0;
     display: flex;
-    gap: 32px;
+    gap: 28px;
     list-style: none;
     margin-bottom: 0;
 }
@@ -198,23 +199,21 @@ a.base-link:hover {
 .nav-status .guest{
     color: #ff0073;
     text-shadow: 0 0 1px red;
+    padding-right: 20px;
 }
 .nav-status .user{
     color: #13f3ff;
 }
 
 .nexus-dropdown {
-    padding: 8px 0;
+    padding: 0px 0;
     min-width: 200px;
-    transform: translate(18px, 33px) !important;
     z-index: 9999;
     border-radius: 0 !important;
     background: rgba(10, 10, 15, 0.8);
     backdrop-filter: blur(10px) !important;
-    border: 1px dotted #ff0073;
-    border-top: none;
-    border-left: none;
-    border-right: none;
+    border: 1px solid rgb(255, 0, 115);
+    margin-top: 8px !important;
 }
 
 .nexus-dropdown .dropdown-item {
@@ -223,14 +222,26 @@ a.base-link:hover {
     letter-spacing: 3px;
     text-transform: uppercase;
     color: var(--text-muted);
-    padding: 8px 16px;
+    padding: 12px 26px;
     text-align: end;
+    border-left:4px solid transparent;
+    /*border-bottom: 1px solid transparent;*/
 }
 
 .nexus-dropdown .dropdown-item:hover {
     background: transparent;
     color: var(--accent-cyan);
     text-shadow: 0 0 6px rgba(0, 240, 255, 0.35);
+    border-left:4px solid red;
+    /*border-bottom: 1px solid red;*/
+    background: rgba(224, 14, 14, 0.24);
+    /* Переход при появлении hover */
+    transition:
+        color 0s ease 0.2s,
+        text-shadow 0s ease 0.2s,
+        border-left 0s ease 0.4s,
+        border-bottom 0s ease 0.4s,
+        background 0s ease 0.4s;
 }
 
 

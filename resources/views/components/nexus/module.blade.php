@@ -12,6 +12,7 @@
 <div class="module"
      data-users-count="{{ $module->openActiveModule?->users->count() ?? 0 }}"
      data-max-users="{{ $max }}"
+     id="module-{{ $module->id }}"
 >
     <div class="module-inner">
 
@@ -148,10 +149,32 @@
             @php endforeach @endphp
         </div>
 
+        @if($module->name === '3d моделирование для Unity')
+            <div class="container px-0">
+                <div class="row g-3 ">
+                    @for($i = 1; $i <= 16; $i++)
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                            <div class="ratio ratio-16x9"
+                                 style="border-radius: 8px; overflow: hidden;"
+                            >
+                                <img src="/img/site/gamedev/t{{$i}}.jpg?v=3"
+                                     class="object-fit-cover w-100 h-100"
+                                     alt="image {{$i}}">
+                            </div>
+                        </div>
+                    @endfor
+                </div>
+            </div>
+        @endif
+
         <div>
             <div class="d-flex justify-content-end">
-                <livewire:module-button :module-id="$module->id" :is-user-joined="in_array($module->id, $userModuleIds)"
-                                        :key="'module-' . $module->id"/>
+                {{--  Кнопка записаться на модуль  --}}
+                <livewire:module-button
+                    :module-id="$module->id"
+                    :is-user-joined="in_array($module->id, $userModuleIds)"
+                    :key="'module-' . $module->id"
+                />
             </div>
         </div>
     </div>

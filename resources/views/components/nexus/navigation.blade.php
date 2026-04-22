@@ -2,9 +2,9 @@
 <div class="container-fluid px-0">
     <nav class="nexus-nav" role="navigation" aria-label="Main navigation">
         <div class="nav-logo">station</div>
-{{--        <div class="nav-logo">voyager</div>--}}
+        {{--        <div class="nav-logo">voyager</div>--}}
         {{--        <div class="nav-logo">polymer</div>--}}
-        <div class="nav-logo-under">technologies  hub</div>
+        <div class="nav-logo-under">technologies hub</div>
 
         <ul class="nav-links d-none d-md-flex">
             <li><a href="{{ route('site.index') }}">Главная</a></li>
@@ -23,8 +23,9 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
             >
-                {{ Auth::check() ? Auth::user()->getFullNameOrEmail() : 'menu' }}
+                {{ Auth::check() ? Auth::user()->getNameOrEmail() : 'menu' }}
             </a>
+
             <ul class="dropdown-menu dropdown-menu-end nexus-dropdown">
                 {{-- Эти будут показываться если устройство меньше чем md --}}
                 <li class="d-md-none"><a class="dropdown-item" href="{{ route('site.index') }}">Главная</a></li>

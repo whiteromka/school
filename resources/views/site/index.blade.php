@@ -1,6 +1,5 @@
 @php
     /** @var string $userIp */
-    /** @var array $activeModules */
 @endphp
 
 @extends('layouts.main')
@@ -9,7 +8,8 @@
 
 @section('content')
 {{-- Вступительный контейнер    --}}
-@include('components.cyber.main-first', ['userIp' => $userIp])
+{{--@include('components.cyber.main-first', ['userIp' => $userIp])--}}
+<x-cyber.main-first />
 <br>
 <br>
 <br>

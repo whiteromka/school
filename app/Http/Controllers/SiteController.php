@@ -15,11 +15,7 @@ class SiteController extends Controller
     // GET /
     public function index()
     {
-        $userIp = IPFormatter::format(request()->ip() ?? '127.0.0.1');
-
-        return view('site.index', [
-            'userIp' => $userIp,
-        ]);
+        return view('site.index');
     }
 
     // GET /site/front

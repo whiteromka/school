@@ -24,7 +24,7 @@ class ProfileController extends Controller
         $user = auth()->user();
         $this->profileService->checkOrCreateProfile(['user_id' => $user->id]);
         $user->load(['profile', 'activeModules.module']);
-        $name = mb_str_split(str_replace(' ', '_', $user->getFullNameOrEmail()));
+        $name = mb_str_split(str_replace(' ', '_', $user->getNameOrEmail()));
 
         return view('profile.index', [
             'user' => $user,

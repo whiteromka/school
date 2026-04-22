@@ -38,7 +38,7 @@ class CreateAdminCommand extends Command
             $user->is_admin = true;
             $user->save();
 
-            $this->info("Пользователь {$user->getFullNameOrEmail()} успешно назначен администратором.");
+            $this->info("Пользователь {$user->getNameOrEmail()} успешно назначен администратором.");
             return Command::SUCCESS;
         }
 

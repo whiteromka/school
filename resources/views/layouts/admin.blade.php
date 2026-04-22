@@ -59,7 +59,7 @@
         </ul>
         <hr class="text-secondary">
         <div class="text-white small">
-            {{ auth()->user()->getFullNameOrEmail() }}
+            {{ auth()->user()->getNameOrEmail() }}
         </div>
         <form method="POST" action="{{ route('logout') }}" class="mt-2">
             @csrf
