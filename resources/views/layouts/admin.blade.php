@@ -50,6 +50,12 @@
                     Users
                 </a>
             </li>
+            <li>
+                <a href="{{ route('admin.settings.index') }}"
+                   class="nav-link {{ request()->routeIs('admin.settings.*') ? 'active' : '' }}">
+                    Settings
+                </a>
+            </li>
         </ul>
         <hr class="text-secondary">
         <div class="text-white small">

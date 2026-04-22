@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\BusinessRequestController;
 use App\Http\Controllers\Oauth\GithubController;
@@ -84,6 +85,7 @@ Route::middleware(['auth', 'admin'])
     ->group(function () {
         Route::get('/', [UserController::class, 'index']);
         Route::resource('users', UserController::class);
+        Route::resource('settings', SettingController::class);
     });
 
 // Tests
