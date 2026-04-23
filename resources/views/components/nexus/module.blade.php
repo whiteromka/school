@@ -150,7 +150,7 @@
         </div>
 
         @if($module->name === '3d моделирование для Unity')
-            <div class="container px-0">
+            <div class="container px-0 mb-2">
                 <div class="row g-3 ">
                     @for($i = 1; $i <= 16; $i++)
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">

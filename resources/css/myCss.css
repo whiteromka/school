@@ -693,47 +693,6 @@ body {
     font-family: "Share Tech Mono", monospace;
 }
 
-/* аттрибут data-context  */
-.custom-tooltip {
-    position: absolute;
-    background: #333;
-    color: #fff;
-    padding: 8px 12px;
-    border-radius: 1px;
-    font-size: 12px;
-    white-space: nowrap;
-    z-index: 10000;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.2s, visibility 0.2s, transform 0.2s;
-    transform: translateY(5px);
-    pointer-events: none;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.85);
-}
-
-.custom-tooltip::after {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    border: 6px solid transparent;
-    border-top-color: #333;
-}
-
-.custom-tooltip.visible {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-.custom-tooltip.error-tooltip {
-    background: #dc3545;
-}
-
-.custom-tooltip.error-tooltip::after {
-    border-top-color: #dc3545;
-}
 
 /* Отзывы */
 .reviews-list {}

@@ -11,20 +11,25 @@ use Illuminate\Support\Facades\Http;
 
 class HHParserService implements HHInterface
 {
-    // Это временно
     private string $xsrftoken = '284b54011cfa342518eeec849b51800f';
     private string $cookie = 'hhuid=R!_xkzFm5ZbYgWYH5HE8BQ--; __ddg2_=75d82SMYgZt4Ninh; hhtoken=FnXPCg9qNRT!Z2z8ulOhgmg7ecSO; tmr_lvid=93b0bfdd05330c31ea0504015e5fda8c; tmr_lvidTS=1711793266711; _ym_uid=1711793267855666928; __ddgid_=4LMSYzeXY1259LHv; _ym_d=1767805511; __ddg1_=DsIzFVYN63f1oQJstivK; _xsrf=284b54011cfa342518eeec849b51800f; crypted_hhuid=2B0CCDB7D2A0B948E3EC9C12E454D7FC61B59640B3363FCF1B71DCC79AFD0C50; hhul=b8772dea8b09d6511357bf76553e3f036043fdefbed79e83e5d107238f8cf669; GMT=3; redirect_host=hh.ru; region_clarified=hh.ru; uxs_uid=e35ed630-ee7d-11ee-8d40-af8d9726c8a3; display=desktop; _ibc=False; iap.uid=cd1ce9f882eb46b780754db775c0b853; cookie_policy_agreement=true; TZ=Europe%2FMoscow; HOSTILE_ON=0; hhrole=applicant; _hi=21401866; crypted_id=4BE4AD54CE6926347654C7F1A4392898A5471C6F722104504734B32F0D03E9F8; __ddg9_=198.244.179.151; _ym_isad=1; _ym_visorc=b; __zzatgib-w-hh=MDA0dC0jViV+FmELHw4/aQsbSl1pCENQGC9LX3RePG0laEkTJUMPUgotGxkxdCoNO0BdQXZ1eCs9ah9gOVURCxIXRF5cVWl1FRpLSiVueCplJS0xViR8SylEXFR/KiIYeW8lVgkTVy8NPjteLW8PJwsSWAkhCklpC15zXV8WPkQhbAs4LBtFOA8teB1keEdXa1lLRHdsKlg4PF1ucykwLEAhUGd4WiVIEU40Kx4Yem8rVjgQXUFydHQbN1ddHBEkWA4hPwsXXFU+NVQOPHVXLw0uOF4tbx5mTl8kTFxPfScgE35nFRtQSxgvS18zWn4lDzRDS1sKFA4/VFFCQisVWVJ1KW59OjAbRVcfYEtZIEtbU2shC1E0NWYQSk9NRzM4P2h9HlQcOVURDxYSNhcjEn5yKVQQEl1BQ3R1MTdXYTAPFhFNRxU9VlJPQyhrG3FYMA==lJFILg==; device_magritte_breakpoint=s; device_breakpoint=s; gsscgib-w-hh=61oZOLMmZBKDGk9m8QRnjLB/JZjf1FjhDlKh9D3XkQ6f2GcFLPkzR8XDCXahOE9UIHF0+3VruhYOJD5dk51iZ1e7ou88QAGhfg3+Rn5MrgnDRfsvZc4MvjeVj99RtlncG5FmGytwspwB6IYvoAAqn/1+BDtO4BQl9+9vAnpuulXYBNMWL6upKgDc4WwfCGfaVgQXCAeYtOudG7UcEkzTkaNAGgYwstMAZzbGHONKS3u7Wcx42s6gyi8b2OAQ1aNNwll2WT8I; cfidsgib-w-hh=WEV/FBxeXTlfyteBWVF0Pf33W7eNwP5bJcrKD56s88Rk5D9plNWIBo1n1Sc5zguqatBQOBgx7P+dueU/NIJ7JtVYnHl6arD6xPwofUtXnukeJHHPJNNBE4FDs5+io4dgUTQkm/b0kgCX8gxiDFWlFCLpbzgDTS6chtG7t22a; cfidsgib-w-hh=WEV/FBxeXTlfyteBWVF0Pf33W7eNwP5bJcrKD56s88Rk5D9plNWIBo1n1Sc5zguqatBQOBgx7P+dueU/NIJ7JtVYnHl6arD6xPwofUtXnukeJHHPJNNBE4FDs5+io4dgUTQkm/b0kgCX8gxiDFWlFCLpbzgDTS6chtG7t22a; gsscgib-w-hh=61oZOLMmZBKDGk9m8QRnjLB/JZjf1FjhDlKh9D3XkQ6f2GcFLPkzR8XDCXahOE9UIHF0+3VruhYOJD5dk51iZ1e7ou88QAGhfg3+Rn5MrgnDRfsvZc4MvjeVj99RtlncG5FmGytwspwB6IYvoAAqn/1+BDtO4BQl9+9vAnpuulXYBNMWL6upKgDc4WwfCGfaVgQXCAeYtOudG7UcEkzTkaNAGgYwstMAZzbGHONKS3u7Wcx42s6gyi8b2OAQ1aNNwll2WT8I; regions=1; __ddg8_=mokNeREmU6zOm7uP; __ddg10_=1776597879; fgsscgib-w-hh=ugGV6cc4371b6ca3f9ff35722be467c8721b4856';
 
     private function tryGetXsrfToken()
     {
-        $setting = Setting::query()->where(['name' => 'xsrftoken'])->first();
-        return $setting?->value ?? $this->xsrfToken;
+        $value = Setting::query()
+            ->where('name', 'xsrftoken')
+            ->value('value');
+
+        return $value ?? $this->xsrftoken;
     }
 
     private function tryGetCookies()
     {
-        $setting = Setting::query()->where(['name' => 'cookie'])->first();
-        return $setting?->value ?? $this->cookie;
+        $value = Setting::query()
+            ->where('name', 'cookie')
+            ->value('value');
+
+        return $value ?? $this->cookie;
     }
 
     /**
@@ -32,6 +37,9 @@ class HHParserService implements HHInterface
      */
     public function fetchVacancies(string $type = 'PHP'): void
     {
+        $xsrfToken = $this->tryGetXsrfToken();
+        $cookie = $this->tryGetCookies();
+
         $textSearch = $type == 'PHP' ? 'Php программист' : 'JavaScript программист';
         $url = 'https://hh.ru/shards/vacancy/search';
         try {
@@ -41,8 +49,8 @@ class HHParserService implements HHInterface
                 'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
                 'x-requested-with' => 'XMLHttpRequest',
                 'referer' => 'https://hh.ru/search/vacancy',
-                'x-xsrftoken' => $this->tryGetXsrfToken(),
-                'cookie' => $this->tryGetCookies(),
+                'x-xsrftoken' => $xsrfToken,
+                'cookie' => $cookie,
             ])->get($url, [
                 'enable_snippets' => 'true',
                 'ored_clusters' => 'true',
