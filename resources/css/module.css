@@ -1,3 +1,10 @@
+.module:hover .module-trap-left {
+    background: #00ddff;
+    box-shadow: 0 0 15px 12px rgb(244, 27, 41); /* Красное свечение */
+}
+.module:hover .module-trap-right {
+    background: #00ddff;
+}
 .module:hover .module-header h3 {
     color: #00eaff;
 }
@@ -11,10 +18,12 @@
     /*color: white;*/
 }
 .module:hover {
-    border-left: 1px solid #00eaff;
+    border-top: 2px solid  #00eaff;
 }
 
 .module {
+    border-top: 2px solid rgba(0, 0, 0, 0.3);
+    position: relative;
     display: flex;
     flex-direction: column;
     background: #0a3143;
@@ -23,6 +32,30 @@
     padding-top: 50px;
     margin-bottom: 15px;
 }
+.module-trap-left {
+    position: absolute;
+    top: -2px;
+    left: 0px;
+    background: rgba(0, 0, 0, 0.3);
+    height: 12px;
+    width: 200px;
+    clip-path: polygon(0% 0%, 100% 0%, 90% 100%, 0% 100%);
+}
+.module-trap-right {
+    position: absolute;
+    top: -2px;
+    right: 0px;
+    background: rgba(0, 0, 0, 0.3);
+    height: 12px;
+    width: 200px;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 10% 100%);
+}
+@media (max-width: 576px) {
+    .module-trap-right, .module-trap-left {
+        width: 70px;
+    }
+}
+
 .profile-module {
     background: #072d3f;
 }

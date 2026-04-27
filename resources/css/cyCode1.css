@@ -57,10 +57,8 @@
 
 /* Central Data Block */
 .data-block {
-    background: linear-gradient(180deg, rgba(20, 20, 20, 0.4) 0%, rgba(15, 15, 15, 0.5) 100%);
-    border: 1px solid rgba(255, 77, 77, 0.2);
-    border-radius: 4px;
-
+    background: linear-gradient(180deg, rgba(251, 2, 2, 0.25) 0%, rgba(127, 15, 15, 0.3) 100%);
+    border: 1px solid rgba(255, 77, 77, 0.32);
     padding: 15px clamp(7px, 4vw, 30px);
     margin-bottom: 20px;
     position: relative;
@@ -100,8 +98,7 @@
     font-weight: 700;
     letter-spacing: 2px;
     text-align: center;
-    /*margin-bottom: 10px;*/
-    background: radial-gradient(circle, rgba(231, 13, 13, 0.24) 0%, rgba(5, 5, 5, 0.53) 99%);
+    background: radial-gradient(circle, rgba(148, 13, 13, 0.24) 0%, rgba(5, 5, 5, 0.33) 99%);
 }
 
 .data-main .num-left,

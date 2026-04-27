@@ -14,6 +14,9 @@
      data-max-users="{{ $max }}"
      id="module-{{ $module->id }}"
 >
+    <div class="module-trap-left"></div>
+    <div class="module-trap-right  d-xxl-block"></div>
+
     <div class="module-inner">
 
         <div class="row module-header">
@@ -103,7 +106,7 @@
     {{--        <span class="orange"> <?= $module->module_price ?> RUR </span>--}}
     {{--    </div>--}}
 
-        <div class="php-tabs-wrapper_">
+        <div class="php-tabs-wrapper_ ">
             <ul class="nav nav-tabs cy-item-tabs" id="a{{ $i }}" role="tablist">
                 <li class="nav-item" role="presentation">
                     <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#text{{ $i }}"
@@ -120,26 +123,28 @@
             </ul>
 
             <div class="tab-content cy-item-tabs-content">
-                <div class="tab-pane fade show active" id="text{{ $i }}" role="tabpanel">
-                    <p class="service-desc"> <?= $module->description ?> </p>
-                    @php if (!empty($module->description2)) : @endphp
-                    <br>
-                    <p class="service-desc"> <?= $module->description2 ?> </p>
-                    @php endif @endphp
-                </div>
-                <div class="tab-pane fade " id="topics{{ $i }}" role="tabpanel">
-                    @php if (!empty($module->topics)) : @endphp
-                        <ul class="ul-item-module">
-                            @php foreach($module->topics as $topic): @endphp
-                            <li class="li-item-module">
-                                <span class="service-tag_">
-                                    <?= $topic ?>
-                                </span>
-                            </li>
-                            @php endforeach @endphp
-                        </ul>
-                    @php endif @endphp
-                </div>
+
+                    <div class="tab-pane fade show active" id="text{{ $i }}" role="tabpanel">
+                        <p class="service-desc"> <?= $module->description ?> </p>
+                        @php if (!empty($module->description2)) : @endphp
+                        <br>
+                        <p class="service-desc"> <?= $module->description2 ?> </p>
+                        @php endif @endphp
+                    </div>
+                    <div class="tab-pane fade " id="topics{{ $i }}" role="tabpanel">
+                        @php if (!empty($module->topics)) : @endphp
+                            <ul class="ul-item-module">
+                                @php foreach($module->topics as $topic): @endphp
+                                <li class="li-item-module">
+                                    <span class="service-tag_">
+                                        <?= $topic ?>
+                                    </span>
+                                </li>
+                                @php endforeach @endphp
+                            </ul>
+                        @php endif @endphp
+                    </div>
+
             </div>
         </div>
 

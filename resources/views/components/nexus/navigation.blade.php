@@ -1,5 +1,5 @@
 @php use Illuminate\Support\Facades\Auth; @endphp
-<div class="container-fluid px-0">
+<div class="container-fluid px-0 pos-r">
     <nav class="nexus-nav" role="navigation" aria-label="Main navigation">
         <div class="nav-logo">station</div>
         {{--        <div class="nav-logo">voyager</div>--}}
@@ -48,4 +48,11 @@
             </ul>
         </div>
     </nav>
+
+    {{--  тут голосовое сообщение  --}}
+    <div class="voice-message-wrapper">
+        <div class="voice-message">
+        </div>
+    </div>
+
 </div>
