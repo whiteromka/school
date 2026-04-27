@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\HH\HHParserService;
-use Illuminate\Http\Response;
+use App\Services\TelegramService;
+use Illuminate\Support\Facades\Http;
 
 class TestController extends Controller
 {
     // GET /test/test1
-    public function test1()
+    public function test1(TelegramService $telegramService): void
     {
-        $a = 1;
-        return new Response([
-            'status' => 'school',
+        $url = config('services.slack.school_errors_chat');
+        $response = Http::post($url, [
+            'text' => 'It works!', // работает
         ]);
+        dd($response->status()); // "ok"
     }
 
     // GET /test/hh
@@ -27,6 +28,5 @@ class TestController extends Controller
     {
         return $hh->searchSimple();
     }
-
 
 }

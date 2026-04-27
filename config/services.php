@@ -62,11 +62,20 @@ return [
         'redirect' => env('GOOGLE_REDIRECT_URI'),
     ],
 
+    // Services
     'telegram' => [
         'bot_token' => env('TELEGRAM_BOT_TOKEN'),
         'bot_username' => env('TELEGRAM_BOT_USERNAME'),
         'chat_id' => env('TELEGRAM_CHAT_ID'),
         'url_bot' => env('TELEGRAM_URL_BOT'),
         'my_id' => env('TELEGRAM_MY_ID'),
+    ],
+
+    'slack' => [
+        'clent_id' => env('SLACK_CLENT_ID'),
+        'client_secret' => env('SLACK_CLIENT_SECRET'),
+        'signing_secret' => env('SLACK_SIGNING_SECRET'),
+        'verification_token' => env('SLACK_VERIFICATION_TOKEN'),
+        'school_errors_chat' => env('SLACK_SCHOOL_ERRORS_CHAT'),
     ]
 ];
