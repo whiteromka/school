@@ -2,19 +2,13 @@
 
 namespace App\Http\Controllers\Oauth;
 
-use App\Enums\OAuthProvider;
 use App\Http\Controllers\Controller;
-use App\Models\OauthAccount;
-use App\Models\User;
 use App\Services\OAuth\OAuthServiceInterface;
+use App\Services\SlackLog;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Str;
+use Throwable;
 
 class YandexController extends Controller
 {
@@ -28,12 +22,17 @@ class YandexController extends Controller
      */
     public function verificationCode(Request $request): Redirector|RedirectResponse
     {
-        $code = $request->string('code')->toString();
-        if (!$code) {
-            abort(400, 'Code не найден');
-        }
-        $this->authService->authenticate($code);
+        try {
+            $code = $request->string('code')->toString();
+            if (!$code) {
+                abort(400, 'Code не найден');
+            }
+            $this->authService->authenticate($code);
 
-        return redirect('/profile')->with('success', 'Вы успешно авторизовались через Yandex');
+            return redirect('/profile')->with('success', 'Вы успешно авторизовались через ' . SlackLog::OAUTH_YANDEX);
+        } catch (Throwable $e) {
+            SlackLog::log($e, SlackLog::OAUTH_YANDEX);
+            return redirect('/login')->with('error', 'Ошибка авторизации через ' . SlackLog::OAUTH_YANDEX);
+        }
     }
 }
