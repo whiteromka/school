@@ -2,22 +2,13 @@
 
 namespace App\Http\Controllers\Oauth;
 
-use App\Enums\OAuthProvider;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\OAuth\VerificationCodeRequest;
-use App\Models\OauthAccount;
-use App\Models\User;
 use App\Services\OAuth\OAuthServiceInterface;
-use Exception;
-use Illuminate\Http\Client\ConnectionException;
+use App\Services\SlackLog;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Str;
+use Throwable;
 
 class GithubController extends Controller
 {
@@ -31,8 +22,13 @@ class GithubController extends Controller
      */
     public function verificationCode(VerificationCodeRequest $request): Redirector|RedirectResponse
     {
-        $this->authService->authenticate($request->getCode());
+        try {
+            $this->authService->authenticate($request->getCode());
 
-        return redirect('/profile')->with('success', 'Вы успешно авторизовались через Github');
+            return redirect('/profile')->with('success', 'Вы успешно авторизовались через Github');
+        } catch (Throwable $e) {
+            SlackLog::log($e, SlackLog::OAUTH_GITHUB);
+            return redirect('/login')->with('error', 'Ошибка авторизации через ' . SlackLog::OAUTH_GITHUB);
+        }
     }
 }
