@@ -206,18 +206,63 @@ a.base-link:hover {
 }
 
 .voice-message-wrapper {
-    background: rgba(0, 0, 0, 0.8);
-    padding: 5px;
-    height: 50px;
-    width: 200px;
+    border: 3px solid rgba(44, 173, 187, 1);
+    /*height: 50px;*/
+    min-width: 300px;
+    max-width: 90%;
     position: fixed;
     top:42px;
     z-index: 99;
+    font-size: 13px;
 }
 .voice-message {
-    border: 1px solid rgba(255, 0, 0, 0.43);
-    height: 100%;
+    background: rgba(41, 99, 107, 0.6);
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    flex-wrap: wrap; /* ✅ разрешаем перенос */
 }
+/* общий стиль */
+.voice-message span {
+    padding: 0px 10px;
+    white-space: nowrap;
+}
+
+/* имя — самое "гибкое" */
+.voice-message span:nth-child(2) {
+    flex: 1 1 auto;          /* занимает доступное место */
+    min-width: 0;            /* важно для ellipsis */
+    overflow: hidden;
+    text-overflow: ellipsis; /* обрезается красиво */
+}
+
+/* кнопка play — всегда видна */
+.voice-message span:last-child {
+    flex: 0 0 auto; /* не сжимается */
+}
+.ico-voice-message {
+    margin-top: 4px;
+    margin-left: 44px;
+    height: 20px;
+    display: flex;
+    gap: 3px;
+    /*background: green;*/
+    /*border: 2px solid #ff0000;*/
+    width: 100px;
+}
+.voice-bar {
+    /*border: 2px solid red;*/
+    background: red;
+    width: 4px;
+    height: 3px;
+
+}
+.voice-bar-10 { height: 6px;}
+.voice-bar-20 { height: 10px;}
+.voice-bar-30 { height: 14px;}
+
+
+
 
 .nexus-dropdown {
     padding: 0px 0;
@@ -659,6 +704,14 @@ a.base-link:hover {
     text-transform: uppercase;
     color: var(--text-primary);
     margin-bottom: 8px;
+}
+.project-name-job {
+    font-family: "Tektur", sans-serif;
+    color: #00f2ff;
+    font-weight: 500;
+    letter-spacing: 2px;
+    word-spacing: 4px;
+    font-size: 14px;
 }
 
 .project-tech {

@@ -12,7 +12,7 @@
                 <span class="salary">{{ $item->getPrettySalary() }}</span>
             </div>
 
-            <div class="project-name">{{ $item->name }}</div>
+            <div class="project-name project-name-job">{{ $item->name }}</div>
             <p class="project-tech fs-p-small mb-3">{{ $item->requirement }}</p>
 {{--            <p class="project-desc_ project-tech fs-p-small flex-grow-1 mb-3">--}}
 {{--                {{ $item->responsibility }}--}}
